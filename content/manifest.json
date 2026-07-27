@@ -1,0 +1,78 @@
+{
+  "title": "Indoor Climbing — Technique Guide & Drill Bank",
+  "subtitle": "A complete reference for indoor climbers",
+  "version": "1.1",
+  "source_language": "en",
+  "target_languages": [
+    "en",
+    "es"
+  ],
+  "parts": {
+    "I": "Foundations",
+    "II": "Technique Encyclopedia",
+    "III": "Practice",
+    "IV": "Reference"
+  },
+  "files": [
+    {
+      "path": "content/00-foundations.md",
+      "id": "foundations",
+      "title": "Foundations",
+      "part": "I",
+      "type": "prose",
+      "sections": "1-6",
+      "order": 0,
+      "status": "complete"
+    },
+    {
+      "path": "content/10-techniques.md",
+      "id": "techniques",
+      "title": "Technique Encyclopedia",
+      "part": "II",
+      "type": "techniques",
+      "sections": "7-12",
+      "order": 10,
+      "status": "complete"
+    },
+    {
+      "path": "content/20-drills.md",
+      "id": "drills",
+      "title": "Drill Bank",
+      "part": "III",
+      "type": "drills",
+      "sections": "13",
+      "order": 20,
+      "status": "complete"
+    },
+    {
+      "path": "content/30-session.md",
+      "id": "session",
+      "title": "Session Structure & Tracking",
+      "part": "III",
+      "type": "prose",
+      "sections": "14-15",
+      "order": 30,
+      "status": "complete"
+    },
+    {
+      "path": "content/40-warmup.md",
+      "id": "warmup",
+      "title": "Warm-up & Preparation",
+      "part": "III",
+      "type": "prose",
+      "sections": "16",
+      "order": 40,
+      "status": "stub"
+    },
+    {
+      "path": "content/50-references.md",
+      "id": "references",
+      "title": "References & Further Reading",
+      "part": "IV",
+      "type": "references",
+      "sections": "17",
+      "order": 50,
+      "status": "stub"
+    }
+  ]
+}

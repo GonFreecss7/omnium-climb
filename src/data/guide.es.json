@@ -1,0 +1,1637 @@
+{
+  "meta": {
+    "title": "Escalada Indoor — Guía de Técnica y Banco de Ejercicios",
+    "subtitle": "Una referencia completa para escaladores de rocódromo",
+    "version": "1.1",
+    "parts": {
+      "I": "Fundamentos",
+      "II": "Enciclopedia de Técnicas",
+      "III": "Práctica",
+      "IV": "Referencia"
+    }
+  },
+  "tagLegend": {
+    "core": "apréndelo primero. Rinde beneficios de inmediato y tiene poco riesgo de lesión.",
+    "later": "útil, una vez que el conjunto base esté sólido.",
+    "advanced": "vale la pena conocerlo por su nombre; relevante en grados más altos o en competición.",
+    "caution": "riesgo de lesión considerable, especialmente para dedos y codos. Introdúcelo tarde, nunca mientras algo ya te duela."
+  },
+  "nonstandardNote": "marca un nombre que no está estandarizado entre gimnasios. El movimiento es real; la etiqueta puede variar.",
+  "sectionIndex": {
+    "1": {
+      "number": 1,
+      "kind": "prose",
+      "title": "Principios",
+      "fileId": "foundations"
+    },
+    "2": {
+      "number": 2,
+      "kind": "prose",
+      "title": "Mantenerte sin lesiones",
+      "fileId": "foundations"
+    },
+    "3": {
+      "number": 3,
+      "kind": "prose",
+      "title": "Trabajo de pies",
+      "fileId": "foundations"
+    },
+    "4": {
+      "number": 4,
+      "kind": "prose",
+      "title": "Posición Corporal",
+      "fileId": "foundations"
+    },
+    "5": {
+      "number": 5,
+      "kind": "prose",
+      "title": "Movimiento",
+      "fileId": "foundations"
+    },
+    "6": {
+      "number": 6,
+      "kind": "prose",
+      "title": "Lectura de Vía",
+      "fileId": "foundations"
+    },
+    "7": {
+      "number": 7,
+      "kind": "techniqueCategory",
+      "title": "Técnicas de centro de gravedad",
+      "categoryId": "centre-of-gravity-techniques"
+    },
+    "8": {
+      "number": 8,
+      "kind": "techniqueCategory",
+      "title": "Técnicas de pies",
+      "categoryId": "foot-techniques"
+    },
+    "9": {
+      "number": 9,
+      "kind": "techniqueCategory",
+      "title": "Técnicas de mano y agarre",
+      "categoryId": "hand-grip-techniques"
+    },
+    "10": {
+      "number": 10,
+      "kind": "techniqueCategory",
+      "title": "Posiciones y orientaciones de presa",
+      "categoryId": "positions-hold-orientations"
+    },
+    "11": {
+      "number": 11,
+      "kind": "techniqueCategory",
+      "title": "Técnicas de movimiento",
+      "categoryId": "movement-techniques"
+    },
+    "12": {
+      "number": 12,
+      "kind": "techniqueCategory",
+      "title": "Técnicas dinámicas",
+      "categoryId": "dynamic-techniques"
+    },
+    "13": {
+      "number": 13,
+      "kind": "drillCategory",
+      "title": "Banco de ejercicios"
+    },
+    "14": {
+      "number": 14,
+      "kind": "prose",
+      "title": "Estructura de la Sesión",
+      "fileId": "session"
+    },
+    "15": {
+      "number": 15,
+      "kind": "prose",
+      "title": "Seguimiento del Progreso",
+      "fileId": "session"
+    }
+  },
+  "prose": [
+    {
+      "id": "foundations",
+      "title": "Fundamentos",
+      "part": "I",
+      "order": 0,
+      "sections": [
+        {
+          "number": 1,
+          "title": "Principios",
+          "body": "La escalada premia la técnica mucho antes que la fuerza. Un principiante que se mueve bien en V2 superará en una temporada a un principiante más fuerte que se debate torpemente en V4. Todo lo que aparece en esta guía se deriva de unas pocas ideas:\n\n- **La calidad del movimiento vence al grado.** Un V2 limpio construye más que un V4 chapucero. El grado mide el problema, no al escalador.\n- **Entrena un grado por debajo de tu límite.** Suficientemente difícil para ser interesante, suficientemente fácil para que la técnica no se derrumbe. Los intentos al límite te enseñan a pelear; escalar por debajo del límite te enseña a moverte.\n- **Los problemas fáciles son el medio para los ejercicios,** no el destino. Hazlos difíciles con restricciones, no con más grado.\n- **La potencia llega antes de que el tejido esté listo para ella.** El músculo se adapta en semanas; los tendones, las poleas y el tejido conectivo tardan de meses a años. Casi toda lesión de principiante vive en esa brecha.\n- **El volumen vence a la intensidad al principio.** Más tiempo en el muro moviéndote bien, menos tiempo colgado de cantos de dos dedos.\n- **2–4 sesiones por semana, no consecutivas.** El descanso es cuando realmente ocurre la adaptación.\n- **Deja de lado por un tiempo:** el hangboard, el campus board y las sesiones cargadas de dynos. Añaden carga sin enseñar movimiento, y es ahí donde los principiantes se lesionan."
+        },
+        {
+          "number": 2,
+          "title": "Mantenerte sin lesiones",
+          "body": "Las lesiones en escalada son, en su inmensa mayoría, lesiones por sobreuso, no accidentes. Las más comunes, más o menos en orden de frecuencia:\n\n- **Poleas de los dedos (A2)** — dolor en la base de un dedo, normalmente por crimpar fuerte demasiado pronto. La lesión clásica de principiante.\n- **Codo medial (codo de golfista)** — dolor en la cara interna del codo, por agarrar en exceso, crimpar y escalar con los brazos doblados.\n- **Codo lateral (codo de escalador / codo de tenista)** — dolor en la cara externa, a menudo por trabajo de mano abierta y slopers, o por exceso de campusing.\n- **Hombros** — normalmente por lock-offs repetidos, gastons y dynos descontrolados sin ningún trabajo de empuje que los compense.\n- **Rodillas** — casi siempre por drop knees y ganchos de talón aplicados con violencia o en frío.\n\n**Qué los previene de verdad**\n\n- **Calienta correctamente.** 15 minutos: movimiento general, luego muñecas, antebrazos, codos y hombros, y después escalada progresivamente más difícil. Nunca empieces por un proyecto.\n- **Escala con los brazos rectos.** Colgarte con los brazos doblados es, con diferencia, la mayor carga evitable sobre los codos.\n- **Relaja el agarre.** Agarrar en exceso desperdicia energía y provoca problemas de codo y dedos.\n- **Retrasa el full crimp.** Usa mano abierta y half crimp durante el primer año o más.\n- **Entrena los antagonistas 2–3 veces por semana:** flexiones, remo, rotación externa de hombro, y extensores y flexores de muñeca. Los escaladores se vuelven dominantes en tracción muy rápido, y las articulaciones lo pagan.\n- **Progresa la carga despacio.** Añadir grados, sesiones y volumen todo a la vez es como un buen mes se convierte en un mal trimestre.\n\n**Cómo leer el dolor**\n\n- Molestia sorda, cálida y simétrica que desaparece en un día: respuesta normal al entrenamiento.\n- Dolor agudo, localizado o unilateral, o dolor que empeora durante la sesión: deja de escalar sobre eso ese día.\n- Un chasquido, clic, o dolor agudo repentino en un dedo: detente de inmediato.\n- Dolor que persiste entre sesiones, o que vuelve más fuerte cada vez, necesita valoración profesional, no más descanso y esperanza.\n\n> Esta guía es información general, no consejo médico. Cualquier dolor agudo, persistente o que empeora merece una consulta con un fisioterapeuta especializado en escaladores: una valoración temprana es mucho más barata que seis meses de baja."
+        },
+        {
+          "number": 3,
+          "title": "Trabajo de pies",
+          "body": "**Precisión.** Mira la presa de pie, elige el punto exacto, coloca la puntera ahí y luego aparta la vista. No la reajustes. No la deslices. La mayoría de los principiantes colocan un pie, lo mueven dos veces y pierden la tensión corporal todo el tiempo.\n\n**Usa la puntera, no el arco.** Apóyate en la punta delantera del pie de escalada. El canto interior (lado del dedo gordo) y el canto exterior (lado del meñique) son tus dos herramientas principales. Apoyarte en el arco significa que no puedes pivotar.\n\n**Baja el talón.** Una vez colocada la puntera, baja el talón. Esto tensa la pantorrilla y bloquea el pie de escalada sobre la presa. Escalar con el talón levantado es la razón por la que los pies se sueltan.\n\n**Pivota, no reajustes.** Con la puntera fija, todo el cuerpo puede rotar alrededor de ese punto. Los principiantes vuelven a colocar el pie cuando podrían simplemente haber girado la cadera."
+        },
+        {
+          "number": 4,
+          "title": "Posición Corporal",
+          "body": "**Brazos rectos.** Cuélgate de tu esqueleto, no de tus bíceps. Los brazos doblados queman los antebrazos y cargan el codo, justo lo que intentas proteger. Dobla el brazo solo en el instante en que tiras hacia la siguiente presa, y luego vuelve a estirarlo.\n\n**Cadera a la pared.** El peso descansa sobre los pies en vez de tirar hacia afuera desde las manos. Una cadera caída significa que son los brazos los que te sostienen.\n\n**Frontal frente a de lado.** La posición frontal (encarado a la pared, ambos cantos interiores) es estable pero de alcance corto. La posición de lado / twist-lock (un canto exterior, cadera girada hacia la pared) alcanza mucho más lejos y cuesta mucho menos a los brazos. Alternar entre las dos según se necesite es la mayor parte de la escalada de nivel intermedio.\n\n**Backstep.** Canto exterior del pie sobre la presa, cadera girada hacia dentro. Convierte un alcance largo en uno corto. Si te estás forzando para alcanzar algo, la respuesta suele ser un backstep que no viste.\n\n**Banderas (flagging).** Cuando un pie no tiene dónde apoyarse, extiende esa pierna como contrapeso en vez de dejarla colgando. Bandera del mismo lado: la pierna se extiende hacia su propio lado. Bandera interior: la pierna cruza por delante. Bandera trasera: la pierna cruza por detrás; la más útil de las tres.\n\n**Drop knee.** Desde un backstep, gira la rodilla hacia abajo para presionar la presa de pie. Muy potente, y exigente para la articulación de la rodilla: úsalo con moderación en esta etapa."
+        },
+        {
+          "number": 5,
+          "title": "Movimiento",
+          "body": "- **Empuja con las piernas; tira con los brazos solo para mantener el equilibrio.** Prueba esto: en un problema fácil, sube usando las piernas mientras las manos solo tocan ligeramente. Llegarás más lejos de lo que esperas.\n- **Mueve primero el centro de gravedad, luego alcanza.** Desplaza el peso sobre el nuevo pie y después suelta la mano. Alcanzar primero es lo que hace que la gente se caiga de la pared.\n- **Deadpoint.** En lo más alto de un movimiento ascendente hay un instante ingrávido: ahí es cuando la mano debe aterrizar. Ni antes, ni después. Más económico que un lock-off estático y mucho más suave con el codo.\n- **Relaja el agarre.** Agarrar en exceso es energía desperdiciada y un factor importante en los problemas de codo.\n- **Respira.** Contener la respiración significa un cuerpo tenso. Exhala en los movimientos difíciles."
+        },
+        {
+          "number": 6,
+          "title": "Lectura de Vía",
+          "body": "Antes de tocar la pared, identifica: la secuencia de manos, qué pie va dónde, y dónde puedes descansar. Luego escálalo exactamente como lo planeaste.\n\nSi falla, pregúntate **por qué el plan estaba mal** en vez de simplemente esforzarte más. Ese hábito separa a los escaladores que se estancan de los que no.\n\n---"
+        }
+      ]
+    },
+    {
+      "id": "session",
+      "title": "Estructura de la Sesión y Seguimiento",
+      "part": "III",
+      "order": 30,
+      "sections": [
+        {
+          "number": 14,
+          "title": "Estructura de la Sesión",
+          "body": "| Bloque | Tiempo | Qué hacer |\n|---|---|---|\n| Calentamiento | 15 min | Movimiento general, luego V0–V1. Muñecas, antebrazos, codos, hombros. |\n| Técnica | 20–30 min | Un ejercicio del §13, en problemas fáciles. Hazlo en fresco, no cansado. |\n| Escalada principal | 40–50 min | Un grado por debajo de tu límite. Calidad de movimiento antes que completar. |\n| Proyecto | 15 min | Unos pocos intentos a tu límite, solo cuando estés fresco y sin dolor. |\n| Vuelta a la calma | 10 min | Bajada fácil escalando, estiramientos suaves, trabajo de antagonistas. |\n\n**Trabajo de antagonistas** (2–3 veces por semana, 10 minutos): flexiones, remo, rotación externa de hombro, y extensores y flexores de muñeca. Los escaladores se vuelven dominantes en tracción muy rápido, y las articulaciones lo pagan."
+        },
+        {
+          "number": 15,
+          "title": "Seguimiento del Progreso",
+          "body": "Filma un problema por sesión. Dos cosas a observar:\n\n1. Cuánto tiempo pasan tus brazos doblados.\n2. Cuántas veces se mueve cada pie después de haberlo colocado.\n\nAmbos números deberían ir bajando con las semanas. Eso es la técnica mejorando, de forma medible.\n\n**Cuándo subir de grado.** La prueba honesta para «este grado me aburre»: fílmate escalándolo con un solo toque y pies silenciosos. Si de verdad está limpio (sin reajustes, sin ruido, sin colgarte con los brazos doblados), sube de grado. La mayoría descubre que no lo está.\n\n**Registro de sesión — vale la pena anotarlo**\n\n- Qué ejercicio usaste.\n- El problema más difícil que encadenaste limpiamente (no solo completado).\n- Cualquier molestia: mejor / igual / peor que la sesión anterior.\n- Una cosa técnica que se sintió diferente."
+        }
+      ]
+    }
+  ],
+  "techniqueCategories": [
+    {
+      "id": "centre-of-gravity-techniques",
+      "number": 7,
+      "title": "Técnicas de centro de gravedad",
+      "intro": "Todas cumplen la misma función: mover el peso del cuerpo sobre los pies para que los brazos dejen de sostenerte. Para la mayoría de los escaladores, esta es la categoría más valiosa en la que trabajar.",
+      "techniqueIds": [
+        "back-step",
+        "drop-knee",
+        "outside-flag",
+        "back-flag",
+        "inside-flag",
+        "arm-flag",
+        "perching",
+        "frogging",
+        "inside-figure-4",
+        "outside-figure-4",
+        "the-janja",
+        "peter-pan"
+      ]
+    },
+    {
+      "id": "foot-techniques",
+      "number": 8,
+      "title": "Técnicas de pies",
+      "intro": "Todo aquí trata de convertir una presa de pie en algo que soporte peso o te acerque a la pared. Los pies son donde un principiante tiene más progreso pendiente por reclamar.",
+      "techniqueIds": [
+        "inside-edge",
+        "outside-edge",
+        "smear",
+        "alpine-knee",
+        "heel-hook",
+        "toe-hook",
+        "bat-hang",
+        "bicycle",
+        "heel-toe-cam",
+        "frog-pinch",
+        "knee-bar"
+      ]
+    },
+    {
+      "id": "hand-grip-techniques",
+      "number": 9,
+      "title": "Técnicas de mano y agarre",
+      "intro": "La elección del agarre es donde se producen la mayoría de las lesiones de dedos y codo. Todo lo que sigue es técnica real, pero el orden en que lo aprendes importa: los agarres más fuertes también son los más exigentes.",
+      "techniqueIds": [
+        "open-hand-three-finger-drag",
+        "open-crimp",
+        "half-crimp",
+        "quarter-crimp",
+        "closed-crimp-full-crimp",
+        "two-finger-pocket",
+        "front-three",
+        "back-three",
+        "mono",
+        "closed-mono",
+        "stacked-fingers",
+        "pinch",
+        "thumbercling-thumb-catch",
+        "palm-down-palming",
+        "meat-hook"
+      ]
+    },
+    {
+      "id": "positions-hold-orientations",
+      "number": 10,
+      "title": "Posiciones y orientaciones de presa",
+      "intro": "La misma presa puede ser cuatro presas distintas según dónde esté tu cuerpo. Esta categoría trata, en realidad, de leer la dirección de tracción.",
+      "techniqueIds": [
+        "side-pull",
+        "lay-back",
+        "gaston",
+        "elevator-door",
+        "undercling",
+        "compression",
+        "inverted",
+        "outward-facing",
+        "gastondercling",
+        "lock-off",
+        "stemming-bridging",
+        "the-chin"
+      ]
+    },
+    {
+      "id": "movement-techniques",
+      "number": 11,
+      "title": "Técnicas de movimiento",
+      "intro": "Cómo pasar de una posición a la siguiente. La mayoría son baratas de aprender e inmediatamente útiles.",
+      "techniqueIds": [
+        "hand-match",
+        "piano-match",
+        "foot-match",
+        "hand-foot-match",
+        "hand-cross-over",
+        "hand-cross-under",
+        "rose-move",
+        "foot-cross-front",
+        "foot-cross-back",
+        "rock-over",
+        "knee-press",
+        "mantle",
+        "beached-whale",
+        "cut-loose",
+        "campussing",
+        "the-houdini",
+        "good-samaritan",
+        "t-rex-turtle-roll"
+      ]
+    },
+    {
+      "id": "dynamic-techniques",
+      "number": 12,
+      "title": "Técnicas dinámicas",
+      "intro": "Potentes y divertidas, y la categoría de mayor impacto para tendones y articulaciones. Aquí la capacidad suele llegar antes de que el tejido esté listo para ella, así que la moderación es la habilidad que hay que construir.",
+      "techniqueIds": [
+        "dead-point",
+        "dyno",
+        "double-dyno",
+        "one-arm-dyno",
+        "double-clutch",
+        "paddle-dyno-triple-quadruple",
+        "step-up-dyno",
+        "hip-swing",
+        "arm-swing",
+        "pogo-moon-kick",
+        "run-and-jump",
+        "swing-and-jump",
+        "headbutt"
+      ]
+    }
+  ],
+  "techniques": [
+    {
+      "id": "back-step",
+      "categoryId": "centre-of-gravity-techniques",
+      "categoryNumber": 7,
+      "name": "Back step",
+      "tag": "core",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Un pie apoyado en el canto exterior con la cadera girada hacia la pared, de modo que el cuerpo queda de lado en vez de frontal.",
+      "how": "Coloca el canto del dedo meñique en la presa, gira esa cadera hacia la pared y deja que el hombro opuesto caiga hacia atrás. El brazo que alcanza ahora parte de un torso girado, no de un estiramiento.",
+      "best": "Alcances largos, paredes desplomadas y ahorrar brazos. Aprende esto antes que cualquier otra técnica de esta lista."
+    },
+    {
+      "id": "drop-knee",
+      "categoryId": "centre-of-gravity-techniques",
+      "categoryNumber": 7,
+      "name": "Drop knee",
+      "tag": "later",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Un backstep llevado más lejos: la rodilla gira hacia abajo y presionas activamente hacia afuera con el pie.",
+      "how": "Desde un backstep con los pies razonablemente separados, gira la rodilla hacia abajo y hacia dentro, presionando el pie contra la presa. La presión te bloquea en posición y acerca las caderas a la pared.",
+      "best": "Terreno desplomado y alcances largos. Muy exigente para la articulación de la rodilla (menisco), así que úsalo con moderación y nunca con una rotación brusca."
+    },
+    {
+      "id": "outside-flag",
+      "categoryId": "centre-of-gravity-techniques",
+      "categoryNumber": 7,
+      "name": "Outside flag",
+      "tag": "core",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "La pierna libre se extiende hacia su propio lado, actuando como contrapeso.",
+      "how": "De pie sobre un pie, balancea la otra pierna hacia su propio lado y presiona la puntera ligeramente contra la pared. Ajusta cuánto la separas hasta que el balanceo se detenga.",
+      "best": "Evita que el cuerpo se abra en «puerta de granero» cuando el pie libre no tiene dónde apoyarse. La bandera más simple: empieza por aquí."
+    },
+    {
+      "id": "back-flag",
+      "categoryId": "centre-of-gravity-techniques",
+      "categoryNumber": 7,
+      "name": "Back flag",
+      "tag": "core",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "La pierna libre cruza por detrás de la pierna de apoyo y presiona la pared.",
+      "how": "De pie sobre el pie izquierdo, lleva la pierna derecha por detrás de la izquierda y apoya la puntera por adherencia en la pared, hacia la izquierda. La cadera gira de lado automáticamente.",
+      "best": "La bandera más útil en el gimnasio. Corrige la rotación en los agarres laterales y te permite alcanzar lejos con un solo brazo."
+    },
+    {
+      "id": "inside-flag",
+      "categoryId": "centre-of-gravity-techniques",
+      "categoryNumber": 7,
+      "name": "Inside flag",
+      "tag": "later",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "La pierna libre cruza por delante de la pierna de apoyo.",
+      "how": "De pie sobre un pie, lleva la otra pierna cruzando por delante y presiona la puntera en la pared o en una presa de pie del otro lado.",
+      "best": "Posiciones ajustadas y de equilibrio delicado donde no hay espacio para pasar la pierna por detrás. Menos común que la bandera trasera."
+    },
+    {
+      "id": "arm-flag",
+      "categoryId": "centre-of-gravity-techniques",
+      "categoryNumber": 7,
+      "name": "Arm flag",
+      "tag": "later",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "La misma idea de contrapeso, pero con un brazo libre en vez de una pierna.",
+      "how": "Extiende el brazo que no agarra, alejándolo de la pared, para desplazar tu masa hacia un lado. A veces basta con empujar la pared ligeramente con la palma.",
+      "best": "Placas, equilibrios delicados y momentos en los que ambos pies ya están comprometidos."
+    },
+    {
+      "id": "perching",
+      "categoryId": "centre-of-gravity-techniques",
+      "categoryNumber": 7,
+      "name": "Perching",
+      "tag": "core",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "De pie, erguido y equilibrado directamente sobre un pie alto, con la cadera alineada sobre la puntera y los brazos casi sin carga.",
+      "how": "Sube el pie alto, desplaza la cadera hacia adelante y arriba sobre él, y luego incorpórate usando la pierna. Resiste la tentación de tirar con los brazos: son solo para el equilibrio.",
+      "best": "Placas, paredes verticales, volúmenes y descansos. La forma más económica que existe de ganar altura."
+    },
+    {
+      "id": "frogging",
+      "categoryId": "centre-of-gravity-techniques",
+      "categoryNumber": 7,
+      "name": "Frogging",
+      "tag": "core",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Ambas rodillas giradas hacia afuera y bien abiertas, con la cadera pegada a la pared.",
+      "how": "Gira ambos pies hacia afuera apoyándote en el canto interior, deja que las rodillas se abran y empuja la pelvis contra la pared.",
+      "best": "Acercar la cadera a la pared en muros verticales y ligeramente desplomados, y para descansar. También es un buen indicador de movilidad de cadera."
+    },
+    {
+      "id": "inside-figure-4",
+      "categoryId": "centre-of-gravity-techniques",
+      "categoryNumber": 7,
+      "name": "Inside figure 4",
+      "tag": "advanced",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Enganchas una pierna sobre tu propio brazo, por el lado interior, y te sientas sobre ella para ganar altura sin presas de pie.",
+      "how": "Cuélgate de un brazo, pasa la pierna del mismo lado por encima de ese antebrazo y presiona hacia abajo con la pierna para impulsar el cuerpo hacia arriba.",
+      "best": "Desplomes sin pies: sobre todo un movimiento de competición y de cueva muy inclinada. Alta carga en el codo y el hombro; no es un movimiento para principiantes."
+    },
+    {
+      "id": "outside-figure-4",
+      "categoryId": "centre-of-gravity-techniques",
+      "categoryNumber": 7,
+      "name": "Outside figure 4",
+      "tag": "advanced",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "La misma idea, pero la pierna engancha el brazo desde afuera.",
+      "how": "Cuélgate de un brazo, pasa la pierna opuesta por encima de ese brazo desde afuera y presiona hacia arriba.",
+      "best": "Poco frecuente, incómodo y de alto riesgo de lesión. Archivado en la categoría de «conoce el nombre, no lo practiques»."
+    },
+    {
+      "id": "the-janja",
+      "categoryId": "centre-of-gravity-techniques",
+      "categoryNumber": 7,
+      "name": "The Janja",
+      "tag": "advanced",
+      "nonstandard": true,
+      "gloss": null,
+      "what": "Jerga de gimnasio para la posición corporal extrema, de cadera muy pegada y giro profundo, asociada al estilo de Janja Garnbret: normalmente una posición muy comprimida, parecida a un drop knee, en la que la cadera permanece pegada a la pared durante todo un movimiento largo.",
+      "how": "En esencia, una versión al máximo del backstep/drop knee, con mucha movilidad de cadera y tensión de core.",
+      "best": "Nada que necesites todavía. El nombre no está estandarizado: comprueba cómo lo usa tu gimnasio, porque cada muro lo aplica a movimientos distintos."
+    },
+    {
+      "id": "peter-pan",
+      "categoryId": "centre-of-gravity-techniques",
+      "categoryNumber": 7,
+      "name": "Peter Pan",
+      "tag": "advanced",
+      "nonstandard": true,
+      "gloss": null,
+      "what": "Un movimiento dinámico en el que te lanzas a una posición totalmente extendida, brevemente en el aire, con brazos y piernas estirados, antes de atrapar la presa objetivo.",
+      "how": "Genera el impulso con las piernas, extiende todo el cuerpo en el aire y atrapa la presa con el cuerpo totalmente estirado.",
+      "best": "Problemas desplomados y potentes, de estilo competición. El nombre varía según el gimnasio; de alto impacto, así que no es prioridad para principiantes."
+    },
+    {
+      "id": "inside-edge",
+      "categoryId": "foot-techniques",
+      "categoryNumber": 8,
+      "name": "Inside edge",
+      "tag": "core",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Apoyarse en el canto del lado del dedo gordo del pie de escalada.",
+      "how": "Coloca la punta interior delantera del pie de escalada sobre la presa y baja el talón. Te mantiene frontal a la pared.",
+      "best": "Escalada frontal, placa, y cualquier movimiento en el que prefieras estabilidad antes que alcance."
+    },
+    {
+      "id": "outside-edge",
+      "categoryId": "foot-techniques",
+      "categoryNumber": 8,
+      "name": "Outside edge",
+      "tag": "core",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Apoyarse en el canto del lado del dedo meñique del pie de escalada.",
+      "how": "Rueda hacia la punta exterior delantera y gira la cadera hacia dentro. Esto es lo que hace posible un backstep.",
+      "best": "Posiciones de lado, alcances largos y paredes desplomadas."
+    },
+    {
+      "id": "smear",
+      "categoryId": "foot-techniques",
+      "categoryNumber": 8,
+      "name": "Smear",
+      "tag": "core",
+      "nonstandard": false,
+      "gloss": "adherencia",
+      "what": "Usar la fricción contra la pared plana o una superficie inclinada sin presa definida.",
+      "how": "Presiona la almohadilla del pie plana contra la pared, mantén el talón bajo y empuja a través de ella. Confía en el apoyo: dudar reduce el contacto con la superficie.",
+      "best": "Placa, volúmenes y para cubrir huecos donde no existen presas de pie."
+    },
+    {
+      "id": "alpine-knee",
+      "categoryId": "foot-techniques",
+      "categoryNumber": 8,
+      "name": "Alpine knee",
+      "tag": "caution",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Apoyar la rodilla directamente sobre una presa o repisa en lugar del pie.",
+      "how": "Arrodíllate sobre la presa para ganar altura y luego sube el pie.",
+      "best": "A veces es la única opción al aire libre o en un mantle. Está mal visto en el gimnasio, te raspa la piel y pone la rótula sobre un canto duro. Aprende el rock-over en su lugar."
+    },
+    {
+      "id": "heel-hook",
+      "categoryId": "foot-techniques",
+      "categoryNumber": 8,
+      "name": "Heel hook",
+      "tag": "core",
+      "nonstandard": false,
+      "gloss": "gancho de talón",
+      "what": "Apoyar el talón en una presa y tirar con el isquiotibial, usando la pierna en la práctica como un tercer brazo.",
+      "how": "Coloca el talón en la presa, apunta la puntera ligeramente hacia afuera y tira activamente, como si arrastraras la presa hacia tu cadera. Mantén la tensión; un talón flojo se resbala.",
+      "best": "Terreno desplomado, topar el problema y quitar peso de los brazos. Calienta antes los isquiotibiales: los ganchos de talón en frío los sobrecargan."
+    },
+    {
+      "id": "toe-hook",
+      "categoryId": "foot-techniques",
+      "categoryNumber": 8,
+      "name": "Toe hook",
+      "tag": "later",
+      "nonstandard": false,
+      "gloss": "gancho de puntera",
+      "what": "Enganchar el empeine del pie debajo o contra una presa para evitar que el cuerpo se balancee hacia afuera.",
+      "how": "Presiona el empeine contra la parte inferior o el lado opuesto de una presa y tira con la espinilla y el isquiotibial.",
+      "best": "Techos, compresión desplomada, y para evitar que un cut loose te haga salir despedido."
+    },
+    {
+      "id": "bat-hang",
+      "categoryId": "foot-techniques",
+      "categoryNumber": 8,
+      "name": "Bat hang",
+      "tag": "advanced",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Colgarse boca abajo de ambos pies, con las manos libres.",
+      "how": "Engancha ambas punteras sobre un elemento sólido (normalmente el labio de un techo o un volumen grande) y suelta las manos.",
+      "best": "Problemas de techo y trucos de competición. Divertido, pero una mala posición para caer: solo con colchonetas y supervisión."
+    },
+    {
+      "id": "bicycle",
+      "categoryId": "foot-techniques",
+      "categoryNumber": 8,
+      "name": "Bicycle",
+      "tag": "later",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Un pie empuja una presa mientras el otro la engancha con la puntera por el lado opuesto: los dos pies la aprietan entre sí.",
+      "how": "Presiona con una puntera, engancha con la otra y aprieta. La presa queda ahora sujeta entre tus pies.",
+      "best": "Terreno desplomado y techos donde necesitas que los pies se mantengan fijos mientras mueves las manos."
+    },
+    {
+      "id": "heel-toe-cam",
+      "categoryId": "foot-techniques",
+      "categoryNumber": 8,
+      "name": "Heel-toe cam",
+      "tag": "later",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Encajar el pie entre dos superficies, con el talón en una y la puntera en la otra, de modo que el pie queda bloqueado en su sitio.",
+      "how": "Busca una ranura, un rincón o un hueco entre volúmenes; coloca el talón en un lado y encaja la puntera contra el otro hasta que quede ajustado.",
+      "best": "Descansos sin manos, techos, y para mantener la posición mientras sacudes los brazos. Muy eficaz, y puede atrapar el tobillo: asegúrate de poder liberarlo."
+    },
+    {
+      "id": "frog-pinch",
+      "categoryId": "foot-techniques",
+      "categoryNumber": 8,
+      "name": "Frog pinch",
+      "tag": "advanced",
+      "nonstandard": true,
+      "gloss": null,
+      "what": "Apretar un volumen o un elemento grande entre ambos pies, con las rodillas abiertas como una rana.",
+      "how": "Coloca ambos pies a cada lado del elemento y presiona hacia dentro con las piernas.",
+      "best": "Escalada de volúmenes al estilo competición. El nombre varía según el gimnasio."
+    },
+    {
+      "id": "knee-bar",
+      "categoryId": "foot-techniques",
+      "categoryNumber": 8,
+      "name": "Knee bar",
+      "tag": "later",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Encajar la pierna entre dos superficies (la rodilla o el muslo presionando una y el pie presionando la otra) de modo que la pierna queda bloqueada con firmeza.",
+      "how": "Encaja el pie en una presa y luego empuja la parte superior de la rodilla o el muslo contra la superficie opuesta hasta que la presión te sostenga.",
+      "best": "El mejor descanso que existe en la escalada cuando lo encuentras. Muchas veces te permite soltar ambas manos. Vale la pena buscarlo activamente en los techos."
+    },
+    {
+      "id": "open-hand-three-finger-drag",
+      "categoryId": "hand-grip-techniques",
+      "categoryNumber": 9,
+      "name": "Open hand / three-finger drag",
+      "tag": "core",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Dedos casi rectos, colgando de las dos últimas articulaciones, sin el pulgar involucrado. Normalmente índice, medio y anular sobre la presa.",
+      "how": "Apoya los dedos sobre la presa y déjalos extendidos. Debe sentirse como colgar, no como agarrar.",
+      "best": "El agarre más seguro y sostenible. Ideal en slopers, cantos grandes y jugs, y la opción sensata por defecto para cualquiera con dedos o codos irritables."
+    },
+    {
+      "id": "open-crimp",
+      "categoryId": "hand-grip-techniques",
+      "categoryNumber": 9,
+      "name": "Open crimp",
+      "tag": "core",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Una mano abierta ligeramente cerrada: los dedos curvados, pero la última articulación no está hiperextendida.",
+      "how": "Curva los dedos suavemente sobre el canto sin involucrar el pulgar.",
+      "best": "Agarre de uso general en cantos pequeños. Un buen término medio entre el drag y el half crimp."
+    },
+    {
+      "id": "half-crimp",
+      "categoryId": "hand-grip-techniques",
+      "categoryNumber": 9,
+      "name": "Half crimp",
+      "tag": "core",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Los nudillos centrales doblados a aproximadamente 90 grados, la articulación de la yema plana, sin el pulgar.",
+      "how": "Coloca los dedos sobre el canto, dobla los nudillos grandes en ángulo recto y mantén las yemas planas en vez de curvarlas.",
+      "best": "La posición de agarre más entrenable y transferible. Debería ser tu posición de fuerza principal a largo plazo."
+    },
+    {
+      "id": "quarter-crimp",
+      "categoryId": "hand-grip-techniques",
+      "categoryNumber": 9,
+      "name": "Quarter crimp",
+      "tag": "later",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Entre el drag y el half crimp: los nudillos grandes ligeramente doblados, las articulaciones de la yema aún planas.",
+      "how": "La forma del half crimp con menos flexión en el nudillo.",
+      "best": "Cantos pequeños y positivos donde el half crimp completo se siente forzado. Común en el entrenamiento de dedos moderno."
+    },
+    {
+      "id": "closed-crimp-full-crimp",
+      "categoryId": "hand-grip-techniques",
+      "categoryNumber": 9,
+      "name": "Closed crimp / full crimp",
+      "tag": "caution",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Las articulaciones de la yema hiperextendidas y el pulgar envuelto sobre el dedo índice. La mayoría de los escaladores usan «closed crimp» y «full crimp» indistintamente.",
+      "how": "Curva los dedos con fuerza sobre un canto pequeño y luego bloquea el pulgar sobre la uña del índice.",
+      "best": "Máxima fuerza en cantos diminutos, y máximo estrés sobre la polea A2 y el lado medial del codo. La causa más común de lesiones de polea: introdúcelo tarde y úsalo con moderación."
+    },
+    {
+      "id": "two-finger-pocket",
+      "categoryId": "hand-grip-techniques",
+      "categoryNumber": 9,
+      "name": "Two-finger pocket",
+      "tag": "later",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Solo caben dos dedos en la presa.",
+      "how": "Normalmente medio + anular (la combinación más fuerte) o índice + medio. Mantén la muñeca neutra y no la tuerzas.",
+      "best": "Presas con pockets. La carga se acumula rápido en un área pequeña: introdúcelo de forma gradual."
+    },
+    {
+      "id": "front-three",
+      "categoryId": "hand-grip-techniques",
+      "categoryNumber": 9,
+      "name": "Front three",
+      "tag": "later",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Dedos índice, medio y anular sobre la presa; el meñique fuera.",
+      "how": "La posición natural de tres dedos para la mayoría de las personas.",
+      "best": "Pockets medianos y cantos demasiado pequeños para cuatro dedos."
+    },
+    {
+      "id": "back-three",
+      "categoryId": "hand-grip-techniques",
+      "categoryNumber": 9,
+      "name": "Back three",
+      "tag": "later",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Dedos medio, anular y meñique sobre la presa; el índice fuera.",
+      "how": "Retira el índice del canto y carga los tres dedos exteriores.",
+      "best": "Orientaciones de presa incómodas y, para algunas personas, una posición más fuerte que el front three. Vale la pena probar cuál de las dos es más fuerte para ti."
+    },
+    {
+      "id": "mono",
+      "categoryId": "hand-grip-techniques",
+      "categoryNumber": 9,
+      "name": "Mono",
+      "tag": "caution",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Un solo dedo en un pocket.",
+      "how": "Normalmente el dedo medio. Mantén el brazo alineado bajo el pocket y evita cualquier carga de torsión.",
+      "best": "Poco frecuente en gimnasios, brutal para los tendones. No es algo que un principiante deba buscar."
+    },
+    {
+      "id": "closed-mono",
+      "categoryId": "hand-grip-techniques",
+      "categoryNumber": 9,
+      "name": "Closed mono",
+      "tag": "caution",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Un mono con el pulgar bloqueado sobre el dedo para añadir fuerza.",
+      "how": "Como el anterior, con el pulgar envolviendo el dedo.",
+      "best": "Riesgo de lesión muy alto para muy poco beneficio por debajo de grados avanzados. Conoce el nombre; sáltate la práctica."
+    },
+    {
+      "id": "stacked-fingers",
+      "categoryId": "hand-grip-techniques",
+      "categoryNumber": 9,
+      "name": "Stacked fingers",
+      "tag": "advanced",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Apilar un dedo sobre otro en un pocket demasiado pequeño para dos uno al lado del otro.",
+      "how": "Coloca el dedo medio en el pocket y apoya el índice encima para añadir fuerza.",
+      "best": "Pockets pequeños, sobre todo al aire libre. Poco común en gimnasios."
+    },
+    {
+      "id": "pinch",
+      "categoryId": "hand-grip-techniques",
+      "categoryNumber": 9,
+      "name": "Pinch",
+      "tag": "core",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Apretar una presa entre los dedos y el pulgar.",
+      "how": "Coloca los dedos en un lado, el pulgar en el otro, y aprieta. Mantén la muñeca rígida para que la fuerza vaya directo a la presa.",
+      "best": "Muy común en el equipamiento moderno. Entrena la fuerza del pulgar y es relativamente suave con los dedos."
+    },
+    {
+      "id": "thumbercling-thumb-catch",
+      "categoryId": "hand-grip-techniques",
+      "categoryNumber": 9,
+      "name": "Thumbercling / thumb catch",
+      "tag": "later",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Usar el pulgar en la parte inferior o el borde de una presa para añadir dirección o estabilidad.",
+      "how": "Engancha la yema del pulgar bajo un labio o contra una esquina de la presa mientras los dedos trabajan desde arriba.",
+      "best": "Slopers y volúmenes donde el pulgar convierte una presa mala en una utilizable."
+    },
+    {
+      "id": "palm-down-palming",
+      "categoryId": "hand-grip-techniques",
+      "categoryNumber": 9,
+      "name": "Palm down / palming",
+      "tag": "core",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Presionar con la palma plana en vez de agarrar nada.",
+      "how": "Coloca la palma plana sobre un volumen o la pared y empuja hacia abajo o hacia afuera.",
+      "best": "Placa, mantles, stemming y descansos. Carga cero en los dedos, así que siempre vale la pena buscarlo."
+    },
+    {
+      "id": "meat-hook",
+      "categoryId": "hand-grip-techniques",
+      "categoryNumber": 9,
+      "name": "Meat hook",
+      "tag": "advanced",
+      "nonstandard": true,
+      "gloss": null,
+      "what": "Usar el borde carnoso de la mano, la muñeca o el antebrazo enganchado sobre un elemento en vez de un agarre normal.",
+      "how": "Apoya el lateral de la mano o el antebrazo sobre la presa y tira con el brazo en vez de con los dedos.",
+      "best": "Volúmenes grandes y elementos redondeados. El nombre varía según el gimnasio."
+    },
+    {
+      "id": "side-pull",
+      "categoryId": "positions-hold-orientations",
+      "categoryNumber": 10,
+      "name": "Side pull",
+      "tag": "core",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Una presa orientada verticalmente que se tira hacia el lado, hacia tu línea media.",
+      "how": "Inclina el cuerpo alejándolo de la presa para que tu peso la contrarreste, y mantén el brazo relativamente estirado.",
+      "best": "Extremadamente común. La clave: un agarre lateral solo funciona si el cuerpo lo contrapesa."
+    },
+    {
+      "id": "lay-back",
+      "categoryId": "positions-hold-orientations",
+      "categoryNumber": 10,
+      "name": "Lay back",
+      "tag": "core",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Tirar de un agarre lateral o un canto mientras empujas con los pies en dirección opuesta, con el cuerpo inclinado hacia un lado.",
+      "how": "Las manos tiran en una dirección, los pies presionan en la contraria, y la oposición te mantiene pegado a la pared. Mantén los brazos rectos y sube los pies caminando.",
+      "best": "Aristas, rincones y flakes. Eficiente con los brazos rectos; agotador con los brazos doblados."
+    },
+    {
+      "id": "gaston",
+      "categoryId": "positions-hold-orientations",
+      "categoryNumber": 10,
+      "name": "Gaston",
+      "tag": "later",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Un agarre lateral que se tira hacia afuera, alejándolo de tu línea media, con el pulgar hacia abajo y el codo hacia afuera, como forzando las puertas de un ascensor.",
+      "how": "Pulgar apuntando hacia abajo, codo alto y hacia afuera, empujando/tirando hacia afuera mientras los pies te empujan contra la pared.",
+      "best": "Cuando la presa está orientada al revés de lo que necesitas. Muy exigente para el hombro: evita que el codo se abra más de lo cómodo."
+    },
+    {
+      "id": "elevator-door",
+      "categoryId": "positions-hold-orientations",
+      "categoryNumber": 10,
+      "name": "Elevator door",
+      "tag": "later",
+      "nonstandard": true,
+      "gloss": null,
+      "what": "Dos gastons opuestos al mismo tiempo: ambas manos presionando hacia afuera, como forzando las puertas de un ascensor para separarlas.",
+      "how": "Una mano en cada presa, codos hacia afuera, presiona hacia afuera con ambas a la vez y mantén la tensión corporal.",
+      "best": "Secuencias simétricas al estilo competición. Muy exigente para los hombros."
+    },
+    {
+      "id": "undercling",
+      "categoryId": "positions-hold-orientations",
+      "categoryNumber": 10,
+      "name": "Undercling",
+      "tag": "core",
+      "nonstandard": false,
+      "gloss": "invertida",
+      "what": "Una presa agarrada desde abajo, con la palma hacia arriba.",
+      "how": "Sube los pies alto para que la cadera quede por encima de la presa: una invertida solo es útil una vez que estás por encima de ella. Tira hacia arriba y hacia dentro.",
+      "best": "Bajo techos y flakes. Tener los pies altos es todo el truco."
+    },
+    {
+      "id": "compression",
+      "categoryId": "positions-hold-orientations",
+      "categoryNumber": 10,
+      "name": "Compression",
+      "tag": "later",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Apretar dos presas o elementos opuestos entre sí para mantenerte pegado a la pared.",
+      "how": "Las manos (y a menudo los pies) presionan hacia dentro desde ambos lados. La tensión corporal mantiene todo unido.",
+      "best": "Volúmenes, aristas y proas. Muy común en el equipamiento moderno."
+    },
+    {
+      "id": "inverted",
+      "categoryId": "positions-hold-orientations",
+      "categoryNumber": 10,
+      "name": "Inverted",
+      "tag": "advanced",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Cualquier posición en la que la cadera quede por encima de los hombros: boca abajo o casi.",
+      "how": "Normalmente se llega a ella mediante un gancho de puntera o un bat hang, con una fuerte implicación del core.",
+      "best": "Techos. Desorienta, así que apréndela cerca del suelo y con colchonetas."
+    },
+    {
+      "id": "outward-facing",
+      "categoryId": "positions-hold-orientations",
+      "categoryNumber": 10,
+      "name": "Outward facing",
+      "tag": "later",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Escalar con la espalda o el costado hacia la pared en vez del pecho.",
+      "how": "Gírate hacia afuera y usa la pared que queda detrás para hacer presión, a menudo con un gancho de talón o un stem.",
+      "best": "Rincones, chimeneas y volúmenes incómodos de competición."
+    },
+    {
+      "id": "gastondercling",
+      "categoryId": "positions-hold-orientations",
+      "categoryNumber": 10,
+      "name": "Gastondercling",
+      "tag": "advanced",
+      "nonstandard": true,
+      "gloss": null,
+      "what": "Un híbrido en el que una presa se usa como gaston e invertida al mismo tiempo: codo hacia afuera, palma rotada hacia arriba.",
+      "how": "Agarre de gaston con el pulgar hacia abajo mientras la dirección de tracción es hacia arriba desde abajo.",
+      "best": "Orientaciones de presa incómodas. Jerga, y no universal."
+    },
+    {
+      "id": "lock-off",
+      "categoryId": "positions-hold-orientations",
+      "categoryNumber": 10,
+      "name": "Lock off",
+      "tag": "later",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Mantener una posición estática con el brazo doblado para que la otra mano pueda alcanzar.",
+      "how": "Tira de la presa hasta la altura del pecho o el hombro, activa el hombro y mantente quieto mientras el otro brazo se mueve.",
+      "best": "Alcances precisos a presas malas. Aviso: esta es, con diferencia, la posición que más carga el codo en toda la escalada; prefiere el deadpoint cuando los codos estén irritados."
+    },
+    {
+      "id": "stemming-bridging",
+      "categoryId": "positions-hold-orientations",
+      "categoryNumber": 10,
+      "name": "Stemming / bridging",
+      "tag": "core",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Presionar hacia afuera con ambos pies (y a veces las manos) contra dos superficies opuestas.",
+      "how": "Pies bien separados a cada lado de un rincón o entre dos volúmenes, empuja hacia afuera y mantente erguido.",
+      "best": "Rincones y diedros. A menudo un descanso completo sin manos: vale la pena localizarlo."
+    },
+    {
+      "id": "the-chin",
+      "categoryId": "positions-hold-orientations",
+      "categoryNumber": 10,
+      "name": "The chin",
+      "tag": "advanced",
+      "nonstandard": true,
+      "gloss": null,
+      "what": "Usar la barbilla, la cabeza o el hombro para presionar contra una presa o volumen y ganar un momento de estabilidad extra.",
+      "how": "Presiona la barbilla o el lateral de la cabeza contra la presa mientras ambas manos se reposicionan.",
+      "best": "Casi por completo un truco de competición. Real, ocasionalmente decisivo, y un poco ridículo."
+    },
+    {
+      "id": "hand-match",
+      "categoryId": "movement-techniques",
+      "categoryNumber": 11,
+      "name": "Hand match",
+      "tag": "core",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Ambas manos en la misma presa.",
+      "how": "Haz espacio desplazando la primera mano hacia un lado y luego trae la segunda junto a ella. En presas pequeñas, mueve los dedos de uno en uno.",
+      "best": "Cambiar la mano que lidera. Fundamental."
+    },
+    {
+      "id": "piano-match",
+      "categoryId": "movement-techniques",
+      "categoryNumber": 11,
+      "name": "Piano match",
+      "tag": "later",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Emparejar caminando los dedos por la presa de uno en uno, como teclas de piano.",
+      "how": "Levanta y reemplaza los dedos de la primera mano uno a uno mientras los dedos de la segunda mano ocupan su lugar.",
+      "best": "Cantos pequeños donde no hay espacio para un cambio de mano normal."
+    },
+    {
+      "id": "foot-match",
+      "categoryId": "movement-techniques",
+      "categoryNumber": 11,
+      "name": "Foot match",
+      "tag": "core",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Ambos pies en la misma presa, o intercambiar cuál de los dos la ocupa.",
+      "how": "Comparte la presa, o haz un intercambio con salto: rápido, silencioso y controlado. Mantén las manos puestas y la cadera cerca durante el cambio.",
+      "best": "Cambiar qué lado del cuerpo lidera. Extremadamente común."
+    },
+    {
+      "id": "hand-foot-match",
+      "categoryId": "movement-techniques",
+      "categoryNumber": 11,
+      "name": "Hand-foot match",
+      "tag": "later",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Una mano y un pie en la misma presa al mismo tiempo.",
+      "how": "Agarra la presa y luego sube la puntera a la misma presa junto a los dedos, normalmente por el lado exterior de la mano.",
+      "best": "Techos, mantles y problemas desplomados con pocos pies. Cuidado con los dedos."
+    },
+    {
+      "id": "hand-cross-over",
+      "categoryId": "movement-techniques",
+      "categoryNumber": 11,
+      "name": "Hand cross (over)",
+      "tag": "core",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Alcanzar con una mano por encima de la otra hasta una presa del lado contrario.",
+      "how": "Gira primero la cadera de lado y luego cruza el brazo por encima. Cruzar sin girar la cadera es lo que lo hace sentir imposible.",
+      "best": "Travesías y secuencias diagonales. Ahorra un movimiento intermedio."
+    },
+    {
+      "id": "hand-cross-under",
+      "categoryId": "movement-techniques",
+      "categoryNumber": 11,
+      "name": "Hand cross (under)",
+      "tag": "later",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Cruzar un brazo por debajo del otro.",
+      "how": "Baja el hombro y pasa el brazo por debajo. A menudo más estable que cruzar por encima.",
+      "best": "Secuencias de invertidas y travesías bajas."
+    },
+    {
+      "id": "rose-move",
+      "categoryId": "movement-techniques",
+      "categoryNumber": 11,
+      "name": "Rose move",
+      "tag": "advanced",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Un cruce vistoso en el que el brazo que alcanza pasa por detrás de tu propia cabeza hasta una presa del lado contrario.",
+      "how": "Gírate completamente de lado, baja el hombro y alcanza hacia atrás y hacia el otro lado, normalmente hasta un gaston o un agarre lateral.",
+      "best": "Poco frecuente, vistoso, y genuinamente útil en algunas secuencias diagonales. Muy exigente para el hombro."
+    },
+    {
+      "id": "foot-cross-front",
+      "categoryId": "movement-techniques",
+      "categoryNumber": 11,
+      "name": "Foot cross (front)",
+      "tag": "later",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Cruzar un pie por delante del otro para alcanzar una presa del lado contrario.",
+      "how": "Mantén la cadera cerca, cruza el pie libre por delante y colócalo con precisión sin golpear la pierna de apoyo.",
+      "best": "Travesías. A menudo mejor que una serie de pequeños reajustes de pie."
+    },
+    {
+      "id": "foot-cross-back",
+      "categoryId": "movement-techniques",
+      "categoryNumber": 11,
+      "name": "Foot cross (back)",
+      "tag": "later",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Cruzar un pie por detrás del otro.",
+      "how": "Lleva el pie por detrás de la pierna de apoyo y colócalo. Te gira de lado de forma natural.",
+      "best": "Travesías donde cruzar por delante empujaría la cadera fuera de la pared."
+    },
+    {
+      "id": "rock-over",
+      "categoryId": "movement-techniques",
+      "categoryNumber": 11,
+      "name": "Rock over",
+      "tag": "core",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Desplazar el centro de gravedad desde debajo de un pie alto hasta por encima de él, y luego incorporarte sobre ese pie.",
+      "how": "Sube el pie alto, empuja la cadera hacia adelante y por encima de la puntera, deja que los hombros te acompañen, y luego presiona a través de la pierna.",
+      "best": "Placa y paredes verticales. Este es el movimiento que convierte la fuerza de piernas en altura, y una alta prioridad para cualquier principiante."
+    },
+    {
+      "id": "knee-press",
+      "categoryId": "movement-techniques",
+      "categoryNumber": 11,
+      "name": "Knee press",
+      "tag": "later",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Presionar la rodilla o la espinilla contra la pared o un volumen para ganar estabilidad.",
+      "how": "Empuja la rodilla contra la superficie para crear fricción y evitar la rotación mientras una mano se mueve.",
+      "best": "Volúmenes y placa. Un estabilizador barato."
+    },
+    {
+      "id": "mantle",
+      "categoryId": "movement-techniques",
+      "categoryNumber": 11,
+      "name": "Mantle",
+      "tag": "core",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Empujar hacia abajo sobre una presa o repisa para llevar el cuerpo por encima de ella, como saliendo de una piscina.",
+      "how": "Tira hasta la altura del pecho, rota la mano para que la palma presione hacia abajo, empuja hasta bloquear el brazo y luego sube un pie.",
+      "best": "Topar el problema. Esencial, y a menudo el crux del problema para los principiantes."
+    },
+    {
+      "id": "beached-whale",
+      "categoryId": "movement-techniques",
+      "categoryNumber": 11,
+      "name": "Beached whale",
+      "tag": "later",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "La versión poco elegante de un mantle: dejar caer el torso sobre la repisa y retorcerse hacia arriba.",
+      "how": "Barriga sobre la repisa, y luego retuércete.",
+      "best": "Subir cuando el mantle limpio falla. Cuenta igual. Simplemente no se ve bien."
+    },
+    {
+      "id": "cut-loose",
+      "categoryId": "movement-techniques",
+      "categoryNumber": 11,
+      "name": "Cut loose",
+      "tag": "later",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Dejar que ambos pies se separen de la pared para que el cuerpo se balancee, y luego volver a colocarlos.",
+      "how": "Acepta el balanceo, mantén el core apretado, controla el regreso y coloca los pies de vuelta con decisión en vez de manotear.",
+      "best": "Terreno desplomado donde los pies no pueden seguir a las manos. A menudo más rápido que luchar por mantenerlos pegados."
+    },
+    {
+      "id": "campussing",
+      "categoryId": "movement-techniques",
+      "categoryNumber": 11,
+      "name": "Campussing",
+      "tag": "caution",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Escalar sin usar los pies en absoluto, mano tras mano.",
+      "how": "Tira entre presas usando solo los brazos.",
+      "best": "A veces es la secuencia prevista en problemas desplomados. Carga muy alta en codo y hombro, y una causa principal del codo de escalador: evítalo hasta estar bien adaptado."
+    },
+    {
+      "id": "the-houdini",
+      "categoryId": "movement-techniques",
+      "categoryNumber": 11,
+      "name": "The Houdini",
+      "tag": "advanced",
+      "nonstandard": true,
+      "gloss": null,
+      "what": "Escapar de una posición corporal enredada o invertida rotando a través de ella en vez de deshacer los movimientos.",
+      "how": "Normalmente una rotación de cadera bajo un brazo para deshacer extremidades cruzadas.",
+      "best": "Salir de una secuencia que leíste mal. El nombre varía según el gimnasio."
+    },
+    {
+      "id": "good-samaritan",
+      "categoryId": "movement-techniques",
+      "categoryNumber": 11,
+      "name": "Good Samaritan",
+      "tag": "later",
+      "nonstandard": true,
+      "gloss": null,
+      "what": "Usar una presa o elemento que no forma parte de tu problema, o una mano ayudando a la otra, para salvar una posición.",
+      "how": "Agarra lo que tengas disponible para estabilizarte, normalmente en mitad de una caída o un error.",
+      "best": "En la práctica: una salida de emergencia. Usar presas fuera de vía significa que el ascenso no cuenta. El nombre varía según el gimnasio."
+    },
+    {
+      "id": "t-rex-turtle-roll",
+      "categoryId": "movement-techniques",
+      "categoryNumber": 11,
+      "name": "T-Rex turtle roll",
+      "tag": "advanced",
+      "nonstandard": true,
+      "gloss": null,
+      "what": "Jerga de gimnasio para rodar el cuerpo sobre un labio o volumen con los brazos pegados al cuerpo, cuando no hay nada sobre lo que empujar.",
+      "how": "Compromete la cadera sobre el elemento y rueda, manteniendo los brazos bien pegados.",
+      "best": "Salidas incómodas sobre elementos redondeados. Claramente jerga: espera que tu gimnasio tenga su propio nombre para esto."
+    },
+    {
+      "id": "dead-point",
+      "categoryId": "dynamic-techniques",
+      "categoryNumber": 12,
+      "name": "Dead point",
+      "tag": "core",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Atrapar la presa en el instante ingrávido, en lo más alto de un movimiento ascendente.",
+      "how": "Genera el impulso con las piernas y sincroniza la mano para que llegue justo cuando el impulso ascendente se detiene. Ni antes ni después.",
+      "best": "Casi cualquier alcance. Más económico que un lock-off y mucho más suave con los codos. El elemento más importante de esta sección."
+    },
+    {
+      "id": "dyno",
+      "categoryId": "dynamic-techniques",
+      "categoryNumber": 12,
+      "name": "Dyno",
+      "tag": "later",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Un salto en el que los cuatro puntos de apoyo se separan de la pared.",
+      "how": "Carga las piernas agachándote en un resorte, impúlsate hacia arriba a través de los pies y mantén la vista en la presa objetivo todo el tiempo.",
+      "best": "Movimientos que simplemente están demasiado lejos para alcanzar. Divertido, de alto impacto: un par por sesión, no un foco de entrenamiento."
+    },
+    {
+      "id": "double-dyno",
+      "categoryId": "dynamic-techniques",
+      "categoryNumber": 12,
+      "name": "Double dyno",
+      "tag": "later",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Un dyno atrapado con ambas manos a la vez.",
+      "how": "Como el anterior, pero manteniendo el cuerpo frontal para que ambas manos lleguen juntas.",
+      "best": "Jugs grandes y saltos al estilo competición. Lograr uno es un indicador de potencia, no una razón para construir una sesión alrededor de ellos."
+    },
+    {
+      "id": "one-arm-dyno",
+      "categoryId": "dynamic-techniques",
+      "categoryNumber": 12,
+      "name": "One-arm dyno",
+      "tag": "advanced",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Un dyno atrapado con una sola mano.",
+      "how": "Genera el impulso con las piernas y lidera con el brazo que atrapa; el otro brazo se queda atrás para el equilibrio.",
+      "best": "Problemas de competición. Impacto muy alto en hombro y codo."
+    },
+    {
+      "id": "double-clutch",
+      "categoryId": "dynamic-techniques",
+      "categoryNumber": 12,
+      "name": "Double clutch",
+      "tag": "advanced",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Un dyno en el que ambas manos se despegan, una mano atrapa brevemente y la otra la sigue de inmediato o avanza a otra presa.",
+      "how": "Atrapa y estabilízate con la primera mano mientras la segunda llega en el mismo movimiento.",
+      "best": "Secuencias desplomadas sin presas intermedias. Avanzado."
+    },
+    {
+      "id": "paddle-dyno-triple-quadruple",
+      "categoryId": "dynamic-techniques",
+      "categoryNumber": 12,
+      "name": "Paddle dyno (triple / quadruple)",
+      "tag": "advanced",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Un dyno en el que una mano golpea una o más presas intermedias en pleno vuelo para redirigir el impulso antes de la atrapada real.",
+      "how": "Usa cada golpe intermedio para empujar o dirigir, no para sujetarte.",
+      "best": "Equipamiento de competición. Espectacular, raramente necesario."
+    },
+    {
+      "id": "step-up-dyno",
+      "categoryId": "dynamic-techniques",
+      "categoryNumber": 12,
+      "name": "Step-up dyno",
+      "tag": "later",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Un dyno generado al subir a un pie alto e impulsarte desde él, en vez de cargar ambas piernas.",
+      "how": "Coloca el pie alto, cárgalo y impúlsate hacia arriba a través de esa única pierna.",
+      "best": "Cuando los pies están demasiado altos o incómodos para cargar ambas piernas."
+    },
+    {
+      "id": "hip-swing",
+      "categoryId": "dynamic-techniques",
+      "categoryNumber": 12,
+      "name": "Hip swing",
+      "tag": "later",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Generar impulso balanceando la cadera en vez de tirar con los brazos.",
+      "how": "Inicia el balanceo desde el core y sincroniza la soltada de la mano con el punto más alto.",
+      "best": "Terreno desplomado. Así es como los escaladores fuertes hacen que los movimientos difíciles parezcan fáciles."
+    },
+    {
+      "id": "arm-swing",
+      "categoryId": "dynamic-techniques",
+      "categoryNumber": 12,
+      "name": "Arm swing",
+      "tag": "later",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Usar el balanceo del brazo libre para añadir impulso a un movimiento.",
+      "how": "Balancea el brazo libre hacia arriba al ritmo del impulso de las piernas.",
+      "best": "Añade una cantidad sorprendente de impulso a un dyno o un alcance largo."
+    },
+    {
+      "id": "pogo-moon-kick",
+      "categoryId": "dynamic-techniques",
+      "categoryNumber": 12,
+      "name": "Pogo / moon kick",
+      "tag": "advanced",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Patear una pierna hacia afuera y abajo para generar impulso, como un pogo saltarín, cuando no hay presas de pie útiles.",
+      "how": "Balancea la pierna libre hacia abajo y atrás con fuerza, y usa la reacción para impulsar el cuerpo hacia la presa.",
+      "best": "Problemas desplomados con una sola presa de pie y un movimiento largo. Se ve extraño, funciona bien."
+    },
+    {
+      "id": "run-and-jump",
+      "categoryId": "dynamic-techniques",
+      "categoryNumber": 12,
+      "name": "Run and jump",
+      "tag": "advanced",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Un dyno iniciado desde el suelo con pasos de carrera.",
+      "how": "Dos o tres pasos hacia la pared, y luego salta hacia la presa de inicio o la primera presa.",
+      "best": "Inicios de salto al estilo competición. Aterrizajes no controlados: usa colchonetas y gente que asista la caída."
+    },
+    {
+      "id": "swing-and-jump",
+      "categoryId": "dynamic-techniques",
+      "categoryNumber": 12,
+      "name": "Swing and jump",
+      "tag": "advanced",
+      "nonstandard": false,
+      "gloss": null,
+      "what": "Construir un balanceo de péndulo sobre las presas y soltar en el punto más alto hacia un salto.",
+      "how": "Balancea el cuerpo una o dos veces para ganar amplitud, y suelta en lo más alto del arco.",
+      "best": "Techos y problemas de competición donde un salto estático no llega."
+    },
+    {
+      "id": "headbutt",
+      "categoryId": "dynamic-techniques",
+      "categoryNumber": 12,
+      "name": "Headbutt",
+      "tag": "advanced",
+      "nonstandard": true,
+      "gloss": null,
+      "what": "Usar la cabeza o la frente presionada contra un volumen para ganar un momento de estabilidad, normalmente durante la compresión.",
+      "how": "Presiona la cabeza contra la superficie para añadir un tercer punto de contacto mientras las manos se reposicionan.",
+      "best": "Truco raro de competición. Real, pero no algo que debas buscar."
+    }
+  ],
+  "drillSection": {
+    "number": 13,
+    "title": "Banco de ejercicios",
+    "intro": "Las restricciones hacen que un problema fácil se vuelva difícil sin añadir carga a dedos y codos. Elige **uno** por sesión y aplícalo a problemas de V1 a V3. Alterna para no entrenar siempre la misma debilidad."
+  },
+  "drillCategories": [
+    {
+      "id": "footwork-drills",
+      "number": 13,
+      "title": "Ejercicios de pies",
+      "drillIds": [
+        "silent-feet",
+        "glue-feet",
+        "sniper",
+        "outside-edge-only",
+        "feet-eliminated",
+        "smear-only",
+        "foot-swap",
+        "big-foot",
+        "toe-drag"
+      ],
+      "callouts": []
+    },
+    {
+      "id": "body-position-drills",
+      "number": 13,
+      "title": "Ejercicios de posición corporal",
+      "drillIds": [
+        "straight-arms-only",
+        "hip-kiss",
+        "flag-hunt",
+        "backstep-everything",
+        "no-barn-door",
+        "one-arm-sections",
+        "one-foot-only"
+      ],
+      "callouts": []
+    },
+    {
+      "id": "movement-drills",
+      "number": 13,
+      "title": "Ejercicios de movimiento",
+      "drillIds": [
+        "slow-motion",
+        "hover",
+        "one-touch",
+        "continuous-flow",
+        "static-then-dynamic",
+        "downclimb-everything",
+        "deadpoint-practice",
+        "quiet-hands",
+        "grip-awareness"
+      ],
+      "callouts": [
+        "Sobre el trabajo de agarre: inclínate fuertemente hacia la mano abierta y el half crimp. El full crimp es el agarre de mayor estrés tanto para los dedos como para el codo, y es lo último que un principiante necesita entrenar."
+      ]
+    },
+    {
+      "id": "reading-mental-drills",
+      "number": 13,
+      "title": "Ejercicios de lectura y mentales",
+      "drillIds": [
+        "predict-and-verify",
+        "onsight-only",
+        "blind-feet",
+        "reverse-read",
+        "two-solutions"
+      ],
+      "callouts": []
+    },
+    {
+      "id": "partner-games",
+      "number": 13,
+      "title": "Juegos con compañero",
+      "drillIds": [
+        "add-on",
+        "take-away",
+        "caller",
+        "mirror",
+        "technique-referee",
+        "dice-roulette"
+      ],
+      "callouts": []
+    },
+    {
+      "id": "volume-fun-games",
+      "number": 13,
+      "title": "Juegos de volumen y diversión",
+      "drillIds": [
+        "traverse-the-wall",
+        "colour-chaos",
+        "ladder",
+        "circuit-of-four",
+        "pyramid-session",
+        "speed-quality",
+        "no-repeat-hour"
+      ],
+      "callouts": [
+        "Los circuitos y las travesías generan mucho pump. En un día en que algo ya te duela, elige un ejercicio de precisión en vez de un juego de volumen."
+      ]
+    }
+  ],
+  "drills": [
+    {
+      "id": "silent-feet",
+      "categoryId": "footwork-drills",
+      "name": "Pies silenciosos",
+      "description": "escala un problema fácil sin hacer ningún ruido con los pies. Si rascas o golpeas, repite el movimiento."
+    },
+    {
+      "id": "glue-feet",
+      "categoryId": "footwork-drills",
+      "name": "Pies pegados",
+      "description": "una vez que un pie se coloca, no puede volver a moverse hasta que se despegue hacia la siguiente presa. Nada de reajustes."
+    },
+    {
+      "id": "sniper",
+      "categoryId": "footwork-drills",
+      "name": "Francotirador",
+      "description": "marca con magnesio un punto pequeño en cada presa de pie; la puntera debe caer exactamente sobre el punto."
+    },
+    {
+      "id": "outside-edge-only",
+      "categoryId": "footwork-drills",
+      "name": "Solo canto exterior",
+      "description": "cada apoyo de pie usa el canto del dedo meñique. Obliga a hacer backsteps y giros de cadera."
+    },
+    {
+      "id": "feet-eliminated",
+      "categoryId": "footwork-drills",
+      "name": "Pies eliminados",
+      "description": "elimina las dos mejores presas de pie del problema. Las mismas presas de mano, un rompecabezas nuevo."
+    },
+    {
+      "id": "smear-only",
+      "categoryId": "footwork-drills",
+      "name": "Solo adherencia",
+      "description": "en placa o vertical, sin ninguna presa de pie; solo la superficie de la pared."
+    },
+    {
+      "id": "foot-swap",
+      "categoryId": "footwork-drills",
+      "name": "Cambio de pie",
+      "description": "cada presa de pie debe ser usada por ambos pies en algún momento, intercambiándolos sin mover las manos."
+    },
+    {
+      "id": "big-foot",
+      "categoryId": "footwork-drills",
+      "name": "Pie grande",
+      "description": "solo puedes usar volúmenes y las presas más grandes para los pies. Obliga a dar pasos largos y comprometidos."
+    },
+    {
+      "id": "toe-drag",
+      "categoryId": "footwork-drills",
+      "name": "Arrastre de puntera",
+      "description": "mantén la puntera de la pierna que queda atrás en contacto con la pared durante todo el movimiento. Elimina el hábito de dejar la pierna colgando."
+    },
+    {
+      "id": "straight-arms-only",
+      "categoryId": "body-position-drills",
+      "name": "Solo brazos rectos",
+      "description": "si un codo se dobla, te bajas del problema. Obliga a hacer backsteps y banderas."
+    },
+    {
+      "id": "hip-kiss",
+      "categoryId": "body-position-drills",
+      "name": "Beso de cadera",
+      "description": "la cadera debe tocar o casi tocar la pared en cada movimiento."
+    },
+    {
+      "id": "flag-hunt",
+      "categoryId": "body-position-drills",
+      "name": "Caza de banderas",
+      "description": "cada movimiento debe incluir algún tipo de bandera. Ridículo en algunos problemas, que es justamente la idea."
+    },
+    {
+      "id": "backstep-everything",
+      "categoryId": "body-position-drills",
+      "name": "Backstep en todo",
+      "description": "usa un backstep en cada movimiento que lo permita físicamente."
+    },
+    {
+      "id": "no-barn-door",
+      "categoryId": "body-position-drills",
+      "name": "Sin puerta de granero",
+      "description": "si el cuerpo se abre como una puerta de granero en algún momento, reinicia. Te enseña a sentirlo venir."
+    },
+    {
+      "id": "one-arm-sections",
+      "categoryId": "body-position-drills",
+      "name": "Tramos a un brazo",
+      "description": "en jugs fáciles, retira una mano por completo durante 2–3 movimientos y avanza solo con las piernas."
+    },
+    {
+      "id": "one-foot-only",
+      "categoryId": "body-position-drills",
+      "name": "Un solo pie",
+      "description": "escala un problema fácil usando un solo pie; la otra pierna nunca toca una presa y funciona únicamente como contrapeso."
+    },
+    {
+      "id": "slow-motion",
+      "categoryId": "movement-drills",
+      "name": "Cámara lenta",
+      "description": "10 segundos por movimiento. No puedes esconder un mal equilibrio detrás del impulso."
+    },
+    {
+      "id": "hover",
+      "categoryId": "movement-drills",
+      "name": "Suspensión",
+      "description": "mantén la mano suspendida a 5 cm de la presa objetivo durante 3 segundos antes de agarrarla."
+    },
+    {
+      "id": "one-touch",
+      "categoryId": "movement-drills",
+      "name": "Un solo toque",
+      "description": "la mano aterriza en la presa y se queda ahí. Sin reajustes, sin retoques."
+    },
+    {
+      "id": "continuous-flow",
+      "categoryId": "movement-drills",
+      "name": "Flujo continuo",
+      "description": "sin ninguna pausa, con ritmo de metrónomo, de arriba abajo. Lo opuesto a la cámara lenta; entrena ambos."
+    },
+    {
+      "id": "static-then-dynamic",
+      "categoryId": "movement-drills",
+      "name": "Estático y luego dinámico",
+      "description": "escala el mismo problema dos veces: una lo más estático posible, otra lo más dinámico posible."
+    },
+    {
+      "id": "downclimb-everything",
+      "categoryId": "movement-drills",
+      "name": "Baja todo escalando",
+      "description": "sube y luego deshaz el problema hasta el suelo. Práctica de pies gratis, y duplica tu volumen."
+    },
+    {
+      "id": "deadpoint-practice",
+      "categoryId": "movement-drills",
+      "name": "Práctica de deadpoint",
+      "description": "en un problema fácil, convierte cada movimiento de mano en un pequeño impulso controlado en vez de un alcance."
+    },
+    {
+      "id": "quiet-hands",
+      "categoryId": "movement-drills",
+      "name": "Manos silenciosas",
+      "description": "sin golpear, sin reajustar el agarre, sin magnesio a mitad del problema."
+    },
+    {
+      "id": "grip-awareness",
+      "categoryId": "movement-drills",
+      "name": "Conciencia del agarre",
+      "description": "escala un problema fácil eligiendo conscientemente un agarre para cada presa: mano abierta, half crimp, pinza, sloper. El objetivo es la elección deliberada, no el agarre máximo."
+    },
+    {
+      "id": "predict-and-verify",
+      "categoryId": "reading-mental-drills",
+      "name": "Predecir y verificar",
+      "description": "escribe o di en voz alta la secuencia completa antes de subirte al problema, y luego compárala con lo que realmente ocurrió."
+    },
+    {
+      "id": "onsight-only",
+      "categoryId": "reading-mental-drills",
+      "name": "Solo a vista",
+      "description": "durante una sesión, cada problema recibe exactamente un intento. Obliga a leer de verdad."
+    },
+    {
+      "id": "blind-feet",
+      "categoryId": "reading-mental-drills",
+      "name": "Pies a ciegas",
+      "description": "lee el problema y luego escálalo sin mirar hacia abajo, a los pies."
+    },
+    {
+      "id": "reverse-read",
+      "categoryId": "reading-mental-drills",
+      "name": "Lectura inversa",
+      "description": "lee el problema de arriba hacia abajo antes de escalarlo de abajo hacia arriba."
+    },
+    {
+      "id": "two-solutions",
+      "categoryId": "reading-mental-drills",
+      "name": "Dos soluciones",
+      "description": "encuentra y escala dos secuencias genuinamente distintas para el mismo problema."
+    },
+    {
+      "id": "add-on",
+      "categoryId": "partner-games",
+      "name": "Encadenar",
+      "description": "tú haces el movimiento 1, tu compañero añade el movimiento 2, y así se alternan hasta que alguien se caiga."
+    },
+    {
+      "id": "take-away",
+      "categoryId": "partner-games",
+      "name": "Quitar presas",
+      "description": "alternen quitando una presa del problema hasta que deje de poder escalarse. Gana quien logre encadenarlo en último lugar."
+    },
+    {
+      "id": "caller",
+      "categoryId": "partner-games",
+      "name": "El que canta",
+      "description": "tu compañero va cantando en voz alta cada presa mientras escalas. Solo puedes usar la que se cante."
+    },
+    {
+      "id": "mirror",
+      "categoryId": "partner-games",
+      "name": "Espejo",
+      "description": "tu compañero escala un problema; tú lo repites movimiento a movimiento, exactamente igual, incluyendo los apoyos de pie."
+    },
+    {
+      "id": "technique-referee",
+      "categoryId": "partner-games",
+      "name": "Árbitro de técnica",
+      "description": "tu compañero observa y cuenta errores: reajustes de pie, brazos doblados, pies ruidosos. Gana quien tenga menos puntos."
+    },
+    {
+      "id": "dice-roulette",
+      "categoryId": "partner-games",
+      "name": "Dados / ruleta",
+      "description": "asigna una restricción a cada número y tira antes de cada problema."
+    },
+    {
+      "id": "traverse-the-wall",
+      "categoryId": "volume-fun-games",
+      "name": "Travesía del muro",
+      "description": "encadena las presas de inicio de todos los problemas de una sección del muro."
+    },
+    {
+      "id": "colour-chaos",
+      "categoryId": "volume-fun-games",
+      "name": "Caos de colores",
+      "description": "elige un color de presa y escala por cualquier parte del muro usando solo ese color."
+    },
+    {
+      "id": "ladder",
+      "categoryId": "volume-fun-games",
+      "name": "Escalera",
+      "description": "V1 → V2 → V3 → V2 → V1 uno tras otro, y luego descansa 5 minutos."
+    },
+    {
+      "id": "circuit-of-four",
+      "categoryId": "volume-fun-games",
+      "name": "Circuito de cuatro",
+      "description": "cuatro problemas de V1–V2 seguidos sin descanso, y luego 3 minutos de pausa. Repite 3–4 veces."
+    },
+    {
+      "id": "pyramid-session",
+      "categoryId": "volume-fun-games",
+      "name": "Sesión pirámide",
+      "description": "4 problemas en V1, 3 en V2, 2 en V3, 1 proyecto. Una sesión completa en sí misma."
+    },
+    {
+      "id": "speed-quality",
+      "categoryId": "volume-fun-games",
+      "name": "Velocidad–calidad",
+      "description": "escala un V1 lo más rápido posible, y luego lo más perfecto posible. Compara cómo se sintió cada uno."
+    },
+    {
+      "id": "no-repeat-hour",
+      "categoryId": "volume-fun-games",
+      "name": "Hora sin repetir",
+      "description": "cada problema que escales en la sesión debe ser uno que nunca hayas hecho antes."
+    }
+  ],
+  "references": []
+}

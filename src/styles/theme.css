@@ -1,0 +1,60 @@
+:root,
+:root[data-theme="dark"] {
+  --bg: #07090c;
+  --surface: #0e1318;
+  --surface-2: #141b22;
+  --border: rgba(255, 255, 255, 0.07);
+  --border-strong: rgba(255, 255, 255, 0.14);
+  --text: #e6edf3;
+  --text-muted: #8a97a6;
+  --accent: #22d3ee;
+  --accent-dim: rgba(34, 211, 238, 0.12);
+  --core: #34d399;
+  --later: #94a3b8;
+  --advanced: #fbbf24;
+  --caution: #f87171;
+}
+
+:root[data-theme="light"] {
+  --bg: #fafbfc;
+  --surface: #ffffff;
+  --surface-2: #f2f5f7;
+  --border: rgba(0, 0, 0, 0.08);
+  --border-strong: rgba(0, 0, 0, 0.16);
+  --text: #0e1318;
+  --text-muted: #5a6672;
+  --accent: #0891b2;
+  --accent-dim: rgba(8, 145, 178, 0.1);
+  --core: #059669;
+  --later: #64748b;
+  --advanced: #b45309;
+  --caution: #dc2626;
+}
+
+:root {
+  --font-heading: "Space Grotesk", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --radius-card: 10px;
+  --radius-chip: 999px;
+
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --duration: 140ms;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+
+  --tabbar-height: 56px;
+  --header-height: 52px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration: 0ms;
+  }
+}

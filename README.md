@@ -1,0 +1,174 @@
+# Climb Guide
+
+A bilingual (EN/ES), offline-first, installable web app that presents an indoor
+climbing technique reference and drill bank on a phone. Built with Vite, React,
+and TypeScript — no backend, no analytics, no runtime network calls.
+
+## Running it
+
+```bash
+npm install
+npm run dev
+```
+
+Open the printed `localhost` URL. The dev server has hot reload; the language
+and theme toggles, search, and PWA behavior all work the same as in production
+except the service worker (Vite's dev server doesn't register one — test
+offline behavior against a production build, see below).
+
+Other scripts:
+
+```bash
+npm run build      # parse content, typecheck, and build to dist/
+npm run preview    # serve the built dist/ locally, for testing PWA/offline behavior
+npm run parse      # regenerate src/data/guide.en.json and guide.es.json from content/
+npm run typecheck  # tsc --noEmit
+npm test           # parser unit tests (scripts/parse-guide.test.ts)
+npm run icons      # regenerate public/ PWA icons from src/assets/icon-source.svg
+```
+
+## Adding or editing content
+
+`content/` is the single source of truth for everything the app displays.
+`src/data/*.json` is **generated** — never hand-edit it.
+
+1. Edit the relevant file in `content/` (see `CLAUDE.md` for the exact format
+   per file type: `prose`, `techniques`, `drills`, `references`).
+2. If you added a new file, register it in `content/manifest.json` with its
+   `order`, `part`, `type`, `sections`, and `status`.
+3. If the content is user-facing text, add its Spanish translation to
+   `content/i18n/es.json`, keyed by the same `id`. The parser fails the build
+   loudly if any id is missing a translation, or if the dictionary has a
+   translation for an id that no longer exists in `content/`.
+4. Run `npm run parse`. It fails loudly (non-zero exit, naming the file and
+   heading) on a malformed entry, a duplicate id, an unknown tag, unclaimed
+   markdown content, or a missing/stale translation — nothing is ever silently
+   dropped.
+5. `status: "stub"` files are excluded from the build entirely; flip to
+   `"complete"` when the content is ready (`content/40-warmup.md` and
+   `content/50-references.md` are currently stubs).
+
+Adding a new technique, drill, or prose section never requires touching the
+parser or a component — if it does, the content doesn't match the documented
+format.
+
+## Deploying to GitHub Pages
+
+1. If this repo will be served from `https://<user>.github.io/<repo>/` (a
+   project site, not a user/org site), set the base path in `vite.config.ts`:
+   ```ts
+   export default defineConfig({
+     base: "/<repo>/",
+     ...
+   });
+   ```
+   Leave it as `"/"` if this is a user/org site (`https://<user>.github.io/`)
+   or a custom domain.
+2. Build: `npm run build`. The output is `dist/`.
+3. Deploy `dist/` to the `gh-pages` branch (or configure GitHub Actions to do
+   it on push to `main`). A simple manual option:
+   ```bash
+   npx gh-pages -d dist
+   ```
+   (requires `npm install --save-dev gh-pages` first, or use `npx` ad hoc).
+4. In the repo's Settings → Pages, set the source to the `gh-pages` branch.
+
+Deploying to Netlify: point it at this repo with build command `npm run
+build` and publish directory `dist`. No other configuration is needed — there
+is no backend or environment variable to set.
+
+## Adding to the home screen
+
+**iOS (Safari):** open the deployed URL, tap the Share icon, then "Add to
+Home Screen". The app opens in standalone mode (no browser chrome) and works
+offline after the first visit.
+
+**Android (Chrome):** open the deployed URL, tap the ⋮ menu, then "Add to
+Home screen" (or "Install app" if Chrome shows an install banner
+automatically). Same offline behavior applies.
+
+Both rely on the web app manifest (`vite-plugin-pwa`, configured in
+`vite.config.ts`) and the icons in `public/icons/`.
+
+## Interpretations and decisions made while building this
+
+- **Section-number registry.** Beyond parsing `content/`, the build assigns
+  every numbered section (prose §1–6/14–15, technique categories §7–12, the
+  drill bank §13) into one `sectionIndex`, and fails loudly if two files ever
+  claim the same number. This is what makes `§13` in `30-session.md` a real,
+  clickable in-app link to the Drills tab rather than inert text.
+- **Spanish translation pipeline.** `content/` is authored in English only, so
+  the Spanish text lives in a hand-authored dictionary,
+  `content/i18n/es.json`, keyed by the same ids the parser already produces.
+  `npm run parse` merges the two into `guide.es.json`, sharing structure
+  (tags, ids, ordering) with the English file and failing the build if the
+  dictionary and content/ ever drift out of sync in either direction.
+- **Spanish glosses.** Per the brief's own examples, I used `gancho de talón`
+  (heel hook), `adherencia` (smear), and `invertida` (undercling) directly.
+  I additionally added `gancho de puntera` for toe hook, by direct analogy
+  with heel hook. I deliberately did **not** add glosses for other
+  technique names (e.g. lock-off, pinch, flag) where I wasn't confident a
+  single term is genuinely standard across Spanish-speaking gyms, rather than
+  invent one — worth a native-speaker pass if you want more coverage.
+  Fixing this only requires editing `content/i18n/es.json`, not any code.
+- **Random drill** picks from the entire drill bank (all 43), not filtered by
+  category — the brief didn't scope it further.
+- **§n navigation** switches the relevant tab and scrolls the target section
+  into view; there's no URL routing (no router library — this is a 4-tab app
+  with no deep-linking requirement stated, so I kept the dependency list to
+  what was actually needed).
+- **Fonts**: self-hosted via `@fontsource`'s Latin-only subsets (`latin-*.css`
+  imports in `src/main.tsx`), rather than hand-downloading and subsetting —
+  same result (offline, Latin-only, no external requests), less manual work.
+- **PWA icon**: no design asset was provided, so I made a simple abstract
+  mark (three holds on a diagonal line) in the app's own accent color —
+  `src/assets/icon-source.svg`, rasterized by `npm run icons`. Happy to swap
+  it for a real mark.
+- **Favorites**: a star toggle on every technique card and drill row,
+  `localStorage` key `cg.favorites` (a flat array of ids — technique and
+  drill ids never collide, per the global-uniqueness rule in `CLAUDE.md`),
+  surfaced as its own filter chip in both the Techniques and Drills views.
+- **Session log**: a form at the bottom of the Session view — date, drill
+  used (a `<select>` populated from the current drill bank), hardest problem
+  climbed cleanly, niggles vs. last session (better/same/worse), and one
+  optional note. Entries persist to `localStorage` under `cg.log`, newest
+  first, with an "Export as JSON" button that downloads the full log as a
+  file (client-side `Blob` + object URL — no network call). I stored the
+  drill as its display name rather than an id, so a log entry stays readable
+  even if `content/` changes later.
+- **Progress panel**: a quiet, text-only stats summary (sessions logged,
+  highest grade climbed cleanly, most-used drill, and the last five sessions'
+  grades and niggles as plain arrow-joined sequences) shown above the log
+  form once at least one entry exists. Deliberately no charts, streaks,
+  badges, or scores — `CLAUDE.md`/`PROMPT.md` both call out "no streaks,
+  badges, or engagement mechanics" as a non-goal, so this only reflects data
+  you already logged, nothing gamified. Grade parsing (`src/utils/
+  sessionStats.ts`) reads the leading `V<n>` out of the free-text "hardest"
+  field and simply ignores anything it can't parse.
+
+## Verified against the acceptance criteria
+
+All of `PROMPT.md`'s acceptance checklist passes, including the one that
+needs a real tool rather than reasoning about the code: a Lighthouse run
+against the production build (`npm run build && npm run preview`), mobile
+form factor with default throttling —
+
+| Category | Score |
+|---|---|
+| Performance | 97 |
+| Accessibility | 100 |
+| Best Practices | 100 |
+| SEO | 100 |
+
+(Lighthouse's CLI no longer ships a standalone "PWA" category as of v12+;
+installability and offline support were instead verified directly — service
+worker registers and reaches `activated`, and a full page reload with the
+network killed still renders the Guide view from cache.)
+
+Two accessibility findings and one SEO finding came out of that first run and
+are now fixed: a heading level was skipped (`h2` → `h4` for the bold
+lead-in lines inside prose, e.g. "**What actually prevents them**" — now
+`h3`), the header's language/theme toggle buttons had an `aria-label` that
+didn't include their own visible text ("EN", "Dark") which trips the
+WCAG 2.5.3 Label-in-Name check, and there was no `robots.txt` (added,
+`Allow: /`).
