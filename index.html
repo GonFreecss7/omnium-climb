@@ -29,6 +29,28 @@
           document.documentElement.setAttribute("data-theme", "dark");
         }
       })();
+
+      // Real, measured viewport height instead of any CSS viewport unit.
+      // 100dvh and height:100% (through html/body/#root) were each tried on
+      // an actual installed iOS standalone PWA and each left a gap of true
+      // black between the tab bar and the physical bottom edge — the unit's
+      // reported value didn't match the real available height in that
+      // display mode. window.visualViewport.height (falling back to
+      // window.innerHeight) is what the browser says is *actually* visible
+      // right now, and re-measuring on resize also keeps this correct when
+      // the on-screen keyboard opens for the session log's text inputs.
+      (function () {
+        function setAppHeight() {
+          var h = (window.visualViewport && window.visualViewport.height) || window.innerHeight;
+          document.documentElement.style.setProperty("--app-height", h + "px");
+        }
+        setAppHeight();
+        window.addEventListener("resize", setAppHeight);
+        window.addEventListener("orientationchange", setAppHeight);
+        if (window.visualViewport) {
+          window.visualViewport.addEventListener("resize", setAppHeight);
+        }
+      })();
     </script>
   </head>
   <body>
