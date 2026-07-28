@@ -50,7 +50,11 @@
   flex-shrink: 0;
   display: flex;
   min-height: var(--tabbar-height);
-  padding-bottom: env(safe-area-inset-bottom);
+  /* The full env(safe-area-inset-bottom) (~34px on a home-indicator iPhone)
+     reads as a dead gap under a bar that's just text — capped at
+     --space-2 so the labels sit close to the true edge instead of
+     floating above a mostly-empty strip. */
+  padding-bottom: min(env(safe-area-inset-bottom), var(--space-2));
   background: color-mix(in srgb, var(--bg) 90%, transparent);
   backdrop-filter: blur(8px);
   border-top: 1px solid var(--border);
