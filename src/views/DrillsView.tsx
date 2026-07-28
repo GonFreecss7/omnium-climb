@@ -40,7 +40,7 @@ export default function DrillsView() {
       )}
 
       <div className="random-drill">
-        <button type="button" className="random-drill__button" onClick={pickRandom}>
+        <button type="button" className="button-primary" onClick={pickRandom}>
           {t.drills.randomButton}
         </button>
         {randomDrill && (

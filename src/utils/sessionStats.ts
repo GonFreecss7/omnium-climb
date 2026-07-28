@@ -1,5 +1,5 @@
 import type { ElbowChange, SessionLogEntry } from "../state/AppState";
-import type { UiStrings } from "../i18n/ui";
+import type { Lang, UiStrings } from "../i18n/ui";
 
 export function elbowLabels(t: UiStrings): Record<ElbowChange, string> {
   return {
@@ -7,6 +7,28 @@ export function elbowLabels(t: UiStrings): Record<ElbowChange, string> {
     same: t.sessionLog.elbowSame,
     worse: t.sessionLog.elbowWorse,
   };
+}
+
+/**
+ * Today's date as "YYYY-MM-DD" in the *local* calendar day — not
+ * `Date.toISOString()`, which is UTC and rolls over to the next day for
+ * anyone west of Greenwich in the evening (e.g. 22:32 local in a UTC-5 zone
+ * is already past midnight UTC).
+ */
+export function todayLocalISO(): string {
+  const d = new Date();
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${y}-${m}-${day}`;
+}
+
+/** Formats a "YYYY-MM-DD" string for display in the active language, parsed as a local date. */
+export function formatDisplayDate(isoDate: string, lang: Lang): string {
+  const [y, m, d] = isoDate.split("-").map(Number);
+  if (!y || !m || !d) return isoDate;
+  const date = new Date(y, m - 1, d);
+  return new Intl.DateTimeFormat(lang === "es" ? "es" : "en", { dateStyle: "medium" }).format(date);
 }
 
 /** Extracts the numeric grade from free text like "V3" or "v3-v4". Returns null if none found. */

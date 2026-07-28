@@ -1,17 +1,13 @@
 import { useState } from "react";
 import { useAppState } from "../state/AppState";
 import type { ElbowChange } from "../state/AppState";
-import { elbowLabels as getElbowLabels } from "../utils/sessionStats";
+import { elbowLabels as getElbowLabels, formatDisplayDate, todayLocalISO } from "../utils/sessionStats";
 import ProgressStats from "./ProgressStats";
 
-function today(): string {
-  return new Date().toISOString().slice(0, 10);
-}
-
 export default function SessionLog() {
-  const { t, guide, log, addLogEntry } = useAppState();
+  const { t, lang, guide, log, addLogEntry } = useAppState();
 
-  const [date, setDate] = useState(today);
+  const [date, setDate] = useState(todayLocalISO);
   const [drill, setDrill] = useState("");
   const [hardest, setHardest] = useState("");
   const [elbow, setElbow] = useState<ElbowChange>("same");
@@ -34,7 +30,7 @@ export default function SessionLog() {
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = `climb-guide-session-log-${today()}.json`;
+    a.download = `climb-guide-session-log-${todayLocalISO()}.json`;
     a.click();
     URL.revokeObjectURL(url);
   }
@@ -112,7 +108,7 @@ export default function SessionLog() {
           />
         </label>
 
-        <button type="submit" className="random-drill__button" disabled={!canSubmit}>
+        <button type="submit" className="button-primary" disabled={!canSubmit}>
           {t.sessionLog.addButton}
         </button>
       </form>
@@ -125,7 +121,7 @@ export default function SessionLog() {
             {log.map((entry) => (
               <li key={entry.id} className="session-log__entry">
                 <div className="session-log__entry-header">
-                  <span className="session-log__entry-date">{entry.date}</span>
+                  <span className="session-log__entry-date">{formatDisplayDate(entry.date, lang)}</span>
                   <span className={`chip chip--filterable`}>{elbowLabels[entry.elbow]}</span>
                 </div>
                 <p className="session-log__entry-drill">{entry.drill}</p>

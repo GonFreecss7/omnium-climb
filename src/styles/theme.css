@@ -9,6 +9,10 @@
   --text-muted: #8a97a6;
   --accent: #22d3ee;
   --accent-dim: rgba(34, 211, 238, 0.12);
+  /* Text color for content placed on top of an --accent-filled surface.
+     Both themes need a near-black ink here — dark theme's accent is bright,
+     light theme's accent is a mid-dark teal — white text fails AA on either. */
+  --accent-ink: #07090c;
   --core: #34d399;
   --later: #94a3b8;
   --advanced: #fbbf24;
@@ -25,6 +29,7 @@
   --text-muted: #5a6672;
   --accent: #0891b2;
   --accent-dim: rgba(8, 145, 178, 0.1);
+  --accent-ink: #0e1318;
   --core: #059669;
   --later: #64748b;
   --advanced: #b45309;
@@ -51,6 +56,10 @@
 
   --tabbar-height: 56px;
   --header-height: 52px;
+  /* Total on-screen size of the fixed header/tab bar, safe-area included.
+     Every scroll container clears these instead of the bare heights above. */
+  --header-total: calc(var(--header-height) + env(safe-area-inset-top));
+  --tabbar-total: calc(var(--tabbar-height) + env(safe-area-inset-bottom));
 }
 
 @media (prefers-reduced-motion: reduce) {

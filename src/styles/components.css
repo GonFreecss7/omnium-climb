@@ -1,41 +1,49 @@
 /* ---------- header ---------- */
 
 .header {
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 10;
+  left: 0;
+  right: 0;
+  z-index: 20;
   height: var(--header-height);
+  padding-top: env(safe-area-inset-top);
+  box-sizing: content-box;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 var(--space-4);
+  padding-left: var(--space-4);
+  padding-right: var(--space-4);
   background: color-mix(in srgb, var(--bg) 85%, transparent);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--border);
 }
 
-.header__brand {
-  color: var(--text-muted);
-}
-
-.header__controls {
+.header__group {
   display: flex;
-  gap: var(--space-2);
-}
-
-.header__toggle {
-  min-width: 44px;
-  min-height: 44px;
-  padding: var(--space-1) var(--space-3);
+  gap: 2px;
+  padding: 2px;
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-chip);
-  color: var(--text);
-  transition: border-color var(--duration) var(--ease), color var(--duration) var(--ease);
 }
 
-.header__toggle:hover {
-  border-color: var(--accent);
-  color: var(--accent);
+.header__pill {
+  flex-shrink: 0;
+  white-space: nowrap;
+  min-height: 40px;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-chip);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  transition: background var(--duration) var(--ease), color var(--duration) var(--ease);
+}
+
+.header__pill--active {
+  background: var(--accent);
+  color: var(--accent-ink);
 }
 
 /* ---------- tab bar ---------- */
@@ -96,7 +104,6 @@
 
 .guide-section__title {
   font-size: 17px;
-  color: var(--accent);
   margin-bottom: var(--space-3);
   padding-bottom: var(--space-2);
   border-bottom: 1px solid var(--border);
@@ -221,7 +228,7 @@ ol.prose-list li {
 
 .search-bar {
   position: sticky;
-  top: var(--header-height);
+  top: var(--header-total);
   z-index: 5;
   background: var(--bg);
   padding-bottom: var(--space-3);
@@ -253,7 +260,7 @@ ol.prose-list li {
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
-  margin-bottom: var(--space-5);
+  margin-bottom: var(--space-6);
 }
 
 .filters__group {
@@ -454,29 +461,38 @@ ol.prose-list li {
 
 .random-drill {
   margin-bottom: var(--space-6);
-  padding: var(--space-4);
-  border: 1px solid var(--border-strong);
-  border-radius: var(--radius-card);
-  background: var(--surface);
-}
-
-.random-drill__button {
-  width: 100%;
-  min-height: 44px;
-  border: 1px solid var(--accent);
-  color: var(--accent);
-  border-radius: var(--radius-card);
-  font-family: var(--font-heading);
-  font-size: 15px;
-  transition: background var(--duration) var(--ease);
-}
-
-.random-drill__button:hover {
-  background: var(--accent-dim);
 }
 
 .random-drill__result {
   margin-top: var(--space-4);
+}
+
+/* ---------- primary button (filled — Random drill, Add entry) ---------- */
+
+.button-primary {
+  width: 100%;
+  min-height: 44px;
+  border-radius: var(--radius-card);
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-family: var(--font-heading);
+  font-size: 15px;
+  transition: opacity var(--duration) var(--ease);
+}
+
+.button-primary:hover:not(:disabled) {
+  opacity: 0.88;
+}
+
+.button-primary:disabled {
+  /* Overrides the generic dimmed button:disabled — disabled here is a distinct
+     flat/outline look, not just a faded copy of the enabled fill, so the two
+     states read as clearly different at a glance, not just "same button, dimmer". */
+  opacity: 1;
+  background: transparent;
+  border-color: var(--border-strong);
+  color: var(--text-muted);
 }
 
 .random-drill__name {
@@ -491,7 +507,7 @@ ol.prose-list li {
 }
 
 .drill-category {
-  margin-bottom: var(--space-5);
+  margin-bottom: var(--space-6);
 }
 
 .drill-category__title {
@@ -511,13 +527,13 @@ ol.prose-list li {
 }
 
 .drill-list__row {
-  display: flex;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: 1fr 44px;
+  align-items: start;
   gap: var(--space-2);
 }
 
 .drill-list__text {
-  flex: 1;
   min-width: 0;
 }
 
@@ -624,7 +640,7 @@ ol.prose-list li {
 }
 
 .stats-panel__heading {
-  color: var(--accent);
+  color: var(--text-muted);
   display: block;
   margin-bottom: var(--space-3);
 }
