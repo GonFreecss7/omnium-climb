@@ -96,6 +96,13 @@
   margin-top: var(--space-6);
 }
 
+.app-version {
+  margin-top: var(--space-6);
+  color: var(--text-muted);
+  opacity: 0.5;
+  text-align: center;
+}
+
 .guide-section__title {
   font-size: 17px;
   margin-bottom: var(--space-3);

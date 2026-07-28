@@ -98,6 +98,14 @@ unknown tag value. Silent skipping hides content loss.
 - `localStorage` keys are namespaced `cg.*` (`cg.lang`, `cg.theme`, `cg.favorites`, `cg.log`).
 - Prefer a few well-named components over deep hierarchies. This is a small app.
 
+## Version marker
+
+`src/version.ts` exports `APP_VERSION`, a `YYYY-MM-DD.N` string rendered small and muted at the
+bottom of the Session tab (below the session log) so the user can confirm which build is running
+on their phone. **Bump it in every commit that changes app behavior or content** — same date,
+next `N` for a same-day change, new date otherwise. Skip it only for things that can't change
+what's rendered (e.g. this file, CI config).
+
 ## Adding content later
 
 1. Add or edit a file in `content/`.

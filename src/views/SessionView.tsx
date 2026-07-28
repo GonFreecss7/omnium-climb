@@ -2,6 +2,7 @@ import { useAppState } from "../state/AppState";
 import { useScrollToTarget } from "../hooks/useScrollToTarget";
 import Prose from "../components/Prose";
 import SessionLog from "../components/SessionLog";
+import { APP_VERSION } from "../version";
 
 export default function SessionView() {
   const { guide, scrollTarget, clearScrollTarget } = useAppState();
@@ -20,6 +21,7 @@ export default function SessionView() {
         </section>
       ))}
       <SessionLog />
+      <p className="mono-label app-version">v{APP_VERSION}</p>
     </div>
   );
 }
