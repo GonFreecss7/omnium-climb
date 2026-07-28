@@ -56,10 +56,6 @@
 
   --tabbar-height: 56px;
   --header-height: 52px;
-  /* Total on-screen size of the fixed header/tab bar, safe-area included.
-     Every scroll container clears these instead of the bare heights above. */
-  --header-total: calc(var(--header-height) + env(safe-area-inset-top));
-  --tabbar-total: calc(var(--tabbar-height) + env(safe-area-inset-bottom));
 }
 
 @media (prefers-reduced-motion: reduce) {

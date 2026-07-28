@@ -1,20 +1,29 @@
-html {
+html,
+body {
   background: var(--bg);
   color-scheme: light dark;
+  /* The document itself never scrolls — see .app__main below. This is what
+     actually fixes the header/tab bar on real iOS Safari: `position: fixed`
+     relative to a scrolling document has a long-documented WebKit bug where
+     rubber-band/overscroll can visually detach fixed elements from the
+     viewport mid-scroll (content briefly renders "above" or "through" them).
+     GPU-layer hints don't touch that — not depending on page-level scroll
+     at all does. */
+  height: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
 }
 
 [id^="section-"] {
-  scroll-margin-top: calc(var(--header-total) + var(--space-4));
+  scroll-margin-top: var(--space-4);
 }
 
 body {
-  background: var(--bg);
   color: var(--text);
   font-family: var(--font-body);
   font-size: 16px;
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
-  overscroll-behavior-y: none;
 }
 
 h1,
@@ -47,20 +56,23 @@ h4 {
 }
 
 .app {
-  min-height: 100dvh;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
 }
 
 /*
- * Header and tab bar are `position: fixed` (see components.css), taken clean out
- * of normal flow — deliberately, not `sticky`. Backdrop-filter + sticky has known
- * cross-browser quirks (notably iOS Safari with dynamic viewport height), so the
- * one scroll container here is the document itself, and .app__main just reserves
- * exactly the fixed elements' rendered size — including the safe-area insets —
- * so nothing real ever renders underneath them.
+ * The only scrolling element in the whole app. Header and tab bar (see
+ * components.css) are ordinary, non-positioned flex siblings above/below
+ * this — never `fixed`, never `sticky` — so they can never be affected by
+ * this container's scroll or by iOS's page-level overscroll behavior.
  */
 .app__main {
-  padding-top: var(--header-total);
-  padding-bottom: var(--tabbar-total);
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
 }
 
 .view {

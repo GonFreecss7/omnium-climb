@@ -1,30 +1,17 @@
 /* ---------- header ---------- */
 
 .header {
-  position: fixed;
-  /* Anchored with `top`, not grown via padding-top + content-box — the box
-     itself starts right where the safe area ends, rather than starting at 0
-     and pushing its content down internally. Paired with the GPU-layer hints
-     below, this is the more WebKit-reliable formulation: real iOS Safari has
-     a history of position:fixed + backdrop-filter + env() combinations
-     losing their safe-area offset after the page scrolls, in a way Chromium
-     (and therefore CDP safe-area emulation) does not reproduce. */
-  top: env(safe-area-inset-top);
-  left: 0;
-  right: 0;
-  z-index: 20;
-  height: var(--header-height);
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
-  will-change: transform;
+  /* Ordinary flex child, not fixed/sticky/positioned at all — see the
+     .app / .app__main comments in global.css for why. Its own box grows to
+     fit the safe area via plain padding, same as any other element. */
+  flex-shrink: 0;
+  min-height: var(--header-height);
+  padding-top: calc(env(safe-area-inset-top) + var(--space-1));
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding-left: var(--space-4);
   padding-right: var(--space-4);
-  /* Solid, not translucent/blurred — backdrop-filter is the other half of the
-     suspect combination above. The tab bar keeps its blur (CLAUDE.md calls
-     for it specifically there); the header never had that requirement. */
   background: var(--bg);
   border-bottom: 1px solid var(--border);
 }
@@ -59,17 +46,11 @@
 /* ---------- tab bar ---------- */
 
 .tabbar {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 10;
+  /* Ordinary flex child, not fixed — see .app / .app__main in global.css. */
+  flex-shrink: 0;
   display: flex;
-  height: calc(var(--tabbar-height) + env(safe-area-inset-bottom));
+  min-height: var(--tabbar-height);
   padding-bottom: env(safe-area-inset-bottom);
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
-  will-change: transform;
   background: color-mix(in srgb, var(--bg) 90%, transparent);
   backdrop-filter: blur(8px);
   border-top: 1px solid var(--border);
@@ -240,8 +221,10 @@ ol.prose-list li {
 /* ---------- search & filters ---------- */
 
 .search-bar {
+  /* Sticks to the top of .app__main's own scroll box — that box already
+     starts right below the (non-scrolling) header, so 0 is correct here. */
   position: sticky;
-  top: var(--header-total);
+  top: 0;
   z-index: 5;
   background: var(--bg);
   padding-bottom: var(--space-3);
