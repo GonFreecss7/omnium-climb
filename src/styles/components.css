@@ -63,8 +63,15 @@
 .tabbar__item {
   flex: 1;
   display: flex;
-  align-items: center;
+  /* Bottom-aligned, not centered: .tabbar__item stretches to the full
+     56px row (min-height below is a tap-target floor, not the visible
+     box), and centering the label in that full height put as much empty
+     space under it as the capped safe-area padding did above. Anchoring
+     the label to the bottom of the row is what actually puts it near the
+     physical edge; the tap target itself stays the full row height. */
+  align-items: flex-end;
   justify-content: center;
+  padding-bottom: var(--space-2);
   min-height: 44px;
   font-family: var(--font-mono);
   text-transform: uppercase;
