@@ -50,6 +50,19 @@
   flex-shrink: 0;
   display: flex;
   min-height: var(--tabbar-height);
+  /* .app (see global.css) stops ~34px short of the true screen bottom on
+     this class of device — window.innerHeight itself excludes the
+     home-indicator safe area, confirmed via a measurement overlay.
+     Extending .app itself to compensate broke the tab labels' rendering
+     on-device, so instead only .tabbar (the last flex child, nothing
+     below it, .app has no overflow:hidden to clip it) reaches past its
+     container's own bottom edge via a negative margin — flexbox spec
+     handles a negative margin on the last item by shrinking its outer
+     size for the main-axis space calculation, which .app__main's flex:1
+     absorbs, and then painting the item's actual border-box past that
+     boundary. Net effect: .tabbar keeps its full height, just shifted
+     down into the reclaimed strip. */
+  margin-bottom: calc(-1 * env(safe-area-inset-bottom, 0px));
   /* The full env(safe-area-inset-bottom) (~34px on a home-indicator iPhone)
      reads as a dead gap under a bar that's just text — capped at
      --space-2 so the labels sit close to the true edge instead of
