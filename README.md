@@ -54,28 +54,24 @@ format.
 
 ## Deploying to GitHub Pages
 
-1. If this repo will be served from `https://<user>.github.io/<repo>/` (a
-   project site, not a user/org site), set the base path in `vite.config.ts`:
-   ```ts
-   export default defineConfig({
-     base: "/<repo>/",
-     ...
-   });
-   ```
-   Leave it as `"/"` if this is a user/org site (`https://<user>.github.io/`)
-   or a custom domain.
-2. Build: `npm run build`. The output is `dist/`.
-3. Deploy `dist/` to the `gh-pages` branch (or configure GitHub Actions to do
-   it on push to `main`). A simple manual option:
-   ```bash
-   npx gh-pages -d dist
-   ```
-   (requires `npm install --save-dev gh-pages` first, or use `npx` ad hoc).
-4. In the repo's Settings → Pages, set the source to the `gh-pages` branch.
+This is already set up and live: **https://gonfreecss7.github.io/omnium-climb/**
 
-Deploying to Netlify: point it at this repo with build command `npm run
-build` and publish directory `dist`. No other configuration is needed — there
-is no backend or environment variable to set.
+`.github/workflows/deploy.yml` builds and deploys automatically on every push
+to `main` (or manually via the Actions tab → "Deploy to GitHub Pages" → "Run
+workflow"). Pages itself is configured (via the repo's Settings → Pages) to
+deploy from GitHub Actions rather than a branch — that's a one-time repo
+setting, already done, not something the workflow file controls.
+
+`vite.config.ts` hardcodes `base: "/omnium-climb/"` to match this repo's name,
+since GitHub Pages project sites are served from a `/<repo>/` subpath. If you
+fork this to a different repo name, a user/org site (`<user>.github.io`), or
+a custom domain, update `BASE` in `vite.config.ts` accordingly (`"/"` for the
+latter two) — it feeds both Vite's `base` and the PWA manifest's `start_url`/
+`scope`/icon paths, so it's the only place that needs to change.
+
+To deploy manually instead (no CI): build with `npm run build`, then push the
+contents of `dist/` to a `gh-pages` branch (e.g. `npx gh-pages -d dist`) and
+point Settings → Pages at that branch instead of Actions.
 
 ## Adding to the home screen
 
