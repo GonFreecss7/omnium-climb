@@ -34,47 +34,5 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-    <script>
-      // TEMPORARY diagnostic overlay — remove once the tab-bar gap is
-      // confirmed closed. Prints .tabbar and one .tabbar__item's real
-      // geometry plus computed text color/opacity, so a collapsed box or
-      // invisible text shows up in these numbers instead of only being
-      // discovered after the fact from a photo.
-      (function () {
-        function measure() {
-          var tabbarEl = document.querySelector(".tabbar");
-          var itemEl = document.querySelector(".tabbar__item");
-          var tabbarRect = tabbarEl ? tabbarEl.getBoundingClientRect() : null;
-          var itemRect = itemEl ? itemEl.getBoundingClientRect() : null;
-          var itemStyle = itemEl ? getComputedStyle(itemEl) : null;
-
-          var lines = [
-            "innerH=" + window.innerHeight,
-            "tabbar.top=" + (tabbarRect ? Math.round(tabbarRect.top) : "n/a"),
-            "tabbar.bottom=" + (tabbarRect ? Math.round(tabbarRect.bottom) : "n/a"),
-            "tabbar.height=" + (tabbarRect ? Math.round(tabbarRect.height) : "n/a"),
-            "item.top=" + (itemRect ? Math.round(itemRect.top) : "n/a"),
-            "item.bottom=" + (itemRect ? Math.round(itemRect.bottom) : "n/a"),
-            "item.height=" + (itemRect ? Math.round(itemRect.height) : "n/a"),
-            "item.color=" + (itemStyle ? itemStyle.color : "n/a"),
-            "item.opacity=" + (itemStyle ? itemStyle.opacity : "n/a"),
-            "item.display=" + (itemStyle ? itemStyle.display : "n/a"),
-          ];
-
-          var box = document.createElement("div");
-          box.id = "debug-overlay";
-          box.style.cssText =
-            "position:fixed;top:0;left:0;right:0;z-index:999999;background:#000;" +
-            "color:#0f0;font:10px monospace;padding:4px;white-space:pre-wrap;";
-          box.textContent = lines.join("\n");
-          document.body.appendChild(box);
-        }
-        window.addEventListener("load", function () {
-          requestAnimationFrame(function () {
-            requestAnimationFrame(measure);
-          });
-        });
-      })();
-    </script>
   </body>
 </html>

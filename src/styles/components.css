@@ -52,21 +52,22 @@
   min-height: var(--tabbar-height);
   /* .app (see global.css) stops ~34px short of the true screen bottom on
      this class of device — window.innerHeight itself excludes the
-     home-indicator safe area, confirmed via a measurement overlay.
-     Extending .app itself to compensate broke the tab labels' rendering
-     on-device, so instead only .tabbar (the last flex child, nothing
-     below it, .app has no overflow:hidden to clip it) reaches past its
-     container's own bottom edge via a negative margin — flexbox spec
-     handles a negative margin on the last item by shrinking its outer
-     size for the main-axis space calculation, which .app__main's flex:1
-     absorbs, and then painting the item's actual border-box past that
-     boundary. Net effect: .tabbar keeps its full height, just shifted
-     down into the reclaimed strip. */
-  margin-bottom: calc(-1 * env(safe-area-inset-bottom, 0px));
+     home-indicator safe area. Two different ways of extending content
+     into that strip were tried (a negative inset on .app, a negative
+     margin on .tabbar) and BOTH made the tab labels stop rendering,
+     confirmed by scanning actual screenshot pixels: the active-tab
+     indicator (a plain background-colored bar) painted fine in that
+     strip, but the label text never did, in either attempt. That's a
+     hard rendering boundary on this device, not something to keep tuning
+     around — .tabbar deliberately stays within the reported viewport so
+     its text stays visible. What's below .app in that strip is still
+     var(--bg), the same color as .tabbar's own background, so it reads
+     as one continuous surface down to the true edge even though the
+     interactive/text box itself stops at the reported viewport line. */
   /* The full env(safe-area-inset-bottom) (~34px on a home-indicator iPhone)
-     reads as a dead gap under a bar that's just text — capped at
-     --space-2 so the labels sit close to the true edge instead of
-     floating above a mostly-empty strip. */
+     would read as a dead gap under a bar that's just text — capped at
+     --space-2 so the labels sit close to that line instead of floating
+     above a mostly-empty strip. */
   padding-bottom: min(env(safe-area-inset-bottom), var(--space-2));
   background: color-mix(in srgb, var(--bg) 90%, transparent);
   backdrop-filter: blur(8px);
