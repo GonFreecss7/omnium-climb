@@ -65,21 +65,20 @@ h4 {
      agreed with each other and with a plain `inset: 0` box — every one of
      them, including the fixed-position containing block itself, already
      excludes the ~34px home-indicator safe area, even though
-     env(safe-area-inset-bottom) correctly reports it exists. So `inset: 0`
-     alone still stops 34px short of the true edge; every previous fix
-     bottomed out at the same excluded value because they were all
-     ultimately measuring the same viewport. `bottom` is pulled negative by
-     exactly that inset to claim back the space `inset: 0` can't reach.
-     This is safe from the position:fixed rubber-band bug documented on
-     html/body above because the *document* here never scrolls (html/body
-     have overflow:hidden) — that bug is specifically about fixed elements
-     losing sync with a scrolling document, which doesn't apply when
-     nothing above this layer scrolls in the first place. */
+     env(safe-area-inset-bottom) correctly reports it exists.
+
+     A `bottom: calc(-1 * env(safe-area-inset-bottom))` variant tried to
+     claim that space back, but it made the tab labels stop rendering
+     entirely on-device — negative inset values built from env()/calc() on
+     a position:fixed box are exactly the kind of construct that's had
+     real WebKit bugs, and this reverts back to the plain, verified-working
+     `inset: 0` (confirmed via the measurement overlay to size .app exactly
+     to window.innerHeight, with tab-bar text rendering correctly). This
+     still stops short of the true physical edge; see the tab bar
+     rules in components.css for the currently-active way of narrowing
+     that gap without touching .app's own sizing. */
   position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: calc(-1 * env(safe-area-inset-bottom, 0px));
+  inset: 0;
   display: flex;
   flex-direction: column;
 }
