@@ -56,22 +56,30 @@ h4 {
 }
 
 .app {
-  /* Anchored to the real viewport edges, not sized by any height value.
-     100dvh, height:100% (chained through html/body/#root), and even a
+  /* Anchored to the real viewport edges, not sized by any height value —
+     100dvh, height:100% (chained through html/body/#root), and a
      JS-measured window.visualViewport.height were each tried and each
-     left a gap below the tab bar in the installed standalone PWA — every
-     one of those depends on some *reported number* for the available
-     height matching reality, and on-device none of them reliably did.
-     `position: fixed; inset: 0` sidesteps the number entirely: the browser
-     pins each edge directly to the viewport, so there is nothing for a
-     stale or wrong height value to get wrong. This is safe from the
-     position:fixed rubber-band bug documented on html/body above because
-     the *document* here never scrolls (html/body have overflow:hidden) —
-     that bug is specifically about fixed elements losing sync with a
-     scrolling document, which doesn't apply when nothing above this layer
-     scrolls in the first place. */
+     left a gap below the tab bar in the installed standalone PWA. A
+     measurement overlay confirmed why: on-device, window.innerHeight,
+     visualViewport.height AND document.documentElement.clientHeight all
+     agreed with each other and with a plain `inset: 0` box — every one of
+     them, including the fixed-position containing block itself, already
+     excludes the ~34px home-indicator safe area, even though
+     env(safe-area-inset-bottom) correctly reports it exists. So `inset: 0`
+     alone still stops 34px short of the true edge; every previous fix
+     bottomed out at the same excluded value because they were all
+     ultimately measuring the same viewport. `bottom` is pulled negative by
+     exactly that inset to claim back the space `inset: 0` can't reach.
+     This is safe from the position:fixed rubber-band bug documented on
+     html/body above because the *document* here never scrolls (html/body
+     have overflow:hidden) — that bug is specifically about fixed elements
+     losing sync with a scrolling document, which doesn't apply when
+     nothing above this layer scrolls in the first place. */
   position: fixed;
-  inset: 0;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: calc(-1 * env(safe-area-inset-bottom, 0px));
   display: flex;
   flex-direction: column;
 }

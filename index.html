@@ -34,53 +34,5 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-    <script>
-      // TEMPORARY diagnostic overlay — remove once the tab-bar gap is
-      // root-caused. Prints real on-device geometry (not a screenshot
-      // estimate) at the top of the screen: viewport height as the browser
-      // reports it, the actual computed safe-area-inset-bottom, and the
-      // measured boxes of .app and .tabbar, so we can see directly whether
-      // .app is reaching the true viewport bottom or not.
-      (function () {
-        function measure() {
-          var probe = document.createElement("div");
-          probe.style.cssText =
-            "position:fixed;bottom:0;height:0;padding-bottom:env(safe-area-inset-bottom);visibility:hidden;";
-          document.body.appendChild(probe);
-          var safeBottom = getComputedStyle(probe).paddingBottom;
-          document.body.removeChild(probe);
-
-          var appEl = document.querySelector(".app");
-          var tabbarEl = document.querySelector(".tabbar");
-          var appRect = appEl ? appEl.getBoundingClientRect() : null;
-          var tabbarRect = tabbarEl ? tabbarEl.getBoundingClientRect() : null;
-
-          var lines = [
-            "innerH=" + window.innerHeight,
-            "vvH=" + (window.visualViewport ? Math.round(window.visualViewport.height) : "n/a"),
-            "docClientH=" + document.documentElement.clientHeight,
-            "safeBottom=" + safeBottom,
-            "app.bottom=" + (appRect ? Math.round(appRect.bottom) : "n/a"),
-            "app.height=" + (appRect ? Math.round(appRect.height) : "n/a"),
-            "tabbar.top=" + (tabbarRect ? Math.round(tabbarRect.top) : "n/a"),
-            "tabbar.bottom=" + (tabbarRect ? Math.round(tabbarRect.bottom) : "n/a"),
-            "tabbar.height=" + (tabbarRect ? Math.round(tabbarRect.height) : "n/a"),
-          ];
-
-          var box = document.createElement("div");
-          box.id = "debug-overlay";
-          box.style.cssText =
-            "position:fixed;top:0;left:0;right:0;z-index:999999;background:#000;" +
-            "color:#0f0;font:10px monospace;padding:4px;white-space:pre-wrap;";
-          box.textContent = lines.join("\n");
-          document.body.appendChild(box);
-        }
-        window.addEventListener("load", function () {
-          requestAnimationFrame(function () {
-            requestAnimationFrame(measure);
-          });
-        });
-      })();
-    </script>
   </body>
 </html>
