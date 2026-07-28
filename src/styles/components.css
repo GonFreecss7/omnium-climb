@@ -573,6 +573,15 @@ ol.prose-list li {
   width: 100%;
 }
 
+.session-log__field input[type="date"] {
+  /* Safari draws its own rounded/inset chrome around date inputs by default,
+     on top of the custom border above — on-device this showed up as a
+     second, slightly-offset outline around the field. This strips Safari's
+     native appearance so only the border/radius set above is visible. */
+  -webkit-appearance: none;
+  appearance: none;
+}
+
 .session-log__field input:focus-visible,
 .session-log__field select:focus-visible {
   border-color: var(--accent);

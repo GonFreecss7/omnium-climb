@@ -55,8 +55,18 @@ h4 {
   border: 0;
 }
 
+#root {
+  height: 100%;
+}
+
 .app {
-  height: 100dvh;
+  /* height:100% (resolved through the html/body/#root chain above), not
+     100dvh — real iOS standalone-PWA testing showed 100dvh leaving a gap
+     of true black beneath the tab bar (the unit's value didn't match the
+     actual available height in that display mode). Percentage height
+     against a fully-100%-chained ancestor is the older but more reliably
+     correct mechanism for "fill the real window" in a standalone PWA. */
+  height: 100%;
   display: flex;
   flex-direction: column;
 }
