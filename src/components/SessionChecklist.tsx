@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useAppState } from "../state/AppState";
 import { todayLocalISO, formatDisplayDate } from "../utils/sessionStats";
+import Modal from "./Modal";
 
 type Mode = "select" | "result";
 
@@ -66,7 +67,7 @@ export default function SessionChecklist({ onClose }: { onClose: () => void }) {
   }
 
   return (
-    <div className="modal-overlay" role="dialog" aria-modal="true" aria-label={t.checklist.selectHeading}>
+    <Modal ariaLabel={t.checklist.selectHeading}>
       <div className="modal modal--checklist">
         <div className="modal__header no-print">
           <h2 className="modal__title">{mode === "select" ? t.checklist.selectHeading : t.checklist.resultHeading}</h2>
@@ -178,6 +179,6 @@ export default function SessionChecklist({ onClose }: { onClose: () => void }) {
           </div>
         )}
       </div>
-    </div>
+    </Modal>
   );
 }

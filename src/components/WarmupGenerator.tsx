@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useAppState } from "../state/AppState";
+import Modal from "./Modal";
 import type { Drill } from "../data/types";
 
 // A warm-up should be brief — not every drill category makes sense as a
@@ -54,7 +55,7 @@ export default function WarmupGenerator({ onClose }: { onClose: () => void }) {
   }
 
   return (
-    <div className="modal-overlay" role="dialog" aria-modal="true" aria-label={t.warmup.heading}>
+    <Modal ariaLabel={t.warmup.heading}>
       <div className="modal">
         <div className="modal__header">
           <h2 className="modal__title">{t.warmup.heading}</h2>
@@ -115,6 +116,6 @@ export default function WarmupGenerator({ onClose }: { onClose: () => void }) {
           )}
         </div>
       </div>
-    </div>
+    </Modal>
   );
 }
