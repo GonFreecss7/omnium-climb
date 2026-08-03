@@ -781,5 +781,31 @@
       "name": "Hora sin repetir",
       "description": "cada problema que escales en la sesión debe ser uno que nunca hayas hecho antes."
     }
+  },
+  "progressionStages": {
+    "stage-footwork-foundations": {
+      "title": "Fundamentos de trabajo de pies",
+      "summary": "Unos pies precisos y silenciosos y el desplazamiento básico del peso van antes que todo lo demás — la mayor parte del progreso pendiente de un principiante está aquí."
+    },
+    "stage-body-position-balance": {
+      "title": "Posición corporal y equilibrio",
+      "summary": "Lleva la cadera a la pared y estira los brazos antes de añadir potencia — las banderas y el match de manos mantienen el equilibrio bajo control."
+    },
+    "stage-grip-fundamentals": {
+      "title": "Fundamentos de agarre",
+      "summary": "Construye primero las posiciones de agarre más seguras y entrenables — los agarres más fuertes y arriesgados pueden esperar."
+    },
+    "stage-reading-holds-positions": {
+      "title": "Lectura de presas y posiciones",
+      "summary": "Aprende a leer hacia dónde tira realmente una presa, y las posiciones que te permiten aprovecharla."
+    },
+    "stage-power-dynamic-movement": {
+      "title": "Potencia y movimiento dinámico",
+      "summary": "Añade impulso y compromiso una vez que los fundamentos estáticos estén sólidos — aquí también empieza a subir el riesgo de lesión, así que progresa poco a poco."
+    },
+    "stage-competition-specialty-moves": {
+      "title": "Movimientos de competición y especialidad",
+      "summary": "Movimientos raros y de alta habilidad que vale la pena conocer por su nombre — no una prioridad de entrenamiento, pero útiles una vez que domines todo lo anterior."
+    }
   }
 }

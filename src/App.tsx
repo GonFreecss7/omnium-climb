@@ -4,6 +4,7 @@ import TabBar from "./components/TabBar";
 import GuideView from "./views/GuideView";
 import TechniquesView from "./views/TechniquesView";
 import DrillsView from "./views/DrillsView";
+import ProgressionsView from "./views/ProgressionsView";
 import SessionView from "./views/SessionView";
 
 function Main() {
@@ -13,6 +14,7 @@ function Main() {
       {tab === "guide" && <GuideView />}
       {tab === "techniques" && <TechniquesView />}
       {tab === "drills" && <DrillsView />}
+      {tab === "progressions" && <ProgressionsView />}
       {tab === "session" && <SessionView />}
     </main>
   );

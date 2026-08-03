@@ -7,8 +7,9 @@ import { ui } from "../i18n/ui";
 import type { Lang, UiStrings } from "../i18n/ui";
 
 export type Theme = "dark" | "light";
-export type Tab = "guide" | "techniques" | "drills" | "session";
+export type Tab = "guide" | "techniques" | "drills" | "progressions" | "session";
 export type ElbowChange = "better" | "same" | "worse";
+export type EntryKind = "technique" | "drill";
 
 export interface SessionLogEntry {
   id: string;
@@ -23,6 +24,7 @@ const LANG_KEY = "cg.lang";
 const THEME_KEY = "cg.theme";
 const FAVORITES_KEY = "cg.favorites";
 const LOG_KEY = "cg.log";
+const NOTES_KEY = "cg.notes";
 
 function initialLang(): Lang {
   try {
@@ -66,6 +68,21 @@ function initialLog(): SessionLogEntry[] {
   return [];
 }
 
+function initialNotes(): Record<string, string> {
+  try {
+    const stored = localStorage.getItem(NOTES_KEY);
+    if (stored) {
+      const parsed: unknown = JSON.parse(stored);
+      if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) {
+        return parsed as Record<string, string>;
+      }
+    }
+  } catch {
+    // ignore malformed/unavailable storage — start empty
+  }
+  return {};
+}
+
 function tabForSection(guide: Guide, sectionNumber: number): Tab | null {
   const entry = guide.sectionIndex[String(sectionNumber)];
   if (!entry) return null;
@@ -87,10 +104,15 @@ interface AppStateValue {
   scrollTarget: string | null;
   clearScrollTarget: () => void;
   goToSection: (sectionNumber: number) => void;
+  expandRequest: { kind: EntryKind; id: string } | null;
+  clearExpandRequest: () => void;
+  goToEntry: (kind: EntryKind, id: string) => void;
   favorites: Set<string>;
   toggleFavorite: (id: string) => void;
   log: SessionLogEntry[];
   addLogEntry: (entry: Omit<SessionLogEntry, "id">) => void;
+  notes: Record<string, string>;
+  setNote: (techniqueId: string, text: string) => void;
 }
 
 const AppStateContext = createContext<AppStateValue | null>(null);
@@ -102,6 +124,8 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
   const [scrollTarget, setScrollTarget] = useState<string | null>(null);
   const [favorites, setFavorites] = useState<Set<string>>(initialFavorites);
   const [log, setLog] = useState<SessionLogEntry[]>(initialLog);
+  const [notes, setNotes] = useState<Record<string, string>>(initialNotes);
+  const [expandRequest, setExpandRequest] = useState<{ kind: EntryKind; id: string } | null>(null);
 
   const guide = useMemo(() => getGuide(lang), [lang]);
   const t = ui[lang];
@@ -144,6 +168,14 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
     }
   }, [log]);
 
+  useEffect(() => {
+    try {
+      localStorage.setItem(NOTES_KEY, JSON.stringify(notes));
+    } catch {
+      // ignore write failures
+    }
+  }, [notes]);
+
   const goToSection = useCallback(
     (sectionNumber: number) => {
       const target = tabForSection(guide, sectionNumber);
@@ -155,6 +187,14 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
   );
 
   const clearScrollTarget = useCallback(() => setScrollTarget(null), []);
+
+  const clearExpandRequest = useCallback(() => setExpandRequest(null), []);
+
+  const goToEntry = useCallback((kind: EntryKind, id: string) => {
+    setTab(kind === "technique" ? "techniques" : "drills");
+    setScrollTarget(id);
+    setExpandRequest({ kind, id });
+  }, []);
 
   const toggleFavorite = useCallback((id: string) => {
     setFavorites((prev) => {
@@ -170,6 +210,18 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
     setLog((prev) => [withId, ...prev]);
   }, []);
 
+  const setNote = useCallback((techniqueId: string, text: string) => {
+    setNotes((prev) => {
+      if (text.trim() === "") {
+        if (!(techniqueId in prev)) return prev;
+        const next = { ...prev };
+        delete next[techniqueId];
+        return next;
+      }
+      return { ...prev, [techniqueId]: text };
+    });
+  }, []);
+
   const value: AppStateValue = {
     lang,
     setLang: setLangState,
@@ -182,10 +234,15 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
     scrollTarget,
     clearScrollTarget,
     goToSection,
+    expandRequest,
+    clearExpandRequest,
+    goToEntry,
     favorites,
     toggleFavorite,
     log,
     addLogEntry,
+    notes,
+    setNote,
   };
 
   return <AppStateContext.Provider value={value}>{children}</AppStateContext.Provider>;

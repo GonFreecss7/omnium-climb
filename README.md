@@ -86,6 +86,53 @@ automatically). Same offline behavior applies.
 Both rely on the web app manifest (`vite-plugin-pwa`, configured in
 `vite.config.ts`) and the icons in `public/icons/`.
 
+## New features
+
+Eight features added on top of the original build. All are local-only — no
+new network calls, accounts, or sync.
+
+- **Cross-filter (technique ↔ drill).** Expand any technique card and, if
+  drills train it, a "Related drills" chip list appears (and the mirror
+  image on drill rows: "Related techniques"). Tap a chip to jump straight to
+  that entry's card, already expanded, on the other tab. The relation is
+  computed by `npm run parse` from a technique-category → drill-category
+  mapping (`CATEGORY_RELATIONS` in `scripts/parse-guide.ts`) and written into
+  `relatedDrills` / `relatedTechniques` on each JSON entry — never computed
+  at runtime, and the build fails loudly if a category is renamed and the
+  mapping goes stale.
+- **Random technique of the day.** A "Random technique" button at the top of
+  the Techniques tab, visually identical to the existing Random Drill card.
+- **Session history export (JSON/CSV).** Two pills (JSON / CSV) next to the
+  session log's "Export" button pick the format. CSV includes a header row
+  and a UTF-8 BOM so accented Spanish text opens correctly in Excel. The
+  button only appears once at least one session is logged.
+- **Warm-up generator.** A "Warm-up generator" button on the Drills tab opens
+  a modal: pick drill categories (defaults to Footwork / Body-position /
+  Movement — see interpretation notes below), generate one random drill per
+  category, and reroll any single drill without resetting the rest.
+- **Shareable session checklist.** A "Session checklist" button on the
+  Session tab opens a picker over the full technique and drill lists;
+  selected items generate a clean, high-contrast checklist view with a
+  dedicated print stylesheet (strips the header, tab bar, and all buttons)
+  and a Share button (Web Share API where available, clipboard copy
+  otherwise).
+- **Combined-filter search.** Techniques already combined free-text + tag +
+  category filters; Drills now has the same free-text + category filtering
+  (drills have no `tag` field, so no tag chips there). Both views show an
+  explicit "Active filters" strip of removable chips whenever any filter is
+  on, and "Clear filters" restores exactly the default view.
+- **Progressions view.** A fifth tab, "Progression", renders an ordered
+  sequence of stages (`content/25-progressions.md`, parsed like everything
+  else) grouping existing techniques and drills into a suggested learning
+  order. Every chip links to the real technique/drill card — no content is
+  duplicated.
+- **Personal notes per technique.** Inside an expanded technique card, a
+  collapsed "Personal note" toggle reveals a plain-text field (2000-char
+  cap, counter, saved/unsaved indicator). Autosaves on a short debounce and
+  on blur; clearing the text removes the stored entry rather than keeping an
+  empty string. Stored in `localStorage` under `cg.notes`, keyed by
+  technique id.
+
 ## Interpretations and decisions made while building this
 
 - **Section-number registry.** Beyond parsing `content/`, the build assigns
@@ -141,6 +188,46 @@ Both rely on the web app manifest (`vite-plugin-pwa`, configured in
   you already logged, nothing gamified. Grade parsing (`src/utils/
   sessionStats.ts`) reads the leading `V<n>` out of the free-text "hardest"
   field and simply ignores anything it can't parse.
+
+## Interpretation calls made while adding the eight new features
+
+- **Cross-filter relation.** The prompt says "derive from shared tags/
+  category" but techniques and drills don't share a tag or category
+  namespace directly, so I hand-authored a technique-category → drill-
+  category mapping (6 technique categories → the 6 drill categories, several
+  many-to-one) based on actual content overlap — e.g. "Centre-of-Gravity
+  Techniques" maps to "Body-position drills" because drills like *Backstep
+  everything* and *Flag hunt* literally name-check the techniques in that
+  category. It's validated against real parsed category ids every build, so
+  a renamed category fails loudly instead of silently going stale.
+- **Warm-up default category subset.** All 6 drill categories can be picked,
+  but the default selection is the 3 that are physical movement drills
+  (Footwork / Body-position / Movement) rather than all 6 — "Reading &
+  mental drills" and "Partner games" don't fit a solo pre-climb warm-up.
+- **Progressions content.** `content/25-progressions.md` is new authored
+  content: 6 stages, each grouping existing technique/drill ids with a
+  short organisational summary I wrote (not climbing instruction — the
+  instructional text itself still lives only in the technique/drill
+  entries). The sequence follows the guide's own stated priorities
+  (footwork and body position first, grip fundamentals before advanced
+  holds, static movement before dynamic/power work, comp-specialty moves
+  last) rather than inventing a new curriculum.
+- **Progressions surfaced as a 5th tab**, not a toggle inside Techniques,
+  since a stage mixes techniques *and* drills and the flat category view
+  can't represent that. `TabBar`'s items are `flex: 1` with no fixed count
+  baked in, so a 5th tab doesn't touch the safe-area/tab-rendering fixes
+  from earlier work.
+- **Session checklist selection UI** is a plain checkbox list grouped by
+  existing categories (all 81 techniques, all 43 drills) rather than a
+  search-filtered picker — the prompt didn't ask for filtering here, and the
+  existing category grouping already keeps it navigable.
+- **Notes character counter** is always visible (not just "near the limit")
+  — showing it constantly is simpler and no worse for a 2000-char field than
+  showing/hiding it at a threshold; it does switch to the caution color in
+  the last 200 characters.
+- **CSV export** includes an `id` column alongside the session-log fields,
+  for round-trip fidelity with the JSON export; both share the same
+  underlying entries, so the two formats can't drift out of sync.
 
 ## Verified against the acceptance criteria
 

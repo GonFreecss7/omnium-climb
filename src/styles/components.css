@@ -728,3 +728,341 @@ ol.prose-list li {
   color: var(--text-muted);
   word-break: break-word;
 }
+
+/* ---------- secondary button (Warm-up generator, Session checklist) ---------- */
+
+.secondary-button {
+  width: 100%;
+  min-height: 44px;
+  margin-bottom: var(--space-4);
+  border-radius: var(--radius-card);
+  border: 1px solid var(--border-strong);
+  background: transparent;
+  color: var(--text);
+  font-family: var(--font-heading);
+  font-size: 15px;
+  transition: border-color var(--duration) var(--ease), color var(--duration) var(--ease);
+}
+
+.secondary-button:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ---------- cross-filter chips (Related drills / Related techniques) ---------- */
+
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+.related-entries {
+  margin-top: var(--space-1);
+}
+
+.related-entries--drill {
+  padding: 0 var(--space-4) var(--space-3);
+}
+
+.drill-list__header {
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+}
+
+/* ---------- active filters strip ---------- */
+
+.active-filters {
+  margin-top: calc(-1 * var(--space-4));
+  margin-bottom: var(--space-5);
+}
+
+.chip--removable {
+  gap: var(--space-1);
+}
+
+/* ---------- session export format picker ---------- */
+
+.export-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+/* ---------- personal notes (technique cards) ---------- */
+
+.tcard-note {
+  margin-top: var(--space-1);
+}
+
+.tcard-note__toggle {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  min-height: 32px;
+  color: var(--text-muted);
+}
+
+.tcard-note__preview {
+  color: var(--text-muted);
+  font-style: italic;
+  font-size: 13px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tcard-note__body {
+  margin-top: var(--space-2);
+}
+
+.tcard-note__textarea {
+  width: 100%;
+  min-height: 72px;
+  padding: var(--space-2) var(--space-3);
+  background: var(--surface-2);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-card);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 14px;
+  resize: vertical;
+}
+
+.tcard-note__textarea:focus-visible {
+  border-color: var(--accent);
+}
+
+.tcard-note__meta {
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--space-1);
+  color: var(--text-muted);
+}
+
+.tcard-note__counter--warn {
+  color: var(--caution);
+}
+
+/* ---------- modal overlay (Warm-up generator, Session checklist) ---------- */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: color-mix(in srgb, black 55%, transparent);
+  padding: 0;
+}
+
+.modal {
+  width: 100%;
+  max-width: 720px;
+  max-height: min(88vh, 720px);
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card) var(--radius-card) 0 0;
+  overflow: hidden;
+}
+
+@media (min-width: 760px) {
+  .modal-overlay {
+    align-items: center;
+  }
+  .modal {
+    border-radius: var(--radius-card);
+    max-height: min(85vh, 640px);
+  }
+}
+
+.modal__header {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4);
+  border-bottom: 1px solid var(--border);
+}
+
+.modal__title {
+  font-size: 17px;
+}
+
+.modal__close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  font-size: 22px;
+  color: var(--text-muted);
+}
+
+.modal__body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: var(--space-4);
+}
+
+.modal__actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+/* ---------- warm-up generator ---------- */
+
+.warmup__generate {
+  margin: var(--space-3) 0 var(--space-4);
+}
+
+.warmup-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.warmup-list__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  background: var(--surface);
+}
+
+.warmup-list__text {
+  flex: 1;
+  min-width: 0;
+}
+
+.warmup-list__name {
+  font-family: var(--font-heading);
+  margin-top: var(--space-1);
+}
+
+.warmup-list__description {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-top: var(--space-1);
+}
+
+/* ---------- session checklist ---------- */
+
+.checklist-fieldset {
+  border: none;
+  padding: 0;
+  margin: 0 0 var(--space-4);
+}
+
+.checklist-fieldset legend {
+  color: var(--text-muted);
+  margin-bottom: var(--space-2);
+}
+
+.checklist-option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 36px;
+  font-size: 14px;
+}
+
+.checklist-result__date {
+  color: var(--text-muted);
+  margin-bottom: var(--space-3);
+}
+
+.checklist-result__list {
+  margin-bottom: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.checklist-result__footer {
+  color: var(--text-muted);
+  margin-top: var(--space-4);
+}
+
+.checklist-result__copied {
+  color: var(--accent);
+}
+
+/* ---------- progressions view ---------- */
+
+.progression-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.progression-stage {
+  padding: var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  background: var(--surface);
+}
+
+.progression-stage__order {
+  color: var(--accent);
+}
+
+.progression-stage__title {
+  font-size: 17px;
+  margin-top: var(--space-1);
+  margin-bottom: var(--space-2);
+}
+
+.progression-stage__summary {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-bottom: var(--space-2);
+}
+
+/* ---------- print (Session checklist) ---------- */
+
+@media print {
+  .header,
+  .tabbar,
+  .no-print {
+    display: none !important;
+  }
+
+  .app {
+    position: static;
+    height: auto;
+  }
+
+  .app__main {
+    overflow: visible;
+  }
+
+  .modal-overlay {
+    position: static;
+    background: none;
+    padding: 0;
+  }
+
+  .modal {
+    max-width: none;
+    max-height: none;
+    border: none;
+    overflow: visible;
+  }
+
+  .modal__body {
+    overflow: visible;
+  }
+}

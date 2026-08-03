@@ -36,6 +36,8 @@ export interface Technique {
   what: string;
   how: string;
   best: string;
+  /** Drill ids that train this technique, derived at build time from shared category. */
+  relatedDrills: string[];
 }
 
 export interface DrillSection {
@@ -57,6 +59,8 @@ export interface Drill {
   categoryId: string;
   name: string;
   description: string;
+  /** Technique ids this drill trains, derived at build time from shared category. */
+  relatedTechniques: string[];
 }
 
 export interface ReferenceEntry {
@@ -73,6 +77,15 @@ export interface SectionIndexEntry {
   title: string;
   fileId?: string;
   categoryId?: string;
+}
+
+export interface ProgressionStage {
+  id: string;
+  order: number;
+  title: string;
+  summary: string;
+  techniqueIds: string[];
+  drillIds: string[];
 }
 
 export interface Guide {
@@ -92,4 +105,5 @@ export interface Guide {
   drillCategories: DrillCategory[];
   drills: Drill[];
   references: ReferenceEntry[];
+  progressionStages: ProgressionStage[];
 }

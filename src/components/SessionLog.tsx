@@ -1,8 +1,29 @@
 import { useState } from "react";
 import { useAppState } from "../state/AppState";
-import type { ElbowChange } from "../state/AppState";
+import type { ElbowChange, SessionLogEntry } from "../state/AppState";
 import { elbowLabels as getElbowLabels, formatDisplayDate, todayLocalISO } from "../utils/sessionStats";
 import ProgressStats from "./ProgressStats";
+import SessionChecklist from "./SessionChecklist";
+
+type ExportFormat = "json" | "csv";
+
+const CSV_COLUMNS: Array<keyof SessionLogEntry> = ["date", "drill", "hardest", "elbow", "note"];
+
+function csvEscape(value: string): string {
+  if (/[",\n]/.test(value)) return `"${value.replace(/"/g, '""')}"`;
+  return value;
+}
+
+function toCsv(entries: SessionLogEntry[]): string {
+  const header = CSV_COLUMNS.join(",");
+  const rows = entries.map((entry) => CSV_COLUMNS.map((col) => csvEscape(String(entry[col]))).join(","));
+  return [header, ...rows].join("\r\n");
+}
+
+// So spreadsheet apps (Excel in particular) render the ES accented text
+// correctly instead of guessing the wrong codepage. JSON isn't read as
+// delimited text, so it doesn't need one.
+const UTF8_BOM = String.fromCharCode(0xfeff);
 
 export default function SessionLog() {
   const { t, lang, guide, log, addLogEntry } = useAppState();
@@ -12,6 +33,8 @@ export default function SessionLog() {
   const [hardest, setHardest] = useState("");
   const [elbow, setElbow] = useState<ElbowChange>("same");
   const [note, setNote] = useState("");
+  const [exportFormat, setExportFormat] = useState<ExportFormat>("json");
+  const [showChecklist, setShowChecklist] = useState(false);
 
   const canSubmit = date !== "" && drill !== "" && hardest.trim() !== "";
 
@@ -26,11 +49,15 @@ export default function SessionLog() {
   }
 
   function handleExport() {
-    const blob = new Blob([JSON.stringify(log, null, 2)], { type: "application/json" });
+    if (log.length === 0) return;
+    const isJson = exportFormat === "json";
+    const content = isJson ? JSON.stringify(log, null, 2) : UTF8_BOM + toCsv(log);
+    const mime = isJson ? "application/json;charset=utf-8;" : "text/csv;charset=utf-8;";
+    const blob = new Blob([content], { type: mime });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = `climb-guide-session-log-${todayLocalISO()}.json`;
+    a.download = `climb-guide-session-log-${todayLocalISO()}.${exportFormat}`;
     a.click();
     URL.revokeObjectURL(url);
   }
@@ -42,6 +69,11 @@ export default function SessionLog() {
       <h2 className="guide-section__title">{t.sessionLog.heading}</h2>
 
       <ProgressStats />
+
+      <button type="button" className="secondary-button" onClick={() => setShowChecklist(true)}>
+        {t.checklist.openButton}
+      </button>
+      {showChecklist && <SessionChecklist onClose={() => setShowChecklist(false)} />}
 
       <form className="session-log__form" onSubmit={handleSubmit}>
         <label className="session-log__field">
@@ -130,9 +162,29 @@ export default function SessionLog() {
               </li>
             ))}
           </ul>
-          <button type="button" className="filters__clear" onClick={handleExport}>
-            {t.sessionLog.exportButton}
-          </button>
+          <div className="export-row">
+            <div className="header__group" role="group" aria-label={t.sessionLog.exportFormatAriaLabel}>
+              <button
+                type="button"
+                className={`header__pill${exportFormat === "json" ? " header__pill--active" : ""}`}
+                aria-pressed={exportFormat === "json"}
+                onClick={() => setExportFormat("json")}
+              >
+                JSON
+              </button>
+              <button
+                type="button"
+                className={`header__pill${exportFormat === "csv" ? " header__pill--active" : ""}`}
+                aria-pressed={exportFormat === "csv"}
+                onClick={() => setExportFormat("csv")}
+              >
+                CSV
+              </button>
+            </div>
+            <button type="button" className="filters__clear" onClick={handleExport}>
+              {t.sessionLog.exportButton}
+            </button>
+          </div>
         </>
       )}
     </section>

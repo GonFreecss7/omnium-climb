@@ -16,7 +16,7 @@ type Tag = (typeof VALID_TAGS)[number];
 
 const VALID_REF_TYPES = ["book", "video", "article", "channel", "paper"] as const;
 
-type FileType = "prose" | "techniques" | "drills" | "references";
+type FileType = "prose" | "techniques" | "drills" | "references" | "progressions";
 
 interface ManifestFile {
   path: string;
@@ -73,6 +73,8 @@ interface Technique {
   what: string;
   how: string;
   best: string;
+  /** Drill ids that train this technique — derived post-parse from shared category, see computeRelations(). */
+  relatedDrills: string[];
 }
 
 interface DrillSection {
@@ -94,6 +96,8 @@ interface Drill {
   categoryId: string;
   name: string;
   description: string;
+  /** Technique ids this drill trains — derived post-parse from shared category, see computeRelations(). */
+  relatedTechniques: string[];
 }
 
 interface ReferenceEntry {
@@ -110,6 +114,15 @@ interface SectionIndexEntry {
   title: string;
   fileId?: string;
   categoryId?: string;
+}
+
+interface ProgressionStage {
+  id: string;
+  order: number;
+  title: string;
+  summary: string;
+  techniqueIds: string[];
+  drillIds: string[];
 }
 
 interface Guide {
@@ -129,6 +142,7 @@ interface Guide {
   drillCategories: DrillCategory[];
   drills: Drill[];
   references: ReferenceEntry[];
+  progressionStages: ProgressionStage[];
 }
 
 class ParseError extends Error {}
@@ -337,6 +351,7 @@ function parseTechniques(
       what: entry.what!.trim(),
       how: entry.how!.trim(),
       best: entry.best!.trim(),
+      relatedDrills: [],
     };
     techniques.push(technique);
     category!.techniqueIds.push(id);
@@ -511,7 +526,7 @@ function parseDrills(
       const name = drillItem[1]!;
       const id = slugify(name);
       registerId(idRegistry, id, `${context} #### ${category.title} — ${name}`);
-      const drill: Drill = { id, categoryId: category.id, name, description: drillItem[2]!.trim() };
+      const drill: Drill = { id, categoryId: category.id, name, description: drillItem[2]!.trim(), relatedTechniques: [] };
       drills.push(drill);
       category.drillIds.push(id);
       lastDrill = drill;
@@ -574,6 +589,195 @@ function parseDrills(
   }
 
   return { categories, drills, sectionNumber, sectionTitle, sectionIntro };
+}
+
+// ---------- relations (technique <-> drill cross-filter) ----------
+//
+// The relation is derived from a fixed technique-category -> drill-category
+// mapping, not free-form matching, so it's reproducible and reviewable. The
+// mapping is validated against the *actual* parsed category ids every run —
+// a renamed category heading fails the build instead of silently producing
+// an empty or stale relation.
+
+const CATEGORY_RELATIONS: Record<string, string[]> = {
+  "centre-of-gravity-techniques": ["body-position-drills"],
+  "foot-techniques": ["footwork-drills"],
+  "hand-grip-techniques": ["movement-drills"],
+  "positions-hold-orientations": ["body-position-drills"],
+  "movement-techniques": ["movement-drills"],
+  "dynamic-techniques": ["movement-drills"],
+};
+
+function computeRelations(guide: Guide): void {
+  const techniqueCategoryIds = new Set(guide.techniqueCategories.map((c) => c.id));
+  const drillCategoryIds = new Set(guide.drillCategories.map((c) => c.id));
+
+  for (const [techCatId, drillCatIds] of Object.entries(CATEGORY_RELATIONS)) {
+    if (!techniqueCategoryIds.has(techCatId)) {
+      fail(
+        "CATEGORY_RELATIONS (scripts/parse-guide.ts)",
+        `references unknown technique category \`${techCatId}\` — it no longer matches any parsed category id`,
+      );
+    }
+    for (const drillCatId of drillCatIds) {
+      if (!drillCategoryIds.has(drillCatId)) {
+        fail(
+          "CATEGORY_RELATIONS (scripts/parse-guide.ts)",
+          `references unknown drill category \`${drillCatId}\` — it no longer matches any parsed category id`,
+        );
+      }
+    }
+  }
+
+  const techCatToDrillCats = new Map<string, Set<string>>();
+  const drillCatToTechCats = new Map<string, Set<string>>();
+  for (const [techCatId, drillCatIds] of Object.entries(CATEGORY_RELATIONS)) {
+    techCatToDrillCats.set(techCatId, new Set(drillCatIds));
+    for (const drillCatId of drillCatIds) {
+      if (!drillCatToTechCats.has(drillCatId)) drillCatToTechCats.set(drillCatId, new Set());
+      drillCatToTechCats.get(drillCatId)!.add(techCatId);
+    }
+  }
+
+  const drillIdsByCategory = new Map<string, string[]>();
+  for (const drill of guide.drills) {
+    if (!drillIdsByCategory.has(drill.categoryId)) drillIdsByCategory.set(drill.categoryId, []);
+    drillIdsByCategory.get(drill.categoryId)!.push(drill.id);
+  }
+  const techniqueIdsByCategory = new Map<string, string[]>();
+  for (const technique of guide.techniques) {
+    if (!techniqueIdsByCategory.has(technique.categoryId)) techniqueIdsByCategory.set(technique.categoryId, []);
+    techniqueIdsByCategory.get(technique.categoryId)!.push(technique.id);
+  }
+
+  for (const technique of guide.techniques) {
+    const drillCats = techCatToDrillCats.get(technique.categoryId);
+    if (!drillCats) continue;
+    const related: string[] = [];
+    for (const drillCatId of drillCats) {
+      related.push(...(drillIdsByCategory.get(drillCatId) ?? []));
+    }
+    technique.relatedDrills = related;
+  }
+
+  for (const drill of guide.drills) {
+    const techCats = drillCatToTechCats.get(drill.categoryId);
+    if (!techCats) continue;
+    const related: string[] = [];
+    for (const techCatId of techCats) {
+      related.push(...(techniqueIdsByCategory.get(techCatId) ?? []));
+    }
+    drill.relatedTechniques = related;
+  }
+}
+
+// ---------- progressions ----------
+
+function parseProgressions(
+  raw: string,
+  file: ManifestFile,
+  techniqueIds: Set<string>,
+  drillIds: Set<string>,
+  idRegistry: Map<string, string>,
+): ProgressionStage[] {
+  const context = file.path;
+  const body = stripFrontmatter(raw, context);
+  const lines = body.split("\n");
+
+  const stages: ProgressionStage[] = [];
+  const preamble: string[] = [];
+
+  let entry: (Partial<ProgressionStage> & { techniquesRaw?: string; drillsRaw?: string }) | null = null;
+  let entryContext = "";
+
+  const finishEntry = () => {
+    if (!entry) return;
+    const required: Array<"id" | "title" | "summary"> = ["id", "title", "summary"];
+    for (const key of required) {
+      if (!entry[key] || String(entry[key]).trim() === "") {
+        fail(entryContext, `missing required field \`${key}\``);
+      }
+    }
+    const id = entry.id as string;
+    const techniques = (entry.techniquesRaw ?? "")
+      .split(",")
+      .map((s) => s.trim())
+      .filter((s) => s !== "");
+    const drills = (entry.drillsRaw ?? "")
+      .split(",")
+      .map((s) => s.trim())
+      .filter((s) => s !== "");
+
+    if (techniques.length === 0 && drills.length === 0) {
+      fail(entryContext, "stage has no `techniques:` or `drills:` entries — a stage must reference at least one");
+    }
+    for (const tId of techniques) {
+      if (!techniqueIds.has(tId)) {
+        fail(entryContext, `\`techniques:\` references unknown technique id \`${tId}\``);
+      }
+    }
+    for (const dId of drills) {
+      if (!drillIds.has(dId)) {
+        fail(entryContext, `\`drills:\` references unknown drill id \`${dId}\``);
+      }
+    }
+
+    registerId(idRegistry, id, entryContext);
+    stages.push({
+      id,
+      order: stages.length + 1,
+      title: entry.title!.trim(),
+      summary: entry.summary!.trim(),
+      techniqueIds: techniques,
+      drillIds: drills,
+    });
+    entry = null;
+  };
+
+  for (const line of lines) {
+    const entryHeading = line.match(/^#### (.+?)\s*$/);
+    if (entryHeading) {
+      finishEntry();
+      entry = { title: entryHeading[1] };
+      entryContext = `${context} #### ${entryHeading[1]}`;
+      continue;
+    }
+
+    const fieldLine = line.match(/^- ([a-zA-Z]+):\s*(.*)$/);
+    if (fieldLine) {
+      if (!entry) fail(context, `field \`${fieldLine[1]}\` appears outside any stage entry`);
+      const key = fieldLine[1]!.toLowerCase();
+      const value = fieldLine[2]!.trim();
+      if (key === "id") entry.id = value.replace(/`/g, "").trim();
+      else if (key === "techniques") entry.techniquesRaw = value.replace(/`/g, "");
+      else if (key === "drills") entry.drillsRaw = value.replace(/`/g, "");
+      else if (key === "summary") entry.summary = value;
+      else fail(entryContext, `unknown field \`${key}\``);
+      continue;
+    }
+
+    if (HORIZONTAL_RULE.test(line.trim())) {
+      continue;
+    }
+
+    if (line.trim() === "") {
+      continue;
+    }
+
+    if (!entry) {
+      preamble.push(line);
+      continue;
+    }
+
+    fail(entryContext, `unclaimed markdown content not recognised by any parser branch: "${line.trim()}"`);
+  }
+  finishEntry();
+
+  if (preamble.join("\n").trim().length > 0) {
+    fail(context, "content found outside any `####` stage entry — only entries and their fields are supported");
+  }
+
+  return stages;
 }
 
 // ---------- references ----------
@@ -693,6 +897,7 @@ interface EsDict {
   drillSection: { title: string; intro: string };
   drillCategories: Record<string, { title: string; callouts: string[] }>;
   drills: Record<string, { name: string; description: string }>;
+  progressionStages: Record<string, { title: string; summary: string }>;
 }
 
 function checkKeysMatch(enKeys: string[], dictKeys: string[], label: string): void {
@@ -751,6 +956,11 @@ function buildEsGuide(en: Guide, dict: EsDict): Guide {
     Object.keys(dict.drills),
     "drills",
   );
+  checkKeysMatch(
+    en.progressionStages.map((s) => s.id),
+    Object.keys(dict.progressionStages),
+    "progression stages",
+  );
   for (const tag of VALID_TAGS) {
     if (!dict.tagLegend[tag]) {
       fail(ES_DICT_PATH, `tag legend: missing ES translation for tag \`${tag}\``);
@@ -790,6 +1000,11 @@ function buildEsGuide(en: Guide, dict: EsDict): Guide {
   const drills: Drill[] = en.drills.map((d) => {
     const dDict = dict.drills[d.id]!;
     return { ...d, name: dDict.name, description: dDict.description };
+  });
+
+  const progressionStages: ProgressionStage[] = en.progressionStages.map((s) => {
+    const sDict = dict.progressionStages[s.id]!;
+    return { ...s, title: sDict.title, summary: sDict.summary };
   });
 
   if (!en.drillSection) {
@@ -833,6 +1048,7 @@ function buildEsGuide(en: Guide, dict: EsDict): Guide {
     drillCategories,
     drills,
     references: [],
+    progressionStages,
   };
 }
 
@@ -875,6 +1091,7 @@ function main() {
     drillCategories: [],
     drills: [],
     references: [],
+    progressionStages: [],
   };
 
   const skipped: string[] = [];
@@ -931,12 +1148,20 @@ function main() {
         guide.references.push(...parseReferences(raw, file, idRegistry));
         break;
       }
+      case "progressions": {
+        const techniqueIds = new Set(guide.techniques.map((t) => t.id));
+        const drillIds = new Set(guide.drills.map((d) => d.id));
+        guide.progressionStages.push(...parseProgressions(raw, file, techniqueIds, drillIds, idRegistry));
+        break;
+      }
       default: {
         fail(file.path, `unknown file type \`${file.type}\` in manifest`);
       }
     }
     parsed.push(`${file.path} (${file.id})`);
   }
+
+  computeRelations(guide);
 
   const esDict = loadEsDict();
   const guideEs = buildEsGuide(guide, esDict);
@@ -956,6 +1181,7 @@ function main() {
     `  drill callouts: ${guide.drillCategories.reduce((n, c) => n + c.callouts.length, 0)}`,
   );
   console.log(`  references: ${guide.references.length}`);
+  console.log(`  progression stages: ${guide.progressionStages.length}`);
   console.log(`  sections indexed: ${Object.keys(sectionIndex).length}`);
   console.log(`  wrote: ${path.relative(ROOT, OUT_PATH_EN)}`);
   console.log(`  wrote: ${path.relative(ROOT, OUT_PATH_ES)}`);
@@ -978,7 +1204,7 @@ if (isDirectRun) {
   }
 }
 
-export { ParseError, parseProse, parseTechniques, parseDrills, parseReferences, buildEsGuide };
+export { ParseError, parseProse, parseTechniques, parseDrills, parseReferences, parseProgressions, computeRelations, buildEsGuide };
 export type {
   ManifestFile,
   FileType,
@@ -986,6 +1212,7 @@ export type {
   Tag,
   Technique,
   TechniqueCategory,
+  ProgressionStage,
   Drill,
   DrillCategory,
   DrillSection,

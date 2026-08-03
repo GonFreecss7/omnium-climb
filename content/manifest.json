@@ -45,6 +45,16 @@
       "status": "complete"
     },
     {
+      "path": "content/25-progressions.md",
+      "id": "progressions",
+      "title": "Suggested Learning Progression",
+      "part": "III",
+      "type": "progressions",
+      "sections": "",
+      "order": 25,
+      "status": "complete"
+    },
+    {
       "path": "content/30-session.md",
       "id": "session",
       "title": "Session Structure & Tracking",

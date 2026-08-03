@@ -1,7 +1,7 @@
 import { useAppState } from "../state/AppState";
 import type { Tab } from "../state/AppState";
 
-const TABS: Tab[] = ["guide", "techniques", "drills", "session"];
+const TABS: Tab[] = ["guide", "techniques", "drills", "progressions", "session"];
 
 export default function TabBar() {
   const { tab, setTab, t } = useAppState();

@@ -1,5 +1,6 @@
 import { useAppState } from "../state/AppState";
 import type { Technique } from "../data/types";
+import TechniqueNote from "./TechniqueNote";
 
 interface Props {
   technique: Technique;
@@ -8,11 +9,14 @@ interface Props {
 }
 
 export default function TechniqueCard({ technique, expanded, onToggle }: Props) {
-  const { t, lang, guide, favorites, toggleFavorite } = useAppState();
+  const { t, lang, guide, favorites, toggleFavorite, goToEntry } = useAppState();
   const isFavorite = favorites.has(technique.id);
+  const relatedDrills = technique.relatedDrills
+    .map((id) => guide.drills.find((d) => d.id === id))
+    .filter((d): d is NonNullable<typeof d> => d !== undefined);
 
   return (
-    <li className="tcard">
+    <li id={technique.id} className="tcard">
       <div className="tcard__row">
         <button
           type="button"
@@ -61,6 +65,24 @@ export default function TechniqueCard({ technique, expanded, onToggle }: Props) 
           <p>
             <span className="mono-label">{t.technique.bestLabel}</span> {technique.best}
           </p>
+          {relatedDrills.length > 0 && (
+            <div className="related-entries">
+              <span className="mono-label">{t.relations.relatedDrills}</span>
+              <div className="chip-row">
+                {relatedDrills.map((drill) => (
+                  <button
+                    key={drill.id}
+                    type="button"
+                    className="chip chip--filterable"
+                    onClick={() => goToEntry("drill", drill.id)}
+                  >
+                    {drill.name}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+          <TechniqueNote techniqueId={technique.id} />
         </div>
       )}
     </li>

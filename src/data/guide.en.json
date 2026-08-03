@@ -308,7 +308,16 @@
       "gloss": null,
       "what": "One foot on its outside edge with the hip turned into the wall, so your body goes side-on instead of square.",
       "how": "Place the little-toe edge on the hold, turn that hip toward the wall, let the opposite shoulder drop back. Your reaching arm now comes from a turned torso, not a stretch.",
-      "best": "Long reaches, steep walls, and saving your arms. Learn this before anything else on this list."
+      "best": "Long reaches, steep walls, and saving your arms. Learn this before anything else on this list.",
+      "relatedDrills": [
+        "straight-arms-only",
+        "hip-kiss",
+        "flag-hunt",
+        "backstep-everything",
+        "no-barn-door",
+        "one-arm-sections",
+        "one-foot-only"
+      ]
     },
     {
       "id": "drop-knee",
@@ -320,7 +329,16 @@
       "gloss": null,
       "what": "A backstep taken further — the knee rotates downward and you actively press outward through the foot.",
       "how": "From a backstep with feet reasonably wide, rotate the knee down and in, pressing the foot into the hold. The pressure locks you in and pulls your hips to the wall.",
-      "best": "Steep terrain and long reaches. Very hard on the knee joint (meniscus), so use sparingly and never with a violent rotation."
+      "best": "Steep terrain and long reaches. Very hard on the knee joint (meniscus), so use sparingly and never with a violent rotation.",
+      "relatedDrills": [
+        "straight-arms-only",
+        "hip-kiss",
+        "flag-hunt",
+        "backstep-everything",
+        "no-barn-door",
+        "one-arm-sections",
+        "one-foot-only"
+      ]
     },
     {
       "id": "outside-flag",
@@ -332,7 +350,16 @@
       "gloss": null,
       "what": "The free leg extends out to the same side it belongs to, acting as a counterweight.",
       "how": "Standing on one foot, swing the other leg out to its own side and press the toe lightly against the wall. Adjust how far out until the swing stops.",
-      "best": "Stopping barn-doors when the free foot has nothing to stand on. The simplest flag — start here."
+      "best": "Stopping barn-doors when the free foot has nothing to stand on. The simplest flag — start here.",
+      "relatedDrills": [
+        "straight-arms-only",
+        "hip-kiss",
+        "flag-hunt",
+        "backstep-everything",
+        "no-barn-door",
+        "one-arm-sections",
+        "one-foot-only"
+      ]
     },
     {
       "id": "back-flag",
@@ -344,7 +371,16 @@
       "gloss": null,
       "what": "The free leg crosses behind the standing leg and presses the wall.",
       "how": "Standing on the left foot, sweep the right leg behind the left and smear the toe on the wall to the left. Your hips turn side-on automatically.",
-      "best": "The most useful flag in the gym. Fixes rotation on side-pulls and lets you reach far with one arm."
+      "best": "The most useful flag in the gym. Fixes rotation on side-pulls and lets you reach far with one arm.",
+      "relatedDrills": [
+        "straight-arms-only",
+        "hip-kiss",
+        "flag-hunt",
+        "backstep-everything",
+        "no-barn-door",
+        "one-arm-sections",
+        "one-foot-only"
+      ]
     },
     {
       "id": "inside-flag",
@@ -356,7 +392,16 @@
       "gloss": null,
       "what": "The free leg crosses in front of the standing leg.",
       "how": "Standing on one foot, bring the other leg across the front and press the toe on the wall or a foothold on the far side.",
-      "best": "Tight, balancy positions where there's no room to swing the leg behind. Less common than the back flag."
+      "best": "Tight, balancy positions where there's no room to swing the leg behind. Less common than the back flag.",
+      "relatedDrills": [
+        "straight-arms-only",
+        "hip-kiss",
+        "flag-hunt",
+        "backstep-everything",
+        "no-barn-door",
+        "one-arm-sections",
+        "one-foot-only"
+      ]
     },
     {
       "id": "arm-flag",
@@ -368,7 +413,16 @@
       "gloss": null,
       "what": "The same counterweight idea, but with a free arm instead of a leg.",
       "how": "Extend the non-holding arm out and away from the wall to shift your mass sideways. Sometimes you just push the wall lightly with the palm.",
-      "best": "Slab, delicate balance, and moments where both feet are already committed."
+      "best": "Slab, delicate balance, and moments where both feet are already committed.",
+      "relatedDrills": [
+        "straight-arms-only",
+        "hip-kiss",
+        "flag-hunt",
+        "backstep-everything",
+        "no-barn-door",
+        "one-arm-sections",
+        "one-foot-only"
+      ]
     },
     {
       "id": "perching",
@@ -380,7 +434,16 @@
       "gloss": null,
       "what": "Standing tall and balanced directly over one high foot, hips stacked above the toe, arms barely loaded.",
       "how": "Get the foot high, shift your hips forward and up over it, then stand up through the leg. Resist pulling with the arms — they're only for balance.",
-      "best": "Slab, vertical walls, volumes, and rests. The cheapest way to gain height that exists."
+      "best": "Slab, vertical walls, volumes, and rests. The cheapest way to gain height that exists.",
+      "relatedDrills": [
+        "straight-arms-only",
+        "hip-kiss",
+        "flag-hunt",
+        "backstep-everything",
+        "no-barn-door",
+        "one-arm-sections",
+        "one-foot-only"
+      ]
     },
     {
       "id": "frogging",
@@ -392,7 +455,16 @@
       "gloss": null,
       "what": "Both knees turned out and dropped wide, hips pressed close to the wall.",
       "how": "Turn both feet outward on their inside edges, let the knees splay, and push the pelvis into the wall.",
-      "best": "Bringing hips close on vertical and slightly overhanging walls, and for resting. Also a good hip-mobility indicator."
+      "best": "Bringing hips close on vertical and slightly overhanging walls, and for resting. Also a good hip-mobility indicator.",
+      "relatedDrills": [
+        "straight-arms-only",
+        "hip-kiss",
+        "flag-hunt",
+        "backstep-everything",
+        "no-barn-door",
+        "one-arm-sections",
+        "one-foot-only"
+      ]
     },
     {
       "id": "inside-figure-4",
@@ -404,7 +476,16 @@
       "gloss": null,
       "what": "You hook a leg over your own arm, on the inside, and sit on it to gain height without footholds.",
       "how": "Hang from one arm, bring the leg on the same side over that forearm, then press down through the leg to push your body up.",
-      "best": "Overhangs with no feet — mostly a comp and steep-cave move. High elbow and shoulder load; not a beginner move."
+      "best": "Overhangs with no feet — mostly a comp and steep-cave move. High elbow and shoulder load; not a beginner move.",
+      "relatedDrills": [
+        "straight-arms-only",
+        "hip-kiss",
+        "flag-hunt",
+        "backstep-everything",
+        "no-barn-door",
+        "one-arm-sections",
+        "one-foot-only"
+      ]
     },
     {
       "id": "outside-figure-4",
@@ -416,7 +497,16 @@
       "gloss": null,
       "what": "Same idea, but the leg hooks over the arm from the outside.",
       "how": "Hang from one arm, swing the opposite leg over that arm from outside, and press up.",
-      "best": "Rare, awkward, high-injury-risk. Filed under 'know the name, don't practise it'."
+      "best": "Rare, awkward, high-injury-risk. Filed under 'know the name, don't practise it'.",
+      "relatedDrills": [
+        "straight-arms-only",
+        "hip-kiss",
+        "flag-hunt",
+        "backstep-everything",
+        "no-barn-door",
+        "one-arm-sections",
+        "one-foot-only"
+      ]
     },
     {
       "id": "the-janja",
@@ -428,7 +518,16 @@
       "gloss": null,
       "what": "Gym slang for the extreme hip-close, deep-turn body position associated with Janja Garnbret's style — usually a very compressed drop-knee-like position where the hips stay glued to the wall through a long move.",
       "how": "Essentially a maximal version of the backstep/drop knee with a lot of hip flexibility and core tension.",
-      "best": "Nothing you need yet. The name isn't standardised — check how your gym uses it, because different walls use it for different moves."
+      "best": "Nothing you need yet. The name isn't standardised — check how your gym uses it, because different walls use it for different moves.",
+      "relatedDrills": [
+        "straight-arms-only",
+        "hip-kiss",
+        "flag-hunt",
+        "backstep-everything",
+        "no-barn-door",
+        "one-arm-sections",
+        "one-foot-only"
+      ]
     },
     {
       "id": "peter-pan",
@@ -440,7 +539,16 @@
       "gloss": null,
       "what": "A dynamic move where you launch into a fully extended, briefly airborne position — arms and legs stretched out — before catching the target hold.",
       "how": "Generate from the legs, extend the whole body in flight, and catch the hold at full stretch.",
-      "best": "Steep, powerful comp-style problems. Name varies by gym; high impact, so not a beginner priority."
+      "best": "Steep, powerful comp-style problems. Name varies by gym; high impact, so not a beginner priority.",
+      "relatedDrills": [
+        "straight-arms-only",
+        "hip-kiss",
+        "flag-hunt",
+        "backstep-everything",
+        "no-barn-door",
+        "one-arm-sections",
+        "one-foot-only"
+      ]
     },
     {
       "id": "inside-edge",
@@ -452,7 +560,18 @@
       "gloss": null,
       "what": "Standing on the big-toe side of the shoe.",
       "how": "Place the front-inside point of the shoe on the hold and drop the heel. Keeps you square to the wall.",
-      "best": "Frontal climbing, slab, and any move where you want stability over reach."
+      "best": "Frontal climbing, slab, and any move where you want stability over reach.",
+      "relatedDrills": [
+        "silent-feet",
+        "glue-feet",
+        "sniper",
+        "outside-edge-only",
+        "feet-eliminated",
+        "smear-only",
+        "foot-swap",
+        "big-foot",
+        "toe-drag"
+      ]
     },
     {
       "id": "outside-edge",
@@ -464,7 +583,18 @@
       "gloss": null,
       "what": "Standing on the little-toe side of the shoe.",
       "how": "Roll onto the outer front point and turn the hip in. This is what makes a backstep possible.",
-      "best": "Side-on positions, long reaches, and steep walls."
+      "best": "Side-on positions, long reaches, and steep walls.",
+      "relatedDrills": [
+        "silent-feet",
+        "glue-feet",
+        "sniper",
+        "outside-edge-only",
+        "feet-eliminated",
+        "smear-only",
+        "foot-swap",
+        "big-foot",
+        "toe-drag"
+      ]
     },
     {
       "id": "smear",
@@ -476,7 +606,18 @@
       "gloss": null,
       "what": "Using friction against the flat wall or a sloping surface with no defined hold.",
       "how": "Press the ball of the foot flat against the wall, keep the heel low, and push through it. Trust it — hesitation reduces surface contact.",
-      "best": "Slab, volumes, and filling gaps where footholds don't exist."
+      "best": "Slab, volumes, and filling gaps where footholds don't exist.",
+      "relatedDrills": [
+        "silent-feet",
+        "glue-feet",
+        "sniper",
+        "outside-edge-only",
+        "feet-eliminated",
+        "smear-only",
+        "foot-swap",
+        "big-foot",
+        "toe-drag"
+      ]
     },
     {
       "id": "alpine-knee",
@@ -488,7 +629,18 @@
       "gloss": null,
       "what": "Putting the knee directly on a hold or ledge instead of the foot.",
       "how": "Kneel onto the hold to gain height, then bring the foot up.",
-      "best": "Occasionally the only option outdoors or on a mantle. Frowned upon in the gym, it strips skin, and it puts your kneecap on a hard edge. Learn the rock-over instead."
+      "best": "Occasionally the only option outdoors or on a mantle. Frowned upon in the gym, it strips skin, and it puts your kneecap on a hard edge. Learn the rock-over instead.",
+      "relatedDrills": [
+        "silent-feet",
+        "glue-feet",
+        "sniper",
+        "outside-edge-only",
+        "feet-eliminated",
+        "smear-only",
+        "foot-swap",
+        "big-foot",
+        "toe-drag"
+      ]
     },
     {
       "id": "heel-hook",
@@ -500,7 +652,18 @@
       "gloss": null,
       "what": "Placing the heel on a hold and pulling with the hamstring, effectively using the leg as a third arm.",
       "how": "Set the heel on the hold, point the toe slightly outward, then actively pull — think of dragging the hold toward your hips. Keep tension; a loose heel slips.",
-      "best": "Steep ground, topping out, and taking weight off the arms. Warm your hamstrings up first — cold heel hooks strain them."
+      "best": "Steep ground, topping out, and taking weight off the arms. Warm your hamstrings up first — cold heel hooks strain them.",
+      "relatedDrills": [
+        "silent-feet",
+        "glue-feet",
+        "sniper",
+        "outside-edge-only",
+        "feet-eliminated",
+        "smear-only",
+        "foot-swap",
+        "big-foot",
+        "toe-drag"
+      ]
     },
     {
       "id": "toe-hook",
@@ -512,7 +675,18 @@
       "gloss": null,
       "what": "Hooking the top of the foot under or against a hold to stop your body swinging out.",
       "how": "Press the top of the toes against the underside or far side of a hold and pull with the shin and hamstring.",
-      "best": "Roofs, steep compression, and stopping a cut-loose from swinging you off."
+      "best": "Roofs, steep compression, and stopping a cut-loose from swinging you off.",
+      "relatedDrills": [
+        "silent-feet",
+        "glue-feet",
+        "sniper",
+        "outside-edge-only",
+        "feet-eliminated",
+        "smear-only",
+        "foot-swap",
+        "big-foot",
+        "toe-drag"
+      ]
     },
     {
       "id": "bat-hang",
@@ -524,7 +698,18 @@
       "gloss": null,
       "what": "Hanging upside down from both feet, hands free.",
       "how": "Hook both toes over a solid feature (usually a roof lip or big volume) and let go with the hands.",
-      "best": "Roof problems and comp gimmicks. Fun, but a bad fall position — only with pads and supervision."
+      "best": "Roof problems and comp gimmicks. Fun, but a bad fall position — only with pads and supervision.",
+      "relatedDrills": [
+        "silent-feet",
+        "glue-feet",
+        "sniper",
+        "outside-edge-only",
+        "feet-eliminated",
+        "smear-only",
+        "foot-swap",
+        "big-foot",
+        "toe-drag"
+      ]
     },
     {
       "id": "bicycle",
@@ -536,7 +721,18 @@
       "gloss": null,
       "what": "One foot pushes on a hold while the other toe-hooks the opposite side of the same hold — the two feet squeeze it.",
       "how": "Press with one toe, hook with the other, and clamp. The hold is now held between your feet.",
-      "best": "Steep terrain and roofs where you need your feet to stay on while your hands move."
+      "best": "Steep terrain and roofs where you need your feet to stay on while your hands move.",
+      "relatedDrills": [
+        "silent-feet",
+        "glue-feet",
+        "sniper",
+        "outside-edge-only",
+        "feet-eliminated",
+        "smear-only",
+        "foot-swap",
+        "big-foot",
+        "toe-drag"
+      ]
     },
     {
       "id": "heel-toe-cam",
@@ -548,7 +744,18 @@
       "gloss": null,
       "what": "Wedging the foot between two surfaces, heel on one and toe on the other, so the foot locks in place.",
       "how": "Find a slot, corner, or gap between volumes; set the heel on one side and jam the toes against the other until it's snug.",
-      "best": "No-hands rests, roofs, and holding position while you shake out. Powerful, and it can trap your ankle — be able to release it."
+      "best": "No-hands rests, roofs, and holding position while you shake out. Powerful, and it can trap your ankle — be able to release it.",
+      "relatedDrills": [
+        "silent-feet",
+        "glue-feet",
+        "sniper",
+        "outside-edge-only",
+        "feet-eliminated",
+        "smear-only",
+        "foot-swap",
+        "big-foot",
+        "toe-drag"
+      ]
     },
     {
       "id": "frog-pinch",
@@ -560,7 +767,18 @@
       "gloss": null,
       "what": "Squeezing a volume or large feature between both feet, knees splayed like a frog.",
       "how": "Place both feet on either side of the feature and press inward with the legs.",
-      "best": "Comp-style volume climbing. Name varies by gym."
+      "best": "Comp-style volume climbing. Name varies by gym.",
+      "relatedDrills": [
+        "silent-feet",
+        "glue-feet",
+        "sniper",
+        "outside-edge-only",
+        "feet-eliminated",
+        "smear-only",
+        "foot-swap",
+        "big-foot",
+        "toe-drag"
+      ]
     },
     {
       "id": "knee-bar",
@@ -572,7 +790,18 @@
       "gloss": null,
       "what": "Wedging the leg between two surfaces — knee/thigh pressing one, foot pressing the other — so the leg locks solid.",
       "how": "Slot the foot on one hold, then drive the top of the knee or thigh against the opposing surface until the pressure holds you.",
-      "best": "The best rest in climbing when you find one. Often lets you take both hands off. Worth actively hunting for on roofs."
+      "best": "The best rest in climbing when you find one. Often lets you take both hands off. Worth actively hunting for on roofs.",
+      "relatedDrills": [
+        "silent-feet",
+        "glue-feet",
+        "sniper",
+        "outside-edge-only",
+        "feet-eliminated",
+        "smear-only",
+        "foot-swap",
+        "big-foot",
+        "toe-drag"
+      ]
     },
     {
       "id": "open-hand-three-finger-drag",
@@ -584,7 +813,18 @@
       "gloss": null,
       "what": "Fingers almost straight, hanging from the last two joints, thumb not involved. Usually index, middle and ring on the hold.",
       "how": "Drape the fingers over the hold and let them extend. It should feel like hanging, not gripping.",
-      "best": "The safest and most sustainable grip. Best on slopers, big edges and jugs, and the sensible default for anyone with irritable fingers or elbows."
+      "best": "The safest and most sustainable grip. Best on slopers, big edges and jugs, and the sensible default for anyone with irritable fingers or elbows.",
+      "relatedDrills": [
+        "slow-motion",
+        "hover",
+        "one-touch",
+        "continuous-flow",
+        "static-then-dynamic",
+        "downclimb-everything",
+        "deadpoint-practice",
+        "quiet-hands",
+        "grip-awareness"
+      ]
     },
     {
       "id": "open-crimp",
@@ -596,7 +836,18 @@
       "gloss": null,
       "what": "A slightly closed open hand — fingers curved but the last joint isn't hyperextended.",
       "how": "Curl the fingers gently onto the edge without engaging the thumb.",
-      "best": "General-purpose grip on small edges. A good middle ground between drag and half crimp."
+      "best": "General-purpose grip on small edges. A good middle ground between drag and half crimp.",
+      "relatedDrills": [
+        "slow-motion",
+        "hover",
+        "one-touch",
+        "continuous-flow",
+        "static-then-dynamic",
+        "downclimb-everything",
+        "deadpoint-practice",
+        "quiet-hands",
+        "grip-awareness"
+      ]
     },
     {
       "id": "half-crimp",
@@ -608,7 +859,18 @@
       "gloss": null,
       "what": "Middle knuckles bent to roughly 90 degrees, fingertip joint flat, thumb off.",
       "how": "Set the fingers on the edge, bend the big knuckles to a right angle, and keep the fingertips flat rather than curling.",
-      "best": "The most trainable and transferable grip position. This should be your main strength position long-term."
+      "best": "The most trainable and transferable grip position. This should be your main strength position long-term.",
+      "relatedDrills": [
+        "slow-motion",
+        "hover",
+        "one-touch",
+        "continuous-flow",
+        "static-then-dynamic",
+        "downclimb-everything",
+        "deadpoint-practice",
+        "quiet-hands",
+        "grip-awareness"
+      ]
     },
     {
       "id": "quarter-crimp",
@@ -620,7 +882,18 @@
       "gloss": null,
       "what": "Between drag and half crimp — big knuckles bent slightly, fingertip joints still flat.",
       "how": "Half crimp shape with less bend at the knuckle.",
-      "best": "Small, positive edges where full half-crimp feels cramped. Common in modern finger training."
+      "best": "Small, positive edges where full half-crimp feels cramped. Common in modern finger training.",
+      "relatedDrills": [
+        "slow-motion",
+        "hover",
+        "one-touch",
+        "continuous-flow",
+        "static-then-dynamic",
+        "downclimb-everything",
+        "deadpoint-practice",
+        "quiet-hands",
+        "grip-awareness"
+      ]
     },
     {
       "id": "closed-crimp-full-crimp",
@@ -632,7 +905,18 @@
       "gloss": null,
       "what": "Fingertip joints hyperextended and the thumb wrapped over the index finger. 'Closed crimp' and 'full crimp' are used interchangeably by most climbers.",
       "how": "Curl the fingers hard onto a small edge, then lock the thumb over the index fingernail.",
-      "best": "Maximum force on tiny edges, and maximum stress on the A2 pulley and the medial elbow. The most common source of pulley injuries — introduce it late, and use it sparingly."
+      "best": "Maximum force on tiny edges, and maximum stress on the A2 pulley and the medial elbow. The most common source of pulley injuries — introduce it late, and use it sparingly.",
+      "relatedDrills": [
+        "slow-motion",
+        "hover",
+        "one-touch",
+        "continuous-flow",
+        "static-then-dynamic",
+        "downclimb-everything",
+        "deadpoint-practice",
+        "quiet-hands",
+        "grip-awareness"
+      ]
     },
     {
       "id": "two-finger-pocket",
@@ -644,7 +928,18 @@
       "gloss": null,
       "what": "Only two fingers fit the hold.",
       "how": "Usually middle + ring (strongest pairing) or index + middle. Keep the wrist neutral and don't twist.",
-      "best": "Pocketed holds. Load builds fast on a small area — introduce gradually."
+      "best": "Pocketed holds. Load builds fast on a small area — introduce gradually.",
+      "relatedDrills": [
+        "slow-motion",
+        "hover",
+        "one-touch",
+        "continuous-flow",
+        "static-then-dynamic",
+        "downclimb-everything",
+        "deadpoint-practice",
+        "quiet-hands",
+        "grip-awareness"
+      ]
     },
     {
       "id": "front-three",
@@ -656,7 +951,18 @@
       "gloss": null,
       "what": "Index, middle and ring fingers on the hold; pinky off.",
       "how": "The natural three-finger position for most people.",
-      "best": "Medium pockets and edges too small for four fingers."
+      "best": "Medium pockets and edges too small for four fingers.",
+      "relatedDrills": [
+        "slow-motion",
+        "hover",
+        "one-touch",
+        "continuous-flow",
+        "static-then-dynamic",
+        "downclimb-everything",
+        "deadpoint-practice",
+        "quiet-hands",
+        "grip-awareness"
+      ]
     },
     {
       "id": "back-three",
@@ -668,7 +974,18 @@
       "gloss": null,
       "what": "Middle, ring and pinky on the hold; index off.",
       "how": "Slide the index off the edge and load the outer three.",
-      "best": "Awkward hold orientations and, for some people, a stronger position than front three. Worth testing which of the two is stronger."
+      "best": "Awkward hold orientations and, for some people, a stronger position than front three. Worth testing which of the two is stronger.",
+      "relatedDrills": [
+        "slow-motion",
+        "hover",
+        "one-touch",
+        "continuous-flow",
+        "static-then-dynamic",
+        "downclimb-everything",
+        "deadpoint-practice",
+        "quiet-hands",
+        "grip-awareness"
+      ]
     },
     {
       "id": "mono",
@@ -680,7 +997,18 @@
       "gloss": null,
       "what": "A single finger in a pocket.",
       "how": "Usually the middle finger. Keep the arm aligned under the pocket and avoid any twisting load.",
-      "best": "Rare in gyms, brutal on tendons. Not something a beginner should seek out."
+      "best": "Rare in gyms, brutal on tendons. Not something a beginner should seek out.",
+      "relatedDrills": [
+        "slow-motion",
+        "hover",
+        "one-touch",
+        "continuous-flow",
+        "static-then-dynamic",
+        "downclimb-everything",
+        "deadpoint-practice",
+        "quiet-hands",
+        "grip-awareness"
+      ]
     },
     {
       "id": "closed-mono",
@@ -692,7 +1020,18 @@
       "gloss": null,
       "what": "A mono with the thumb locked over the finger for extra force.",
       "how": "As above, with the thumb wrapping the finger.",
-      "best": "Very high injury risk for very little gain below advanced grades. Know the name; skip the practice."
+      "best": "Very high injury risk for very little gain below advanced grades. Know the name; skip the practice.",
+      "relatedDrills": [
+        "slow-motion",
+        "hover",
+        "one-touch",
+        "continuous-flow",
+        "static-then-dynamic",
+        "downclimb-everything",
+        "deadpoint-practice",
+        "quiet-hands",
+        "grip-awareness"
+      ]
     },
     {
       "id": "stacked-fingers",
@@ -704,7 +1043,18 @@
       "gloss": null,
       "what": "Stacking one finger on top of another in a pocket too small for two side by side.",
       "how": "Place the middle finger in the pocket, then rest the index on top of it to add force.",
-      "best": "Small pockets, mostly outdoors. Uncommon in gyms."
+      "best": "Small pockets, mostly outdoors. Uncommon in gyms.",
+      "relatedDrills": [
+        "slow-motion",
+        "hover",
+        "one-touch",
+        "continuous-flow",
+        "static-then-dynamic",
+        "downclimb-everything",
+        "deadpoint-practice",
+        "quiet-hands",
+        "grip-awareness"
+      ]
     },
     {
       "id": "pinch",
@@ -716,7 +1066,18 @@
       "gloss": null,
       "what": "Squeezing a hold between the fingers and the thumb.",
       "how": "Set the fingers on one side, thumb on the other, and squeeze. Keep the wrist stiff so the force goes into the hold.",
-      "best": "Very common in modern setting. Trains thumb strength and is relatively kind to the fingers."
+      "best": "Very common in modern setting. Trains thumb strength and is relatively kind to the fingers.",
+      "relatedDrills": [
+        "slow-motion",
+        "hover",
+        "one-touch",
+        "continuous-flow",
+        "static-then-dynamic",
+        "downclimb-everything",
+        "deadpoint-practice",
+        "quiet-hands",
+        "grip-awareness"
+      ]
     },
     {
       "id": "thumbercling-thumb-catch",
@@ -728,7 +1089,18 @@
       "gloss": null,
       "what": "Using the thumb on the underside or edge of a hold to add direction or stability.",
       "how": "Hook the thumb pad under a lip or against a corner of the hold while the fingers work from above.",
-      "best": "Slopers and volumes where the thumb turns a bad hold into a usable one."
+      "best": "Slopers and volumes where the thumb turns a bad hold into a usable one.",
+      "relatedDrills": [
+        "slow-motion",
+        "hover",
+        "one-touch",
+        "continuous-flow",
+        "static-then-dynamic",
+        "downclimb-everything",
+        "deadpoint-practice",
+        "quiet-hands",
+        "grip-awareness"
+      ]
     },
     {
       "id": "palm-down-palming",
@@ -740,7 +1112,18 @@
       "gloss": null,
       "what": "Pressing with the flat of the palm rather than gripping anything.",
       "how": "Place the palm flat on a volume or the wall and push downward or outward.",
-      "best": "Slab, mantles, stemming and rests. Zero finger load, so it is always worth looking for."
+      "best": "Slab, mantles, stemming and rests. Zero finger load, so it is always worth looking for.",
+      "relatedDrills": [
+        "slow-motion",
+        "hover",
+        "one-touch",
+        "continuous-flow",
+        "static-then-dynamic",
+        "downclimb-everything",
+        "deadpoint-practice",
+        "quiet-hands",
+        "grip-awareness"
+      ]
     },
     {
       "id": "meat-hook",
@@ -752,7 +1135,18 @@
       "gloss": null,
       "what": "Using the fleshy edge of the hand, wrist or forearm hooked over a feature instead of a normal grip.",
       "how": "Drape the side of the hand or forearm over the hold and pull with the arm rather than the fingers.",
-      "best": "Big volumes and rounded features. Name varies by gym."
+      "best": "Big volumes and rounded features. Name varies by gym.",
+      "relatedDrills": [
+        "slow-motion",
+        "hover",
+        "one-touch",
+        "continuous-flow",
+        "static-then-dynamic",
+        "downclimb-everything",
+        "deadpoint-practice",
+        "quiet-hands",
+        "grip-awareness"
+      ]
     },
     {
       "id": "side-pull",
@@ -764,7 +1158,16 @@
       "gloss": null,
       "what": "A vertically-oriented hold pulled sideways, toward your midline.",
       "how": "Lean your body away from the hold so your weight opposes it, and keep the arm relatively straight.",
-      "best": "Extremely common. The key insight: a side pull only works if your body counterbalances it."
+      "best": "Extremely common. The key insight: a side pull only works if your body counterbalances it.",
+      "relatedDrills": [
+        "straight-arms-only",
+        "hip-kiss",
+        "flag-hunt",
+        "backstep-everything",
+        "no-barn-door",
+        "one-arm-sections",
+        "one-foot-only"
+      ]
     },
     {
       "id": "lay-back",
@@ -776,7 +1179,16 @@
       "gloss": null,
       "what": "Pulling on a side pull or edge while pushing with the feet in the opposite direction, body leaning off to the side.",
       "how": "Hands pull one way, feet press the other, and the opposition holds you on. Keep arms straight and walk the feet up.",
-      "best": "Aretes, corners, and flakes. Efficient when done with straight arms; exhausting when done with bent ones."
+      "best": "Aretes, corners, and flakes. Efficient when done with straight arms; exhausting when done with bent ones.",
+      "relatedDrills": [
+        "straight-arms-only",
+        "hip-kiss",
+        "flag-hunt",
+        "backstep-everything",
+        "no-barn-door",
+        "one-arm-sections",
+        "one-foot-only"
+      ]
     },
     {
       "id": "gaston",
@@ -788,7 +1200,16 @@
       "gloss": null,
       "what": "A side pull pulled outward, away from your midline, thumb down and elbow out — like prying open a lift door.",
       "how": "Thumb pointing down, elbow high and out, and push/pull outward while your feet push you into the wall.",
-      "best": "When the hold faces the wrong way. Shoulder-intensive — keep the elbow from flaring beyond comfort."
+      "best": "When the hold faces the wrong way. Shoulder-intensive — keep the elbow from flaring beyond comfort.",
+      "relatedDrills": [
+        "straight-arms-only",
+        "hip-kiss",
+        "flag-hunt",
+        "backstep-everything",
+        "no-barn-door",
+        "one-arm-sections",
+        "one-foot-only"
+      ]
     },
     {
       "id": "elevator-door",
@@ -800,7 +1221,16 @@
       "gloss": null,
       "what": "Two opposing gastons at the same time — both hands pressing outward, like forcing lift doors apart.",
       "how": "One hand on each hold, elbows out, press outward on both simultaneously and keep body tension.",
-      "best": "Symmetrical comp-style sequences. Heavy on the shoulders."
+      "best": "Symmetrical comp-style sequences. Heavy on the shoulders.",
+      "relatedDrills": [
+        "straight-arms-only",
+        "hip-kiss",
+        "flag-hunt",
+        "backstep-everything",
+        "no-barn-door",
+        "one-arm-sections",
+        "one-foot-only"
+      ]
     },
     {
       "id": "undercling",
@@ -812,7 +1242,16 @@
       "gloss": null,
       "what": "A hold gripped from underneath, palm facing up.",
       "how": "Get your feet high so your hips rise above the hold — an undercling only becomes useful once you're above it. Pull up and in.",
-      "best": "Under roofs and flakes. High feet are the whole trick."
+      "best": "Under roofs and flakes. High feet are the whole trick.",
+      "relatedDrills": [
+        "straight-arms-only",
+        "hip-kiss",
+        "flag-hunt",
+        "backstep-everything",
+        "no-barn-door",
+        "one-arm-sections",
+        "one-foot-only"
+      ]
     },
     {
       "id": "compression",
@@ -824,7 +1263,16 @@
       "gloss": null,
       "what": "Squeezing two opposing holds or features toward each other to stay on.",
       "how": "Hands (and often feet) press inward from both sides. Body tension holds the whole thing together.",
-      "best": "Volumes, aretes and prows. Very common in modern setting."
+      "best": "Volumes, aretes and prows. Very common in modern setting.",
+      "relatedDrills": [
+        "straight-arms-only",
+        "hip-kiss",
+        "flag-hunt",
+        "backstep-everything",
+        "no-barn-door",
+        "one-arm-sections",
+        "one-foot-only"
+      ]
     },
     {
       "id": "inverted",
@@ -836,7 +1284,16 @@
       "gloss": null,
       "what": "Any position where your hips are above your shoulders — upside down or nearly so.",
       "how": "Usually reached via a toe hook or bat hang, with heavy core engagement.",
-      "best": "Roofs. Disorienting, so learn it low with pads."
+      "best": "Roofs. Disorienting, so learn it low with pads.",
+      "relatedDrills": [
+        "straight-arms-only",
+        "hip-kiss",
+        "flag-hunt",
+        "backstep-everything",
+        "no-barn-door",
+        "one-arm-sections",
+        "one-foot-only"
+      ]
     },
     {
       "id": "outward-facing",
@@ -848,7 +1305,16 @@
       "gloss": null,
       "what": "Climbing with your back or side to the wall rather than your chest.",
       "how": "Turn out and use the wall behind you for pressure, often with a heel hook or stem.",
-      "best": "Corners, chimneys, and awkward comp volumes."
+      "best": "Corners, chimneys, and awkward comp volumes.",
+      "relatedDrills": [
+        "straight-arms-only",
+        "hip-kiss",
+        "flag-hunt",
+        "backstep-everything",
+        "no-barn-door",
+        "one-arm-sections",
+        "one-foot-only"
+      ]
     },
     {
       "id": "gastondercling",
@@ -860,7 +1326,16 @@
       "gloss": null,
       "what": "A hybrid where a hold is used as a gaston and an undercling at once — elbow out, palm rotated up.",
       "how": "Thumb-down gaston grip while the pull direction is upward from underneath.",
-      "best": "Awkward hold orientations. Slang, and not universal."
+      "best": "Awkward hold orientations. Slang, and not universal.",
+      "relatedDrills": [
+        "straight-arms-only",
+        "hip-kiss",
+        "flag-hunt",
+        "backstep-everything",
+        "no-barn-door",
+        "one-arm-sections",
+        "one-foot-only"
+      ]
     },
     {
       "id": "lock-off",
@@ -872,7 +1347,16 @@
       "gloss": null,
       "what": "Holding a static bent-arm position so the other hand can reach.",
       "how": "Pull the hold to chest or shoulder height, engage the shoulder, and hold still while the other arm moves.",
-      "best": "Precise reaches to bad holds. Note: this is the single most elbow-loading position in climbing — prefer deadpointing when elbows are irritable."
+      "best": "Precise reaches to bad holds. Note: this is the single most elbow-loading position in climbing — prefer deadpointing when elbows are irritable.",
+      "relatedDrills": [
+        "straight-arms-only",
+        "hip-kiss",
+        "flag-hunt",
+        "backstep-everything",
+        "no-barn-door",
+        "one-arm-sections",
+        "one-foot-only"
+      ]
     },
     {
       "id": "stemming-bridging",
@@ -884,7 +1368,16 @@
       "gloss": null,
       "what": "Pressing outward with both feet (and sometimes hands) against two opposing surfaces.",
       "how": "Feet wide on either side of a corner or between two volumes, push outward, and stand tall.",
-      "best": "Corners and dihedrals. Often a full no-hands rest — worth spotting."
+      "best": "Corners and dihedrals. Often a full no-hands rest — worth spotting.",
+      "relatedDrills": [
+        "straight-arms-only",
+        "hip-kiss",
+        "flag-hunt",
+        "backstep-everything",
+        "no-barn-door",
+        "one-arm-sections",
+        "one-foot-only"
+      ]
     },
     {
       "id": "the-chin",
@@ -896,7 +1389,16 @@
       "gloss": null,
       "what": "Using the chin, head or shoulder to press against a hold or volume for a moment of extra stability.",
       "how": "Press the chin or side of the head onto the hold while both hands reposition.",
-      "best": "Almost entirely a comp trick. Real, occasionally decisive, and mildly ridiculous."
+      "best": "Almost entirely a comp trick. Real, occasionally decisive, and mildly ridiculous.",
+      "relatedDrills": [
+        "straight-arms-only",
+        "hip-kiss",
+        "flag-hunt",
+        "backstep-everything",
+        "no-barn-door",
+        "one-arm-sections",
+        "one-foot-only"
+      ]
     },
     {
       "id": "hand-match",
@@ -908,7 +1410,18 @@
       "gloss": null,
       "what": "Both hands on the same hold.",
       "how": "Make room by shifting the first hand to one side, then bring the second alongside. On small holds, move fingers one at a time.",
-      "best": "Changing lead hand. Fundamental."
+      "best": "Changing lead hand. Fundamental.",
+      "relatedDrills": [
+        "slow-motion",
+        "hover",
+        "one-touch",
+        "continuous-flow",
+        "static-then-dynamic",
+        "downclimb-everything",
+        "deadpoint-practice",
+        "quiet-hands",
+        "grip-awareness"
+      ]
     },
     {
       "id": "piano-match",
@@ -920,7 +1433,18 @@
       "gloss": null,
       "what": "Matching by walking the fingers across a hold one at a time, like piano keys.",
       "how": "Lift and replace individual fingers of the first hand while the second hand's fingers take their place.",
-      "best": "Small edges where there's no room for a normal match."
+      "best": "Small edges where there's no room for a normal match.",
+      "relatedDrills": [
+        "slow-motion",
+        "hover",
+        "one-touch",
+        "continuous-flow",
+        "static-then-dynamic",
+        "downclimb-everything",
+        "deadpoint-practice",
+        "quiet-hands",
+        "grip-awareness"
+      ]
     },
     {
       "id": "foot-match",
@@ -932,7 +1456,18 @@
       "gloss": null,
       "what": "Both feet on the same hold, or swapping which foot is on it.",
       "how": "Either share the hold, or hop-swap: quick, quiet, controlled. Keep hands on and hips close during the swap.",
-      "best": "Changing which side of your body leads. Extremely common."
+      "best": "Changing which side of your body leads. Extremely common.",
+      "relatedDrills": [
+        "slow-motion",
+        "hover",
+        "one-touch",
+        "continuous-flow",
+        "static-then-dynamic",
+        "downclimb-everything",
+        "deadpoint-practice",
+        "quiet-hands",
+        "grip-awareness"
+      ]
     },
     {
       "id": "hand-foot-match",
@@ -944,7 +1479,18 @@
       "gloss": null,
       "what": "A hand and a foot on the same hold at the same time.",
       "how": "Grip the hold, then bring the toe onto the same hold beside your fingers — usually to the outside of the hand.",
-      "best": "Roofs, mantles, and steep problems with sparse feet. Watch your fingers."
+      "best": "Roofs, mantles, and steep problems with sparse feet. Watch your fingers.",
+      "relatedDrills": [
+        "slow-motion",
+        "hover",
+        "one-touch",
+        "continuous-flow",
+        "static-then-dynamic",
+        "downclimb-everything",
+        "deadpoint-practice",
+        "quiet-hands",
+        "grip-awareness"
+      ]
     },
     {
       "id": "hand-cross-over",
@@ -956,7 +1502,18 @@
       "gloss": null,
       "what": "Reaching one hand over the other to a hold on the far side.",
       "how": "Turn the hips side-on first, then cross the arm over the top. Crossing without turning the hips is what makes it feel impossible.",
-      "best": "Traverses and diagonal sequences. Saves an intermediate move."
+      "best": "Traverses and diagonal sequences. Saves an intermediate move.",
+      "relatedDrills": [
+        "slow-motion",
+        "hover",
+        "one-touch",
+        "continuous-flow",
+        "static-then-dynamic",
+        "downclimb-everything",
+        "deadpoint-practice",
+        "quiet-hands",
+        "grip-awareness"
+      ]
     },
     {
       "id": "hand-cross-under",
@@ -968,7 +1525,18 @@
       "gloss": null,
       "what": "Crossing one arm underneath the other.",
       "how": "Drop the shoulder and pass the arm below. Often more stable than crossing over.",
-      "best": "Undercling sequences and low traverses."
+      "best": "Undercling sequences and low traverses.",
+      "relatedDrills": [
+        "slow-motion",
+        "hover",
+        "one-touch",
+        "continuous-flow",
+        "static-then-dynamic",
+        "downclimb-everything",
+        "deadpoint-practice",
+        "quiet-hands",
+        "grip-awareness"
+      ]
     },
     {
       "id": "rose-move",
@@ -980,7 +1548,18 @@
       "gloss": null,
       "what": "A dramatic cross where the reaching arm passes behind your own head to a hold on the far side.",
       "how": "Turn fully side-on, drop the shoulder, and reach back and across, usually to a gaston or side pull.",
-      "best": "Rare, showy, and genuinely useful on some diagonal sequences. Shoulder-intensive."
+      "best": "Rare, showy, and genuinely useful on some diagonal sequences. Shoulder-intensive.",
+      "relatedDrills": [
+        "slow-motion",
+        "hover",
+        "one-touch",
+        "continuous-flow",
+        "static-then-dynamic",
+        "downclimb-everything",
+        "deadpoint-practice",
+        "quiet-hands",
+        "grip-awareness"
+      ]
     },
     {
       "id": "foot-cross-front",
@@ -992,7 +1571,18 @@
       "gloss": null,
       "what": "Crossing one foot in front of the other to reach a hold on the far side.",
       "how": "Keep hips close, cross the free foot in front, and place precisely without bumping the standing leg.",
-      "best": "Traverses. Often better than a series of small foot shuffles."
+      "best": "Traverses. Often better than a series of small foot shuffles.",
+      "relatedDrills": [
+        "slow-motion",
+        "hover",
+        "one-touch",
+        "continuous-flow",
+        "static-then-dynamic",
+        "downclimb-everything",
+        "deadpoint-practice",
+        "quiet-hands",
+        "grip-awareness"
+      ]
     },
     {
       "id": "foot-cross-back",
@@ -1004,7 +1594,18 @@
       "gloss": null,
       "what": "Crossing one foot behind the other.",
       "how": "Sweep the foot behind the standing leg and place it. Naturally turns you side-on.",
-      "best": "Traverses where crossing in front would push your hips off the wall."
+      "best": "Traverses where crossing in front would push your hips off the wall.",
+      "relatedDrills": [
+        "slow-motion",
+        "hover",
+        "one-touch",
+        "continuous-flow",
+        "static-then-dynamic",
+        "downclimb-everything",
+        "deadpoint-practice",
+        "quiet-hands",
+        "grip-awareness"
+      ]
     },
     {
       "id": "rock-over",
@@ -1016,7 +1617,18 @@
       "gloss": null,
       "what": "Shifting your centre of gravity from below a high foot to above it, then standing up on it.",
       "how": "Get the foot high, push your hips forward and over the toe, keep the shoulders coming with you, then press through the leg.",
-      "best": "Slab and vertical walls. This is the move that converts leg strength into height, and a high priority for any beginner."
+      "best": "Slab and vertical walls. This is the move that converts leg strength into height, and a high priority for any beginner.",
+      "relatedDrills": [
+        "slow-motion",
+        "hover",
+        "one-touch",
+        "continuous-flow",
+        "static-then-dynamic",
+        "downclimb-everything",
+        "deadpoint-practice",
+        "quiet-hands",
+        "grip-awareness"
+      ]
     },
     {
       "id": "knee-press",
@@ -1028,7 +1640,18 @@
       "gloss": null,
       "what": "Pressing the knee or shin into the wall or a volume for stability.",
       "how": "Drive the knee into the surface to create friction and stop rotation while a hand moves.",
-      "best": "Volumes and slab. A cheap stabiliser."
+      "best": "Volumes and slab. A cheap stabiliser.",
+      "relatedDrills": [
+        "slow-motion",
+        "hover",
+        "one-touch",
+        "continuous-flow",
+        "static-then-dynamic",
+        "downclimb-everything",
+        "deadpoint-practice",
+        "quiet-hands",
+        "grip-awareness"
+      ]
     },
     {
       "id": "mantle",
@@ -1040,7 +1663,18 @@
       "gloss": null,
       "what": "Pushing down on a hold or ledge to get your body above it, like climbing out of a swimming pool.",
       "how": "Pull to chest height, rotate the hand so the palm presses down, press until the arm locks, then bring a foot up.",
-      "best": "Topping out. Essential and often the crux of a problem for beginners."
+      "best": "Topping out. Essential and often the crux of a problem for beginners.",
+      "relatedDrills": [
+        "slow-motion",
+        "hover",
+        "one-touch",
+        "continuous-flow",
+        "static-then-dynamic",
+        "downclimb-everything",
+        "deadpoint-practice",
+        "quiet-hands",
+        "grip-awareness"
+      ]
     },
     {
       "id": "beached-whale",
@@ -1052,7 +1686,18 @@
       "gloss": null,
       "what": "The inelegant version of a mantle — flopping the torso onto the ledge and wriggling up.",
       "how": "Belly on the ledge, then squirm.",
-      "best": "Getting up when the clean mantle fails. It counts. It just doesn't look good."
+      "best": "Getting up when the clean mantle fails. It counts. It just doesn't look good.",
+      "relatedDrills": [
+        "slow-motion",
+        "hover",
+        "one-touch",
+        "continuous-flow",
+        "static-then-dynamic",
+        "downclimb-everything",
+        "deadpoint-practice",
+        "quiet-hands",
+        "grip-awareness"
+      ]
     },
     {
       "id": "cut-loose",
@@ -1064,7 +1709,18 @@
       "gloss": null,
       "what": "Letting both feet come off the wall so your body swings, then re-engaging them.",
       "how": "Accept the swing, keep the core tight, control the return, and put the feet back deliberately rather than scrabbling.",
-      "best": "Steep ground where feet can't follow the hands. Often faster than fighting to keep them on."
+      "best": "Steep ground where feet can't follow the hands. Often faster than fighting to keep them on.",
+      "relatedDrills": [
+        "slow-motion",
+        "hover",
+        "one-touch",
+        "continuous-flow",
+        "static-then-dynamic",
+        "downclimb-everything",
+        "deadpoint-practice",
+        "quiet-hands",
+        "grip-awareness"
+      ]
     },
     {
       "id": "campussing",
@@ -1076,7 +1732,18 @@
       "gloss": null,
       "what": "Climbing with no feet at all, hand over hand.",
       "how": "Pull between holds using arms only.",
-      "best": "Sometimes the intended sequence on steep problems. Very high elbow and shoulder load, and a leading cause of climber's elbow — avoid until well adapted."
+      "best": "Sometimes the intended sequence on steep problems. Very high elbow and shoulder load, and a leading cause of climber's elbow — avoid until well adapted.",
+      "relatedDrills": [
+        "slow-motion",
+        "hover",
+        "one-touch",
+        "continuous-flow",
+        "static-then-dynamic",
+        "downclimb-everything",
+        "deadpoint-practice",
+        "quiet-hands",
+        "grip-awareness"
+      ]
     },
     {
       "id": "the-houdini",
@@ -1088,7 +1755,18 @@
       "gloss": null,
       "what": "Escaping a tangled or reversed body position by rotating through it rather than reversing the moves.",
       "how": "Usually a hip rotation under an arm to unwind crossed limbs.",
-      "best": "Getting out of a sequence you read wrong. Name varies by gym."
+      "best": "Getting out of a sequence you read wrong. Name varies by gym.",
+      "relatedDrills": [
+        "slow-motion",
+        "hover",
+        "one-touch",
+        "continuous-flow",
+        "static-then-dynamic",
+        "downclimb-everything",
+        "deadpoint-practice",
+        "quiet-hands",
+        "grip-awareness"
+      ]
     },
     {
       "id": "good-samaritan",
@@ -1100,7 +1778,18 @@
       "gloss": null,
       "what": "Using a hold or feature that isn't part of your problem — or one hand helping the other — to save a position.",
       "how": "Grab whatever is available to stabilise, usually mid-fall or mid-mistake.",
-      "best": "Practically: a bail-out. Off-route holds mean the send doesn't count. Name varies by gym."
+      "best": "Practically: a bail-out. Off-route holds mean the send doesn't count. Name varies by gym.",
+      "relatedDrills": [
+        "slow-motion",
+        "hover",
+        "one-touch",
+        "continuous-flow",
+        "static-then-dynamic",
+        "downclimb-everything",
+        "deadpoint-practice",
+        "quiet-hands",
+        "grip-awareness"
+      ]
     },
     {
       "id": "t-rex-turtle-roll",
@@ -1112,7 +1801,18 @@
       "gloss": null,
       "what": "Gym slang for rolling the body over a lip or volume with arms tucked close, when there's nothing to push on.",
       "how": "Commit the hips over the feature and roll, keeping the arms in tight.",
-      "best": "Awkward topouts on rounded features. Definitely slang — expect your gym to have its own name."
+      "best": "Awkward topouts on rounded features. Definitely slang — expect your gym to have its own name.",
+      "relatedDrills": [
+        "slow-motion",
+        "hover",
+        "one-touch",
+        "continuous-flow",
+        "static-then-dynamic",
+        "downclimb-everything",
+        "deadpoint-practice",
+        "quiet-hands",
+        "grip-awareness"
+      ]
     },
     {
       "id": "dead-point",
@@ -1124,7 +1824,18 @@
       "gloss": null,
       "what": "Catching the hold at the weightless instant at the top of an upward move.",
       "how": "Generate from the legs, and time the hand to arrive exactly when your upward momentum stops. Not before, not after.",
-      "best": "Almost every reach. Cheaper than a lock-off and far kinder to the elbows. The most important item in this section."
+      "best": "Almost every reach. Cheaper than a lock-off and far kinder to the elbows. The most important item in this section.",
+      "relatedDrills": [
+        "slow-motion",
+        "hover",
+        "one-touch",
+        "continuous-flow",
+        "static-then-dynamic",
+        "downclimb-everything",
+        "deadpoint-practice",
+        "quiet-hands",
+        "grip-awareness"
+      ]
     },
     {
       "id": "dyno",
@@ -1136,7 +1847,18 @@
       "gloss": null,
       "what": "A jump where all four points leave the wall.",
       "how": "Load the legs by dropping into a coil, drive upward through the feet, and keep your eyes on the target hold the whole time.",
-      "best": "Moves that are simply too far to reach. Fun, high-impact — a couple per session, not a training focus."
+      "best": "Moves that are simply too far to reach. Fun, high-impact — a couple per session, not a training focus.",
+      "relatedDrills": [
+        "slow-motion",
+        "hover",
+        "one-touch",
+        "continuous-flow",
+        "static-then-dynamic",
+        "downclimb-everything",
+        "deadpoint-practice",
+        "quiet-hands",
+        "grip-awareness"
+      ]
     },
     {
       "id": "double-dyno",
@@ -1148,7 +1870,18 @@
       "gloss": null,
       "what": "A dyno caught with both hands simultaneously.",
       "how": "As above, but keep the body square so both hands arrive together.",
-      "best": "Big jugs and comp-style jumps. Landing one is a power indicator, not a reason to build a session around them."
+      "best": "Big jugs and comp-style jumps. Landing one is a power indicator, not a reason to build a session around them.",
+      "relatedDrills": [
+        "slow-motion",
+        "hover",
+        "one-touch",
+        "continuous-flow",
+        "static-then-dynamic",
+        "downclimb-everything",
+        "deadpoint-practice",
+        "quiet-hands",
+        "grip-awareness"
+      ]
     },
     {
       "id": "one-arm-dyno",
@@ -1160,7 +1893,18 @@
       "gloss": null,
       "what": "A dyno caught on a single hand.",
       "how": "Generate from the legs and lead with the catching arm; the other arm stays back for balance.",
-      "best": "Comp problems. Very high shoulder and elbow impact."
+      "best": "Comp problems. Very high shoulder and elbow impact.",
+      "relatedDrills": [
+        "slow-motion",
+        "hover",
+        "one-touch",
+        "continuous-flow",
+        "static-then-dynamic",
+        "downclimb-everything",
+        "deadpoint-practice",
+        "quiet-hands",
+        "grip-awareness"
+      ]
     },
     {
       "id": "double-clutch",
@@ -1172,7 +1916,18 @@
       "gloss": null,
       "what": "A dyno where both hands leave, one hand catches briefly, and the other immediately follows or bumps onward.",
       "how": "Catch and stabilise with the first hand while the second arrives in the same motion.",
-      "best": "Steep sequences with no intermediate holds. Advanced."
+      "best": "Steep sequences with no intermediate holds. Advanced.",
+      "relatedDrills": [
+        "slow-motion",
+        "hover",
+        "one-touch",
+        "continuous-flow",
+        "static-then-dynamic",
+        "downclimb-everything",
+        "deadpoint-practice",
+        "quiet-hands",
+        "grip-awareness"
+      ]
     },
     {
       "id": "paddle-dyno-triple-quadruple",
@@ -1184,7 +1939,18 @@
       "gloss": null,
       "what": "A dyno where a hand slaps one or more intermediate holds mid-flight to redirect momentum before the real catch.",
       "how": "Use each intermediate slap to push or steer rather than to hold.",
-      "best": "Comp setting. Spectacular, rarely necessary."
+      "best": "Comp setting. Spectacular, rarely necessary.",
+      "relatedDrills": [
+        "slow-motion",
+        "hover",
+        "one-touch",
+        "continuous-flow",
+        "static-then-dynamic",
+        "downclimb-everything",
+        "deadpoint-practice",
+        "quiet-hands",
+        "grip-awareness"
+      ]
     },
     {
       "id": "step-up-dyno",
@@ -1196,7 +1962,18 @@
       "gloss": null,
       "what": "A dyno generated by stepping up onto a high foot and springing from it, rather than coiling both legs.",
       "how": "Place the high foot, load it, and drive upward through that single leg.",
-      "best": "When the feet are too high or awkward for a two-legged coil."
+      "best": "When the feet are too high or awkward for a two-legged coil.",
+      "relatedDrills": [
+        "slow-motion",
+        "hover",
+        "one-touch",
+        "continuous-flow",
+        "static-then-dynamic",
+        "downclimb-everything",
+        "deadpoint-practice",
+        "quiet-hands",
+        "grip-awareness"
+      ]
     },
     {
       "id": "hip-swing",
@@ -1208,7 +1985,18 @@
       "gloss": null,
       "what": "Generating momentum by swinging the hips rather than pulling with the arms.",
       "how": "Initiate the swing from the core and time the hand release to the peak.",
-      "best": "Steep ground. This is how strong climbers make hard moves look easy."
+      "best": "Steep ground. This is how strong climbers make hard moves look easy.",
+      "relatedDrills": [
+        "slow-motion",
+        "hover",
+        "one-touch",
+        "continuous-flow",
+        "static-then-dynamic",
+        "downclimb-everything",
+        "deadpoint-practice",
+        "quiet-hands",
+        "grip-awareness"
+      ]
     },
     {
       "id": "arm-swing",
@@ -1220,7 +2008,18 @@
       "gloss": null,
       "what": "Using the free arm's swing to add momentum to a move.",
       "how": "Swing the free arm upward in time with the leg drive.",
-      "best": "Adds a surprising amount to a dyno or long reach."
+      "best": "Adds a surprising amount to a dyno or long reach.",
+      "relatedDrills": [
+        "slow-motion",
+        "hover",
+        "one-touch",
+        "continuous-flow",
+        "static-then-dynamic",
+        "downclimb-everything",
+        "deadpoint-practice",
+        "quiet-hands",
+        "grip-awareness"
+      ]
     },
     {
       "id": "pogo-moon-kick",
@@ -1232,7 +2031,18 @@
       "gloss": null,
       "what": "Kicking one leg out and down to generate momentum, like a pogo stick, when there are no useful footholds.",
       "how": "Swing the free leg down and back hard, and use the reaction to drive your body up toward the hold.",
-      "best": "Steep problems with one foothold and a long move. Looks strange, works well."
+      "best": "Steep problems with one foothold and a long move. Looks strange, works well.",
+      "relatedDrills": [
+        "slow-motion",
+        "hover",
+        "one-touch",
+        "continuous-flow",
+        "static-then-dynamic",
+        "downclimb-everything",
+        "deadpoint-practice",
+        "quiet-hands",
+        "grip-awareness"
+      ]
     },
     {
       "id": "run-and-jump",
@@ -1244,7 +2054,18 @@
       "gloss": null,
       "what": "A dyno started from the ground with running steps.",
       "how": "Two or three steps into the wall, then jump for the start or first hold.",
-      "best": "Comp-style jump starts. Uncontrolled landings — pads and spotters."
+      "best": "Comp-style jump starts. Uncontrolled landings — pads and spotters.",
+      "relatedDrills": [
+        "slow-motion",
+        "hover",
+        "one-touch",
+        "continuous-flow",
+        "static-then-dynamic",
+        "downclimb-everything",
+        "deadpoint-practice",
+        "quiet-hands",
+        "grip-awareness"
+      ]
     },
     {
       "id": "swing-and-jump",
@@ -1256,7 +2077,18 @@
       "gloss": null,
       "what": "Building a pendulum swing on the holds, then releasing at the peak into a jump.",
       "how": "Swing the body once or twice to build amplitude, release at the top of the arc.",
-      "best": "Roofs and comp problems where a static jump can't reach."
+      "best": "Roofs and comp problems where a static jump can't reach.",
+      "relatedDrills": [
+        "slow-motion",
+        "hover",
+        "one-touch",
+        "continuous-flow",
+        "static-then-dynamic",
+        "downclimb-everything",
+        "deadpoint-practice",
+        "quiet-hands",
+        "grip-awareness"
+      ]
     },
     {
       "id": "headbutt",
@@ -1268,7 +2100,18 @@
       "gloss": null,
       "what": "Using the head or forehead pressed against a volume for a moment of stability, usually during compression.",
       "how": "Press the head into the surface to add a third contact point while hands reposition.",
-      "best": "Rare comp trick. Real, but not something to seek out."
+      "best": "Rare comp trick. Real, but not something to seek out.",
+      "relatedDrills": [
+        "slow-motion",
+        "hover",
+        "one-touch",
+        "continuous-flow",
+        "static-then-dynamic",
+        "downclimb-everything",
+        "deadpoint-practice",
+        "quiet-hands",
+        "grip-awareness"
+      ]
     }
   ],
   "drillSection": {
@@ -1378,260 +2221,1115 @@
       "id": "silent-feet",
       "categoryId": "footwork-drills",
       "name": "Silent feet",
-      "description": "climb an easy problem with zero foot noise. Any scrape or slap, repeat the move."
+      "description": "climb an easy problem with zero foot noise. Any scrape or slap, repeat the move.",
+      "relatedTechniques": [
+        "inside-edge",
+        "outside-edge",
+        "smear",
+        "alpine-knee",
+        "heel-hook",
+        "toe-hook",
+        "bat-hang",
+        "bicycle",
+        "heel-toe-cam",
+        "frog-pinch",
+        "knee-bar"
+      ]
     },
     {
       "id": "glue-feet",
       "categoryId": "footwork-drills",
       "name": "Glue feet",
-      "description": "once a foot is placed it cannot move again until it leaves for the next hold. No shuffling."
+      "description": "once a foot is placed it cannot move again until it leaves for the next hold. No shuffling.",
+      "relatedTechniques": [
+        "inside-edge",
+        "outside-edge",
+        "smear",
+        "alpine-knee",
+        "heel-hook",
+        "toe-hook",
+        "bat-hang",
+        "bicycle",
+        "heel-toe-cam",
+        "frog-pinch",
+        "knee-bar"
+      ]
     },
     {
       "id": "sniper",
       "categoryId": "footwork-drills",
       "name": "Sniper",
-      "description": "chalk a small dot on each foothold; the toe must land on the dot."
+      "description": "chalk a small dot on each foothold; the toe must land on the dot.",
+      "relatedTechniques": [
+        "inside-edge",
+        "outside-edge",
+        "smear",
+        "alpine-knee",
+        "heel-hook",
+        "toe-hook",
+        "bat-hang",
+        "bicycle",
+        "heel-toe-cam",
+        "frog-pinch",
+        "knee-bar"
+      ]
     },
     {
       "id": "outside-edge-only",
       "categoryId": "footwork-drills",
       "name": "Outside edge only",
-      "description": "every foot placement uses the little-toe edge. Forces backsteps and hip turns."
+      "description": "every foot placement uses the little-toe edge. Forces backsteps and hip turns.",
+      "relatedTechniques": [
+        "inside-edge",
+        "outside-edge",
+        "smear",
+        "alpine-knee",
+        "heel-hook",
+        "toe-hook",
+        "bat-hang",
+        "bicycle",
+        "heel-toe-cam",
+        "frog-pinch",
+        "knee-bar"
+      ]
     },
     {
       "id": "feet-eliminated",
       "categoryId": "footwork-drills",
       "name": "Feet eliminated",
-      "description": "remove the two best footholds from the problem. Same holds for hands, new puzzle."
+      "description": "remove the two best footholds from the problem. Same holds for hands, new puzzle.",
+      "relatedTechniques": [
+        "inside-edge",
+        "outside-edge",
+        "smear",
+        "alpine-knee",
+        "heel-hook",
+        "toe-hook",
+        "bat-hang",
+        "bicycle",
+        "heel-toe-cam",
+        "frog-pinch",
+        "knee-bar"
+      ]
     },
     {
       "id": "smear-only",
       "categoryId": "footwork-drills",
       "name": "Smear only",
-      "description": "on slab or vertical, no footholds at all; only the wall surface."
+      "description": "on slab or vertical, no footholds at all; only the wall surface.",
+      "relatedTechniques": [
+        "inside-edge",
+        "outside-edge",
+        "smear",
+        "alpine-knee",
+        "heel-hook",
+        "toe-hook",
+        "bat-hang",
+        "bicycle",
+        "heel-toe-cam",
+        "frog-pinch",
+        "knee-bar"
+      ]
     },
     {
       "id": "foot-swap",
       "categoryId": "footwork-drills",
       "name": "Foot swap",
-      "description": "every foothold must be used by both feet at some point, swapped without moving your hands."
+      "description": "every foothold must be used by both feet at some point, swapped without moving your hands.",
+      "relatedTechniques": [
+        "inside-edge",
+        "outside-edge",
+        "smear",
+        "alpine-knee",
+        "heel-hook",
+        "toe-hook",
+        "bat-hang",
+        "bicycle",
+        "heel-toe-cam",
+        "frog-pinch",
+        "knee-bar"
+      ]
     },
     {
       "id": "big-foot",
       "categoryId": "footwork-drills",
       "name": "Big-foot",
-      "description": "you may only use volumes and the biggest holds for feet. Forces long, committing steps."
+      "description": "you may only use volumes and the biggest holds for feet. Forces long, committing steps.",
+      "relatedTechniques": [
+        "inside-edge",
+        "outside-edge",
+        "smear",
+        "alpine-knee",
+        "heel-hook",
+        "toe-hook",
+        "bat-hang",
+        "bicycle",
+        "heel-toe-cam",
+        "frog-pinch",
+        "knee-bar"
+      ]
     },
     {
       "id": "toe-drag",
       "categoryId": "footwork-drills",
       "name": "Toe drag",
-      "description": "keep the trailing toe in contact with the wall through every move. Kills the dangling leg habit."
+      "description": "keep the trailing toe in contact with the wall through every move. Kills the dangling leg habit.",
+      "relatedTechniques": [
+        "inside-edge",
+        "outside-edge",
+        "smear",
+        "alpine-knee",
+        "heel-hook",
+        "toe-hook",
+        "bat-hang",
+        "bicycle",
+        "heel-toe-cam",
+        "frog-pinch",
+        "knee-bar"
+      ]
     },
     {
       "id": "straight-arms-only",
       "categoryId": "body-position-drills",
       "name": "Straight arms only",
-      "description": "if an elbow bends, you're off the problem. Forces backsteps and flags."
+      "description": "if an elbow bends, you're off the problem. Forces backsteps and flags.",
+      "relatedTechniques": [
+        "back-step",
+        "drop-knee",
+        "outside-flag",
+        "back-flag",
+        "inside-flag",
+        "arm-flag",
+        "perching",
+        "frogging",
+        "inside-figure-4",
+        "outside-figure-4",
+        "the-janja",
+        "peter-pan",
+        "side-pull",
+        "lay-back",
+        "gaston",
+        "elevator-door",
+        "undercling",
+        "compression",
+        "inverted",
+        "outward-facing",
+        "gastondercling",
+        "lock-off",
+        "stemming-bridging",
+        "the-chin"
+      ]
     },
     {
       "id": "hip-kiss",
       "categoryId": "body-position-drills",
       "name": "Hip kiss",
-      "description": "the hip must touch or nearly touch the wall on every move."
+      "description": "the hip must touch or nearly touch the wall on every move.",
+      "relatedTechniques": [
+        "back-step",
+        "drop-knee",
+        "outside-flag",
+        "back-flag",
+        "inside-flag",
+        "arm-flag",
+        "perching",
+        "frogging",
+        "inside-figure-4",
+        "outside-figure-4",
+        "the-janja",
+        "peter-pan",
+        "side-pull",
+        "lay-back",
+        "gaston",
+        "elevator-door",
+        "undercling",
+        "compression",
+        "inverted",
+        "outward-facing",
+        "gastondercling",
+        "lock-off",
+        "stemming-bridging",
+        "the-chin"
+      ]
     },
     {
       "id": "flag-hunt",
       "categoryId": "body-position-drills",
       "name": "Flag hunt",
-      "description": "every move must include a flag of some kind. Ridiculous on some problems, which is the point."
+      "description": "every move must include a flag of some kind. Ridiculous on some problems, which is the point.",
+      "relatedTechniques": [
+        "back-step",
+        "drop-knee",
+        "outside-flag",
+        "back-flag",
+        "inside-flag",
+        "arm-flag",
+        "perching",
+        "frogging",
+        "inside-figure-4",
+        "outside-figure-4",
+        "the-janja",
+        "peter-pan",
+        "side-pull",
+        "lay-back",
+        "gaston",
+        "elevator-door",
+        "undercling",
+        "compression",
+        "inverted",
+        "outward-facing",
+        "gastondercling",
+        "lock-off",
+        "stemming-bridging",
+        "the-chin"
+      ]
     },
     {
       "id": "backstep-everything",
       "categoryId": "body-position-drills",
       "name": "Backstep everything",
-      "description": "use a backstep on every move that physically allows one."
+      "description": "use a backstep on every move that physically allows one.",
+      "relatedTechniques": [
+        "back-step",
+        "drop-knee",
+        "outside-flag",
+        "back-flag",
+        "inside-flag",
+        "arm-flag",
+        "perching",
+        "frogging",
+        "inside-figure-4",
+        "outside-figure-4",
+        "the-janja",
+        "peter-pan",
+        "side-pull",
+        "lay-back",
+        "gaston",
+        "elevator-door",
+        "undercling",
+        "compression",
+        "inverted",
+        "outward-facing",
+        "gastondercling",
+        "lock-off",
+        "stemming-bridging",
+        "the-chin"
+      ]
     },
     {
       "id": "no-barn-door",
       "categoryId": "body-position-drills",
       "name": "No barn-door",
-      "description": "if your body swings open at any point, restart. Teaches you to feel it coming."
+      "description": "if your body swings open at any point, restart. Teaches you to feel it coming.",
+      "relatedTechniques": [
+        "back-step",
+        "drop-knee",
+        "outside-flag",
+        "back-flag",
+        "inside-flag",
+        "arm-flag",
+        "perching",
+        "frogging",
+        "inside-figure-4",
+        "outside-figure-4",
+        "the-janja",
+        "peter-pan",
+        "side-pull",
+        "lay-back",
+        "gaston",
+        "elevator-door",
+        "undercling",
+        "compression",
+        "inverted",
+        "outward-facing",
+        "gastondercling",
+        "lock-off",
+        "stemming-bridging",
+        "the-chin"
+      ]
     },
     {
       "id": "one-arm-sections",
       "categoryId": "body-position-drills",
       "name": "One-arm sections",
-      "description": "on easy jugs, remove one hand entirely for 2–3 moves and move with legs only."
+      "description": "on easy jugs, remove one hand entirely for 2–3 moves and move with legs only.",
+      "relatedTechniques": [
+        "back-step",
+        "drop-knee",
+        "outside-flag",
+        "back-flag",
+        "inside-flag",
+        "arm-flag",
+        "perching",
+        "frogging",
+        "inside-figure-4",
+        "outside-figure-4",
+        "the-janja",
+        "peter-pan",
+        "side-pull",
+        "lay-back",
+        "gaston",
+        "elevator-door",
+        "undercling",
+        "compression",
+        "inverted",
+        "outward-facing",
+        "gastondercling",
+        "lock-off",
+        "stemming-bridging",
+        "the-chin"
+      ]
     },
     {
       "id": "one-foot-only",
       "categoryId": "body-position-drills",
       "name": "One foot only",
-      "description": "climb an easy problem using a single foot; the other leg never touches a hold and works purely as a counterweight."
+      "description": "climb an easy problem using a single foot; the other leg never touches a hold and works purely as a counterweight.",
+      "relatedTechniques": [
+        "back-step",
+        "drop-knee",
+        "outside-flag",
+        "back-flag",
+        "inside-flag",
+        "arm-flag",
+        "perching",
+        "frogging",
+        "inside-figure-4",
+        "outside-figure-4",
+        "the-janja",
+        "peter-pan",
+        "side-pull",
+        "lay-back",
+        "gaston",
+        "elevator-door",
+        "undercling",
+        "compression",
+        "inverted",
+        "outward-facing",
+        "gastondercling",
+        "lock-off",
+        "stemming-bridging",
+        "the-chin"
+      ]
     },
     {
       "id": "slow-motion",
       "categoryId": "movement-drills",
       "name": "Slow motion",
-      "description": "10 seconds per move. You can't hide bad balance behind momentum."
+      "description": "10 seconds per move. You can't hide bad balance behind momentum.",
+      "relatedTechniques": [
+        "open-hand-three-finger-drag",
+        "open-crimp",
+        "half-crimp",
+        "quarter-crimp",
+        "closed-crimp-full-crimp",
+        "two-finger-pocket",
+        "front-three",
+        "back-three",
+        "mono",
+        "closed-mono",
+        "stacked-fingers",
+        "pinch",
+        "thumbercling-thumb-catch",
+        "palm-down-palming",
+        "meat-hook",
+        "hand-match",
+        "piano-match",
+        "foot-match",
+        "hand-foot-match",
+        "hand-cross-over",
+        "hand-cross-under",
+        "rose-move",
+        "foot-cross-front",
+        "foot-cross-back",
+        "rock-over",
+        "knee-press",
+        "mantle",
+        "beached-whale",
+        "cut-loose",
+        "campussing",
+        "the-houdini",
+        "good-samaritan",
+        "t-rex-turtle-roll",
+        "dead-point",
+        "dyno",
+        "double-dyno",
+        "one-arm-dyno",
+        "double-clutch",
+        "paddle-dyno-triple-quadruple",
+        "step-up-dyno",
+        "hip-swing",
+        "arm-swing",
+        "pogo-moon-kick",
+        "run-and-jump",
+        "swing-and-jump",
+        "headbutt"
+      ]
     },
     {
       "id": "hover",
       "categoryId": "movement-drills",
       "name": "Hover",
-      "description": "hold the hand 5 cm from the target hold for 3 seconds before grabbing."
+      "description": "hold the hand 5 cm from the target hold for 3 seconds before grabbing.",
+      "relatedTechniques": [
+        "open-hand-three-finger-drag",
+        "open-crimp",
+        "half-crimp",
+        "quarter-crimp",
+        "closed-crimp-full-crimp",
+        "two-finger-pocket",
+        "front-three",
+        "back-three",
+        "mono",
+        "closed-mono",
+        "stacked-fingers",
+        "pinch",
+        "thumbercling-thumb-catch",
+        "palm-down-palming",
+        "meat-hook",
+        "hand-match",
+        "piano-match",
+        "foot-match",
+        "hand-foot-match",
+        "hand-cross-over",
+        "hand-cross-under",
+        "rose-move",
+        "foot-cross-front",
+        "foot-cross-back",
+        "rock-over",
+        "knee-press",
+        "mantle",
+        "beached-whale",
+        "cut-loose",
+        "campussing",
+        "the-houdini",
+        "good-samaritan",
+        "t-rex-turtle-roll",
+        "dead-point",
+        "dyno",
+        "double-dyno",
+        "one-arm-dyno",
+        "double-clutch",
+        "paddle-dyno-triple-quadruple",
+        "step-up-dyno",
+        "hip-swing",
+        "arm-swing",
+        "pogo-moon-kick",
+        "run-and-jump",
+        "swing-and-jump",
+        "headbutt"
+      ]
     },
     {
       "id": "one-touch",
       "categoryId": "movement-drills",
       "name": "One-touch",
-      "description": "the hand lands on a hold and stays. No readjusting, no bumping."
+      "description": "the hand lands on a hold and stays. No readjusting, no bumping.",
+      "relatedTechniques": [
+        "open-hand-three-finger-drag",
+        "open-crimp",
+        "half-crimp",
+        "quarter-crimp",
+        "closed-crimp-full-crimp",
+        "two-finger-pocket",
+        "front-three",
+        "back-three",
+        "mono",
+        "closed-mono",
+        "stacked-fingers",
+        "pinch",
+        "thumbercling-thumb-catch",
+        "palm-down-palming",
+        "meat-hook",
+        "hand-match",
+        "piano-match",
+        "foot-match",
+        "hand-foot-match",
+        "hand-cross-over",
+        "hand-cross-under",
+        "rose-move",
+        "foot-cross-front",
+        "foot-cross-back",
+        "rock-over",
+        "knee-press",
+        "mantle",
+        "beached-whale",
+        "cut-loose",
+        "campussing",
+        "the-houdini",
+        "good-samaritan",
+        "t-rex-turtle-roll",
+        "dead-point",
+        "dyno",
+        "double-dyno",
+        "one-arm-dyno",
+        "double-clutch",
+        "paddle-dyno-triple-quadruple",
+        "step-up-dyno",
+        "hip-swing",
+        "arm-swing",
+        "pogo-moon-kick",
+        "run-and-jump",
+        "swing-and-jump",
+        "headbutt"
+      ]
     },
     {
       "id": "continuous-flow",
       "categoryId": "movement-drills",
       "name": "Continuous flow",
-      "description": "no pause at all, metronome rhythm, top to bottom. The opposite of slow motion; train both."
+      "description": "no pause at all, metronome rhythm, top to bottom. The opposite of slow motion; train both.",
+      "relatedTechniques": [
+        "open-hand-three-finger-drag",
+        "open-crimp",
+        "half-crimp",
+        "quarter-crimp",
+        "closed-crimp-full-crimp",
+        "two-finger-pocket",
+        "front-three",
+        "back-three",
+        "mono",
+        "closed-mono",
+        "stacked-fingers",
+        "pinch",
+        "thumbercling-thumb-catch",
+        "palm-down-palming",
+        "meat-hook",
+        "hand-match",
+        "piano-match",
+        "foot-match",
+        "hand-foot-match",
+        "hand-cross-over",
+        "hand-cross-under",
+        "rose-move",
+        "foot-cross-front",
+        "foot-cross-back",
+        "rock-over",
+        "knee-press",
+        "mantle",
+        "beached-whale",
+        "cut-loose",
+        "campussing",
+        "the-houdini",
+        "good-samaritan",
+        "t-rex-turtle-roll",
+        "dead-point",
+        "dyno",
+        "double-dyno",
+        "one-arm-dyno",
+        "double-clutch",
+        "paddle-dyno-triple-quadruple",
+        "step-up-dyno",
+        "hip-swing",
+        "arm-swing",
+        "pogo-moon-kick",
+        "run-and-jump",
+        "swing-and-jump",
+        "headbutt"
+      ]
     },
     {
       "id": "static-then-dynamic",
       "categoryId": "movement-drills",
       "name": "Static then dynamic",
-      "description": "climb the same problem twice, once as statically as possible, once as dynamically as possible."
+      "description": "climb the same problem twice, once as statically as possible, once as dynamically as possible.",
+      "relatedTechniques": [
+        "open-hand-three-finger-drag",
+        "open-crimp",
+        "half-crimp",
+        "quarter-crimp",
+        "closed-crimp-full-crimp",
+        "two-finger-pocket",
+        "front-three",
+        "back-three",
+        "mono",
+        "closed-mono",
+        "stacked-fingers",
+        "pinch",
+        "thumbercling-thumb-catch",
+        "palm-down-palming",
+        "meat-hook",
+        "hand-match",
+        "piano-match",
+        "foot-match",
+        "hand-foot-match",
+        "hand-cross-over",
+        "hand-cross-under",
+        "rose-move",
+        "foot-cross-front",
+        "foot-cross-back",
+        "rock-over",
+        "knee-press",
+        "mantle",
+        "beached-whale",
+        "cut-loose",
+        "campussing",
+        "the-houdini",
+        "good-samaritan",
+        "t-rex-turtle-roll",
+        "dead-point",
+        "dyno",
+        "double-dyno",
+        "one-arm-dyno",
+        "double-clutch",
+        "paddle-dyno-triple-quadruple",
+        "step-up-dyno",
+        "hip-swing",
+        "arm-swing",
+        "pogo-moon-kick",
+        "run-and-jump",
+        "swing-and-jump",
+        "headbutt"
+      ]
     },
     {
       "id": "downclimb-everything",
       "categoryId": "movement-drills",
       "name": "Downclimb everything",
-      "description": "climb up, then reverse it to the ground. Free footwork practice and it doubles your volume."
+      "description": "climb up, then reverse it to the ground. Free footwork practice and it doubles your volume.",
+      "relatedTechniques": [
+        "open-hand-three-finger-drag",
+        "open-crimp",
+        "half-crimp",
+        "quarter-crimp",
+        "closed-crimp-full-crimp",
+        "two-finger-pocket",
+        "front-three",
+        "back-three",
+        "mono",
+        "closed-mono",
+        "stacked-fingers",
+        "pinch",
+        "thumbercling-thumb-catch",
+        "palm-down-palming",
+        "meat-hook",
+        "hand-match",
+        "piano-match",
+        "foot-match",
+        "hand-foot-match",
+        "hand-cross-over",
+        "hand-cross-under",
+        "rose-move",
+        "foot-cross-front",
+        "foot-cross-back",
+        "rock-over",
+        "knee-press",
+        "mantle",
+        "beached-whale",
+        "cut-loose",
+        "campussing",
+        "the-houdini",
+        "good-samaritan",
+        "t-rex-turtle-roll",
+        "dead-point",
+        "dyno",
+        "double-dyno",
+        "one-arm-dyno",
+        "double-clutch",
+        "paddle-dyno-triple-quadruple",
+        "step-up-dyno",
+        "hip-swing",
+        "arm-swing",
+        "pogo-moon-kick",
+        "run-and-jump",
+        "swing-and-jump",
+        "headbutt"
+      ]
     },
     {
       "id": "deadpoint-practice",
       "categoryId": "movement-drills",
       "name": "Deadpoint practice",
-      "description": "on an easy problem, make every hand move a small controlled pop rather than a reach."
+      "description": "on an easy problem, make every hand move a small controlled pop rather than a reach.",
+      "relatedTechniques": [
+        "open-hand-three-finger-drag",
+        "open-crimp",
+        "half-crimp",
+        "quarter-crimp",
+        "closed-crimp-full-crimp",
+        "two-finger-pocket",
+        "front-three",
+        "back-three",
+        "mono",
+        "closed-mono",
+        "stacked-fingers",
+        "pinch",
+        "thumbercling-thumb-catch",
+        "palm-down-palming",
+        "meat-hook",
+        "hand-match",
+        "piano-match",
+        "foot-match",
+        "hand-foot-match",
+        "hand-cross-over",
+        "hand-cross-under",
+        "rose-move",
+        "foot-cross-front",
+        "foot-cross-back",
+        "rock-over",
+        "knee-press",
+        "mantle",
+        "beached-whale",
+        "cut-loose",
+        "campussing",
+        "the-houdini",
+        "good-samaritan",
+        "t-rex-turtle-roll",
+        "dead-point",
+        "dyno",
+        "double-dyno",
+        "one-arm-dyno",
+        "double-clutch",
+        "paddle-dyno-triple-quadruple",
+        "step-up-dyno",
+        "hip-swing",
+        "arm-swing",
+        "pogo-moon-kick",
+        "run-and-jump",
+        "swing-and-jump",
+        "headbutt"
+      ]
     },
     {
       "id": "quiet-hands",
       "categoryId": "movement-drills",
       "name": "Quiet hands",
-      "description": "no slapping, no re-gripping, no chalking mid-problem."
+      "description": "no slapping, no re-gripping, no chalking mid-problem.",
+      "relatedTechniques": [
+        "open-hand-three-finger-drag",
+        "open-crimp",
+        "half-crimp",
+        "quarter-crimp",
+        "closed-crimp-full-crimp",
+        "two-finger-pocket",
+        "front-three",
+        "back-three",
+        "mono",
+        "closed-mono",
+        "stacked-fingers",
+        "pinch",
+        "thumbercling-thumb-catch",
+        "palm-down-palming",
+        "meat-hook",
+        "hand-match",
+        "piano-match",
+        "foot-match",
+        "hand-foot-match",
+        "hand-cross-over",
+        "hand-cross-under",
+        "rose-move",
+        "foot-cross-front",
+        "foot-cross-back",
+        "rock-over",
+        "knee-press",
+        "mantle",
+        "beached-whale",
+        "cut-loose",
+        "campussing",
+        "the-houdini",
+        "good-samaritan",
+        "t-rex-turtle-roll",
+        "dead-point",
+        "dyno",
+        "double-dyno",
+        "one-arm-dyno",
+        "double-clutch",
+        "paddle-dyno-triple-quadruple",
+        "step-up-dyno",
+        "hip-swing",
+        "arm-swing",
+        "pogo-moon-kick",
+        "run-and-jump",
+        "swing-and-jump",
+        "headbutt"
+      ]
     },
     {
       "id": "grip-awareness",
       "categoryId": "movement-drills",
       "name": "Grip awareness",
-      "description": "climb an easy problem consciously choosing a grip for each hold: open hand, half crimp, pinch, sloper. The goal is deliberate choice, not maximum grip."
+      "description": "climb an easy problem consciously choosing a grip for each hold: open hand, half crimp, pinch, sloper. The goal is deliberate choice, not maximum grip.",
+      "relatedTechniques": [
+        "open-hand-three-finger-drag",
+        "open-crimp",
+        "half-crimp",
+        "quarter-crimp",
+        "closed-crimp-full-crimp",
+        "two-finger-pocket",
+        "front-three",
+        "back-three",
+        "mono",
+        "closed-mono",
+        "stacked-fingers",
+        "pinch",
+        "thumbercling-thumb-catch",
+        "palm-down-palming",
+        "meat-hook",
+        "hand-match",
+        "piano-match",
+        "foot-match",
+        "hand-foot-match",
+        "hand-cross-over",
+        "hand-cross-under",
+        "rose-move",
+        "foot-cross-front",
+        "foot-cross-back",
+        "rock-over",
+        "knee-press",
+        "mantle",
+        "beached-whale",
+        "cut-loose",
+        "campussing",
+        "the-houdini",
+        "good-samaritan",
+        "t-rex-turtle-roll",
+        "dead-point",
+        "dyno",
+        "double-dyno",
+        "one-arm-dyno",
+        "double-clutch",
+        "paddle-dyno-triple-quadruple",
+        "step-up-dyno",
+        "hip-swing",
+        "arm-swing",
+        "pogo-moon-kick",
+        "run-and-jump",
+        "swing-and-jump",
+        "headbutt"
+      ]
     },
     {
       "id": "predict-and-verify",
       "categoryId": "reading-mental-drills",
       "name": "Predict and verify",
-      "description": "write or say the full sequence out loud before pulling on, then check it against what actually happened."
+      "description": "write or say the full sequence out loud before pulling on, then check it against what actually happened.",
+      "relatedTechniques": []
     },
     {
       "id": "onsight-only",
       "categoryId": "reading-mental-drills",
       "name": "Onsight only",
-      "description": "for one session, every problem gets exactly one attempt. Forces real reading."
+      "description": "for one session, every problem gets exactly one attempt. Forces real reading.",
+      "relatedTechniques": []
     },
     {
       "id": "blind-feet",
       "categoryId": "reading-mental-drills",
       "name": "Blind feet",
-      "description": "read the problem, then climb without looking down at your feet."
+      "description": "read the problem, then climb without looking down at your feet.",
+      "relatedTechniques": []
     },
     {
       "id": "reverse-read",
       "categoryId": "reading-mental-drills",
       "name": "Reverse read",
-      "description": "read the problem from the top down before climbing it bottom-up."
+      "description": "read the problem from the top down before climbing it bottom-up.",
+      "relatedTechniques": []
     },
     {
       "id": "two-solutions",
       "categoryId": "reading-mental-drills",
       "name": "Two solutions",
-      "description": "find and climb two genuinely different sequences for the same problem."
+      "description": "find and climb two genuinely different sequences for the same problem.",
+      "relatedTechniques": []
     },
     {
       "id": "add-on",
       "categoryId": "partner-games",
       "name": "Add-on",
-      "description": "you do move 1, partner adds move 2, alternate until someone falls."
+      "description": "you do move 1, partner adds move 2, alternate until someone falls.",
+      "relatedTechniques": []
     },
     {
       "id": "take-away",
       "categoryId": "partner-games",
       "name": "Take-away",
-      "description": "alternate removing one hold from a problem until it becomes unclimbable. Last person to send wins."
+      "description": "alternate removing one hold from a problem until it becomes unclimbable. Last person to send wins.",
+      "relatedTechniques": []
     },
     {
       "id": "caller",
       "categoryId": "partner-games",
       "name": "Caller",
-      "description": "partner calls each hold out loud while you climb. You may only use what's called."
+      "description": "partner calls each hold out loud while you climb. You may only use what's called.",
+      "relatedTechniques": []
     },
     {
       "id": "mirror",
       "categoryId": "partner-games",
       "name": "Mirror",
-      "description": "partner climbs a problem; you repeat it move for move, exactly, including foot placements."
+      "description": "partner climbs a problem; you repeat it move for move, exactly, including foot placements.",
+      "relatedTechniques": []
     },
     {
       "id": "technique-referee",
       "categoryId": "partner-games",
       "name": "Technique referee",
-      "description": "partner watches and counts errors: foot readjustments, bent arms, noisy feet. Lowest score wins."
+      "description": "partner watches and counts errors: foot readjustments, bent arms, noisy feet. Lowest score wins.",
+      "relatedTechniques": []
     },
     {
       "id": "dice-roulette",
       "categoryId": "partner-games",
       "name": "Dice / roulette",
-      "description": "assign a constraint to each number, roll before each problem."
+      "description": "assign a constraint to each number, roll before each problem.",
+      "relatedTechniques": []
     },
     {
       "id": "traverse-the-wall",
       "categoryId": "volume-fun-games",
       "name": "Traverse the wall",
-      "description": "link the start holds of every problem across a section."
+      "description": "link the start holds of every problem across a section.",
+      "relatedTechniques": []
     },
     {
       "id": "colour-chaos",
       "categoryId": "volume-fun-games",
       "name": "Colour chaos",
-      "description": "pick one hold colour and climb anywhere on the wall using only that colour."
+      "description": "pick one hold colour and climb anywhere on the wall using only that colour.",
+      "relatedTechniques": []
     },
     {
       "id": "ladder",
       "categoryId": "volume-fun-games",
       "name": "Ladder",
-      "description": "V1 → V2 → V3 → V2 → V1 back to back, then rest 5 minutes."
+      "description": "V1 → V2 → V3 → V2 → V1 back to back, then rest 5 minutes.",
+      "relatedTechniques": []
     },
     {
       "id": "circuit-of-four",
       "categoryId": "volume-fun-games",
       "name": "Circuit of four",
-      "description": "four V1–V2 problems in a row with no rest, then 3 minutes off. Repeat 3–4 times."
+      "description": "four V1–V2 problems in a row with no rest, then 3 minutes off. Repeat 3–4 times.",
+      "relatedTechniques": []
     },
     {
       "id": "pyramid-session",
       "categoryId": "volume-fun-games",
       "name": "Pyramid session",
-      "description": "4 problems at V1, 3 at V2, 2 at V3, 1 project. A complete session in itself."
+      "description": "4 problems at V1, 3 at V2, 2 at V3, 1 project. A complete session in itself.",
+      "relatedTechniques": []
     },
     {
       "id": "speed-quality",
       "categoryId": "volume-fun-games",
       "name": "Speed–quality",
-      "description": "climb a V1 as fast as possible, then as perfectly as possible. Compare how it felt."
+      "description": "climb a V1 as fast as possible, then as perfectly as possible. Compare how it felt.",
+      "relatedTechniques": []
     },
     {
       "id": "no-repeat-hour",
       "categoryId": "volume-fun-games",
       "name": "No-repeat hour",
-      "description": "every problem you climb in the session must be one you've never done before."
+      "description": "every problem you climb in the session must be one you've never done before.",
+      "relatedTechniques": []
     }
   ],
-  "references": []
+  "references": [],
+  "progressionStages": [
+    {
+      "id": "stage-footwork-foundations",
+      "order": 1,
+      "title": "Stage 1: Footwork foundations",
+      "summary": "Precise, quiet feet and basic weight-shifting come before anything else — most of a beginner's unclaimed progress lives here.",
+      "techniqueIds": [
+        "inside-edge",
+        "outside-edge",
+        "smear",
+        "back-step",
+        "rock-over"
+      ],
+      "drillIds": [
+        "silent-feet",
+        "glue-feet",
+        "sniper"
+      ]
+    },
+    {
+      "id": "stage-body-position-balance",
+      "order": 2,
+      "title": "Stage 2: Body position & balance",
+      "summary": "Get the hips to the wall and the arms straight before adding power — flags and matching keep balance under control.",
+      "techniqueIds": [
+        "outside-flag",
+        "back-flag",
+        "perching",
+        "frogging",
+        "hand-match",
+        "foot-match"
+      ],
+      "drillIds": [
+        "hip-kiss",
+        "straight-arms-only",
+        "no-barn-door"
+      ]
+    },
+    {
+      "id": "stage-grip-fundamentals",
+      "order": 3,
+      "title": "Stage 3: Grip fundamentals",
+      "summary": "Build the safest, most trainable grip positions first — the stronger, riskier grips can wait.",
+      "techniqueIds": [
+        "open-hand-three-finger-drag",
+        "open-crimp",
+        "half-crimp",
+        "pinch",
+        "palm-down-palming"
+      ],
+      "drillIds": [
+        "grip-awareness"
+      ]
+    },
+    {
+      "id": "stage-reading-holds-positions",
+      "order": 4,
+      "title": "Stage 4: Reading holds & positions",
+      "summary": "Learn to read which direction a hold actually pulls, and the positions that let you use it.",
+      "techniqueIds": [
+        "side-pull",
+        "lay-back",
+        "gaston",
+        "undercling",
+        "heel-hook",
+        "toe-hook",
+        "mantle"
+      ],
+      "drillIds": [
+        "flag-hunt",
+        "one-touch"
+      ]
+    },
+    {
+      "id": "stage-power-dynamic-movement",
+      "order": 5,
+      "title": "Stage 5: Power & dynamic movement",
+      "summary": "Add momentum and commitment once the static fundamentals are solid — this is also where injury risk starts climbing, so go gradually.",
+      "techniqueIds": [
+        "dead-point",
+        "dyno",
+        "hip-swing",
+        "drop-knee"
+      ],
+      "drillIds": [
+        "deadpoint-practice",
+        "static-then-dynamic"
+      ]
+    },
+    {
+      "id": "stage-competition-specialty-moves",
+      "order": 6,
+      "title": "Stage 6: Competition & specialty moves",
+      "summary": "Rare, high-skill moves worth knowing by name — not a training priority, but useful once everything above is comfortable.",
+      "techniqueIds": [
+        "inside-figure-4",
+        "outside-figure-4",
+        "one-arm-dyno",
+        "double-clutch",
+        "rose-move"
+      ],
+      "drillIds": [
+        "two-solutions"
+      ]
+    }
+  ]
 }

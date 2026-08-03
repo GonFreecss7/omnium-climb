@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useAppState } from "../state/AppState";
 import { useScrollToTarget } from "../hooks/useScrollToTarget";
 import { normalize } from "../utils/text";
@@ -6,7 +6,7 @@ import TechniqueCard from "../components/TechniqueCard";
 import type { Tag, Technique } from "../data/types";
 
 export default function TechniquesView() {
-  const { guide, t, scrollTarget, clearScrollTarget, favorites } = useAppState();
+  const { guide, t, scrollTarget, clearScrollTarget, favorites, expandRequest, clearExpandRequest } = useAppState();
   useScrollToTarget(scrollTarget, clearScrollTarget);
 
   const [query, setQuery] = useState("");
@@ -14,6 +14,14 @@ export default function TechniquesView() {
   const [selectedCategories, setSelectedCategories] = useState<Set<string>>(new Set());
   const [favoritesOnly, setFavoritesOnly] = useState(false);
   const [expandedIds, setExpandedIds] = useState<Set<string>>(new Set());
+  const [randomTechnique, setRandomTechnique] = useState<Technique | null>(null);
+
+  useEffect(() => {
+    if (expandRequest?.kind === "technique") {
+      setExpandedIds((prev) => new Set(prev).add(expandRequest.id));
+      clearExpandRequest();
+    }
+  }, [expandRequest, clearExpandRequest]);
 
   const hasActiveFilters =
     selectedTags.size > 0 || selectedCategories.size > 0 || favoritesOnly || query.trim() !== "";
@@ -37,6 +45,12 @@ export default function TechniquesView() {
     setSelectedTags(new Set());
     setSelectedCategories(new Set());
     setFavoritesOnly(false);
+  }
+
+  function pickRandomTechnique() {
+    const pool = guide.techniques;
+    const next = pool[Math.floor(Math.random() * pool.length)]!;
+    setRandomTechnique(next);
   }
 
   const normalizedQuery = normalize(query.trim());
@@ -67,15 +81,17 @@ export default function TechniquesView() {
 
   return (
     <div className="view">
-      <div className="search-bar">
-        <input
-          type="search"
-          className="search-bar__input"
-          placeholder={t.search.placeholder}
-          aria-label={t.search.ariaLabel}
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-        />
+      <div className="random-drill">
+        <button type="button" className="button-primary" onClick={pickRandomTechnique}>
+          {t.technique.randomButton}
+        </button>
+        {randomTechnique && (
+          <div className="random-drill__result">
+            <span className="mono-label">{t.technique.randomHeading}</span>
+            <p className="random-drill__name">{randomTechnique.name}</p>
+            <p className="random-drill__description">{randomTechnique.what}</p>
+          </div>
+        )}
       </div>
 
       <div className="filters">
@@ -123,6 +139,63 @@ export default function TechniquesView() {
             {t.filters.clear}
           </button>
         )}
+      </div>
+
+      {hasActiveFilters && (
+        <div className="active-filters">
+          <span className="mono-label filters__label">{t.filters.activeHeading}</span>
+          <div className="chip-row">
+            {query.trim() !== "" && (
+              <button type="button" className="chip chip--removable" onClick={() => setQuery("")}>
+                “{query.trim()}” <span aria-hidden="true">×</span>
+                <span className="visually-hidden">{t.filters.removeAriaLabel}</span>
+              </button>
+            )}
+            {favoritesOnly && (
+              <button type="button" className="chip chip--removable" onClick={() => setFavoritesOnly(false)}>
+                {t.favorites.filterLabel} <span aria-hidden="true">×</span>
+                <span className="visually-hidden">{t.filters.removeAriaLabel}</span>
+              </button>
+            )}
+            {[...selectedTags].map((tag) => (
+              <button
+                key={tag}
+                type="button"
+                className="chip chip--removable"
+                onClick={() => toggleInSet(selectedTags, tag, setSelectedTags)}
+              >
+                {t.filters.tagLabels[tag]} <span aria-hidden="true">×</span>
+                <span className="visually-hidden">{t.filters.removeAriaLabel}</span>
+              </button>
+            ))}
+            {[...selectedCategories].map((id) => {
+              const cat = guide.techniqueCategories.find((c) => c.id === id);
+              if (!cat) return null;
+              return (
+                <button
+                  key={id}
+                  type="button"
+                  className="chip chip--removable"
+                  onClick={() => toggleInSet(selectedCategories, id, setSelectedCategories)}
+                >
+                  {cat.title} <span aria-hidden="true">×</span>
+                  <span className="visually-hidden">{t.filters.removeAriaLabel}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
+      <div className="search-bar">
+        <input
+          type="search"
+          className="search-bar__input"
+          placeholder={t.search.placeholder}
+          aria-label={t.search.ariaLabel}
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        />
       </div>
 
       {totalVisible === 0 ? (
