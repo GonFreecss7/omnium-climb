@@ -1,6 +1,7 @@
 import { AppStateProvider, useAppState } from "./state/AppState";
 import Header from "./components/Header";
 import TabBar from "./components/TabBar";
+import Footer from "./components/Footer";
 import GuideView from "./views/GuideView";
 import TechniquesView from "./views/TechniquesView";
 import DrillsView from "./views/DrillsView";
@@ -16,6 +17,7 @@ function Main() {
       {tab === "drills" && <DrillsView />}
       {tab === "progressions" && <ProgressionsView />}
       {tab === "session" && <SessionView />}
+      <Footer />
     </main>
   );
 }
