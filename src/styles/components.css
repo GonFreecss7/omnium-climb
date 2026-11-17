@@ -342,14 +342,6 @@ ol.prose-list li {
   white-space: nowrap;
 }
 
-.chip--core {
-  border-color: var(--core);
-  color: var(--core);
-}
-.chip--later {
-  border-color: var(--later);
-  color: var(--later);
-}
 .chip--advanced {
   border-color: var(--advanced);
   color: var(--advanced);
@@ -367,14 +359,6 @@ ol.prose-list li {
     background var(--duration) var(--ease);
 }
 
-.chip--filterable.chip--core {
-  border-color: var(--core);
-  color: var(--core);
-}
-.chip--filterable.chip--later {
-  border-color: var(--later);
-  color: var(--later);
-}
 .chip--filterable.chip--advanced {
   border-color: var(--advanced);
   color: var(--advanced);
@@ -1077,4 +1061,312 @@ ol.prose-list li {
   .modal__body {
     overflow: visible;
   }
+}
+
+/* ---------- climber levels ---------- */
+
+.chip--beginner,
+.chip--filterable.chip--beginner {
+  border-color: var(--lvl-beginner);
+  color: var(--lvl-beginner);
+}
+.chip--intermediate,
+.chip--filterable.chip--intermediate {
+  border-color: var(--lvl-intermediate);
+  color: var(--lvl-intermediate);
+}
+.chip--advanced,
+.chip--filterable.chip--advanced {
+  border-color: var(--lvl-advanced);
+  color: var(--lvl-advanced);
+}
+.chip--elite,
+.chip--filterable.chip--elite {
+  border-color: var(--lvl-elite);
+  color: var(--lvl-elite);
+}
+
+.level-text--beginner { color: var(--lvl-beginner); }
+.level-text--intermediate { color: var(--lvl-intermediate); }
+.level-text--advanced { color: var(--lvl-advanced); }
+.level-text--elite { color: var(--lvl-elite); }
+
+/* header profile button */
+
+.header__profile {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 40px;
+  padding: var(--space-1) var(--space-3);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-chip);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.header__profile-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-muted);
+}
+
+.header__profile--beginner { color: var(--lvl-beginner); border-color: var(--lvl-beginner); }
+.header__profile--intermediate { color: var(--lvl-intermediate); border-color: var(--lvl-intermediate); }
+.header__profile--advanced { color: var(--lvl-advanced); border-color: var(--lvl-advanced); }
+.header__profile--elite { color: var(--lvl-elite); border-color: var(--lvl-elite); }
+.header__profile[class*="header__profile--"] .header__profile-dot { background: currentColor; }
+
+@media (max-width: 380px) {
+  .header { padding-left: var(--space-2); padding-right: var(--space-2); }
+  .header__pill, .header__profile { padding: var(--space-1) var(--space-2); }
+}
+
+/* technique card: level + relevance + caution */
+
+.tcard__chips {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  flex-shrink: 0;
+}
+
+.tcard__chips .chip--caution {
+  min-width: 32px;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.tcard__relevance {
+  margin-top: 2px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.tcard__relevance--current { color: var(--accent); }
+.tcard__relevance--next { color: var(--text); }
+
+.tcard--current {
+  border-color: var(--accent);
+}
+
+.tcard--later .tcard__name,
+.tcard--later .tcard__what {
+  opacity: 0.7;
+}
+
+.tcard__warning {
+  margin-top: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  border-left: 3px solid var(--caution);
+  background: var(--caution-dim);
+  color: var(--caution);
+  font-size: 13px;
+}
+
+.tcard__caution-note {
+  color: var(--caution);
+}
+
+/* level-conditional prose blocks */
+
+.level-block {
+  margin: var(--space-3) 0;
+  padding: var(--space-3) var(--space-4);
+  border-left: 3px solid var(--accent);
+  background: var(--accent-dim);
+}
+
+.level-block__label {
+  display: block;
+  margin-bottom: var(--space-1);
+  color: var(--accent);
+}
+
+.level-block .prose-list {
+  margin: 0;
+}
+
+/* progressions: current stage */
+
+.progression-stage__order {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.progression-stage__level {
+  min-height: 24px;
+  font-size: 10px;
+}
+
+.progression-stage__you {
+  margin-left: auto;
+  color: var(--accent);
+}
+
+.progression-stage--current {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+
+.progression-stage--past {
+  opacity: 0.75;
+}
+
+/* onboarding */
+
+.onboarding .modal__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.onboarding__progress {
+  display: flex;
+  gap: var(--space-1);
+}
+
+.onboarding__dot {
+  flex: 1;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--border-strong);
+}
+
+.onboarding__dot--done {
+  background: var(--accent);
+}
+
+.onboarding__step {
+  color: var(--text-muted);
+}
+
+.onboarding__fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.onboarding__question {
+  font-family: var(--font-heading);
+  font-size: 19px;
+  margin-bottom: var(--space-2);
+  padding: 0;
+}
+
+.onboarding__subq {
+  margin-top: var(--space-3);
+}
+
+.onboarding__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.onboarding__lead {
+  font-size: 16px;
+}
+
+.onboarding__hint,
+.onboarding__equiv {
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.onboarding__error {
+  color: var(--caution);
+  font-size: 13px;
+}
+
+.onboarding__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+}
+
+.onboarding__num {
+  min-width: 44px;
+  justify-content: center;
+}
+
+.onboarding__level {
+  font-family: var(--font-heading);
+  font-size: 32px;
+  line-height: 1.1;
+}
+
+.onboarding__result {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.onboarding__bands {
+  margin-top: var(--space-3);
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.onboarding__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+.onboarding__actions .button-primary {
+  flex: 1;
+  min-width: 160px;
+}
+
+.onboarding__delete {
+  margin-left: auto;
+  color: var(--caution);
+}
+
+/* level-up banner */
+
+.levelup {
+  margin-bottom: var(--space-4);
+  padding: var(--space-4);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-card);
+  background: var(--accent-dim);
+}
+
+.levelup__title {
+  font-family: var(--font-heading);
+  font-size: 16px;
+}
+
+.levelup__body {
+  margin-top: var(--space-1);
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.levelup__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+}
+
+.session-log__entry-tag {
+  color: var(--text-muted);
 }

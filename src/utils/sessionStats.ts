@@ -1,5 +1,7 @@
 import type { ElbowChange, SessionLogEntry } from "../state/AppState";
 import type { Lang, UiStrings } from "../i18n/ui";
+import { gradeLabel, parseGradeAnyScale } from "../domain/grades";
+import type { BoulderScale, Discipline, RopeScale } from "../domain/grades";
 
 export function elbowLabels(t: UiStrings): Record<ElbowChange, string> {
   return {
@@ -31,35 +33,48 @@ export function formatDisplayDate(isoDate: string, lang: Lang): string {
   return new Intl.DateTimeFormat(lang === "es" ? "es" : "en", { dateStyle: "medium" }).format(date);
 }
 
-/** Extracts the numeric grade from free text like "V3" or "v3-v4". Returns null if none found. */
-export function parseGrade(text: string): number | null {
-  const match = text.match(/v\s*(\d+)/i);
-  return match ? Number(match[1]) : null;
+export interface DisplayScales {
+  boulder: BoulderScale;
+  rope: RopeScale;
 }
 
-export function formatGrade(n: number): string {
-  return `V${n}`;
+/** Ladder index of an entry's grade — structured if present, otherwise parsed from the legacy free text. */
+export function entryGradeIndex(e: SessionLogEntry): { discipline: Discipline; index: number } | null {
+  const discipline = e.discipline ?? "boulder";
+  const index = e.gradeIndex ?? parseGradeAnyScale(e.hardest, discipline);
+  return index === null || index === undefined ? null : { discipline, index };
+}
+
+/** The entry's grade shown in the climber's current scale, falling back to what was typed. */
+export function entryGradeLabel(e: SessionLogEntry, scales: DisplayScales): string {
+  const g = entryGradeIndex(e);
+  if (!g) return e.hardest;
+  return gradeLabel(g.index, g.discipline === "boulder" ? scales.boulder : scales.rope);
 }
 
 export interface SessionStats {
   sessionsLogged: number;
-  highestGrade: number | null;
+  highestBoulder: number | null;
+  highestRope: number | null;
   recentGradeLabels: string[];
   mostUsedDrill: { name: string; count: number } | null;
   recentElbow: ElbowChange[];
 }
 
 /** `log` is newest-first, as stored. All "recent" sequences are returned oldest-to-newest. */
-export function computeSessionStats(log: SessionLogEntry[]): SessionStats {
+export function computeSessionStats(log: SessionLogEntry[], scales: DisplayScales): SessionStats {
   const chronological = [...log].reverse();
 
-  const grades = chronological.map((e) => parseGrade(e.hardest)).filter((g): g is number => g !== null);
-  const highestGrade = grades.length > 0 ? Math.max(...grades) : null;
+  let highestBoulder: number | null = null;
+  let highestRope: number | null = null;
+  for (const e of chronological) {
+    const g = entryGradeIndex(e);
+    if (!g) continue;
+    if (g.discipline === "boulder") highestBoulder = Math.max(highestBoulder ?? -1, g.index);
+    else highestRope = Math.max(highestRope ?? -1, g.index);
+  }
 
-  const recentGradeLabels = chronological.slice(-5).map((e) => {
-    const g = parseGrade(e.hardest);
-    return g !== null ? formatGrade(g) : e.hardest;
-  });
+  const recentGradeLabels = chronological.slice(-5).map((e) => entryGradeLabel(e, scales));
 
   const drillCounts = new Map<string, number>();
   for (const e of log) {
@@ -76,7 +91,8 @@ export function computeSessionStats(log: SessionLogEntry[]): SessionStats {
 
   return {
     sessionsLogged: log.length,
-    highestGrade,
+    highestBoulder,
+    highestRope,
     recentGradeLabels,
     mostUsedDrill,
     recentElbow,

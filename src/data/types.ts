@@ -1,7 +1,9 @@
 // Mirrors the shape scripts/parse-guide.ts writes to src/data/guide.<lang>.json.
 // src/data/ is generated — never hand-edit the JSON, only this type layer.
 
-export type Tag = "core" | "later" | "advanced" | "caution";
+import type { Level } from "../domain/levels";
+
+export type { Level };
 
 export interface ProseSection {
   number: number;
@@ -30,7 +32,9 @@ export interface Technique {
   categoryId: string;
   categoryNumber: number;
   name: string;
-  tag: Tag;
+  level: Level;
+  /** Meaningful injury risk — shown as a warning on top of the level. */
+  caution: boolean;
   nonstandard: boolean;
   gloss: string | null;
   what: string;
@@ -84,6 +88,8 @@ export interface ProgressionStage {
   order: number;
   title: string;
   summary: string;
+  /** Highest level among the stage's techniques — derived at build time. */
+  level: Level;
   techniqueIds: string[];
   drillIds: string[];
 }
@@ -95,7 +101,8 @@ export interface Guide {
     version: string;
     parts: Record<string, string>;
   };
-  tagLegend: Record<Tag, string>;
+  levelLegend: Record<Level, string>;
+  cautionNote: string;
   nonstandardNote: string;
   sectionIndex: Record<string, SectionIndexEntry>;
   prose: ProseFile[];

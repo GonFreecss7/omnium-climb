@@ -5,6 +5,9 @@ import { getGuide } from "../data";
 import type { Guide } from "../data/types";
 import { ui } from "../i18n/ui";
 import type { Lang, UiStrings } from "../i18n/ui";
+import { computeLevel } from "../domain/levels";
+import type { ClimberProfile, LevelResult } from "../domain/levels";
+import type { Discipline, GradeScale } from "../domain/grades";
 
 export type Theme = "dark" | "light";
 export type Tab = "guide" | "techniques" | "drills" | "progressions" | "session";
@@ -18,6 +21,10 @@ export interface SessionLogEntry {
   hardest: string;
   elbow: ElbowChange;
   note: string;
+  /** Structured grade — absent on entries logged before profiles existed. */
+  discipline?: Discipline;
+  gradeIndex?: number | null;
+  gradeScale?: GradeScale;
 }
 
 const LANG_KEY = "cg.lang";
@@ -25,6 +32,29 @@ const THEME_KEY = "cg.theme";
 const FAVORITES_KEY = "cg.favorites";
 const LOG_KEY = "cg.log";
 const NOTES_KEY = "cg.notes";
+const PROFILE_KEY = "cg.profile";
+const ONBOARDING_SKIPPED_KEY = "cg.onboardingSkipped";
+
+function initialProfile(): ClimberProfile | null {
+  try {
+    const stored = localStorage.getItem(PROFILE_KEY);
+    if (stored) {
+      const parsed = JSON.parse(stored) as Partial<ClimberProfile>;
+      if (parsed && parsed.version === 1 && Array.isArray(parsed.disciplines)) return parsed as ClimberProfile;
+    }
+  } catch {
+    // malformed/unavailable storage — treat as no profile
+  }
+  return null;
+}
+
+function initialOnboardingOpen(): boolean {
+  try {
+    return localStorage.getItem(PROFILE_KEY) === null && localStorage.getItem(ONBOARDING_SKIPPED_KEY) === null;
+  } catch {
+    return false;
+  }
+}
 
 function initialLang(): Lang {
   try {
@@ -113,6 +143,14 @@ interface AppStateValue {
   addLogEntry: (entry: Omit<SessionLogEntry, "id">) => void;
   notes: Record<string, string>;
   setNote: (techniqueId: string, text: string) => void;
+  profile: ClimberProfile | null;
+  /** Derived from the profile; null when the climber skipped onboarding. */
+  levelInfo: LevelResult | null;
+  saveProfile: (profile: ClimberProfile) => void;
+  deleteProfile: () => void;
+  onboardingOpen: boolean;
+  openOnboarding: () => void;
+  closeOnboarding: () => void;
 }
 
 const AppStateContext = createContext<AppStateValue | null>(null);
@@ -126,6 +164,9 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
   const [log, setLog] = useState<SessionLogEntry[]>(initialLog);
   const [notes, setNotes] = useState<Record<string, string>>(initialNotes);
   const [expandRequest, setExpandRequest] = useState<{ kind: EntryKind; id: string } | null>(null);
+  const [profile, setProfile] = useState<ClimberProfile | null>(initialProfile);
+  const [onboardingOpen, setOnboardingOpen] = useState<boolean>(initialOnboardingOpen);
+  const levelInfo = useMemo(() => (profile ? computeLevel(profile) : null), [profile]);
 
   const guide = useMemo(() => getGuide(lang), [lang]);
   const t = ui[lang];
@@ -175,6 +216,35 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
       // ignore write failures
     }
   }, [notes]);
+
+  useEffect(() => {
+    try {
+      if (profile) localStorage.setItem(PROFILE_KEY, JSON.stringify(profile));
+      else localStorage.removeItem(PROFILE_KEY);
+    } catch {
+      // ignore write failures
+    }
+  }, [profile]);
+
+  const saveProfile = useCallback((next: ClimberProfile) => {
+    setProfile({ ...next, updatedAt: new Date().toISOString() });
+    setOnboardingOpen(false);
+  }, []);
+
+  const deleteProfile = useCallback(() => {
+    setProfile(null);
+  }, []);
+
+  const openOnboarding = useCallback(() => setOnboardingOpen(true), []);
+
+  const closeOnboarding = useCallback(() => {
+    setOnboardingOpen(false);
+    try {
+      localStorage.setItem(ONBOARDING_SKIPPED_KEY, "1");
+    } catch {
+      // ignore write failures
+    }
+  }, []);
 
   const goToSection = useCallback(
     (sectionNumber: number) => {
@@ -243,6 +313,13 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
     addLogEntry,
     notes,
     setNote,
+    profile,
+    levelInfo,
+    saveProfile,
+    deleteProfile,
+    onboardingOpen,
+    openOnboarding,
+    closeOnboarding,
   };
 
   return <AppStateContext.Provider value={value}>{children}</AppStateContext.Provider>;

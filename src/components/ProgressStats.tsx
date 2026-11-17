@@ -1,12 +1,14 @@
 import { useAppState } from "../state/AppState";
-import { computeSessionStats, elbowLabels, formatGrade } from "../utils/sessionStats";
+import { computeSessionStats, elbowLabels } from "../utils/sessionStats";
+import { gradeLabel } from "../domain/grades";
 
 export default function ProgressStats() {
-  const { t, log } = useAppState();
+  const { t, log, profile } = useAppState();
 
   if (log.length === 0) return null;
 
-  const stats = computeSessionStats(log);
+  const scales = { boulder: profile?.boulderScale ?? "V", rope: profile?.ropeScale ?? "French" } as const;
+  const stats = computeSessionStats(log, scales);
   const labels = elbowLabels(t);
 
   return (
@@ -21,7 +23,10 @@ export default function ProgressStats() {
         <div className="stats-panel__tile">
           <span className="mono-label">{t.stats.highestGrade}</span>
           <span className="stats-panel__value">
-            {stats.highestGrade !== null ? formatGrade(stats.highestGrade) : t.stats.noData}
+            {stats.highestBoulder === null && stats.highestRope === null && t.stats.noData}
+            {stats.highestBoulder !== null && gradeLabel(stats.highestBoulder, scales.boulder)}
+            {stats.highestBoulder !== null && stats.highestRope !== null && " · "}
+            {stats.highestRope !== null && gradeLabel(stats.highestRope, scales.rope)}
           </span>
         </div>
 

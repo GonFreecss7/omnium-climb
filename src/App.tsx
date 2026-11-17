@@ -2,11 +2,17 @@ import { AppStateProvider, useAppState } from "./state/AppState";
 import Header from "./components/Header";
 import TabBar from "./components/TabBar";
 import Footer from "./components/Footer";
+import Onboarding from "./components/Onboarding";
 import GuideView from "./views/GuideView";
 import TechniquesView from "./views/TechniquesView";
 import DrillsView from "./views/DrillsView";
 import ProgressionsView from "./views/ProgressionsView";
 import SessionView from "./views/SessionView";
+
+function OnboardingGate() {
+  const { onboardingOpen } = useAppState();
+  return onboardingOpen ? <Onboarding /> : null;
+}
 
 function Main() {
   const { tab } = useAppState();
@@ -29,6 +35,7 @@ export default function App() {
         <Header />
         <Main />
         <TabBar />
+        <OnboardingGate />
       </div>
     </AppStateProvider>
   );

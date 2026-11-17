@@ -1,13 +1,21 @@
 import { useState } from "react";
 import { useAppState } from "../state/AppState";
 import type { ElbowChange, SessionLogEntry } from "../state/AppState";
-import { elbowLabels as getElbowLabels, formatDisplayDate, todayLocalISO } from "../utils/sessionStats";
+import {
+  elbowLabels as getElbowLabels,
+  entryGradeLabel,
+  formatDisplayDate,
+  todayLocalISO,
+} from "../utils/sessionStats";
+import { gradeLabel, gradeOptions } from "../domain/grades";
+import type { Discipline } from "../domain/grades";
+import LevelUpBanner from "./LevelUpBanner";
 import ProgressStats from "./ProgressStats";
 import SessionChecklist from "./SessionChecklist";
 
 type ExportFormat = "json" | "csv";
 
-const CSV_COLUMNS: Array<keyof SessionLogEntry> = ["date", "drill", "hardest", "elbow", "note"];
+const CSV_COLUMNS: Array<keyof SessionLogEntry> = ["date", "discipline", "hardest", "gradeScale", "drill", "elbow", "note"];
 
 function csvEscape(value: string): string {
   if (/[",\n]/.test(value)) return `"${value.replace(/"/g, '""')}"`;
@@ -16,7 +24,7 @@ function csvEscape(value: string): string {
 
 function toCsv(entries: SessionLogEntry[]): string {
   const header = CSV_COLUMNS.join(",");
-  const rows = entries.map((entry) => CSV_COLUMNS.map((col) => csvEscape(String(entry[col]))).join(","));
+  const rows = entries.map((entry) => CSV_COLUMNS.map((col) => csvEscape(String(entry[col] ?? ""))).join(","));
   return [header, ...rows].join("\r\n");
 }
 
@@ -26,24 +34,39 @@ function toCsv(entries: SessionLogEntry[]): string {
 const UTF8_BOM = String.fromCharCode(0xfeff);
 
 export default function SessionLog() {
-  const { t, lang, guide, log, addLogEntry } = useAppState();
+  const { t, lang, guide, log, addLogEntry, profile } = useAppState();
+  const disciplines: Discipline[] = profile?.disciplines.length ? profile.disciplines : ["boulder", "rope"];
+  const scales = { boulder: profile?.boulderScale ?? "V", rope: profile?.ropeScale ?? "French" } as const;
+  const [discipline, setDiscipline] = useState<Discipline>(disciplines[0]!);
+  const activeDiscipline = disciplines.includes(discipline) ? discipline : disciplines[0]!;
+  const activeScale = activeDiscipline === "boulder" ? scales.boulder : scales.rope;
 
   const [date, setDate] = useState(todayLocalISO);
   const [drill, setDrill] = useState("");
-  const [hardest, setHardest] = useState("");
+  const [gradeIndex, setGradeIndex] = useState<number | null>(null);
   const [elbow, setElbow] = useState<ElbowChange>("same");
   const [note, setNote] = useState("");
   const [exportFormat, setExportFormat] = useState<ExportFormat>("json");
   const [showChecklist, setShowChecklist] = useState(false);
 
-  const canSubmit = date !== "" && drill !== "" && hardest.trim() !== "";
+  const canSubmit = date !== "" && drill !== "" && gradeIndex !== null;
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!canSubmit) return;
-    addLogEntry({ date, drill, hardest: hardest.trim(), elbow, note: note.trim() });
+    if (gradeIndex === null) return;
+    addLogEntry({
+      date,
+      drill,
+      hardest: gradeLabel(gradeIndex, activeScale),
+      discipline: activeDiscipline,
+      gradeIndex,
+      gradeScale: activeScale,
+      elbow,
+      note: note.trim(),
+    });
     setDrill("");
-    setHardest("");
+    setGradeIndex(null);
     setElbow("same");
     setNote("");
   }
@@ -68,6 +91,7 @@ export default function SessionLog() {
     <section className="session-log">
       <h2 className="guide-section__title">{t.sessionLog.heading}</h2>
 
+      <LevelUpBanner />
       <ProgressStats />
 
       <button type="button" className="secondary-button" onClick={() => setShowChecklist(true)}>
@@ -102,15 +126,46 @@ export default function SessionLog() {
           </select>
         </label>
 
+        {disciplines.length > 1 && (
+          <div className="session-log__field">
+            <span className="mono-label">{t.sessionLog.disciplineLabel}</span>
+            <div className="session-log__elbow-group">
+              {disciplines.map((d) => (
+                <button
+                  key={d}
+                  type="button"
+                  className={`chip chip--filterable${activeDiscipline === d ? " chip--active" : ""}`}
+                  aria-pressed={activeDiscipline === d}
+                  onClick={() => {
+                    setDiscipline(d);
+                    setGradeIndex(null);
+                  }}
+                >
+                  {d === "boulder" ? t.onboarding.boulder : t.onboarding.rope}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
         <label className="session-log__field">
-          <span className="mono-label">{t.sessionLog.hardestLabel}</span>
-          <input
-            type="text"
-            value={hardest}
-            onChange={(e) => setHardest(e.target.value)}
-            placeholder={t.sessionLog.hardestPlaceholder}
+          <span className="mono-label">
+            {t.sessionLog.hardestLabel} · {activeScale}
+          </span>
+          <select
+            value={gradeIndex ?? ""}
+            onChange={(e) => setGradeIndex(e.target.value === "" ? null : Number(e.target.value))}
             required
-          />
+          >
+            <option value="" disabled>
+              {t.sessionLog.hardestPlaceholder}
+            </option>
+            {gradeOptions(activeScale).map((opt) => (
+              <option key={opt.index} value={opt.index}>
+                {opt.label}
+              </option>
+            ))}
+          </select>
         </label>
 
         <label className="session-log__field">
@@ -157,7 +212,10 @@ export default function SessionLog() {
                   <span className={`chip chip--filterable`}>{elbowLabels[entry.elbow]}</span>
                 </div>
                 <p className="session-log__entry-drill">{entry.drill}</p>
-                <p className="session-log__entry-hardest">{entry.hardest}</p>
+                <p className="session-log__entry-hardest">
+                  {entryGradeLabel(entry, scales)}
+                  {entry.discipline === "rope" && <span className="session-log__entry-tag"> · {t.onboarding.rope}</span>}
+                </p>
                 {entry.note && <p className="session-log__entry-note">{entry.note}</p>}
               </li>
             ))}

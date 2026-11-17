@@ -1,4 +1,7 @@
+import { Fragment } from "react";
 import type { ReactNode } from "react";
+import { LEVELS, inRange, parseLevelRange } from "../domain/levels";
+import type { LevelRange } from "../domain/levels";
 import { useAppState } from "../state/AppState";
 
 /** Renders `**bold**` and `§N` section links within a single line of text. */
@@ -127,8 +130,61 @@ function renderBlock(block: string, key: string, goToSection: (n: number) => voi
   );
 }
 
+interface Segment {
+  range: LevelRange | null;
+  text: string;
+}
+
+/**
+ * Splits a body on `:::level <range>` … `:::` fences (validated at build time
+ * by scripts/parse-guide.ts). Unfenced text has `range: null`.
+ */
+function splitLevelSegments(body: string): Segment[] {
+  const segments: Segment[] = [];
+  let current: Segment = { range: null, text: "" };
+  for (const line of body.split("\n")) {
+    const trimmed = line.trim();
+    const open = trimmed.match(/^:::level\s+(\S+)$/);
+    if (open) {
+      segments.push(current);
+      current = { range: parseLevelRange(open[1]!), text: "" };
+      continue;
+    }
+    if (trimmed === ":::") {
+      segments.push(current);
+      current = { range: null, text: "" };
+      continue;
+    }
+    current.text += `${line}\n`;
+  }
+  segments.push(current);
+  return segments.filter((s) => s.text.trim() !== "");
+}
+
 export default function Prose({ body }: { body: string }) {
-  const { goToSection } = useAppState();
-  const blocks = body.split(/\n\s*\n/);
-  return <>{blocks.map((block, i) => renderBlock(block, `blk${i}`, goToSection))}</>;
+  const { goToSection, levelInfo, t } = useAppState();
+  const segments = splitLevelSegments(body);
+  return (
+    <>
+      {segments.map((seg, si) => {
+        const blocks = seg.text
+          .split(/\n\s*\n/)
+          .map((block, i) => renderBlock(block, `s${si}b${i}`, goToSection));
+        if (!seg.range) return <Fragment key={si}>{blocks}</Fragment>;
+        if (levelInfo && !inRange(levelInfo.level, seg.range)) return null;
+        const range = seg.range;
+        const label = LEVELS.filter((l) => inRange(l, range))
+          .map((l) => t.levels[l])
+          .join(" · ");
+        return (
+          <div key={si} className="level-block">
+            <span className="mono-label level-block__label">
+              {t.levelBlock.prefix} {label}
+            </span>
+            {blocks}
+          </div>
+        );
+      })}
+    </>
+  );
 }

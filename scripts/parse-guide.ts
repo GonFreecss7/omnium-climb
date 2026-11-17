@@ -11,8 +11,11 @@ const ES_DICT_PATH = path.resolve(ROOT, "content/i18n/es.json");
 const OUT_PATH_EN = path.resolve(ROOT, "src/data/guide.en.json");
 const OUT_PATH_ES = path.resolve(ROOT, "src/data/guide.es.json");
 
-const VALID_TAGS = ["core", "later", "advanced", "caution"] as const;
-type Tag = (typeof VALID_TAGS)[number];
+const VALID_LEVELS = ["beginner", "intermediate", "advanced", "elite"] as const;
+type Level = (typeof VALID_LEVELS)[number];
+
+const LEVEL_INTRO_SENTENCE =
+  "Levels show the band at which a technique typically becomes useful. They describe the move, not the reader:";
 
 const VALID_REF_TYPES = ["book", "video", "article", "channel", "paper"] as const;
 
@@ -66,7 +69,9 @@ interface Technique {
   categoryId: string;
   categoryNumber: number;
   name: string;
-  tag: Tag;
+  level: Level;
+  /** Meaningful injury risk — shown as a warning on top of the level. */
+  caution: boolean;
   nonstandard: boolean;
   /** Secondary Spanish gloss shown under the (always-English) name. Always null in EN. */
   gloss: string | null;
@@ -121,6 +126,8 @@ interface ProgressionStage {
   order: number;
   title: string;
   summary: string;
+  /** Highest level among the stage's techniques — derived, never authored. */
+  level: Level;
   techniqueIds: string[];
   drillIds: string[];
 }
@@ -132,7 +139,8 @@ interface Guide {
     version: string;
     parts: Record<string, string>;
   };
-  tagLegend: Record<Tag, string>;
+  levelLegend: Record<Level, string>;
+  cautionNote: string;
   nonstandardNote: string;
   sectionIndex: Record<string, SectionIndexEntry>;
   prose: ProseFile[];
@@ -200,6 +208,39 @@ function checkSectionRange(context: string, manifestRange: string, foundNumbers:
   }
 }
 
+// ---------- level-conditional blocks ----------
+//
+// Prose may wrap lines in `:::level <range>` … `:::` so they are shown only to
+// climbers in that band. <range> is `beginner`, `intermediate+` or
+// `beginner-intermediate`. Fences must be balanced and never nested, in both
+// the English source and the Spanish dictionary.
+
+const LEVEL_RANGE = /^(beginner|intermediate|advanced|elite)(\+|-(beginner|intermediate|advanced|elite))?$/;
+
+function validateLevelFences(body: string, context: string): void {
+  let open = false;
+  for (const raw of body.split("\n")) {
+    const line = raw.trim();
+    if (!line.startsWith(":::")) continue;
+    if (line === ":::") {
+      if (!open) fail(context, "closing `:::` without an opening `:::level` fence");
+      open = false;
+      continue;
+    }
+    const m = line.match(/^:::level\s+(\S+)$/);
+    if (!m) fail(context, `malformed fence "${line}" (expected ":::level <range>" or ":::")`);
+    if (open) fail(context, "nested `:::level` fences are not supported");
+    const spec = m[1]!;
+    const r = spec.match(LEVEL_RANGE);
+    if (!r) fail(context, `unknown level range \`${spec}\` in fence`);
+    if (r[3] && VALID_LEVELS.indexOf(r[1] as Level) > VALID_LEVELS.indexOf(r[3] as Level)) {
+      fail(context, `level range \`${spec}\` is reversed`);
+    }
+    open = true;
+  }
+  if (open) fail(context, "`:::level` fence is never closed");
+}
+
 // ---------- prose ----------
 //
 // Every line either opens a new numbered section or belongs to the section
@@ -240,6 +281,9 @@ function parseProse(raw: string, file: ManifestFile): ProseFile {
   }
 
   checkSectionRange(context, file.sections, sections.map((s) => s.number));
+  for (const section of sections) {
+    validateLevelFences(section.body, `${context} §${section.number}`);
+  }
 
   return { id: file.id, title: file.title, part: file.part, order: file.order, sections };
 }
@@ -248,21 +292,27 @@ function parseProse(raw: string, file: ManifestFile): ProseFile {
 
 /**
  * Parses the free text that precedes the first `### N.` category heading in the
- * techniques file: the tag legend and the sentence explaining `nonstandard: true`.
- * Both are surfaced in the app (filter chip meaning, and the asterisk explanation
- * on nonstandard technique names), so they must come from content, not be hardcoded.
+ * techniques file: the level legend, the `caution: true` sentence and the
+ * `nonstandard: true` sentence. All are surfaced in the app, so they must come
+ * from content, not be hardcoded.
  */
 function parseTechniquesIntro(
   lines: string[],
   context: string,
-): { tagLegend: Record<Tag, string>; nonstandardNote: string } {
-  const legendFound: Partial<Record<Tag, string>> = {};
+): { levelLegend: Record<Level, string>; cautionNote: string; nonstandardNote: string } {
+  const legendFound: Partial<Record<Level, string>> = {};
   let nonstandardNote = "";
+  let cautionNote = "";
 
   for (const line of lines) {
-    const bullet = line.match(/^- `(core|later|advanced|caution)`\s*[—–-]\s*(.+?)\s*$/);
+    const bullet = line.match(/^- `(beginner|intermediate|advanced|elite)`\s*[—–-]\s*(.+?)\s*$/);
     if (bullet) {
-      legendFound[bullet[1] as Tag] = bullet[2];
+      legendFound[bullet[1] as Level] = bullet[2];
+      continue;
+    }
+    const cautionLine = line.match(/^`caution: true`\s+(.+?)\s*$/);
+    if (cautionLine) {
+      cautionNote = cautionLine[1]!;
       continue;
     }
     const nonstandardLine = line.match(/^`nonstandard: true`\s+(.+?)\s*$/);
@@ -270,25 +320,28 @@ function parseTechniquesIntro(
       nonstandardNote = nonstandardLine[1]!;
       continue;
     }
-    if (line.trim() === "" || line.trim() === "Tags indicate roughly when a technique is worth learning:") {
+    if (line.trim() === "" || line.trim() === LEVEL_INTRO_SENTENCE) {
       continue;
     }
     fail(context, `unclaimed content in the file intro: "${line.trim()}"`);
   }
 
-  const tagLegend = {} as Record<Tag, string>;
-  for (const tag of VALID_TAGS) {
-    const text = legendFound[tag];
+  const levelLegend = {} as Record<Level, string>;
+  for (const level of VALID_LEVELS) {
+    const text = legendFound[level];
     if (!text) {
-      fail(context, `file intro is missing the legend line for tag \`${tag}\` (expected "- \`${tag}\` — ...")`);
+      fail(context, `file intro is missing the legend line for level \`${level}\` (expected "- \`${level}\` — ...")`);
     }
-    tagLegend[tag] = text;
+    levelLegend[level] = text;
+  }
+  if (!cautionNote) {
+    fail(context, "file intro is missing the `caution: true` explanation sentence");
   }
   if (!nonstandardNote) {
     fail(context, "file intro is missing the `nonstandard: true` explanation sentence");
   }
 
-  return { tagLegend, nonstandardNote };
+  return { levelLegend, cautionNote, nonstandardNote };
 }
 
 function parseTechniques(
@@ -298,7 +351,8 @@ function parseTechniques(
 ): {
   categories: TechniqueCategory[];
   techniques: Technique[];
-  tagLegend: Record<Tag, string>;
+  levelLegend: Record<Level, string>;
+  cautionNote: string;
   nonstandardNote: string;
 } {
   const context = file.path;
@@ -328,15 +382,15 @@ function parseTechniques(
       );
     }
 
-    const required: Array<keyof Technique> = ["tag", "what", "how", "best"];
+    const required: Array<keyof Technique> = ["level", "what", "how", "best"];
     for (const key of required) {
       if (!entry[key] || String(entry[key]).trim() === "") {
         fail(entryContext, `missing required field \`${key}\``);
       }
     }
-    const tag = entry.tag as string;
-    if (!VALID_TAGS.includes(tag as Tag)) {
-      fail(entryContext, `unknown tag \`${tag}\` — must be one of ${VALID_TAGS.join(" | ")}`);
+    const level = entry.level as string;
+    if (!VALID_LEVELS.includes(level as Level)) {
+      fail(entryContext, `unknown level \`${level}\` — must be one of ${VALID_LEVELS.join(" | ")}`);
     }
     const id = entry.id as string;
     registerId(idRegistry, id, entryContext);
@@ -345,7 +399,8 @@ function parseTechniques(
       categoryId: category!.id,
       categoryNumber: category!.number,
       name: entry.name!,
-      tag: tag as Tag,
+      level: level as Level,
+      caution: entry.caution === true,
       nonstandard: entry.nonstandard === true,
       gloss: null,
       what: entry.what!.trim(),
@@ -395,15 +450,17 @@ function parseTechniques(
       if (!entry) fail(context, `field \`${fieldLine[1]}\` appears outside any technique entry`);
       const key = fieldLine[1]!.toLowerCase();
       let value = fieldLine[2]!.trim();
-      if (key === "id" || key === "tag") {
+      if (key === "tag") {
+        fail(entryContext, "field `tag` was replaced by `level` (plus optional `caution: true`) — see CLAUDE.md");
+      } else if (key === "id" || key === "level") {
         value = value.replace(/`/g, "").trim();
         (entry as Record<string, unknown>)[key] = value;
         currentField = null;
-      } else if (key === "nonstandard") {
+      } else if (key === "nonstandard" || key === "caution") {
         if (value !== "true" && value !== "false") {
-          fail(entryContext, `field \`nonstandard\` must be true or false, got \`${value}\``);
+          fail(entryContext, `field \`${key}\` must be true or false, got \`${value}\``);
         }
-        entry.nonstandard = value === "true";
+        entry[key] = value === "true";
         currentField = null;
       } else if (key === "what" || key === "how" || key === "best") {
         entry[key] = value;
@@ -450,9 +507,9 @@ function parseTechniques(
 
   checkSectionRange(context, file.sections, categories.map((c) => c.number));
 
-  const { tagLegend, nonstandardNote } = parseTechniquesIntro(fileIntroLines, context);
+  const { levelLegend, cautionNote, nonstandardNote } = parseTechniquesIntro(fileIntroLines, context);
 
-  return { categories, techniques, tagLegend, nonstandardNote };
+  return { categories, techniques, levelLegend, cautionNote, nonstandardNote };
 }
 
 // ---------- drills ----------
@@ -676,7 +733,7 @@ function computeRelations(guide: Guide): void {
 function parseProgressions(
   raw: string,
   file: ManifestFile,
-  techniqueIds: Set<string>,
+  techniqueLevels: Map<string, Level>,
   drillIds: Set<string>,
   idRegistry: Map<string, string>,
 ): ProgressionStage[] {
@@ -712,7 +769,7 @@ function parseProgressions(
       fail(entryContext, "stage has no `techniques:` or `drills:` entries — a stage must reference at least one");
     }
     for (const tId of techniques) {
-      if (!techniqueIds.has(tId)) {
+      if (!techniqueLevels.has(tId)) {
         fail(entryContext, `\`techniques:\` references unknown technique id \`${tId}\``);
       }
     }
@@ -723,11 +780,17 @@ function parseProgressions(
     }
 
     registerId(idRegistry, id, entryContext);
+    let stageLevel: Level = "beginner";
+    for (const tId of techniques) {
+      const l = techniqueLevels.get(tId)!;
+      if (VALID_LEVELS.indexOf(l) > VALID_LEVELS.indexOf(stageLevel)) stageLevel = l;
+    }
     stages.push({
       id,
       order: stages.length + 1,
       title: entry.title!.trim(),
       summary: entry.summary!.trim(),
+      level: stageLevel,
       techniqueIds: techniques,
       drillIds: drills,
     });
@@ -889,7 +952,8 @@ function parseReferences(raw: string, file: ManifestFile, idRegistry: Map<string
 
 interface EsDict {
   meta: { title: string; subtitle: string; parts: Record<string, string> };
-  tagLegend: Record<Tag, string>;
+  levelLegend: Record<Level, string>;
+  cautionNote: string;
   nonstandardNote: string;
   prose: Record<string, { title: string; sections: Record<string, { title: string; body: string }> }>;
   techniqueCategories: Record<string, { title: string; intro: string }>;
@@ -961,16 +1025,20 @@ function buildEsGuide(en: Guide, dict: EsDict): Guide {
     Object.keys(dict.progressionStages),
     "progression stages",
   );
-  for (const tag of VALID_TAGS) {
-    if (!dict.tagLegend[tag]) {
-      fail(ES_DICT_PATH, `tag legend: missing ES translation for tag \`${tag}\``);
+  for (const level of VALID_LEVELS) {
+    if (!dict.levelLegend?.[level]) {
+      fail(ES_DICT_PATH, `level legend: missing ES translation for level \`${level}\``);
     }
+  }
+  if (!dict.cautionNote) {
+    fail(ES_DICT_PATH, "missing ES translation for `cautionNote`");
   }
 
   const prose: ProseFile[] = en.prose.map((file) => {
     const fileDict = dict.prose[file.id]!;
     const sections: ProseSection[] = file.sections.map((s) => {
       const sDict = fileDict.sections[String(s.number)]!;
+      validateLevelFences(sDict.body, `${ES_DICT_PATH} prose/${file.id} §${s.number}`);
       return { number: s.number, title: sDict.title, body: sDict.body };
     });
     return { id: file.id, title: fileDict.title, part: file.part, order: file.order, sections };
@@ -1038,7 +1106,8 @@ function buildEsGuide(en: Guide, dict: EsDict): Guide {
       version: en.meta.version,
       parts: dict.meta.parts,
     },
-    tagLegend: dict.tagLegend,
+    levelLegend: dict.levelLegend,
+    cautionNote: dict.cautionNote,
     nonstandardNote: dict.nonstandardNote,
     sectionIndex,
     prose,
@@ -1081,7 +1150,8 @@ function main() {
       version: manifest.version,
       parts: manifest.parts,
     },
-    tagLegend: {} as Record<Tag, string>,
+    levelLegend: {} as Record<Level, string>,
+    cautionNote: "",
     nonstandardNote: "",
     sectionIndex,
     prose: [],
@@ -1123,7 +1193,7 @@ function main() {
         break;
       }
       case "techniques": {
-        const { categories, techniques, tagLegend, nonstandardNote } = parseTechniques(raw, file, idRegistry);
+        const { categories, techniques, levelLegend, cautionNote, nonstandardNote } = parseTechniques(raw, file, idRegistry);
         for (const cat of categories) {
           addSection(
             { number: cat.number, kind: "techniqueCategory", title: cat.title, categoryId: cat.id },
@@ -1132,7 +1202,8 @@ function main() {
         }
         guide.techniqueCategories.push(...categories);
         guide.techniques.push(...techniques);
-        guide.tagLegend = tagLegend;
+        guide.levelLegend = levelLegend;
+        guide.cautionNote = cautionNote;
         guide.nonstandardNote = nonstandardNote;
         break;
       }
@@ -1149,9 +1220,9 @@ function main() {
         break;
       }
       case "progressions": {
-        const techniqueIds = new Set(guide.techniques.map((t) => t.id));
+        const techniqueLevels = new Map(guide.techniques.map((t) => [t.id, t.level] as const));
         const drillIds = new Set(guide.drills.map((d) => d.id));
-        guide.progressionStages.push(...parseProgressions(raw, file, techniqueIds, drillIds, idRegistry));
+        guide.progressionStages.push(...parseProgressions(raw, file, techniqueLevels, drillIds, idRegistry));
         break;
       }
       default: {
@@ -1204,12 +1275,12 @@ if (isDirectRun) {
   }
 }
 
-export { ParseError, parseProse, parseTechniques, parseDrills, parseReferences, parseProgressions, computeRelations, buildEsGuide };
+export { ParseError, validateLevelFences, parseProse, parseTechniques, parseDrills, parseReferences, parseProgressions, computeRelations, buildEsGuide };
 export type {
   ManifestFile,
   FileType,
   Guide,
-  Tag,
+  Level,
   Technique,
   TechniqueCategory,
   ProgressionStage,

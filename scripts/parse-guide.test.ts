@@ -27,12 +27,12 @@ function fixtureManifestEntry(name: string, overrides: Partial<ManifestFile> = {
   };
 }
 
-test("unknown tag value fails loudly", () => {
+test("unknown level value fails loudly", () => {
   const raw = readFixture("unknown-tag.md");
   assert.throws(
     () => parseTechniques(raw, fixtureManifestEntry("unknown-tag.md"), new Map()),
     (err: unknown) =>
-      err instanceof ParseError && /unknown tag `mythical`/.test(err.message) && /core \| later \| advanced \| caution/.test(err.message),
+      err instanceof ParseError && /unknown level `mythical`/.test(err.message) && /beginner \| intermediate \| advanced \| elite/.test(err.message),
   );
 });
 
@@ -58,12 +58,14 @@ test("technique id comes from the declared `id:` field, never a slug of the disp
     "order: 0",
     "---",
     "",
-    "Tags indicate roughly when a technique is worth learning:",
+    "Levels show the band at which a technique typically becomes useful. They describe the move, not the reader:",
     "",
-    "- `core` — learn first. Pays off immediately, little injury risk.",
-    "- `later` — useful, once the core set is solid.",
-    "- `advanced` — worth knowing by name; relevant at higher grades or in competition.",
-    "- `caution` — meaningful injury risk, especially for fingers and elbows. Introduce late, never while something already hurts.",
+    "- `beginner` — pays off from the first sessions, with little injury risk.",
+    "- `intermediate` — builds on a solid base; common on mid-grade problems.",
+    "- `advanced` — relevant at higher grades or in competition.",
+    "- `elite` — rarely needed outside the hardest problems and competition setting.",
+    "",
+    "`caution: true` marks meaningful injury risk, especially for fingers and elbows. Introduce it gradually, and never while something already hurts.",
     "",
     "`nonstandard: true` marks a name that is not standardised across gyms. The move is real; the label may differ.",
     "",
@@ -71,7 +73,7 @@ test("technique id comes from the declared `id:` field, never a slug of the disp
     "",
     "#### Some Oddly Capitalised Display Name",
     "- id: `totally-different-id`",
-    "- tag: `core`",
+    "- level: `beginner`",
     "- what: test",
     "- how: test",
     "- best: test",
@@ -146,4 +148,13 @@ test("drill section intro and per-category callouts are captured from real conte
   assert.equal(categories.length, 1);
   assert.equal(categories[0]?.number, 13);
   assert.deepEqual(categories[0]?.callouts, ["A callout attached to Fixture category."]);
+});
+
+test("level fences: balanced, valid ranges pass; malformed ones fail loudly", async () => {
+  const { validateLevelFences } = await import("./parse-guide.ts");
+  validateLevelFences("a\n:::level beginner\n- x\n:::\nb\n:::level intermediate+\ny\n:::", "ok");
+  validateLevelFences(":::level beginner-advanced\nz\n:::", "ok-range");
+  for (const bad of [":::level beginner\nx", ":::\n", ":::level wizard\nx\n:::", ":::level elite-beginner\nx\n:::", ":::level beginner\n:::level elite\n:::\n:::"]) {
+    assert.throws(() => validateLevelFences(bad, "bad"), (err: unknown) => err instanceof ParseError);
+  }
 });

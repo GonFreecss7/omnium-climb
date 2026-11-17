@@ -1,7 +1,12 @@
 import { useAppState } from "../state/AppState";
+import { levelRank } from "../domain/levels";
 
 export default function ProgressionsView() {
-  const { t, guide, goToEntry } = useAppState();
+  const { t, guide, goToEntry, levelInfo } = useAppState();
+  const currentStageId = levelInfo
+    ? guide.progressionStages.find((s) => levelRank(s.level) >= levelRank(levelInfo.level))?.id ?? null
+    : null;
+  const currentOrder = guide.progressionStages.find((s) => s.id === currentStageId)?.order ?? Infinity;
 
   return (
     <div className="view">
@@ -18,8 +23,17 @@ export default function ProgressionsView() {
             .filter((d): d is NonNullable<typeof d> => d !== undefined);
 
           return (
-            <li key={stage.id} className="progression-stage">
-              <span className="mono-label progression-stage__order">{stage.order}</span>
+            <li
+              key={stage.id}
+              className={`progression-stage${stage.id === currentStageId ? " progression-stage--current" : ""}${
+                levelInfo && stage.order < currentOrder ? " progression-stage--past" : ""
+              }`}
+            >
+              <span className="mono-label progression-stage__order">
+                {stage.order}
+                <span className={`chip chip--${stage.level} progression-stage__level`}>{t.levels[stage.level]}</span>
+                {stage.id === currentStageId && <span className="progression-stage__you">{t.progressionsView.yourStage}</span>}
+              </span>
               <h2 className="progression-stage__title">{stage.title}</h2>
               <p className="progression-stage__summary">{stage.summary}</p>
 
@@ -31,7 +45,7 @@ export default function ProgressionsView() {
                       <button
                         key={tech.id}
                         type="button"
-                        className={`chip chip--filterable chip--${tech.tag}`}
+                        className={`chip chip--filterable chip--${tech.level}`}
                         onClick={() => goToEntry("technique", tech.id)}
                       >
                         {tech.name}

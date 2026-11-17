@@ -9,21 +9,23 @@ order: 0
 
 ### 1. Principles
 
-Climbing rewards technique long before it rewards strength. A beginner who moves well on V2 will pass a stronger beginner who thrashes on V4 within a season. Everything in this guide follows from a few ideas:
+Climbing rewards technique long before it rewards strength, at every grade. A climber who moves well will often pass a stronger climber who thrashes within a season. Everything in this guide follows from a few ideas:
 
-- **Quality of movement beats grade.** A clean V2 builds more than a scrappy V4. The grade measures the problem, not the climber.
+- **Quality of movement beats grade.** A clean ascent builds more than a scrappy one two grades harder. The grade measures the problem, not the climber.
 - **Train one grade below your limit.** Hard enough to be interesting, easy enough that technique doesn't collapse. Limit-level attempts teach you to fight; sub-limit climbing teaches you to move.
 - **Easy problems are the medium for drills,** not the destination. Make them hard with constraints, not with more grades.
-- **Power arrives before tissue is ready for it.** Muscle adapts in weeks; tendons, pulleys and connective tissue take months to years. Almost every beginner injury lives in that gap.
-- **Volume beats intensity early on.** More time on the wall moving well, less time hanging off two-finger edges.
+- **Power arrives before tissue is ready for it.** Muscle adapts in weeks; tendons, pulleys and connective tissue take months to years. Most overuse injuries live in that gap.
 - **2–4 sessions per week, non-consecutive.** Rest is when adaptation actually happens.
-- **Skip for a while:** hangboarding, campus board, and dyno-heavy sessions. These add load without teaching movement, and they are where beginners get hurt.
+:::level beginner
+- **Volume beats intensity early on.** More time on the wall moving well, less time hanging off two-finger edges.
+- **Skip for a while:** hangboarding, campus board, and dyno-heavy sessions. These add load without teaching movement, and this is where newer climbers most often get hurt.
+:::
 
 ### 2. Staying Uninjured
 
 Climbing injuries are overwhelmingly overuse injuries, not accidents. The common ones, roughly in order of frequency:
 
-- **Finger pulleys (A2)** — pain at the base of a finger, usually from crimping hard too soon. The classic beginner injury.
+- **Finger pulleys (A2)** — pain at the base of a finger, usually from crimping hard too soon. Common when finger load rises faster than the tendons adapt.
 - **Medial elbow (golfer's elbow)** — pain on the inside of the elbow, from overgripping, crimping and bent-arm climbing.
 - **Lateral elbow (climber's elbow / tennis elbow)** — pain on the outside, often from open-hand and sloper work, or from too much campusing.
 - **Shoulders** — usually from repeated lock-offs, gastons, and uncontrolled dynos without any pushing work to balance them.
@@ -34,7 +36,9 @@ Climbing injuries are overwhelmingly overuse injuries, not accidents. The common
 - **Warm up properly.** 15 minutes: general movement, then wrists, forearms, elbows and shoulders, then progressively harder climbing. Never start on a project.
 - **Climb with straight arms.** Bent-arm hanging is the single biggest avoidable load on the elbows.
 - **Relax the grip.** Overgripping wastes energy and drives elbow and finger problems.
-- **Delay full crimping.** Use open hand and half crimp for the first year or more.
+:::level beginner-intermediate
+- **Delay full crimping.** Use open hand and half crimp for the first year of climbing or more.
+:::
 - **Train antagonists 2–3×/week:** push-ups, rows, shoulder external rotation, wrist extensors and flexors. Climbers become pull-dominant fast and the joints pay for it.
 - **Progress load slowly.** Adding grades, sessions and volume all at once is how a good month becomes a bad quarter.
 
@@ -49,13 +53,13 @@ Climbing injuries are overwhelmingly overuse injuries, not accidents. The common
 
 ### 3. Footwork
 
-**Precision.** Look at the foothold, choose the exact spot, place the toe there, then look away. Don't adjust. Don't slide. Most beginners place a foot, shuffle it twice, and lose body tension the whole time.
+**Precision.** Look at the foothold, choose the exact spot, place the toe there, then look away. Don't adjust. Don't slide. A common habit is to place a foot, shuffle it twice, and lose body tension the whole time.
 
 **Use the toe, not the arch.** Stand on the front point of the shoe. Inside edge (big-toe side) and outside edge (little-toe side) are your two main tools. Standing on the arch means you cannot pivot.
 
 **Drop the heel.** Once the toe is placed, lower the heel. This tensions the calf and locks the shoe onto the hold. Heels-up climbing is why feet pop.
 
-**Pivot, don't reposition.** With the toe fixed, the whole body can rotate around that point. Beginners re-place the foot when they could have simply turned the hip.
+**Pivot, don't reposition.** With the toe fixed, the whole body can rotate around that point. Re-placing the foot is often unnecessary when simply turning the hip would do.
 
 ### 4. Body Position
 
@@ -69,7 +73,7 @@ Climbing injuries are overwhelmingly overuse injuries, not accidents. The common
 
 **Flagging.** When a foot has nothing to stand on, extend that leg as a counterweight instead of letting it dangle. Same-side flag: leg extends out to its own side. Inside flag: leg crosses in front. Back flag: leg crosses behind — the most useful of the three.
 
-**Drop knee.** From a backstep, rotate the knee downward to press into the foothold. Very powerful, and hard on the knee joint — use sparingly at this stage.
+**Drop knee.** From a backstep, rotate the knee downward to press into the foothold. Very powerful, and hard on the knee joint — use sparingly, especially while it's still new to you.
 
 ### 5. Movement
 

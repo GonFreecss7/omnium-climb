@@ -3,14 +3,17 @@ import { useAppState } from "../state/AppState";
 import { useScrollToTarget } from "../hooks/useScrollToTarget";
 import { normalize } from "../utils/text";
 import TechniqueCard from "../components/TechniqueCard";
-import type { Tag, Technique } from "../data/types";
+import type { Level, Technique } from "../data/types";
+import { LEVELS, levelRank } from "../domain/levels";
 
 export default function TechniquesView() {
-  const { guide, t, scrollTarget, clearScrollTarget, favorites, expandRequest, clearExpandRequest } = useAppState();
+  const { guide, t, scrollTarget, clearScrollTarget, favorites, expandRequest, clearExpandRequest, levelInfo } = useAppState();
   useScrollToTarget(scrollTarget, clearScrollTarget);
 
   const [query, setQuery] = useState("");
-  const [selectedTags, setSelectedTags] = useState<Set<Tag>>(new Set());
+  const [selectedLevels, setSelectedLevels] = useState<Set<Level>>(new Set());
+  const [cautionOnly, setCautionOnly] = useState(false);
+  const [forMyLevel, setForMyLevel] = useState(false);
   const [selectedCategories, setSelectedCategories] = useState<Set<string>>(new Set());
   const [favoritesOnly, setFavoritesOnly] = useState(false);
   const [expandedIds, setExpandedIds] = useState<Set<string>>(new Set());
@@ -24,7 +27,12 @@ export default function TechniquesView() {
   }, [expandRequest, clearExpandRequest]);
 
   const hasActiveFilters =
-    selectedTags.size > 0 || selectedCategories.size > 0 || favoritesOnly || query.trim() !== "";
+    selectedLevels.size > 0 ||
+    selectedCategories.size > 0 ||
+    favoritesOnly ||
+    cautionOnly ||
+    (forMyLevel && levelInfo !== null) ||
+    query.trim() !== "";
 
   function toggleInSet<T>(set: Set<T>, value: T, setState: (s: Set<T>) => void) {
     const next = new Set(set);
@@ -42,13 +50,22 @@ export default function TechniquesView() {
 
   function clearFilters() {
     setQuery("");
-    setSelectedTags(new Set());
+    setSelectedLevels(new Set());
+    setCautionOnly(false);
+    setForMyLevel(false);
     setSelectedCategories(new Set());
     setFavoritesOnly(false);
   }
 
   function pickRandomTechnique() {
-    const pool = guide.techniques;
+    // With a profile, today's technique comes from the climber's band or the next one up.
+    const pool = levelInfo
+      ? guide.techniques.filter((tech) => {
+          const d = levelRank(tech.level) - levelRank(levelInfo.level);
+          return d === 0 || d === 1;
+        })
+      : guide.techniques;
+    if (pool.length === 0) return;
     const next = pool[Math.floor(Math.random() * pool.length)]!;
     setRandomTechnique(next);
   }
@@ -58,7 +75,12 @@ export default function TechniquesView() {
   const matches = useMemo(() => {
     return (technique: Technique): boolean => {
       if (favoritesOnly && !favorites.has(technique.id)) return false;
-      if (selectedTags.size > 0 && !selectedTags.has(technique.tag)) return false;
+      if (selectedLevels.size > 0 && !selectedLevels.has(technique.level)) return false;
+      if (cautionOnly && !technique.caution) return false;
+      if (forMyLevel && levelInfo) {
+        const d = levelRank(technique.level) - levelRank(levelInfo.level);
+        if (d !== 0 && d !== 1) return false;
+      }
       if (selectedCategories.size > 0 && !selectedCategories.has(technique.categoryId)) return false;
       if (normalizedQuery === "") return true;
       const haystack = normalize(
@@ -66,7 +88,7 @@ export default function TechniquesView() {
       );
       return haystack.includes(normalizedQuery);
     };
-  }, [selectedTags, selectedCategories, favoritesOnly, favorites, normalizedQuery]);
+  }, [selectedLevels, cautionOnly, forMyLevel, levelInfo, selectedCategories, favoritesOnly, favorites, normalizedQuery]);
 
   const visibleCategories = guide.techniqueCategories
     .map((cat) => ({
@@ -105,20 +127,38 @@ export default function TechniquesView() {
             <span aria-hidden="true">★ </span>
             {t.favorites.filterLabel}
           </button>
+          {levelInfo && (
+            <button
+              type="button"
+              className={`chip chip--filterable${forMyLevel ? " chip--active" : ""}`}
+              aria-pressed={forMyLevel}
+              onClick={() => setForMyLevel((v) => !v)}
+            >
+              {t.filters.forMyLevel}
+            </button>
+          )}
         </div>
         <div className="filters__group">
-          <span className="mono-label filters__label">{t.filters.tagHeading}</span>
-          {(Object.keys(t.filters.tagLabels) as Tag[]).map((tag) => (
+          <span className="mono-label filters__label">{t.filters.levelHeading}</span>
+          {LEVELS.map((level) => (
             <button
-              key={tag}
+              key={level}
               type="button"
-              className={`chip chip--filterable chip--${tag}${selectedTags.has(tag) ? " chip--active" : ""}`}
-              aria-pressed={selectedTags.has(tag)}
-              onClick={() => toggleInSet(selectedTags, tag, setSelectedTags)}
+              className={`chip chip--filterable chip--${level}${selectedLevels.has(level) ? " chip--active" : ""}`}
+              aria-pressed={selectedLevels.has(level)}
+              onClick={() => toggleInSet(selectedLevels, level, setSelectedLevels)}
             >
-              {t.filters.tagLabels[tag]}
+              {t.levels[level]}
             </button>
           ))}
+          <button
+            type="button"
+            className={`chip chip--filterable chip--caution${cautionOnly ? " chip--active" : ""}`}
+            aria-pressed={cautionOnly}
+            onClick={() => setCautionOnly((v) => !v)}
+          >
+            {t.filters.cautionOnly}
+          </button>
         </div>
         <div className="filters__group">
           <span className="mono-label filters__label">{t.filters.categoryHeading}</span>
@@ -157,14 +197,26 @@ export default function TechniquesView() {
                 <span className="visually-hidden">{t.filters.removeAriaLabel}</span>
               </button>
             )}
-            {[...selectedTags].map((tag) => (
+            {forMyLevel && levelInfo && (
+              <button type="button" className="chip chip--removable" onClick={() => setForMyLevel(false)}>
+                {t.filters.forMyLevel} <span aria-hidden="true">×</span>
+                <span className="visually-hidden">{t.filters.removeAriaLabel}</span>
+              </button>
+            )}
+            {cautionOnly && (
+              <button type="button" className="chip chip--removable" onClick={() => setCautionOnly(false)}>
+                {t.filters.cautionOnly} <span aria-hidden="true">×</span>
+                <span className="visually-hidden">{t.filters.removeAriaLabel}</span>
+              </button>
+            )}
+            {[...selectedLevels].map((level) => (
               <button
-                key={tag}
+                key={level}
                 type="button"
                 className="chip chip--removable"
-                onClick={() => toggleInSet(selectedTags, tag, setSelectedTags)}
+                onClick={() => toggleInSet(selectedLevels, level, setSelectedLevels)}
               >
-                {t.filters.tagLabels[tag]} <span aria-hidden="true">×</span>
+                {t.levels[level]} <span aria-hidden="true">×</span>
                 <span className="visually-hidden">{t.filters.removeAriaLabel}</span>
               </button>
             ))}

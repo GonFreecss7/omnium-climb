@@ -1,7 +1,7 @@
 import { useAppState } from "../state/AppState";
 
 export default function Header() {
-  const { lang, setLang, theme, setTheme, t } = useAppState();
+  const { lang, setLang, theme, setTheme, t, levelInfo, openOnboarding } = useAppState();
 
   return (
     <header className="header">
@@ -23,6 +23,15 @@ export default function Header() {
           ES
         </button>
       </div>
+      <button
+        type="button"
+        className={`header__profile${levelInfo ? ` header__profile--${levelInfo.level}` : ""}`}
+        aria-label={t.profile.buttonAriaLabel}
+        onClick={openOnboarding}
+      >
+        <span className="header__profile-dot" aria-hidden="true" />
+        {levelInfo ? t.levels[levelInfo.level] : t.profile.setUp}
+      </button>
       <div className="header__group" role="group" aria-label={t.header.themeToggleAriaLabel}>
         <button
           type="button"

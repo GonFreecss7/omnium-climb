@@ -41,7 +41,7 @@ npm run icons      # regenerate public/ PWA icons from src/assets/icon-source.sv
    loudly if any id is missing a translation, or if the dictionary has a
    translation for an id that no longer exists in `content/`.
 4. Run `npm run parse`. It fails loudly (non-zero exit, naming the file and
-   heading) on a malformed entry, a duplicate id, an unknown tag, unclaimed
+   heading) on a malformed entry, a duplicate id, an unknown level, unclaimed
    markdown content, or a missing/stale translation — nothing is ever silently
    dropped.
 5. `status: "stub"` files are excluded from the build entirely; flip to

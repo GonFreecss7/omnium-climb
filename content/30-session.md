@@ -11,7 +11,7 @@ order: 30
 
 | Block | Time | What |
 |---|---|---|
-| Warm-up | 15 min | Easy movement, then V0–V1. Wrists, forearms, elbows, shoulders. |
+| Warm-up | 15 min | Easy movement, then problems far below your limit. Wrists, forearms, elbows, shoulders. |
 | Technique | 20–30 min | One drill from §13, on easy problems. Do this fresh, not tired. |
 | Main climbing | 40–50 min | One grade below your limit. Quality of movement over completion. |
 | Projecting | 15 min | A few attempts at your limit, only when fresh and pain-free. |

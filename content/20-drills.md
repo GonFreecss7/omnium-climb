@@ -9,7 +9,7 @@ order: 20
 
 ### 13. Drill Bank
 
-Constraints make an easy problem hard without adding load to fingers and elbows. Pick **one** per session and apply it to V1–V3. Rotate so you're not always training the same weakness.
+Constraints make an easy problem hard without adding load to fingers and elbows. Pick **one** per session and apply it to problems well below your limit. Rotate so you're not always training the same weakness.
 
 #### Footwork drills
 
@@ -45,7 +45,7 @@ Constraints make an easy problem hard without adding load to fingers and elbows.
 - **Quiet hands** — no slapping, no re-gripping, no chalking mid-problem.
 - **Grip awareness** — climb an easy problem consciously choosing a grip for each hold: open hand, half crimp, pinch, sloper. The goal is deliberate choice, not maximum grip.
 
-> On grip work: bias heavily toward open hand and half crimp. Full crimping is the highest-stress grip for both fingers and elbow, and it is the last thing a beginner needs to train.
+> On grip work: bias heavily toward open hand and half crimp. Full crimping is the highest-stress grip for both fingers and elbow, and it is the grip to train last, and gradually.
 
 #### Reading & mental drills
 
@@ -68,10 +68,10 @@ Constraints make an easy problem hard without adding load to fingers and elbows.
 
 - **Traverse the wall** — link the start holds of every problem across a section.
 - **Colour chaos** — pick one hold colour and climb anywhere on the wall using only that colour.
-- **Ladder** — V1 → V2 → V3 → V2 → V1 back to back, then rest 5 minutes.
-- **Circuit of four** — four V1–V2 problems in a row with no rest, then 3 minutes off. Repeat 3–4 times.
-- **Pyramid session** — 4 problems at V1, 3 at V2, 2 at V3, 1 project. A complete session in itself.
-- **Speed–quality** — climb a V1 as fast as possible, then as perfectly as possible. Compare how it felt.
+- **Ladder** — easy → moderate → harder → moderate → easy, all below your limit, back to back, then rest 5 minutes.
+- **Circuit of four** — four easy problems, well below your limit, in a row with no rest, then 3 minutes off. Repeat 3–4 times.
+- **Pyramid session** — 4 problems three grades below your limit, 3 two grades below, 2 one grade below, 1 project. A complete session in itself.
+- **Speed–quality** — climb an easy problem as fast as possible, then as perfectly as possible. Compare how it felt.
 - **No-repeat hour** — every problem you climb in the session must be one you've never done before.
 
 > Circuits and traverses are pump-heavy. On a day when something already aches, choose a precision drill instead of a volume game.

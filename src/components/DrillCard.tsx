@@ -57,7 +57,7 @@ export default function DrillCard({ drill, expanded, onToggle }: Props) {
               <button
                 key={tech.id}
                 type="button"
-                className={`chip chip--filterable chip--${tech.tag}`}
+                className={`chip chip--filterable chip--${tech.level}`}
                 onClick={() => goToEntry("technique", tech.id)}
               >
                 {tech.name}

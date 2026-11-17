@@ -12,7 +12,7 @@ status: complete
 - id: `stage-footwork-foundations`
 - techniques: `inside-edge, outside-edge, smear, back-step, rock-over`
 - drills: `silent-feet, glue-feet, sniper`
-- summary: Precise, quiet feet and basic weight-shifting come before anything else — most of a beginner's unclaimed progress lives here.
+- summary: Precise, quiet feet and basic weight-shifting come before anything else — for most climbers, this is where the most unclaimed progress lives.
 
 #### Stage 2: Body position & balance
 - id: `stage-body-position-balance`
@@ -24,7 +24,7 @@ status: complete
 - id: `stage-grip-fundamentals`
 - techniques: `open-hand-three-finger-drag, open-crimp, half-crimp, pinch, palm-down-palming`
 - drills: `grip-awareness`
-- summary: Build the safest, most trainable grip positions first — the stronger, riskier grips can wait.
+- summary: Build the safest, most trainable grip positions first — the stronger, riskier grips build on them.
 
 #### Stage 4: Reading holds & positions
 - id: `stage-reading-holds-positions`

@@ -7,12 +7,14 @@ sections: 7-7
 order: 0
 ---
 
-Tags indicate roughly when a technique is worth learning:
+Levels show the band at which a technique typically becomes useful. They describe the move, not the reader:
 
-- `core` — learn first. Pays off immediately, little injury risk.
-- `later` — useful, once the core set is solid.
-- `advanced` — worth knowing by name; relevant at higher grades or in competition.
-- `caution` — meaningful injury risk, especially for fingers and elbows. Introduce late, never while something already hurts.
+- `beginner` — pays off from the first sessions, with little injury risk.
+- `intermediate` — builds on a solid base; common on mid-grade problems.
+- `advanced` — relevant at higher grades or in competition.
+- `elite` — rarely needed outside the hardest problems and competition setting.
+
+`caution: true` marks meaningful injury risk, especially for fingers and elbows. Introduce it gradually, and never while something already hurts.
 
 `nonstandard: true` marks a name that is not standardised across gyms. The move is real; the label may differ.
 
@@ -21,7 +23,7 @@ Tags indicate roughly when a technique is worth learning:
 #### Fake move
 - id: `fake-move`
 This stray line is not a recognised field and does not continue any prior field.
-- tag: `core`
+- level: `beginner`
 - what: test
 - how: test
 - best: test

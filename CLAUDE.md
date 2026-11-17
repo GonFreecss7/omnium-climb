@@ -8,9 +8,10 @@ A bilingual (EN/ES), offline-first, installable web app that presents a climbing
 reference on a phone. It is used at the gym, mid-session, one-handed, sometimes on bad wifi.
 Every design decision follows from that.
 
-The audience is indoor climbers generally — beginner to early intermediate. It is not
-personalised to any individual, and content should never assume a specific person's injuries,
-gym, or goals.
+The audience is every indoor climber, from a first session to elite and competition level, on
+boulder and rope. **Content is written neutrally**: it describes moves, risks and practice, never
+who the reader is ("not a beginner move", "nothing you need yet", fixed grades like V1–V3).
+Personalisation comes only from the climber profile (below), applied by the app at render time.
 
 ## Repo layout
 
@@ -52,14 +53,30 @@ Technique entry (in `type: techniques` files):
 ```
 #### Back step
 - id: `back-step`
-- tag: `core`
+- level: `beginner`
+- caution: true             (optional)
 - nonstandard: true        (optional)
 - what: one-sentence definition
 - how: how to execute it
 - best: what it is for, plus any risk note
 ```
 
-`tag` is exactly one of `core | later | advanced | caution`.
+`level` is exactly one of `beginner | intermediate | advanced | elite` — the band at which the
+move typically becomes useful. `caution: true` marks meaningful injury risk; it is independent of
+level and drives the injury warnings.
+
+Level-conditional prose: wrap lines in a fence to show them only to climbers in a band. Ranges are
+`beginner`, `intermediate+` or `beginner-intermediate`. Fences are validated in EN and ES, cannot
+nest, and without a profile every block is shown with its band label.
+
+```
+:::level beginner
+- **Skip for a while:** hangboarding, campus board…
+:::
+```
+
+Grades in content are relative to the climber's limit ("well below your limit", "one grade below
+your limit"), never absolute V/Font/YDS values.
 
 Drill (in `type: drills` files), as a list item under a `####` category heading:
 
@@ -72,7 +89,7 @@ Reference (in `type: references` files): see the format block in `50-references.
 Prose files are free-form markdown. `§n` cross-references must resolve to in-app links.
 
 The parser must **fail loudly** on any entry that does not match, on a duplicate id, and on an
-unknown tag value. Silent skipping hides content loss.
+unknown level value. Silent skipping hides content loss.
 
 ## Translation
 
@@ -95,7 +112,24 @@ unknown tag value. Silent skipping hides content loss.
 - All colour, spacing, radius and timing values come from CSS custom properties. No hardcoded
   colours in components.
 - No runtime network calls. Fonts are self-hosted and subset to Latin.
-- `localStorage` keys are namespaced `cg.*` (`cg.lang`, `cg.theme`, `cg.favorites`, `cg.log`).
+- `localStorage` keys are namespaced `cg.*` (`cg.lang`, `cg.theme`, `cg.favorites`, `cg.log`,
+  `cg.notes`, `cg.profile`, `cg.onboardingSkipped`, `cg.levelUpDismissed`).
+
+## Climber profile, levels and grades
+
+- The profile lives only on the device (`cg.profile`): disciplines, grade scale per discipline,
+  hardest reliable grade, years climbing, sessions/week, optional weight/height, current
+  pain/injury, optional manual level. No account, no sync.
+- `src/domain/levels.ts` derives the band from the hardest grade, capped at `intermediate` during
+  the first year (connective tissue lags muscle). Bands: beginner ≤ V2 / 5.10a, intermediate
+  V3–V5 / 5.10b–5.11d, advanced V6–V8 / 5.12a–5.13a, elite ≥ V9 / 5.13b. Changing them is a
+  product decision — update the onboarding `bandsNote` strings too.
+- `src/domain/grades.ts` holds the boulder (V, Font) and rope (YDS, French, UIAA, Ewbank) ladders.
+  Grades are stored as ladder indices so every scale converts through the same row. Source:
+  Wikipedia "Grade (bouldering)" / "Grade (climbing)" comparison tables. Equivalences are
+  indicative.
+- Session log entries store `discipline`, `gradeIndex`, `gradeScale`; legacy free-text entries are
+  parsed best-effort. When recent entries beat the profile's grade, the app offers to update it.
 - Prefer a few well-named components over deep hierarchies. This is a small app.
 
 ## Version marker
@@ -119,11 +153,12 @@ is wrong — say so rather than special-casing it.
 ## Non-goals
 
 No accounts, no sync, no backend, no analytics, no notifications, no images or video, no AI
-features, no streaks, badges, or engagement mechanics. This is a reference tool.
+features, no streaks, badges, or engagement mechanics.
 
 ## Definition of done
 
 - All 81 technique entries and all 6 drill categories render in both languages.
+- No content string assumes the reader's level; level-specific advice lives in `:::level` blocks.
 - Language and theme toggles persist and apply before first paint.
 - Works fully offline after first load.
 - `npm run parse` regenerates data from `content/` with no manual steps.

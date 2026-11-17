@@ -9,12 +9,13 @@
       "IV": "Referencia"
     }
   },
-  "tagLegend": {
-    "core": "apréndelo primero. Rinde beneficios de inmediato y tiene poco riesgo de lesión.",
-    "later": "útil, una vez que el conjunto base esté sólido.",
-    "advanced": "vale la pena conocerlo por su nombre; relevante en grados más altos o en competición.",
-    "caution": "riesgo de lesión considerable, especialmente para dedos y codos. Introdúcelo tarde, nunca mientras algo ya te duela."
+  "levelLegend": {
+    "beginner": "rinde desde las primeras sesiones, con poco riesgo de lesión.",
+    "intermediate": "se apoya en una base sólida; habitual en problemas de grado medio.",
+    "advanced": "relevante en grados altos o en competición.",
+    "elite": "rara vez necesaria fuera de los problemas más duros y del bloque de competición."
   },
+  "cautionNote": "marca un riesgo de lesión considerable, especialmente para dedos y codos. Introdúcela de forma gradual, y nunca mientras algo ya te duela.",
   "nonstandardNote": "marca un nombre que no está estandarizado entre gimnasios. El movimiento es real; la etiqueta puede variar.",
   "prose": {
     "foundations": {
@@ -22,19 +23,19 @@
       "sections": {
         "1": {
           "title": "Principios",
-          "body": "La escalada premia la técnica mucho antes que la fuerza. Un principiante que se mueve bien en V2 superará en una temporada a un principiante más fuerte que se debate torpemente en V4. Todo lo que aparece en esta guía se deriva de unas pocas ideas:\n\n- **La calidad del movimiento vence al grado.** Un V2 limpio construye más que un V4 chapucero. El grado mide el problema, no al escalador.\n- **Entrena un grado por debajo de tu límite.** Suficientemente difícil para ser interesante, suficientemente fácil para que la técnica no se derrumbe. Los intentos al límite te enseñan a pelear; escalar por debajo del límite te enseña a moverte.\n- **Los problemas fáciles son el medio para los ejercicios,** no el destino. Hazlos difíciles con restricciones, no con más grado.\n- **La potencia llega antes de que el tejido esté listo para ella.** El músculo se adapta en semanas; los tendones, las poleas y el tejido conectivo tardan de meses a años. Casi toda lesión de principiante vive en esa brecha.\n- **El volumen vence a la intensidad al principio.** Más tiempo en el muro moviéndote bien, menos tiempo colgado de cantos de dos dedos.\n- **2–4 sesiones por semana, no consecutivas.** El descanso es cuando realmente ocurre la adaptación.\n- **Deja de lado por un tiempo:** el hangboard, el campus board y las sesiones cargadas de dynos. Añaden carga sin enseñar movimiento, y es ahí donde los principiantes se lesionan."
+          "body": "La escalada premia la técnica mucho antes que la fuerza, en cualquier grado. Quien se mueve bien suele superar en una temporada a alguien más fuerte que se debate torpemente. Todo lo que aparece en esta guía se deriva de unas pocas ideas:\n\n- **La calidad del movimiento vence al grado.** Un encadenamiento limpio construye más que uno chapucero dos grados más difícil. El grado mide el problema, no al escalador.\n- **Entrena un grado por debajo de tu límite.** Suficientemente difícil para ser interesante, suficientemente fácil para que la técnica no se derrumbe. Los intentos al límite te enseñan a pelear; escalar por debajo del límite te enseña a moverte.\n- **Los problemas fáciles son el medio para los ejercicios,** no el destino. Hazlos difíciles con restricciones, no con más grado.\n- **La potencia llega antes de que el tejido esté listo para ella.** El músculo se adapta en semanas; los tendones, las poleas y el tejido conectivo tardan de meses a años. La mayoría de las lesiones por sobreuso viven en esa brecha.\n- **2–4 sesiones por semana, no consecutivas.** El descanso es cuando realmente ocurre la adaptación.\n:::level beginner\n- **El volumen vence a la intensidad al principio.** Más tiempo en el muro moviéndote bien, menos tiempo colgado de cantos de dos dedos.\n- **Deja de lado por un tiempo:** el hangboard, el campus board y las sesiones cargadas de dynos. Añaden carga sin enseñar movimiento, y es ahí donde más se lesionan quienes llevan menos tiempo escalando.\n:::"
         },
         "2": {
           "title": "Mantenerte sin lesiones",
-          "body": "Las lesiones en escalada son, en su inmensa mayoría, lesiones por sobreuso, no accidentes. Las más comunes, más o menos en orden de frecuencia:\n\n- **Poleas de los dedos (A2)** — dolor en la base de un dedo, normalmente por crimpar fuerte demasiado pronto. La lesión clásica de principiante.\n- **Codo medial (codo de golfista)** — dolor en la cara interna del codo, por agarrar en exceso, crimpar y escalar con los brazos doblados.\n- **Codo lateral (codo de escalador / codo de tenista)** — dolor en la cara externa, a menudo por trabajo de mano abierta y slopers, o por exceso de campusing.\n- **Hombros** — normalmente por lock-offs repetidos, gastons y dynos descontrolados sin ningún trabajo de empuje que los compense.\n- **Rodillas** — casi siempre por drop knees y ganchos de talón aplicados con violencia o en frío.\n\n**Qué los previene de verdad**\n\n- **Calienta correctamente.** 15 minutos: movimiento general, luego muñecas, antebrazos, codos y hombros, y después escalada progresivamente más difícil. Nunca empieces por un proyecto.\n- **Escala con los brazos rectos.** Colgarte con los brazos doblados es, con diferencia, la mayor carga evitable sobre los codos.\n- **Relaja el agarre.** Agarrar en exceso desperdicia energía y provoca problemas de codo y dedos.\n- **Retrasa el full crimp.** Usa mano abierta y half crimp durante el primer año o más.\n- **Entrena los antagonistas 2–3 veces por semana:** flexiones, remo, rotación externa de hombro, y extensores y flexores de muñeca. Los escaladores se vuelven dominantes en tracción muy rápido, y las articulaciones lo pagan.\n- **Progresa la carga despacio.** Añadir grados, sesiones y volumen todo a la vez es como un buen mes se convierte en un mal trimestre.\n\n**Cómo leer el dolor**\n\n- Molestia sorda, cálida y simétrica que desaparece en un día: respuesta normal al entrenamiento.\n- Dolor agudo, localizado o unilateral, o dolor que empeora durante la sesión: deja de escalar sobre eso ese día.\n- Un chasquido, clic, o dolor agudo repentino en un dedo: detente de inmediato.\n- Dolor que persiste entre sesiones, o que vuelve más fuerte cada vez, necesita valoración profesional, no más descanso y esperanza.\n\n> Esta guía es información general, no consejo médico. Cualquier dolor agudo, persistente o que empeora merece una consulta con un fisioterapeuta especializado en escaladores: una valoración temprana es mucho más barata que seis meses de baja."
+          "body": "Las lesiones en escalada son, en su inmensa mayoría, lesiones por sobreuso, no accidentes. Las más comunes, más o menos en orden de frecuencia:\n\n- **Poleas de los dedos (A2)** — dolor en la base de un dedo, normalmente por crimpar fuerte demasiado pronto. Frecuente cuando la carga en los dedos sube más rápido de lo que se adaptan los tendones.\n- **Codo medial (codo de golfista)** — dolor en la cara interna del codo, por agarrar en exceso, crimpar y escalar con los brazos doblados.\n- **Codo lateral (codo de escalador / codo de tenista)** — dolor en la cara externa, a menudo por trabajo de mano abierta y slopers, o por exceso de campusing.\n- **Hombros** — normalmente por lock-offs repetidos, gastons y dynos descontrolados sin ningún trabajo de empuje que los compense.\n- **Rodillas** — casi siempre por drop knees y ganchos de talón aplicados con violencia o en frío.\n\n**Qué los previene de verdad**\n\n- **Calienta correctamente.** 15 minutos: movimiento general, luego muñecas, antebrazos, codos y hombros, y después escalada progresivamente más difícil. Nunca empieces por un proyecto.\n- **Escala con los brazos rectos.** Colgarte con los brazos doblados es, con diferencia, la mayor carga evitable sobre los codos.\n- **Relaja el agarre.** Agarrar en exceso desperdicia energía y provoca problemas de codo y dedos.\n:::level beginner-intermediate\n- **Retrasa el full crimp.** Usa mano abierta y half crimp durante el primer año de escalada o más.\n:::\n- **Entrena los antagonistas 2–3 veces por semana:** flexiones, remo, rotación externa de hombro, y extensores y flexores de muñeca. Los escaladores se vuelven dominantes en tracción muy rápido, y las articulaciones lo pagan.\n- **Progresa la carga despacio.** Añadir grados, sesiones y volumen todo a la vez es como un buen mes se convierte en un mal trimestre.\n\n**Cómo leer el dolor**\n\n- Molestia sorda, cálida y simétrica que desaparece en un día: respuesta normal al entrenamiento.\n- Dolor agudo, localizado o unilateral, o dolor que empeora durante la sesión: deja de escalar sobre eso ese día.\n- Un chasquido, clic, o dolor agudo repentino en un dedo: detente de inmediato.\n- Dolor que persiste entre sesiones, o que vuelve más fuerte cada vez, necesita valoración profesional, no más descanso y esperanza.\n\n> Esta guía es información general, no consejo médico. Cualquier dolor agudo, persistente o que empeora merece una consulta con un fisioterapeuta especializado en escaladores: una valoración temprana es mucho más barata que seis meses de baja."
         },
         "3": {
           "title": "Trabajo de pies",
-          "body": "**Precisión.** Mira la presa de pie, elige el punto exacto, coloca la puntera ahí y luego aparta la vista. No la reajustes. No la deslices. La mayoría de los principiantes colocan un pie, lo mueven dos veces y pierden la tensión corporal todo el tiempo.\n\n**Usa la puntera, no el arco.** Apóyate en la punta delantera del pie de escalada. El canto interior (lado del dedo gordo) y el canto exterior (lado del meñique) son tus dos herramientas principales. Apoyarte en el arco significa que no puedes pivotar.\n\n**Baja el talón.** Una vez colocada la puntera, baja el talón. Esto tensa la pantorrilla y bloquea el pie de escalada sobre la presa. Escalar con el talón levantado es la razón por la que los pies se sueltan.\n\n**Pivota, no reajustes.** Con la puntera fija, todo el cuerpo puede rotar alrededor de ese punto. Los principiantes vuelven a colocar el pie cuando podrían simplemente haber girado la cadera."
+          "body": "**Precisión.** Mira la presa de pie, elige el punto exacto, coloca la puntera ahí y luego aparta la vista. No la reajustes. No la deslices. Un hábito común es colocar un pie, moverlo dos veces y perder la tensión corporal todo el tiempo.\n\n**Usa la puntera, no el arco.** Apóyate en la punta delantera del pie de escalada. El canto interior (lado del dedo gordo) y el canto exterior (lado del meñique) son tus dos herramientas principales. Apoyarte en el arco significa que no puedes pivotar.\n\n**Baja el talón.** Una vez colocada la puntera, baja el talón. Esto tensa la pantorrilla y bloquea el pie de escalada sobre la presa. Escalar con el talón levantado es la razón por la que los pies se sueltan.\n\n**Pivota, no reajustes.** Con la puntera fija, todo el cuerpo puede rotar alrededor de ese punto. Volver a colocar el pie suele ser innecesario cuando bastaría con girar la cadera."
         },
         "4": {
           "title": "Posición Corporal",
-          "body": "**Brazos rectos.** Cuélgate de tu esqueleto, no de tus bíceps. Los brazos doblados queman los antebrazos y cargan el codo, justo lo que intentas proteger. Dobla el brazo solo en el instante en que tiras hacia la siguiente presa, y luego vuelve a estirarlo.\n\n**Cadera a la pared.** El peso descansa sobre los pies en vez de tirar hacia afuera desde las manos. Una cadera caída significa que son los brazos los que te sostienen.\n\n**Frontal frente a de lado.** La posición frontal (encarado a la pared, ambos cantos interiores) es estable pero de alcance corto. La posición de lado / twist-lock (un canto exterior, cadera girada hacia la pared) alcanza mucho más lejos y cuesta mucho menos a los brazos. Alternar entre las dos según se necesite es la mayor parte de la escalada de nivel intermedio.\n\n**Backstep.** Canto exterior del pie sobre la presa, cadera girada hacia dentro. Convierte un alcance largo en uno corto. Si te estás forzando para alcanzar algo, la respuesta suele ser un backstep que no viste.\n\n**Banderas (flagging).** Cuando un pie no tiene dónde apoyarse, extiende esa pierna como contrapeso en vez de dejarla colgando. Bandera del mismo lado: la pierna se extiende hacia su propio lado. Bandera interior: la pierna cruza por delante. Bandera trasera: la pierna cruza por detrás; la más útil de las tres.\n\n**Drop knee.** Desde un backstep, gira la rodilla hacia abajo para presionar la presa de pie. Muy potente, y exigente para la articulación de la rodilla: úsalo con moderación en esta etapa."
+          "body": "**Brazos rectos.** Cuélgate de tu esqueleto, no de tus bíceps. Los brazos doblados queman los antebrazos y cargan el codo, justo lo que intentas proteger. Dobla el brazo solo en el instante en que tiras hacia la siguiente presa, y luego vuelve a estirarlo.\n\n**Cadera a la pared.** El peso descansa sobre los pies en vez de tirar hacia afuera desde las manos. Una cadera caída significa que son los brazos los que te sostienen.\n\n**Frontal frente a de lado.** La posición frontal (encarado a la pared, ambos cantos interiores) es estable pero de alcance corto. La posición de lado / twist-lock (un canto exterior, cadera girada hacia la pared) alcanza mucho más lejos y cuesta mucho menos a los brazos. Alternar entre las dos según se necesite es la mayor parte de la escalada de nivel intermedio.\n\n**Backstep.** Canto exterior del pie sobre la presa, cadera girada hacia dentro. Convierte un alcance largo en uno corto. Si te estás forzando para alcanzar algo, la respuesta suele ser un backstep que no viste.\n\n**Banderas (flagging).** Cuando un pie no tiene dónde apoyarse, extiende esa pierna como contrapeso en vez de dejarla colgando. Bandera del mismo lado: la pierna se extiende hacia su propio lado. Bandera interior: la pierna cruza por delante. Bandera trasera: la pierna cruza por detrás; la más útil de las tres.\n\n**Drop knee.** Desde un backstep, gira la rodilla hacia abajo para presionar la presa de pie. Muy potente, y exigente para la articulación de la rodilla: úsalo con moderación, sobre todo mientras aún sea nuevo para ti."
         },
         "5": {
           "title": "Movimiento",
@@ -51,7 +52,7 @@
       "sections": {
         "14": {
           "title": "Estructura de la Sesión",
-          "body": "| Bloque | Tiempo | Qué hacer |\n|---|---|---|\n| Calentamiento | 15 min | Movimiento general, luego V0–V1. Muñecas, antebrazos, codos, hombros. |\n| Técnica | 20–30 min | Un ejercicio del §13, en problemas fáciles. Hazlo en fresco, no cansado. |\n| Escalada principal | 40–50 min | Un grado por debajo de tu límite. Calidad de movimiento antes que completar. |\n| Proyecto | 15 min | Unos pocos intentos a tu límite, solo cuando estés fresco y sin dolor. |\n| Vuelta a la calma | 10 min | Bajada fácil escalando, estiramientos suaves, trabajo de antagonistas. |\n\n**Trabajo de antagonistas** (2–3 veces por semana, 10 minutos): flexiones, remo, rotación externa de hombro, y extensores y flexores de muñeca. Los escaladores se vuelven dominantes en tracción muy rápido, y las articulaciones lo pagan."
+          "body": "| Bloque | Tiempo | Qué hacer |\n|---|---|---|\n| Calentamiento | 15 min | Movimiento general, luego problemas muy por debajo de tu límite. Muñecas, antebrazos, codos, hombros. |\n| Técnica | 20–30 min | Un ejercicio del §13, en problemas fáciles. Hazlo en fresco, no cansado. |\n| Escalada principal | 40–50 min | Un grado por debajo de tu límite. Calidad de movimiento antes que completar. |\n| Proyecto | 15 min | Unos pocos intentos a tu límite, solo cuando estés fresco y sin dolor. |\n| Vuelta a la calma | 10 min | Bajada fácil escalando, estiramientos suaves, trabajo de antagonistas. |\n\n**Trabajo de antagonistas** (2–3 veces por semana, 10 minutos): flexiones, remo, rotación externa de hombro, y extensores y flexores de muñeca. Los escaladores se vuelven dominantes en tracción muy rápido, y las articulaciones lo pagan."
         },
         "15": {
           "title": "Seguimiento del Progreso",
@@ -67,7 +68,7 @@
     },
     "foot-techniques": {
       "title": "Técnicas de pies",
-      "intro": "Todo aquí trata de convertir una presa de pie en algo que soporte peso o te acerque a la pared. Los pies son donde un principiante tiene más progreso pendiente por reclamar."
+      "intro": "Todo aquí trata de convertir una presa de pie en algo que soporte peso o te acerque a la pared. Para la mayoría de los escaladores, los pies son donde hay más progreso pendiente por reclamar."
     },
     "hand-grip-techniques": {
       "title": "Técnicas de mano y agarre",
@@ -139,7 +140,7 @@
       "gloss": null,
       "what": "Enganchas una pierna sobre tu propio brazo, por el lado interior, y te sientas sobre ella para ganar altura sin presas de pie.",
       "how": "Cuélgate de un brazo, pasa la pierna del mismo lado por encima de ese antebrazo y presiona hacia abajo con la pierna para impulsar el cuerpo hacia arriba.",
-      "best": "Desplomes sin pies: sobre todo un movimiento de competición y de cueva muy inclinada. Alta carga en el codo y el hombro; no es un movimiento para principiantes."
+      "best": "Desplomes sin pies: sobre todo un movimiento de competición y de cueva muy inclinada. Alta carga en el codo y el hombro."
     },
     "outside-figure-4": {
       "gloss": null,
@@ -151,13 +152,13 @@
       "gloss": null,
       "what": "Jerga de gimnasio para la posición corporal extrema, de cadera muy pegada y giro profundo, asociada al estilo de Janja Garnbret: normalmente una posición muy comprimida, parecida a un drop knee, en la que la cadera permanece pegada a la pared durante todo un movimiento largo.",
       "how": "En esencia, una versión al máximo del backstep/drop knee, con mucha movilidad de cadera y tensión de core.",
-      "best": "Nada que necesites todavía. El nombre no está estandarizado: comprueba cómo lo usa tu gimnasio, porque cada muro lo aplica a movimientos distintos."
+      "best": "Rara vez necesario fuera de problemas de alto nivel o de estilo competición. El nombre no está estandarizado: comprueba cómo lo usa tu gimnasio, porque cada muro lo aplica a movimientos distintos."
     },
     "peter-pan": {
       "gloss": null,
       "what": "Un movimiento dinámico en el que te lanzas a una posición totalmente extendida, brevemente en el aire, con brazos y piernas estirados, antes de atrapar la presa objetivo.",
       "how": "Genera el impulso con las piernas, extiende todo el cuerpo en el aire y atrapa la presa con el cuerpo totalmente estirado.",
-      "best": "Problemas desplomados y potentes, de estilo competición. El nombre varía según el gimnasio; de alto impacto, así que no es prioridad para principiantes."
+      "best": "Problemas desplomados y potentes, de estilo competición. El nombre varía según el gimnasio; de alto impacto."
     },
     "inside-edge": {
       "gloss": null,
@@ -277,7 +278,7 @@
       "gloss": null,
       "what": "Un solo dedo en un pocket.",
       "how": "Normalmente el dedo medio. Mantén el brazo alineado bajo el pocket y evita cualquier carga de torsión.",
-      "best": "Poco frecuente en gimnasios, brutal para los tendones. No es algo que un principiante deba buscar."
+      "best": "Poco frecuente en gimnasios, brutal para los tendones."
     },
     "closed-mono": {
       "gloss": null,
@@ -445,7 +446,7 @@
       "gloss": null,
       "what": "Desplazar el centro de gravedad desde debajo de un pie alto hasta por encima de él, y luego incorporarte sobre ese pie.",
       "how": "Sube el pie alto, empuja la cadera hacia adelante y por encima de la puntera, deja que los hombros te acompañen, y luego presiona a través de la pierna.",
-      "best": "Placa y paredes verticales. Este es el movimiento que convierte la fuerza de piernas en altura, y una alta prioridad para cualquier principiante."
+      "best": "Placa y paredes verticales. Este es el movimiento que convierte la fuerza de piernas en altura, y una alta prioridad para aprender pronto."
     },
     "knee-press": {
       "gloss": null,
@@ -457,7 +458,7 @@
       "gloss": null,
       "what": "Empujar hacia abajo sobre una presa o repisa para llevar el cuerpo por encima de ella, como saliendo de una piscina.",
       "how": "Tira hasta la altura del pecho, rota la mano para que la palma presione hacia abajo, empuja hasta bloquear el brazo y luego sube un pie.",
-      "best": "Topar el problema. Esencial, y a menudo el crux del problema para los principiantes."
+      "best": "Topar el problema. Esencial, y a menudo el crux del problema."
     },
     "beached-whale": {
       "gloss": null,
@@ -576,7 +577,7 @@
   },
   "drillSection": {
     "title": "Banco de ejercicios",
-    "intro": "Las restricciones hacen que un problema fácil se vuelva difícil sin añadir carga a dedos y codos. Elige **uno** por sesión y aplícalo a problemas de V1 a V3. Alterna para no entrenar siempre la misma debilidad."
+    "intro": "Las restricciones hacen que un problema fácil se vuelva difícil sin añadir carga a dedos y codos. Elige **uno** por sesión y aplícalo a problemas bastante por debajo de tu límite. Alterna para no entrenar siempre la misma debilidad."
   },
   "drillCategories": {
     "footwork-drills": {
@@ -590,7 +591,7 @@
     "movement-drills": {
       "title": "Ejercicios de movimiento",
       "callouts": [
-        "Sobre el trabajo de agarre: inclínate fuertemente hacia la mano abierta y el half crimp. El full crimp es el agarre de mayor estrés tanto para los dedos como para el codo, y es lo último que un principiante necesita entrenar."
+        "Sobre el trabajo de agarre: inclínate fuertemente hacia la mano abierta y el half crimp. El full crimp es el agarre de mayor estrés tanto para los dedos como para el codo, y es el agarre que conviene entrenar al final, y de forma gradual."
       ]
     },
     "reading-mental-drills": {
@@ -763,19 +764,19 @@
     },
     "ladder": {
       "name": "Escalera",
-      "description": "V1 → V2 → V3 → V2 → V1 uno tras otro, y luego descansa 5 minutos."
+      "description": "fácil → moderado → más exigente → moderado → fácil, todos bajo tu límite, uno tras otro, y luego descansa 5 minutos."
     },
     "circuit-of-four": {
       "name": "Circuito de cuatro",
-      "description": "cuatro problemas de V1–V2 seguidos sin descanso, y luego 3 minutos de pausa. Repite 3–4 veces."
+      "description": "cuatro problemas fáciles, bastante por debajo de tu límite, seguidos sin descanso, y luego 3 minutos de pausa. Repite 3–4 veces."
     },
     "pyramid-session": {
       "name": "Sesión pirámide",
-      "description": "4 problemas en V1, 3 en V2, 2 en V3, 1 proyecto. Una sesión completa en sí misma."
+      "description": "4 problemas tres grados bajo tu límite, 3 a dos grados, 2 a un grado, 1 proyecto. Una sesión completa en sí misma."
     },
     "speed-quality": {
       "name": "Velocidad–calidad",
-      "description": "escala un V1 lo más rápido posible, y luego lo más perfecto posible. Compara cómo se sintió cada uno."
+      "description": "escala un problema fácil lo más rápido posible, y luego lo más perfecto posible. Compara cómo se sintió cada uno."
     },
     "no-repeat-hour": {
       "name": "Hora sin repetir",
@@ -785,7 +786,7 @@
   "progressionStages": {
     "stage-footwork-foundations": {
       "title": "Fundamentos de trabajo de pies",
-      "summary": "Unos pies precisos y silenciosos y el desplazamiento básico del peso van antes que todo lo demás — la mayor parte del progreso pendiente de un principiante está aquí."
+      "summary": "Unos pies precisos y silenciosos y el desplazamiento básico del peso van antes que todo lo demás — para la mayoría de los escaladores, aquí está el mayor progreso pendiente."
     },
     "stage-body-position-balance": {
       "title": "Posición corporal y equilibrio",
@@ -793,7 +794,7 @@
     },
     "stage-grip-fundamentals": {
       "title": "Fundamentos de agarre",
-      "summary": "Construye primero las posiciones de agarre más seguras y entrenables — los agarres más fuertes y arriesgados pueden esperar."
+      "summary": "Construye primero las posiciones de agarre más seguras y entrenables — los agarres más fuertes y arriesgados se construyen sobre ellos."
     },
     "stage-reading-holds-positions": {
       "title": "Lectura de presas y posiciones",
