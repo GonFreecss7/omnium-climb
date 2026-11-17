@@ -136,8 +136,9 @@ unknown level value. Silent skipping hides content loss.
   `directoryId`. Add gyms by editing the file — `region` must be a key of `regions`.
 - The Gyms tab map is Leaflet over OpenStreetMap's standard tiles (keyless; muted with CSS
   filters, inverted in dark mode) — the app's one deliberate runtime network use. CARTO's raster
-  basemaps now require a key: build with `VITE_CARTO_KEY` set to switch to Positron / Dark
-  Matter. The service worker caches
+  basemaps require a key: CI reads it from the `VITE_CARTO_KEY` repo secret (see
+  `.github/workflows/deploy.yml`) and the map switches to Positron / Dark Matter. For local dev put
+  it in `.env.local` (gitignored). Never commit the key. The service worker caches
   viewed tiles (`map-tiles`, CacheFirst) so known areas work offline, and Chile's coastline
   (`src/assets/chile-outline.json`, Natural Earth 1:50m via world-atlas) is drawn under the tiles
   as an offline fallback. Attribution to OSM and CARTO must stay visible. "Open in Google Maps"

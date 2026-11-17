@@ -24,7 +24,8 @@ interface Props {
 // app's monochrome look, inverted for the dark theme. If a CARTO key is
 // provided at build time (VITE_CARTO_KEY), CARTO's Positron / Dark Matter
 // styles are used instead. Viewed tiles are cached by the service worker.
-const CARTO_KEY: string | undefined = import.meta.env.VITE_CARTO_KEY;
+// Empty when the build has no key (the CI secret is unset) — treat as absent.
+const CARTO_KEY: string | undefined = import.meta.env.VITE_CARTO_KEY || undefined;
 const OSM_ATTRIBUTION =
   '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>';
 
