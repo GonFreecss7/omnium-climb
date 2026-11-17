@@ -17,7 +17,7 @@ export const BOULDER_SCALES: BoulderScale[] = ["V", "Font"];
 export const ROPE_SCALES: RopeScale[] = ["YDS", "French", "UIAA", "Ewbank"];
 
 export const SCALE_LABELS: Record<GradeScale, string> = {
-  V: "V (Hueco)",
+  V: "V",
   Font: "Font",
   YDS: "YDS (5.x)",
   French: "Francesa / French",

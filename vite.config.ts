@@ -37,6 +37,19 @@ export default defineConfig({
       workbox: {
         globPatterns: ["**/*.{js,css,html,woff2,png,svg,json}"],
         navigateFallback: `${BASE}index.html`,
+        // Map tiles (Gyms tab) are the app's only runtime network use. Keep
+        // what the climber has viewed so those areas still render offline.
+        runtimeCaching: [
+          {
+            urlPattern: /^https:\/\/[a-d]\.basemaps\.cartocdn\.com\//,
+            handler: "CacheFirst",
+            options: {
+              cacheName: "map-tiles",
+              expiration: { maxEntries: 3000, maxAgeSeconds: 60 * 60 * 24 * 60 },
+              cacheableResponse: { statuses: [0, 200] },
+            },
+          },
+        ],
       },
     }),
   ],

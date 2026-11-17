@@ -1,127 +1,160 @@
-import { useMemo } from "react";
+import { useEffect, useRef } from "react";
+import L from "leaflet";
+import "leaflet/dist/leaflet.css";
 import outline from "../assets/chile-outline.json";
 import type { DirectoryGym } from "../domain/gymDirectory";
+import type { Theme } from "../state/AppState";
 
 interface Props {
   gyms: DirectoryGym[];
-  /** Gyms the frame should fit; defaults to all of `gyms`. */
+  /** Gyms the view should fit; defaults to all of `gyms`. */
   fit?: DirectoryGym[];
   selectedId: string | null;
   homeId: string | null;
   savedIds: Set<string>;
   me: { lat: number; lng: number } | null;
   onSelect: (id: string) => void;
+  theme: Theme;
   ariaLabel: string;
   meLabel: string;
 }
 
-const SIZE = 1000;
-const PAD = 0.14;
-const MIN_SPAN_DEG = 0.06;
-const COAST = outline as number[][][];
+// CARTO basemaps over OpenStreetMap data: streets, communes and city names,
+// in a light and a dark style that match the app's two themes. Tiles are
+// cached by the service worker as they're viewed (see vite.config.ts).
+const TILE_URL = {
+  dark: "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+  light: "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+};
+const ATTRIBUTION =
+  '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a>';
 
-/**
- * Offline map: an equirectangular projection fitted to the visible gyms,
- * over Chile's coastline (Natural Earth 1:50m via world-atlas). No tiles,
- * no network — it stays usable at the gym on bad wifi.
- */
-export default function GymMap({ gyms, fit, selectedId, homeId, savedIds, me, onSelect, ariaLabel, meLabel }: Props) {
-  const frame = useMemo(() => {
-    const pts = (fit ?? gyms).map((g) => [g.lng, g.lat] as const);
-    if (me) pts.push([me.lng, me.lat] as const);
-    if (pts.length === 0) pts.push([-70.65, -33.45] as const);
-    let minLng = Math.min(...pts.map((p) => p[0]));
-    let maxLng = Math.max(...pts.map((p) => p[0]));
-    let minLat = Math.min(...pts.map((p) => p[1]));
-    let maxLat = Math.max(...pts.map((p) => p[1]));
-    const midLat = (minLat + maxLat) / 2;
-    const kx = Math.cos((midLat * Math.PI) / 180);
-    // Work in "projected degrees" so the box is square in real distance.
-    let w = Math.max((maxLng - minLng) * kx, MIN_SPAN_DEG);
-    let h = Math.max(maxLat - minLat, MIN_SPAN_DEG);
-    const span = Math.max(w, h) * (1 + PAD * 2);
-    const cx = ((minLng + maxLng) / 2) * kx;
-    const cy = (minLat + maxLat) / 2;
-    w = span;
-    h = span;
-    const scale = SIZE / span;
-    const x = (lng: number) => (lng * kx - (cx - w / 2)) * scale;
-    const y = (lat: number) => (cy + h / 2 - lat) * scale;
-    return { x, y, scale, kx, spanDeg: span };
-  }, [gyms, fit, me]);
+const CHILE_CENTER: L.LatLngExpression = [-33.45, -70.65];
 
-  const coastPath = useMemo(
-    () =>
-      COAST.map(
-        (ring) =>
-          ring.map(([lng, lat], i) => `${i === 0 ? "M" : "L"}${frame.x(lng!).toFixed(1)} ${frame.y(lat!).toFixed(1)}`).join("") + "Z",
-      ).join(""),
-    [frame],
-  );
+// Natural Earth coastline, drawn *under* the tiles: invisible once tiles load,
+// but it keeps the map readable offline before any tile has been cached.
+const COAST: L.LatLngExpression[][] = (outline as number[][][]).map((ring) => ring.map(([lng, lat]) => [lat!, lng!]));
 
-  // Scale bar: a round number of km close to a fifth of the map width.
-  const kmPerUnit = (111.32 * frame.spanDeg) / SIZE;
-  const target = kmPerUnit * SIZE * 0.22;
-  const steps = [0.5, 1, 2, 5, 10, 20, 50, 100, 200, 500];
-  const barKm = steps.reduce((best, s) => (Math.abs(s - target) < Math.abs(best - target) ? s : best), steps[0]!);
-  const barLen = barKm / kmPerUnit;
+export default function GymMap({ gyms, fit, selectedId, homeId, savedIds, me, onSelect, theme, ariaLabel, meLabel }: Props) {
+  const el = useRef<HTMLDivElement>(null);
+  const map = useRef<L.Map | null>(null);
+  const tiles = useRef<L.TileLayer | null>(null);
+  const markers = useRef<L.LayerGroup | null>(null);
+  const meLayer = useRef<L.LayerGroup | null>(null);
+  const onSelectRef = useRef(onSelect);
+  onSelectRef.current = onSelect;
 
-  const selected = gyms.find((g) => g.id === selectedId) ?? null;
-  const dotR = 11;
+  // Create once.
+  useEffect(() => {
+    if (!el.current) return;
+    const m = L.map(el.current, {
+      center: CHILE_CENTER,
+      zoom: 11,
+      zoomControl: true,
+      attributionControl: true,
+      worldCopyJump: false,
+      minZoom: 4,
+      maxZoom: 19,
+    });
+    m.attributionControl.setPrefix(false);
+    m.createPane("coast");
+    m.getPane("coast")!.style.zIndex = "150";
+    L.polygon(COAST, { pane: "coast", className: "gym-map__coast", interactive: false }).addTo(m);
+    L.control.scale({ imperial: false, position: "bottomleft" }).addTo(m);
+    markers.current = L.layerGroup().addTo(m);
+    meLayer.current = L.layerGroup().addTo(m);
+    map.current = m;
+    return () => {
+      m.remove();
+      map.current = null;
+      tiles.current = null;
+    };
+  }, []);
 
-  return (
-    <svg className="gym-map" viewBox={`0 0 ${SIZE} ${SIZE}`} role="img" aria-label={ariaLabel}>
-      <rect className="gym-map__sea" x="0" y="0" width={SIZE} height={SIZE} />
-      <path className="gym-map__land" d={coastPath} />
+  // Theme-matched tiles.
+  useEffect(() => {
+    const m = map.current;
+    if (!m) return;
+    tiles.current?.remove();
+    tiles.current = L.tileLayer(TILE_URL[theme], {
+      attribution: ATTRIBUTION,
+      subdomains: "abcd",
+      maxZoom: 19,
+      detectRetina: false,
+    }).addTo(m);
+  }, [theme]);
 
-      {gyms.map((g) => {
-        const isSel = g.id === selectedId;
-        const cls = [
-          "gym-map__dot",
-          g.kind === "outdoor" ? "gym-map__dot--outdoor" : "",
-          savedIds.has(g.id) ? "gym-map__dot--saved" : "",
-          g.id === homeId ? "gym-map__dot--home" : "",
-          isSel ? "gym-map__dot--selected" : "",
-        ].join(" ");
-        return (
-          <g key={g.id} className={cls} onClick={() => onSelect(g.id)}>
-            <circle cx={frame.x(g.lng)} cy={frame.y(g.lat)} r={34} className="gym-map__hit" />
-            {g.id === homeId && <circle cx={frame.x(g.lng)} cy={frame.y(g.lat)} r={dotR + 9} className="gym-map__ring" />}
-            <circle cx={frame.x(g.lng)} cy={frame.y(g.lat)} r={isSel ? dotR + 5 : dotR} className="gym-map__pin" />
-          </g>
-        );
-      })}
+  // Markers.
+  useEffect(() => {
+    const group = markers.current;
+    if (!group) return;
+    group.clearLayers();
+    for (const g of gyms) {
+      const isSel = g.id === selectedId;
+      const classes = [
+        "gym-pin",
+        g.kind === "outdoor" ? "gym-pin--outdoor" : "",
+        savedIds.has(g.id) ? "gym-pin--saved" : "",
+        g.id === homeId ? "gym-pin--home" : "",
+        isSel ? "gym-pin--selected" : "",
+      ]
+        .filter(Boolean)
+        .join(" ");
+      const marker = L.marker([g.lat, g.lng], {
+        icon: L.divIcon({ className: classes, iconSize: [22, 22], iconAnchor: [11, 11] }),
+        title: g.name,
+        alt: g.name,
+        keyboard: true,
+        riseOnHover: true,
+        zIndexOffset: isSel ? 1000 : g.id === homeId ? 500 : 0,
+      });
+      marker.bindTooltip(g.name, {
+        direction: "top",
+        offset: [0, -12],
+        className: "gym-tooltip",
+        permanent: isSel,
+      });
+      marker.on("click", () => onSelectRef.current(g.id));
+      marker.addTo(group);
+    }
+  }, [gyms, selectedId, homeId, savedIds]);
 
-      {me && (
-        <g className="gym-map__me">
-          <circle cx={frame.x(me.lng)} cy={frame.y(me.lat)} r={30} className="gym-map__me-halo" />
-          <circle cx={frame.x(me.lng)} cy={frame.y(me.lat)} r={11} className="gym-map__me-dot" />
-          <text x={frame.x(me.lng) + 20} y={frame.y(me.lat) - 18} className="gym-map__label gym-map__label--me">
-            {meLabel}
-          </text>
-        </g>
-      )}
+  // "You are here".
+  useEffect(() => {
+    const layer = meLayer.current;
+    if (!layer) return;
+    layer.clearLayers();
+    if (!me) return;
+    L.marker([me.lat, me.lng], {
+      icon: L.divIcon({ className: "me-pin", iconSize: [18, 18], iconAnchor: [9, 9] }),
+      interactive: false,
+      zIndexOffset: 2000,
+    })
+      .bindTooltip(meLabel, { permanent: true, direction: "right", offset: [10, 0], className: "gym-tooltip gym-tooltip--me" })
+      .addTo(layer);
+  }, [me, meLabel]);
 
-      {selected && (
-        <text
-          x={Math.min(frame.x(selected.lng) + 24, SIZE - 20)}
-          y={frame.y(selected.lat) - 22}
-          className="gym-map__label"
-          textAnchor={frame.x(selected.lng) > SIZE * 0.6 ? "end" : "start"}
-          dx={frame.x(selected.lng) > SIZE * 0.6 ? -48 : 0}
-        >
-          {selected.name}
-        </text>
-      )}
+  // Frame the visible set whenever it changes (filters, search, near me).
+  const fitKey = (fit ?? gyms).map((g) => g.id).join(",") + (me ? `|${me.lat},${me.lng}` : "");
+  useEffect(() => {
+    const m = map.current;
+    if (!m) return;
+    const pts: L.LatLngExpression[] = (fit ?? gyms).map((g) => [g.lat, g.lng]);
+    if (me) pts.push([me.lat, me.lng]);
+    if (pts.length === 0) return;
+    if (pts.length === 1) m.setView(pts[0]!, 15);
+    else m.fitBounds(L.latLngBounds(pts), { padding: [36, 36], maxZoom: 15 });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [fitKey]);
 
-      <g className="gym-map__scale" transform={`translate(36 ${SIZE - 44})`}>
-        <line x1="0" y1="0" x2={barLen} y2="0" />
-        <line x1="0" y1="-10" x2="0" y2="10" />
-        <line x1={barLen} y1="-10" x2={barLen} y2="10" />
-        <text x={barLen + 14} y="9">
-          {barKm} km
-        </text>
-      </g>
-    </svg>
-  );
+  // Bring the selected gym into view without losing the climber's zoom.
+  useEffect(() => {
+    const m = map.current;
+    const g = gyms.find((x) => x.id === selectedId);
+    if (!m || !g) return;
+    m.flyTo([g.lat, g.lng], Math.max(m.getZoom(), 14), { duration: 0.6 });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedId]);
+
+  return <div ref={el} className="gym-map" role="region" aria-label={ariaLabel} />;
 }

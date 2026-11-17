@@ -10,7 +10,7 @@ import type { GymCircuit } from "../domain/circuits";
 type LocState = { status: "idle" } | { status: "locating" } | { status: "error" } | { status: "ok"; lat: number; lng: number };
 
 export default function GymsView() {
-  const { t, circuits, setCircuits, profile } = useAppState();
+  const { t, circuits, setCircuits, profile, theme } = useAppState();
   const v = t.gymsView;
 
   const [region, setRegion] = useState<string | null>(null);
@@ -78,6 +78,8 @@ export default function GymsView() {
     document.getElementById("gym-map")?.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
+  const savedIds = useMemo(() => new Set(savedByDirectory.keys()), [savedByDirectory]);
+
   // Group by commune unless sorted by distance.
   const groups = useMemo(() => {
     if (me) return [{ commune: null as string | null, gyms: visible }];
@@ -127,11 +129,12 @@ export default function GymsView() {
           fit={me ? [...visible.slice(0, 8), ...(selected && !visible.slice(0, 8).includes(selected) ? [selected] : [])] : undefined}
           selectedId={selectedId}
           homeId={homeDirectoryId}
-          savedIds={new Set(savedByDirectory.keys())}
+          savedIds={savedIds}
           me={me}
           onSelect={setSelectedId}
           ariaLabel={v.mapAria}
           meLabel={v.you}
+          theme={theme}
         />
         <button type="button" className="gyms__locate" onClick={locate} disabled={loc.status === "locating"}>
           {loc.status === "locating" ? v.locating : v.nearMe}

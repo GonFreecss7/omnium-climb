@@ -2211,102 +2211,118 @@ ol.prose-list li::marker {
 }
 
 .gym-map {
-  display: block;
   width: 100%;
-  height: auto;
-  aspect-ratio: 1;
-  max-height: 62vh;
+  height: min(62vh, 520px);
+  background: var(--surface);
+  font-family: var(--font-body);
+  z-index: 0;
 }
 
-.gym-map__sea {
-  fill: var(--surface);
-}
-
-.gym-map__land {
+.gym-map__coast {
   fill: var(--surface-2);
+  fill-opacity: 1;
   stroke: var(--border-strong);
-  stroke-width: 2;
-  stroke-linejoin: round;
+  stroke-width: 1;
 }
 
-.gym-map__dot {
-  cursor: pointer;
+/* Gym pins: a chalk/ink dot with a halo, so they read over both basemaps. */
+.gym-pin {
+  border-radius: 50%;
+  background: var(--text);
+  border: 3px solid var(--bg);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
+  transition: transform var(--duration) var(--ease);
 }
 
-.gym-map__hit {
-  fill: transparent;
+.gym-pin--outdoor {
+  background: var(--bg);
+  border-color: var(--text);
 }
 
-.gym-map__pin {
-  fill: var(--text-muted);
-  stroke: var(--surface);
-  stroke-width: 4;
-  transition: r var(--duration) var(--ease);
+.gym-pin--saved {
+  background: var(--lvl-intermediate);
 }
 
-.gym-map__dot--outdoor .gym-map__pin {
-  fill: var(--surface);
-  stroke: var(--text-muted);
-  stroke-width: 4;
+.gym-pin--home {
+  background: var(--accent);
+  box-shadow: 0 0 0 3px var(--bg), 0 0 0 6px var(--accent), 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
-.gym-map__dot--saved .gym-map__pin {
-  fill: var(--text);
+.gym-pin--selected {
+  transform: scale(1.35);
+  background: var(--hazard);
+  border-color: var(--hazard-ink);
 }
 
-.gym-map__ring {
-  fill: none;
-  stroke: var(--text);
-  stroke-width: 4;
+.me-pin {
+  border-radius: 50%;
+  background: var(--lvl-intermediate);
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 8px color-mix(in srgb, var(--lvl-intermediate) 25%, transparent);
 }
 
-.gym-map__dot--selected .gym-map__pin {
-  fill: var(--accent);
-  stroke: var(--bg);
-  stroke-width: 5;
-}
-
-.gym-map__label {
-  fill: var(--text);
+.leaflet-tooltip.gym-tooltip {
+  padding: 3px 8px;
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
   font-family: var(--font-display);
   font-stretch: var(--stretch-title);
-  font-size: 34px;
-  font-weight: 750;
-  paint-order: stroke;
-  stroke: var(--surface);
-  stroke-width: 10px;
-  stroke-linejoin: round;
+  font-size: 13px;
+  font-weight: 700;
 }
 
-.gym-map__label--me {
-  fill: var(--lvl-intermediate);
+.leaflet-tooltip.gym-tooltip::before {
+  display: none;
 }
 
-.gym-map__me-halo {
-  fill: var(--lvl-intermediate);
-  opacity: 0.18;
+.leaflet-tooltip.gym-tooltip--me {
+  color: var(--lvl-intermediate);
 }
 
-.gym-map__me-dot {
-  fill: var(--lvl-intermediate);
-  stroke: #fff;
-  stroke-width: 4;
+.gyms__map-card .leaflet-control-zoom {
+  border: none;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
 }
 
-.gym-map__scale line {
-  stroke: var(--text-muted);
-  stroke-width: 3;
+.gyms__map-card .leaflet-control-zoom a {
+  width: 38px;
+  height: 38px;
+  line-height: 36px;
+  background: var(--bg);
+  color: var(--text);
+  border-color: var(--border);
+  font-size: 20px;
 }
 
-.gym-map__scale text {
-  fill: var(--text-muted);
-  font-family: var(--font-body);
-  font-size: 26px;
-  font-weight: 600;
+.gyms__map-card .leaflet-control-attribution {
+  background: color-mix(in srgb, var(--bg) 80%, transparent);
+  color: var(--text-muted);
+  font-size: 10px;
+}
+
+.gyms__map-card .leaflet-control-attribution a {
+  color: var(--text-muted);
+}
+
+.gyms__map-card .leaflet-control-scale-line {
+  background: color-mix(in srgb, var(--bg) 70%, transparent);
+  border-color: var(--text-muted);
+  color: var(--text);
+  font-size: 11px;
+}
+
+.gyms__map-card .leaflet-container {
+  outline-offset: -2px;
 }
 
 .gyms__locate {
   position: absolute;
+  z-index: 500;
   top: var(--space-3);
   right: var(--space-3);
   height: 38px;

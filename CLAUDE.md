@@ -111,7 +111,8 @@ unknown level value. Silent skipping hides content loss.
   library, no state management library.
 - All colour, spacing, radius and timing values come from CSS custom properties. No hardcoded
   colours in components.
-- No runtime network calls. Fonts are self-hosted and subset to Latin.
+- No runtime network calls except map tiles in the Gyms tab (see below). Fonts are self-hosted
+  and subset to Latin.
 - `localStorage` keys are namespaced `cg.*` (`cg.lang`, `cg.theme`, `cg.favorites`, `cg.log`,
   `cg.notes`, `cg.profile`, `cg.onboardingSkipped`, `cg.levelUpDismissed`, `cg.circuits`,
   `cg.levelColors`).
@@ -133,10 +134,12 @@ unknown level value. Silent skipping hides content loss.
 - `content/gyms-cl.json` is the hand-maintained directory of Chilean gyms (exported from the
   owner's Google Maps list "BOULDER"). Ids are stable; saved gyms reference them via
   `directoryId`. Add gyms by editing the file — `region` must be a key of `regions`.
-- The Gyms tab map is drawn offline: an equirectangular projection fitted to the visible gyms over
-  Chile's coastline (`src/assets/chile-outline.json`, Natural Earth 1:50m via world-atlas). No
-  tiles. "Open in Google Maps" is a plain outbound link the climber taps — the only network use.
-  Geolocation ("Near me") stays in memory and is never stored.
+- The Gyms tab map is Leaflet over CARTO basemaps (OpenStreetMap data; `dark_all` / `light_all`
+  to match the theme) — the app's one deliberate runtime network use. The service worker caches
+  viewed tiles (`map-tiles`, CacheFirst) so known areas work offline, and Chile's coastline
+  (`src/assets/chile-outline.json`, Natural Earth 1:50m via world-atlas) is drawn under the tiles
+  as an offline fallback. Attribution to OSM and CARTO must stay visible. "Open in Google Maps"
+  is a plain outbound link. Geolocation ("Near me") stays in memory and is never stored.
 - `src/domain/boards.ts` lists training boards (Kilter, Tension 1/2, MoonBoard sets, Grasshopper,
   Decoy, Quantum, Lattice, spray wall) with their angle ranges; board sessions store
   `board: { id, name, angle }` and grade in the board's own scale.
