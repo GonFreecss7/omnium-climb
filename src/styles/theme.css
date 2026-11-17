@@ -25,6 +25,9 @@
   --lvl-advanced: #e5484d;
   --lvl-elite: #0a0b0c;
   --lvl-elite-ink: #eceae4;
+  --lvl-beginner-ink: #ffffff;
+  --lvl-intermediate-ink: #ffffff;
+  --lvl-advanced-ink: #ffffff;
   --lvl-elite-ring: rgba(236, 234, 228, 0.45);
 
   --hazard: #f2c230;
@@ -56,6 +59,9 @@
   --lvl-advanced: #d2373d;
   --lvl-elite: #14171b;
   --lvl-elite-ink: #ffffff;
+  --lvl-beginner-ink: #ffffff;
+  --lvl-intermediate-ink: #ffffff;
+  --lvl-advanced-ink: #ffffff;
   --lvl-elite-ring: rgba(20, 23, 27, 0);
 
   --hazard: #f2c230;

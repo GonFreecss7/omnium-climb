@@ -8,6 +8,9 @@ import type { Lang, UiStrings } from "../i18n/ui";
 import { computeLevel } from "../domain/levels";
 import type { ClimberProfile, LevelResult } from "../domain/levels";
 import type { Discipline, GradeScale } from "../domain/grades";
+import { EMPTY_CIRCUITS, inkFor, isHex, parseCircuits } from "../domain/circuits";
+import type { CircuitsState, LevelColors } from "../domain/circuits";
+import { LEVELS } from "../domain/levels";
 
 export type Theme = "dark" | "light";
 export type Tab = "guide" | "techniques" | "drills" | "progressions" | "session";
@@ -25,6 +28,10 @@ export interface SessionLogEntry {
   discipline?: Discipline;
   gradeIndex?: number | null;
   gradeScale?: GradeScale;
+  /** Gym circuit colour picked for this entry, copied so later edits to the circuit don't rewrite history. */
+  circuit?: { name: string; hex: string; min: number; max: number };
+  /** Where the session happened. `id` is set when it was one of the saved gyms. */
+  gym?: { name: string; id?: string; home: boolean };
 }
 
 const LANG_KEY = "cg.lang";
@@ -34,6 +41,36 @@ const LOG_KEY = "cg.log";
 const NOTES_KEY = "cg.notes";
 const PROFILE_KEY = "cg.profile";
 const ONBOARDING_SKIPPED_KEY = "cg.onboardingSkipped";
+const CIRCUITS_KEY = "cg.circuits";
+const LEVEL_COLORS_KEY = "cg.levelColors";
+
+function initialCircuits(): CircuitsState {
+  try {
+    const stored = localStorage.getItem(CIRCUITS_KEY);
+    if (stored) return parseCircuits(JSON.parse(stored));
+  } catch {
+    // malformed/unavailable storage
+  }
+  return EMPTY_CIRCUITS;
+}
+
+function initialLevelColors(): LevelColors {
+  try {
+    const stored = localStorage.getItem(LEVEL_COLORS_KEY);
+    if (stored) {
+      const parsed = JSON.parse(stored) as Record<string, unknown>;
+      const out: LevelColors = {};
+      for (const l of LEVELS) {
+        const v = parsed?.[l];
+        if (typeof v === "string" && isHex(v)) out[l] = v;
+      }
+      return out;
+    }
+  } catch {
+    // malformed/unavailable storage
+  }
+  return {};
+}
 
 function initialProfile(): ClimberProfile | null {
   try {
@@ -151,6 +188,10 @@ interface AppStateValue {
   onboardingOpen: boolean;
   openOnboarding: () => void;
   closeOnboarding: () => void;
+  circuits: CircuitsState;
+  setCircuits: (next: CircuitsState) => void;
+  levelColors: LevelColors;
+  setLevelColors: (next: LevelColors) => void;
 }
 
 const AppStateContext = createContext<AppStateValue | null>(null);
@@ -167,6 +208,36 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
   const [profile, setProfile] = useState<ClimberProfile | null>(initialProfile);
   const [onboardingOpen, setOnboardingOpen] = useState<boolean>(initialOnboardingOpen);
   const levelInfo = useMemo(() => (profile ? computeLevel(profile) : null), [profile]);
+  const [circuits, setCircuits] = useState<CircuitsState>(initialCircuits);
+  const [levelColors, setLevelColors] = useState<LevelColors>(initialLevelColors);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(CIRCUITS_KEY, JSON.stringify(circuits));
+    } catch {
+      // ignore write failures
+    }
+  }, [circuits]);
+
+  // Custom level colours override the theme defaults in both light and dark.
+  useEffect(() => {
+    const style = document.documentElement.style;
+    for (const l of LEVELS) {
+      const hex = levelColors[l];
+      if (hex) {
+        style.setProperty(`--lvl-${l}`, hex);
+        style.setProperty(`--lvl-${l}-ink`, inkFor(hex));
+      } else {
+        style.removeProperty(`--lvl-${l}`);
+        style.removeProperty(`--lvl-${l}-ink`);
+      }
+    }
+    try {
+      localStorage.setItem(LEVEL_COLORS_KEY, JSON.stringify(levelColors));
+    } catch {
+      // ignore write failures
+    }
+  }, [levelColors]);
 
   const guide = useMemo(() => getGuide(lang), [lang]);
   const t = ui[lang];
@@ -320,6 +391,10 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
     onboardingOpen,
     openOnboarding,
     closeOnboarding,
+    circuits,
+    setCircuits,
+    levelColors,
+    setLevelColors,
   };
 
   return <AppStateContext.Provider value={value}>{children}</AppStateContext.Provider>;

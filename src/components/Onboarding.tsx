@@ -5,8 +5,11 @@ import { BOULDER_SCALES, ROPE_SCALES, SCALE_LABELS, equivalents, gradeLabel, gra
 import type { BoulderScale, Discipline, GradeScale, RopeScale } from "../domain/grades";
 import { EXPERIENCES, LEVELS, computeLevel } from "../domain/levels";
 import type { ClimberProfile, Level } from "../domain/levels";
+import GymEditor from "./GymEditor";
+import { circuitForGrade, emptyGym, hasContent, homeGym, sortColors } from "../domain/circuits";
+import type { GymCircuit } from "../domain/circuits";
 
-type Step = "welcome" | "disciplines" | "scales" | "grades" | "experience" | "body" | "result";
+type Step = "welcome" | "disciplines" | "scales" | "gym" | "grades" | "experience" | "body" | "result";
 
 function emptyProfile(): ClimberProfile {
   const now = new Date().toISOString();
@@ -35,16 +38,30 @@ function parseOptionalNumber(text: string, min: number, max: number): number | n
 }
 
 export default function Onboarding() {
-  const { t, profile, saveProfile, deleteProfile, closeOnboarding } = useAppState();
+  const { t, profile, saveProfile, deleteProfile, closeOnboarding, circuits, setCircuits } = useAppState();
   const o = t.onboarding;
 
   const [draft, setDraft] = useState<ClimberProfile>(() => profile ?? emptyProfile());
   const [weightText, setWeightText] = useState(profile?.weightKg != null ? String(profile.weightKg) : "");
   const [heightText, setHeightText] = useState(profile?.heightCm != null ? String(profile.heightCm) : "");
   const [confirmDelete, setConfirmDelete] = useState(false);
+  const existingHome = homeGym(circuits);
+  const [gymDraft, setGymDraft] = useState<GymCircuit>(() =>
+    existingHome ? structuredClone(existingHome) : emptyGym(profile?.boulderScale ?? "V"),
+  );
+  const [gymTouched, setGymTouched] = useState(false);
 
   const steps: Step[] = useMemo(
-    () => [...(profile ? [] : (["welcome"] as Step[])), "disciplines", "scales", "grades", "experience", "body", "result"],
+    () => [
+      ...(profile ? [] : (["welcome"] as Step[])),
+      "disciplines",
+      "scales",
+      "gym",
+      "grades",
+      "experience",
+      "body",
+      "result",
+    ],
     [profile],
   );
   const [stepIndex, setStepIndex] = useState(0);
@@ -52,7 +69,27 @@ export default function Onboarding() {
   const numberedSteps: Step[] = steps.filter((s) => s !== "welcome");
   const stepNumber = numberedSteps.indexOf(step) + 1;
 
-  const update = (patch: Partial<ClimberProfile>) => setDraft((d) => ({ ...d, ...patch }));
+  const update = (patch: Partial<ClimberProfile>) => {
+    setDraft((d) => ({ ...d, ...patch }));
+    if (patch.boulderScale && !gymTouched && !existingHome) {
+      setGymDraft((g) => ({ ...g, scale: patch.boulderScale! }));
+    }
+  };
+
+  function saveAll() {
+    saveProfile(finalDraft());
+    if (hasContent(gymDraft)) {
+      const gym: GymCircuit = {
+        ...gymDraft,
+        name: gymDraft.name.trim() || t.circuits.gymPlaceholder,
+        colors: sortColors(gymDraft.colors.filter((c) => c.name.trim() !== "" && c.min <= c.max)),
+      };
+      const others = circuits.gyms.filter((g) => g.id !== gym.id);
+      setCircuits({ homeId: gym.id, gyms: [gym, ...others] });
+    }
+  }
+
+  const gymForGrades = hasContent(gymDraft) ? gymDraft : null;
 
   function toggleDiscipline(d: Discipline) {
     const has = draft.disciplines.includes(d);
@@ -117,7 +154,21 @@ export default function Onboarding() {
             </option>
           ))}
         </select>
-        {value !== null && <span className="onboarding__equiv">≈ {equivalents(value, scale)}</span>}
+        {value !== null && (
+          <span className="onboarding__equiv">
+            ≈ {equivalents(value, scale)}
+            {discipline === "boulder" &&
+              (() => {
+                const c = circuitForGrade(gymForGrades, value);
+                return c ? (
+                  <span className="circuit-inline">
+                    <span className="circuit-dot" style={{ background: c.hex }} />
+                    {c.name}
+                  </span>
+                ) : null;
+              })()}
+          </span>
+        )}
       </label>
     );
   }
@@ -177,6 +228,20 @@ export default function Onboarding() {
             <fieldset className="onboarding__fieldset">
               <legend className="onboarding__question">{o.scaleQuestion}</legend>
               {draft.disciplines.map(renderScalePicker)}
+            </fieldset>
+          )}
+
+          {step === "gym" && (
+            <fieldset className="onboarding__fieldset">
+              <legend className="onboarding__question">{t.circuits.onboardingQuestion}</legend>
+              <p className="onboarding__hint">{t.circuits.onboardingHint}</p>
+              <GymEditor
+                gym={gymDraft}
+                onChange={(g) => {
+                  setGymDraft(g);
+                  setGymTouched(true);
+                }}
+              />
             </fieldset>
           )}
 
@@ -308,7 +373,7 @@ export default function Onboarding() {
             ) : (
               <>
                 {step === "result" ? (
-                  <button type="button" className="button-primary" onClick={() => saveProfile(finalDraft())}>
+                  <button type="button" className="button-primary" onClick={saveAll}>
                     {o.save}
                   </button>
                 ) : (

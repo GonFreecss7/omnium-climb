@@ -3,9 +3,18 @@ import type { Theme } from "../state/AppState";
 import type { Lang } from "../i18n/ui";
 import Modal from "./Modal";
 import Icon from "./Icon";
+import { homeGym } from "../domain/circuits";
+import { LEVELS } from "../domain/levels";
 
-export default function SettingsSheet({ onClose }: { onClose: () => void }) {
-  const { t, lang, setLang, theme, setTheme, levelInfo, openOnboarding } = useAppState();
+interface Props {
+  onClose: () => void;
+  onOpenCircuits: () => void;
+  onOpenLevelColors: () => void;
+}
+
+export default function SettingsSheet({ onClose, onOpenCircuits, onOpenLevelColors }: Props) {
+  const { t, lang, setLang, theme, setTheme, levelInfo, openOnboarding, circuits } = useAppState();
+  const home = homeGym(circuits);
 
   const langs: Array<{ id: Lang; label: string }> = [
     { id: "es", label: "Español" },
@@ -75,6 +84,32 @@ export default function SettingsSheet({ onClose }: { onClose: () => void }) {
                 {levelInfo ? t.levels[levelInfo.level] : t.settings.createProfile}
               </span>
               <span className="settings__profile-action">{levelInfo ? t.settings.editProfile : ""}</span>
+            </button>
+          </div>
+
+          <div className="settings__row">
+            <span className="settings__label">{t.settings.circuits}</span>
+            <button type="button" className="settings__profile" onClick={onOpenCircuits}>
+              <span className="settings__swatches" aria-hidden="true">
+                {(home?.colors ?? []).slice(0, 8).map((c) => (
+                  <span key={c.id} className="settings__swatch" style={{ background: c.hex }} />
+                ))}
+              </span>
+              <span className="settings__profile-text">{home ? home.name : t.settings.circuitsNone}</span>
+              <span className="settings__profile-action">{t.settings.edit}</span>
+            </button>
+          </div>
+
+          <div className="settings__row">
+            <span className="settings__label">{t.settings.levelColors}</span>
+            <button type="button" className="settings__profile" onClick={onOpenLevelColors}>
+              <span className="settings__tapes" aria-hidden="true">
+                {LEVELS.map((l) => (
+                  <span key={l} className={`settings__tape tape tape--${l}`} />
+                ))}
+              </span>
+              <span className="settings__profile-text settings__profile-text--small">{t.settings.levelColorsHint}</span>
+              <span className="settings__profile-action">{t.settings.edit}</span>
             </button>
           </div>
         </div>

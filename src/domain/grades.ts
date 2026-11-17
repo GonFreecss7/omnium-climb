@@ -178,3 +178,18 @@ export function equivalents(index: number, scale: GradeScale): string {
 function clamp(i: number, len: number): number {
   return Math.max(0, Math.min(len - 1, Math.round(i)));
 }
+
+/**
+ * First and last ladder index that share this index's label in `scale`
+ * (V3 covers both 6A and 6A+). Range ends picked in a coarse scale should
+ * cover the whole label, not just its first row.
+ */
+export function labelSpan(index: number, scale: GradeScale): [number, number] {
+  const label = gradeLabel(index, scale);
+  const n = ladderLength(disciplineOf(scale));
+  let lo = index;
+  let hi = index;
+  while (lo > 0 && gradeLabel(lo - 1, scale) === label) lo--;
+  while (hi < n - 1 && gradeLabel(hi + 1, scale) === label) hi++;
+  return [lo, hi];
+}

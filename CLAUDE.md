@@ -113,7 +113,8 @@ unknown level value. Silent skipping hides content loss.
   colours in components.
 - No runtime network calls. Fonts are self-hosted and subset to Latin.
 - `localStorage` keys are namespaced `cg.*` (`cg.lang`, `cg.theme`, `cg.favorites`, `cg.log`,
-  `cg.notes`, `cg.profile`, `cg.onboardingSkipped`, `cg.levelUpDismissed`).
+  `cg.notes`, `cg.profile`, `cg.onboardingSkipped`, `cg.levelUpDismissed`, `cg.circuits`,
+  `cg.levelColors`).
 
 ## Design language
 
@@ -140,7 +141,14 @@ unknown level value. Silent skipping hides content loss.
   Grades are stored as ladder indices so every scale converts through the same row. Source:
   Wikipedia "Grade (bouldering)" / "Grade (climbing)" comparison tables. Equivalences are
   indicative.
-- Session log entries store `discipline`, `gradeIndex`, `gradeScale`; legacy free-text entries are
+- Gyms (`cg.circuits`, `src/domain/circuits.ts`): the climber's saved gyms, one marked home,
+  each with its boulder scale and colour circuits (colour → inclusive ladder-index range).
+  Every gym uses different colours, so circuits are always user-defined; the 7-colour template
+  is only a starting point. Set up in onboarding ("home gym" step) or Settings.
+- Level tag colours are user-overridable (`cg.levelColors`), applied as inline `--lvl-*` vars.
+- Session log entries store `discipline`, `gradeIndex`, `gradeScale`, plus `gym` (name, saved id,
+  home flag) and a snapshot of the `circuit` picked, so editing a circuit later never rewrites
+  history; legacy free-text entries are
   parsed best-effort. When recent entries beat the profile's grade, the app offers to update it.
 - Prefer a few well-named components over deep hierarchies. This is a small app.
 

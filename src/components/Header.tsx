@@ -2,10 +2,14 @@ import { useState } from "react";
 import { useAppState } from "../state/AppState";
 import Icon from "./Icon";
 import SettingsSheet from "./SettingsSheet";
+import CircuitEditor from "./CircuitEditor";
+import LevelColorsEditor from "./LevelColorsEditor";
+
+type Sheet = "settings" | "circuits" | "levelColors" | null;
 
 export default function Header() {
   const { t, levelInfo, openOnboarding } = useAppState();
-  const [settingsOpen, setSettingsOpen] = useState(false);
+  const [sheet, setSheet] = useState<Sheet>(null);
 
   return (
     <header className="header">
@@ -24,12 +28,20 @@ export default function Header() {
           type="button"
           className="icon-button"
           aria-label={t.settings.open}
-          onClick={() => setSettingsOpen(true)}
+          onClick={() => setSheet("settings")}
         >
           <Icon name="settings" />
         </button>
       </div>
-      {settingsOpen && <SettingsSheet onClose={() => setSettingsOpen(false)} />}
+      {sheet === "settings" && (
+        <SettingsSheet
+          onClose={() => setSheet(null)}
+          onOpenCircuits={() => setSheet("circuits")}
+          onOpenLevelColors={() => setSheet("levelColors")}
+        />
+      )}
+      {sheet === "circuits" && <CircuitEditor onClose={() => setSheet("settings")} />}
+      {sheet === "levelColors" && <LevelColorsEditor onClose={() => setSheet("settings")} />}
     </header>
   );
 }

@@ -151,6 +151,57 @@ export interface UiStrings {
     profile: string;
     editProfile: string;
     createProfile: string;
+    circuits: string;
+    circuitsNone: string;
+    levelColors: string;
+    levelColorsHint: string;
+    edit: string;
+  };
+  circuits: {
+    title: string;
+    intro: string;
+    gymName: string;
+    gymPlaceholder: string;
+    newGym: string;
+    deleteGym: string;
+    deleteConfirm: string;
+    useTemplate: string;
+    startEmpty: string;
+    addColor: string;
+    colorName: string;
+    from: string;
+    to: string;
+    andUp: string;
+    removeColor: string;
+    customColor: string;
+    pickColor: string;
+    save: string;
+    cancel: string;
+    empty: string;
+    nameMissing: string;
+    rangeInvalid: string;
+    scaleNote: (scale: string) => string;
+    logLabel: string;
+    exactGrade: string;
+    exactGradeAny: string;
+    gymScale: string;
+    colorsHeading: string;
+    homeShort: string;
+    isHome: string;
+    makeHome: string;
+    onboardingQuestion: string;
+    onboardingHint: string;
+    gymLabel: string;
+    otherGym: string;
+    otherGymName: string;
+    scaleLabel: string;
+    home: string;
+  };
+  levelColorsEditor: {
+    title: string;
+    intro: string;
+    reset: string;
+    done: string;
   };
   onboarding: {
     title: string;
@@ -354,6 +405,57 @@ const en: UiStrings = {
     profile: "Climber profile",
     editProfile: "Edit",
     createProfile: "Set up your profile",
+    circuits: "Gyms & circuits",
+    circuitsNone: "No home gym yet",
+    levelColors: "Level colours",
+    levelColorsHint: "Colours of the four level tags",
+    edit: "Edit",
+  },
+  circuits: {
+    title: "Gyms & circuits",
+    intro: "Every gym marks grades with its own colours. Save your gyms and their circuits to log sessions by colour.",
+    gymName: "Gym",
+    gymPlaceholder: "Gym name",
+    newGym: "Add gym",
+    deleteGym: "Delete this gym",
+    deleteConfirm: "Tap again to delete",
+    useTemplate: "Use a 7-colour template",
+    startEmpty: "Start empty",
+    addColor: "Add colour",
+    colorName: "Name",
+    from: "From",
+    to: "To",
+    andUp: "and up",
+    removeColor: "Remove colour",
+    customColor: "Custom colour",
+    pickColor: "Choose colour",
+    save: "Save circuits",
+    cancel: "Cancel",
+    empty: "No colours yet.",
+    nameMissing: "Every colour needs a name.",
+    rangeInvalid: "“From” can't be harder than “To”.",
+    scaleNote: (scale) => `Grades shown in ${scale}, the scale in your profile.`,
+    logLabel: "Circuit",
+    exactGrade: "Exact grade (optional)",
+    exactGradeAny: "Any in range",
+    gymScale: "Grade scale at this gym",
+    colorsHeading: "Colour circuits",
+    homeShort: "Home",
+    isHome: "This is your home gym.",
+    makeHome: "Make this my home gym",
+    onboardingQuestion: "Your home gym",
+    onboardingHint: "Where you climb most. Add its colour circuits to log sessions by colour — or skip and do it later in Settings.",
+    gymLabel: "Gym",
+    otherGym: "Other gym",
+    otherGymName: "Gym name",
+    scaleLabel: "Scale",
+    home: "home gym",
+  },
+  levelColorsEditor: {
+    title: "Level colours",
+    intro: "Recolour the four level tags to match whatever reads best for you.",
+    reset: "Restore default colours",
+    done: "Done",
   },
   onboarding: {
     title: "Your climbing profile",
@@ -566,6 +668,57 @@ const es: UiStrings = {
     profile: "Perfil de escalador",
     editProfile: "Editar",
     createProfile: "Configura tu perfil",
+    circuits: "Gimnasios y circuitos",
+    circuitsNone: "Aún sin home gym",
+    levelColors: "Colores de niveles",
+    levelColorsHint: "Colores de las cuatro etiquetas de nivel",
+    edit: "Editar",
+  },
+  circuits: {
+    title: "Gimnasios y circuitos",
+    intro: "Cada gimnasio marca los grados con sus propios colores. Guarda tus gimnasios y sus circuitos para registrar sesiones por color.",
+    gymName: "Gimnasio",
+    gymPlaceholder: "Nombre del gimnasio",
+    newGym: "Agregar gimnasio",
+    deleteGym: "Eliminar este gimnasio",
+    deleteConfirm: "Toca otra vez para eliminar",
+    useTemplate: "Usar una plantilla de 7 colores",
+    startEmpty: "Empezar vacío",
+    addColor: "Agregar color",
+    colorName: "Nombre",
+    from: "Desde",
+    to: "Hasta",
+    andUp: "o más",
+    removeColor: "Quitar color",
+    customColor: "Color personalizado",
+    pickColor: "Elegir color",
+    save: "Guardar circuitos",
+    cancel: "Cancelar",
+    empty: "Aún no hay colores.",
+    nameMissing: "Cada color necesita un nombre.",
+    rangeInvalid: "«Desde» no puede ser más difícil que «Hasta».",
+    scaleNote: (scale) => `Grados en escala ${scale}, la de tu perfil.`,
+    logLabel: "Circuito",
+    exactGrade: "Grado exacto (opcional)",
+    exactGradeAny: "Cualquiera del rango",
+    gymScale: "Escala de grados del gimnasio",
+    colorsHeading: "Circuitos de colores",
+    homeShort: "Home",
+    isHome: "Este es tu home gym.",
+    makeHome: "Usar como mi home gym",
+    onboardingQuestion: "Tu home gym",
+    onboardingHint: "Donde más escalas. Agrega sus circuitos de colores para registrar sesiones por color, u omítelo y hazlo después en Ajustes.",
+    gymLabel: "Gimnasio",
+    otherGym: "Otro gimnasio",
+    otherGymName: "Nombre del gimnasio",
+    scaleLabel: "Escala",
+    home: "home gym",
+  },
+  levelColorsEditor: {
+    title: "Colores de niveles",
+    intro: "Cambia el color de las cuatro etiquetas de nivel como te resulte más claro.",
+    reset: "Restaurar colores por defecto",
+    done: "Listo",
   },
   onboarding: {
     title: "Tu perfil de escalada",
