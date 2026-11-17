@@ -1,55 +1,35 @@
+import { useState } from "react";
 import { useAppState } from "../state/AppState";
+import Icon from "./Icon";
+import SettingsSheet from "./SettingsSheet";
 
 export default function Header() {
-  const { lang, setLang, theme, setTheme, t, levelInfo, openOnboarding } = useAppState();
+  const { t, levelInfo, openOnboarding } = useAppState();
+  const [settingsOpen, setSettingsOpen] = useState(false);
 
   return (
     <header className="header">
-      <div className="header__group" role="group" aria-label={t.header.langToggleAriaLabel}>
+      <span className="header__brand">Omnium Climb</span>
+      <div className="header__actions">
         <button
           type="button"
-          className={`header__pill${lang === "en" ? " header__pill--active" : ""}`}
-          aria-pressed={lang === "en"}
-          onClick={() => setLang("en")}
+          className="header__profile"
+          aria-label={t.profile.buttonAriaLabel}
+          onClick={openOnboarding}
         >
-          EN
+          <span className={`level-dot${levelInfo ? ` level-dot--${levelInfo.level}` : ""}`} aria-hidden="true" />
+          {levelInfo ? t.levels[levelInfo.level] : t.profile.setUp}
         </button>
         <button
           type="button"
-          className={`header__pill${lang === "es" ? " header__pill--active" : ""}`}
-          aria-pressed={lang === "es"}
-          onClick={() => setLang("es")}
+          className="icon-button"
+          aria-label={t.settings.open}
+          onClick={() => setSettingsOpen(true)}
         >
-          ES
-        </button>
-      </div>
-      <button
-        type="button"
-        className={`header__profile${levelInfo ? ` header__profile--${levelInfo.level}` : ""}`}
-        aria-label={t.profile.buttonAriaLabel}
-        onClick={openOnboarding}
-      >
-        <span className="header__profile-dot" aria-hidden="true" />
-        {levelInfo ? t.levels[levelInfo.level] : t.profile.setUp}
-      </button>
-      <div className="header__group" role="group" aria-label={t.header.themeToggleAriaLabel}>
-        <button
-          type="button"
-          className={`header__pill${theme === "dark" ? " header__pill--active" : ""}`}
-          aria-pressed={theme === "dark"}
-          onClick={() => setTheme("dark")}
-        >
-          {t.header.themeDark}
-        </button>
-        <button
-          type="button"
-          className={`header__pill${theme === "light" ? " header__pill--active" : ""}`}
-          aria-pressed={theme === "light"}
-          onClick={() => setTheme("light")}
-        >
-          {t.header.themeLight}
+          <Icon name="settings" />
         </button>
       </div>
+      {settingsOpen && <SettingsSheet onClose={() => setSettingsOpen(false)} />}
     </header>
   );
 }

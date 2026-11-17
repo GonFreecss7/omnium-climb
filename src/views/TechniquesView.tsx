@@ -103,6 +103,8 @@ export default function TechniquesView() {
 
   return (
     <div className="view">
+      <h1 className="view__heading">{guide.meta.parts["II"] ?? t.nav.techniques}</h1>
+      <p className="view__subheading">{t.technique.subheading(guide.techniques.length)}</p>
       <div className="random-drill">
         <button type="button" className="button-primary" onClick={pickRandomTechnique}>
           {t.technique.randomButton}

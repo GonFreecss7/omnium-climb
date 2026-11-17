@@ -1,5 +1,6 @@
 import { useAppState } from "../state/AppState";
 import type { Drill } from "../data/types";
+import Icon from "./Icon";
 
 interface Props {
   drill: Drill;
@@ -26,18 +27,16 @@ export default function DrillCard({ drill, expanded, onToggle }: Props) {
             aria-label={`${drill.name}, ${expanded ? t.technique.collapse : t.technique.expand}`}
             onClick={onToggle}
           >
-            <p className="drill-list__text">
+            <span className="drill-list__text">
               <span className="drill-list__name">{drill.name}</span>
-              {" — "}
-              {drill.description}
-            </p>
+              <span className="drill-list__description">{drill.description}</span>
+            </span>
           </button>
         ) : (
-          <p className="drill-list__text">
+          <span className="drill-list__text">
             <span className="drill-list__name">{drill.name}</span>
-            {" — "}
-            {drill.description}
-          </p>
+            <span className="drill-list__description">{drill.description}</span>
+          </span>
         )}
         <button
           type="button"
@@ -46,7 +45,7 @@ export default function DrillCard({ drill, expanded, onToggle }: Props) {
           aria-label={isFavorite ? t.favorites.remove : t.favorites.add}
           onClick={() => toggleFavorite(drill.id)}
         >
-          <span aria-hidden="true">{isFavorite ? "★" : "☆"}</span>
+          <Icon name="star" filled={isFavorite} size={20} />
         </button>
       </div>
       {expanded && hasRelated && (

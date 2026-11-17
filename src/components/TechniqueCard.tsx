@@ -1,6 +1,7 @@
 import { useAppState } from "../state/AppState";
 import type { Technique } from "../data/types";
 import TechniqueNote from "./TechniqueNote";
+import Icon from "./Icon";
 import { levelRank, relevance } from "../domain/levels";
 
 interface Props {
@@ -42,13 +43,12 @@ export default function TechniqueCard({ technique, expanded, onToggle }: Props) 
             {rel && <span className={`tcard__relevance tcard__relevance--${rel}`}>{t.relevance[rel]}</span>}
           </span>
           <span className="tcard__chips">
-            <span className={`chip chip--${technique.level}`}>{t.levels[technique.level]}</span>
             {technique.caution && (
-              <span className="chip chip--caution" title={t.caution.label}>
-                <span aria-hidden="true">!</span>
+              <span className="tape tape--caution" title={t.caution.label}>
                 <span className="visually-hidden">{t.caution.label}</span>
               </span>
             )}
+            <span className={`tape tape--${technique.level}`}>{t.levels[technique.level]}</span>
           </span>
         </button>
         <button
@@ -58,7 +58,7 @@ export default function TechniqueCard({ technique, expanded, onToggle }: Props) 
           aria-label={isFavorite ? t.favorites.remove : t.favorites.add}
           onClick={() => toggleFavorite(technique.id)}
         >
-          <span aria-hidden="true">{isFavorite ? "★" : "☆"}</span>
+          <Icon name="star" filled={isFavorite} size={20} />
         </button>
       </div>
 

@@ -1,63 +1,92 @@
+/*
+ * Design tokens. The interface itself is monochrome — chalk on basalt in
+ * dark, ink on concrete in light. Colour is reserved for meaning:
+ * the four level "circuit tapes" (green, blue, red, black, as gyms mark
+ * their circuits) and hazard yellow for injury risk.
+ */
+
 :root,
 :root[data-theme="dark"] {
-  --bg: #07090c;
-  --surface: #0e1318;
-  --surface-2: #141b22;
-  --border: rgba(255, 255, 255, 0.07);
-  --border-strong: rgba(255, 255, 255, 0.14);
-  --text: #e6edf3;
-  --text-muted: #8a97a6;
-  --accent: #22d3ee;
-  --accent-dim: rgba(34, 211, 238, 0.12);
-  /* Text color for content placed on top of an --accent-filled surface.
-     Both themes need a near-black ink here — dark theme's accent is bright,
-     light theme's accent is a mid-dark teal — white text fails AA on either. */
-  --accent-ink: #07090c;
-  --core: #34d399;
-  --later: #94a3b8;
-  --advanced: #fbbf24;
-  --caution: #f87171;
-  --dark-red: #c0392b;
-  --lvl-beginner: #34d399;
-  --lvl-intermediate: #38bdf8;
-  --lvl-advanced: #fbbf24;
-  --lvl-elite: #c084fc;
-  --caution-dim: rgba(248, 113, 113, 0.1);
+  --bg: #1c1f23;
+  --surface: #24282d;
+  --surface-2: #2d3238;
+  --surface-3: #3a4048;
+  --border: rgba(236, 234, 228, 0.08);
+  --border-strong: rgba(236, 234, 228, 0.16);
+  --text: #eceae4;
+  --text-muted: #9c9d97;
+  --text-faint: #6f7277;
+  --accent: #eceae4;
+  --accent-dim: rgba(236, 234, 228, 0.08);
+  --accent-ink: #1c1f23;
+
+  --lvl-beginner: #34b27b;
+  --lvl-intermediate: #4a82f5;
+  --lvl-advanced: #e5484d;
+  --lvl-elite: #0a0b0c;
+  --lvl-elite-ink: #eceae4;
+  --lvl-elite-ring: rgba(236, 234, 228, 0.45);
+
+  --hazard: #f2c230;
+  --hazard-ink: #1c1f23;
+  --caution: #f2c230;
+  --caution-dim: rgba(242, 194, 48, 0.09);
+
+  --dark-red: #d0675f;
+  --overlay: rgba(10, 11, 13, 0.62);
+  --sheet-shadow: 0 -18px 48px rgba(0, 0, 0, 0.45);
 }
 
 :root[data-theme="light"] {
-  --bg: #fafbfc;
+  --bg: #e8eaed;
   --surface: #ffffff;
-  --surface-2: #f2f5f7;
-  --border: rgba(0, 0, 0, 0.08);
-  --border-strong: rgba(0, 0, 0, 0.16);
-  --text: #0e1318;
-  --text-muted: #5a6672;
-  --accent: #0891b2;
-  --accent-dim: rgba(8, 145, 178, 0.1);
-  --accent-ink: #0e1318;
-  --core: #059669;
-  --later: #64748b;
-  --advanced: #b45309;
-  --caution: #dc2626;
+  --surface-2: #f1f2f4;
+  --surface-3: #e2e4e8;
+  --border: rgba(20, 23, 27, 0.08);
+  --border-strong: rgba(20, 23, 27, 0.16);
+  --text: #14171b;
+  --text-muted: #5a6068;
+  --text-faint: #8a9097;
+  --accent: #14171b;
+  --accent-dim: rgba(20, 23, 27, 0.06);
+  --accent-ink: #ffffff;
+
+  --lvl-beginner: #1c9a63;
+  --lvl-intermediate: #2c66e3;
+  --lvl-advanced: #d2373d;
+  --lvl-elite: #14171b;
+  --lvl-elite-ink: #ffffff;
+  --lvl-elite-ring: rgba(20, 23, 27, 0);
+
+  --hazard: #f2c230;
+  --hazard-ink: #14171b;
+  --caution: #8f6a00;
+  --caution-dim: rgba(242, 194, 48, 0.16);
+
   --dark-red: #8b0000;
-  --lvl-beginner: #059669;
-  --lvl-intermediate: #0369a1;
-  --lvl-advanced: #b45309;
-  --lvl-elite: #7e22ce;
-  --caution-dim: rgba(220, 38, 38, 0.08);
+  --overlay: rgba(20, 23, 27, 0.4);
+  --sheet-shadow: 0 -18px 48px rgba(20, 23, 27, 0.18);
 }
 
 :root {
-  --font-heading: "Space Grotesk", system-ui, sans-serif;
-  --font-body: "Inter", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-display: "Archivo", system-ui, sans-serif;
+  --font-body: "Archivo", system-ui, sans-serif;
+  /* Kept as aliases so any older rule still resolves to the one family. */
+  --font-heading: var(--font-display);
+  --font-mono: var(--font-body);
+  --stretch-display: 72%;
+  --stretch-title: 82%;
 
-  --radius-card: 10px;
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-sheet: 24px;
+  --radius-card: var(--radius-md);
   --radius-chip: 999px;
 
   --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
-  --duration: 140ms;
+  --duration: 160ms;
 
   --space-1: 4px;
   --space-2: 8px;
@@ -65,9 +94,10 @@
   --space-4: 16px;
   --space-5: 24px;
   --space-6: 32px;
+  --space-7: 48px;
 
-  --tabbar-height: 56px;
-  --header-height: 52px;
+  --tabbar-height: 60px;
+  --header-height: 56px;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -16,7 +16,10 @@ export default function SessionView() {
       <h1 className="view__heading">{file.title}</h1>
       {file.sections.map((section) => (
         <section key={section.number} id={`section-${section.number}`} className="guide-section">
-          <h2 className="guide-section__title">{section.title}</h2>
+          <h2 className="guide-section__title">
+            <span className="guide-section__num">§{section.number}</span>
+            {section.title}
+          </h2>
           <Prose body={section.body} />
         </section>
       ))}

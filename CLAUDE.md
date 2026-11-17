@@ -115,6 +115,18 @@ unknown level value. Silent skipping hides content loss.
 - `localStorage` keys are namespaced `cg.*` (`cg.lang`, `cg.theme`, `cg.favorites`, `cg.log`,
   `cg.notes`, `cg.profile`, `cg.onboardingSkipped`, `cg.levelUpDismissed`).
 
+## Design language
+
+- Monochrome UI: chalk on basalt (dark), ink on concrete (light). Colour only carries meaning —
+  the four level "circuit tapes" (`--lvl-*`: green, blue, red, black) and hazard yellow for
+  injury risk (`--hazard`, striped like safety tape).
+- One family, Archivo variable (self-hosted Latin subset, `src/styles/fonts.css`): condensed
+  (`--stretch-display` / `--stretch-title`) for names and headings, normal width for body.
+  Labels are sentence case — no tracked-out caps, no monospace.
+- Levels render as `.tape` tags (fishtail-cut tape); the progression renders as a route line
+  with numbered nodes. Lists are grouped surfaces with hairline rows; sheets rise from the bottom.
+- Icons are inline SVG in `src/components/Icon.tsx` (24px grid, `currentColor`).
+
 ## Climber profile, levels and grades
 
 - The profile lives only on the device (`cg.profile`): disciplines, grade scale per discipline,

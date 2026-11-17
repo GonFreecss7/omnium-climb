@@ -29,11 +29,13 @@ export default function ProgressionsView() {
                 levelInfo && stage.order < currentOrder ? " progression-stage--past" : ""
               }`}
             >
-              <span className="mono-label progression-stage__order">
+              <span className={`progression-stage__node progression-stage__node--${stage.level}`} aria-hidden="true">
                 {stage.order}
-                <span className={`chip chip--${stage.level} progression-stage__level`}>{t.levels[stage.level]}</span>
-                {stage.id === currentStageId && <span className="progression-stage__you">{t.progressionsView.yourStage}</span>}
               </span>
+              <div className="progression-stage__meta">
+                <span className={`tape tape--${stage.level}`}>{t.levels[stage.level]}</span>
+                {stage.id === currentStageId && <span className="progression-stage__you">{t.progressionsView.yourStage}</span>}
+              </div>
               <h2 className="progression-stage__title">{stage.title}</h2>
               <p className="progression-stage__summary">{stage.summary}</p>
 

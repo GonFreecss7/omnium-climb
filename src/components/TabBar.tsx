@@ -1,5 +1,6 @@
 import { useAppState } from "../state/AppState";
 import type { Tab } from "../state/AppState";
+import Icon from "./Icon";
 
 const TABS: Tab[] = ["guide", "techniques", "drills", "progressions", "session"];
 
@@ -16,7 +17,8 @@ export default function TabBar() {
           aria-current={tab === id ? "page" : undefined}
           onClick={() => setTab(id)}
         >
-          {t.nav[id]}
+          <Icon name={id} />
+          <span className="tabbar__label">{t.nav[id]}</span>
         </button>
       ))}
     </nav>

@@ -43,6 +43,7 @@ export interface UiStrings {
     bestLabel: string;
     randomButton: string;
     randomHeading: string;
+    subheading: (count: number) => string;
   };
   drills: {
     randomButton: string;
@@ -141,6 +142,16 @@ export interface UiStrings {
     buttonAriaLabel: string;
     setUp: string;
   };
+  settings: {
+    open: string;
+    title: string;
+    close: string;
+    language: string;
+    theme: string;
+    profile: string;
+    editProfile: string;
+    createProfile: string;
+  };
   onboarding: {
     title: string;
     intro: string;
@@ -225,6 +236,7 @@ const en: UiStrings = {
     bestLabel: "Best for",
     randomButton: "Random technique",
     randomHeading: "Today's technique",
+    subheading: (count) => `${count} techniques, from first moves to competition setting.`,
   },
   drills: {
     randomButton: "Random drill",
@@ -331,7 +343,17 @@ const en: UiStrings = {
   },
   profile: {
     buttonAriaLabel: "Climber profile",
-    setUp: "Profile",
+    setUp: "Set up profile",
+  },
+  settings: {
+    open: "Settings",
+    title: "Settings",
+    close: "Close settings",
+    language: "Language",
+    theme: "Appearance",
+    profile: "Climber profile",
+    editProfile: "Edit",
+    createProfile: "Set up your profile",
   },
   onboarding: {
     title: "Your climbing profile",
@@ -426,6 +448,7 @@ const es: UiStrings = {
     bestLabel: "Ideal para",
     randomButton: "Técnica aleatoria",
     randomHeading: "Técnica de hoy",
+    subheading: (count) => `${count} técnicas, desde los primeros movimientos hasta el bloque de competición.`,
   },
   drills: {
     randomButton: "Ejercicio aleatorio",
@@ -532,7 +555,17 @@ const es: UiStrings = {
   },
   profile: {
     buttonAriaLabel: "Perfil de escalador",
-    setUp: "Perfil",
+    setUp: "Crear perfil",
+  },
+  settings: {
+    open: "Ajustes",
+    title: "Ajustes",
+    close: "Cerrar ajustes",
+    language: "Idioma",
+    theme: "Apariencia",
+    profile: "Perfil de escalador",
+    editProfile: "Editar",
+    createProfile: "Configura tu perfil",
   },
   onboarding: {
     title: "Tu perfil de escalada",
