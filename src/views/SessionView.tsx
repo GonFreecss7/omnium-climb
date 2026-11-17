@@ -2,6 +2,7 @@ import { useAppState } from "../state/AppState";
 import { useScrollToTarget } from "../hooks/useScrollToTarget";
 import Prose from "../components/Prose";
 import SessionLog from "../components/SessionLog";
+import CoachCard from "../components/CoachCard";
 import { APP_VERSION } from "../version";
 
 export default function SessionView() {
@@ -14,6 +15,7 @@ export default function SessionView() {
   return (
     <div className="view">
       <h1 className="view__heading">{file.title}</h1>
+      <CoachCard />
       {file.sections.map((section) => (
         <section key={section.number} id={`section-${section.number}`} className="guide-section">
           <h2 className="guide-section__title">

@@ -207,3 +207,12 @@ features, no streaks, badges, or engagement mechanics.
 - Works fully offline after first load.
 - `npm run parse` regenerates data from `content/` with no manual steps.
 - No console errors or warnings.
+
+## Coach
+
+`src/domain/coach.ts` is a pure function (profile, log, finger tests, guide ids → plan). It returns
+codes plus the numbers behind them; every sentence lives in `ui.ts` (`coach.reason`), so the UI can
+always say *why*. Order of rules: safety (injury, niggles) → recovery (logged today, 3-day streak) →
+data-driven focus (technique / volume / project). Hangboard suggestions only for intermediate+
+(optional) and advanced+ (test, then loads). Picks are seeded by date so they're stable within a day.
+Tests: `scripts/coach.test.ts`.

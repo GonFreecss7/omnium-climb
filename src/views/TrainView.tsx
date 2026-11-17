@@ -6,13 +6,14 @@ import StrengthView from "./StrengthView";
 /** The "Train" tab: technique drills or finger-strength protocols. */
 export default function TrainView() {
   const { t, guide, scrollTarget } = useAppState();
-  const [mode, setMode] = useState<"drills" | "strength">("drills");
+  const isStrengthTarget = (id: string | null) =>
+    !!id && (id === `section-${guide.workoutSection?.number}` || guide.workouts.some((w) => w.id === id));
+  const [mode, setMode] = useState<"drills" | "strength">(() => (isStrengthTarget(scrollTarget) ? "strength" : "drills"));
 
   // A §N link into the strength section (or a workout) switches mode first.
   useEffect(() => {
-    if (!scrollTarget) return;
-    const strengthTargets = [`section-${guide.workoutSection?.number}`, ...guide.workouts.map((w) => w.id)];
-    if (strengthTargets.includes(scrollTarget)) setMode("strength");
+    if (isStrengthTarget(scrollTarget)) setMode("strength");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [scrollTarget, guide]);
 
   return (

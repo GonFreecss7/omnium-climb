@@ -5,6 +5,7 @@ import HangTimer from "../components/HangTimer";
 import FingerTestPanel from "../components/FingerTestPanel";
 import { levelRank, relevance } from "../domain/levels";
 import { usePersistentState } from "../hooks/usePersistentState";
+import { useScrollToTarget } from "../hooks/useScrollToTarget";
 import type { Workout, WorkoutTimer } from "../data/types";
 
 const CUSTOM_DEFAULT: WorkoutTimer = { prep: 10, hang: 10, rest: 5, reps: 6, sets: 3, setRest: 180 };
@@ -22,7 +23,8 @@ function isTimer(v: unknown): v is WorkoutTimer {
 }
 
 export default function StrengthView() {
-  const { guide, t, levelInfo, profile } = useAppState();
+  const { guide, t, levelInfo, profile, scrollTarget, clearScrollTarget } = useAppState();
+  useScrollToTarget(scrollTarget, clearScrollTarget);
   const s = t.strength;
   const [open, setOpen] = useState<Set<string>>(new Set());
   const [running, setRunning] = useState<{ title: string; config: WorkoutTimer } | null>(null);

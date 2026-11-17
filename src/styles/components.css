@@ -3449,3 +3449,127 @@ ol.prose-list li::marker {
 .ftest__del--confirm {
   color: var(--lvl-elite);
 }
+
+/* ---------- coach ---------- */
+
+.coach {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin: var(--space-4) 0 var(--space-6);
+  padding: var(--space-5) var(--space-4) var(--space-4);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.coach__eyebrow {
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.coach__focus {
+  font-family: var(--font-display);
+  font-stretch: var(--stretch-display);
+  font-weight: 850;
+  font-size: 52px;
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+}
+
+/* Rest and easy days carry the hazard marker: the one thing to notice before climbing. */
+.coach--rest .coach__focus::before,
+.coach--easy .coach__focus::before {
+  content: "";
+  display: inline-block;
+  width: 0.42em;
+  height: 0.42em;
+  margin-right: 0.18em;
+  vertical-align: 0.12em;
+  border-radius: 50%;
+  background: var(--hazard);
+}
+
+.coach__plan {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.coach__why {
+  color: var(--text-muted);
+  font-size: 14.5px;
+  line-height: 1.5;
+}
+
+.coach__items {
+  display: flex;
+  flex-direction: column;
+  margin-top: var(--space-2);
+  border-top: 1px solid var(--border);
+}
+
+.coach__items li {
+  border-bottom: 1px solid var(--border);
+}
+
+.coach__item {
+  display: grid;
+  grid-template-columns: 78px 1fr;
+  grid-template-areas: "kind name" ". why";
+  column-gap: var(--space-3);
+  row-gap: 2px;
+  width: 100%;
+  padding: var(--space-3) 0;
+  background: none;
+  border: 0;
+  color: var(--text);
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
+}
+
+.coach__item:hover .coach__name,
+.coach__item:focus-visible .coach__name {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.coach__kind {
+  grid-area: kind;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-muted);
+  padding-top: 3px;
+}
+
+.coach__name {
+  grid-area: name;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.coach__item-why {
+  grid-area: why;
+  color: var(--text-muted);
+  font-size: 13.5px;
+}
+
+.coach__note {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.coach__note .filters__clear {
+  padding: 0;
+  min-height: 0;
+  font-size: inherit;
+}
+
+.coach__fine {
+  margin-top: var(--space-2);
+  color: var(--text-muted);
+  font-size: 12.5px;
+  line-height: 1.45;
+}

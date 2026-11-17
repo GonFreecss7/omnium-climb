@@ -6,7 +6,7 @@
   "scripts": {
     "parse": "tsx scripts/parse-guide.ts",
     "icons": "node scripts/generate-icons.mjs",
-    "test": "tsx --test scripts/parse-guide.test.ts",
+    "test": "tsx --test scripts/parse-guide.test.ts scripts/coach.test.ts",
     "dev": "vite",
     "typecheck": "tsc --noEmit",
     "build": "npm run parse && npm run typecheck && vite build",

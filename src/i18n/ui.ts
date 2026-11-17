@@ -263,6 +263,23 @@ export interface UiStrings {
     customHint: string;
     fields: Record<"prep" | "hang" | "rest" | "reps" | "sets" | "setRest", string>;
   };
+  coach: {
+    heading: string;
+    focus: Record<"rest" | "easy" | "technique" | "volume" | "project", { title: string; plan: string }>;
+    reason: (r: import("../domain/coach").Reason) => string;
+    kinds: Record<"drill" | "technique" | "workout" | "section", string>;
+    drillWhy: (category: string, days: number | null) => string;
+    techniqueWhy: string;
+    workoutWhy: Record<"noTest" | "testDue" | "trainLoads" | "optional", (days: number) => string>;
+    sectionWhy: string;
+    notes: {
+      noProfile: string;
+      createProfile: string;
+      belowTarget: (done: number, target: number) => string;
+      aboveTarget: (done: number, target: number) => string;
+    };
+    fine: string;
+  };
   fingerTest: {
     title: string;
     log: string;
@@ -644,6 +661,62 @@ const en: UiStrings = {
     customTitle: "Custom timer",
     customHint: "Build your own interval: hang, rest, reps and sets. It's remembered on this device.",
     fields: { prep: "Get ready (s)", hang: "Hang (s)", rest: "Rest (s)", reps: "Reps", sets: "Sets", setRest: "Between sets (s)" },
+  },
+  coach: {
+    heading: "Next session",
+    focus: {
+      rest: { title: "Rest", plan: "No climbing today. Recovery is when the training actually takes hold." },
+      easy: { title: "Easy session", plan: "Climb well below your limit: big holds, no small crimps, nothing explosive. Stop if anything hurts." },
+      technique: { title: "Technique", plan: "Warm up, spend the first block on one drill, then climb for quality, not for grade." },
+      volume: { title: "Volume", plan: "Lots of problems one grade below your limit, short rests, clean movement on every one." },
+      project: { title: "Project", plan: "Warm up thoroughly, then give the strongest part of the session to problems at or just above your limit, with long rests." },
+    },
+    reason: (r) => {
+      switch (r.code) {
+        case "injured":
+          return "Your profile says you're managing pain or an injury.";
+        case "niggle":
+          return `Your niggles were worse after your last session (${r.daysAgo === 0 ? "today" : r.daysAgo === 1 ? "yesterday" : `${r.daysAgo} days ago`}).`;
+        case "niggleTrend":
+          return `Niggles got worse in ${r.count} of your last 3 sessions. Give them time before loading them again.`;
+        case "streak":
+          return `You've climbed ${r.days} days in a row.`;
+        case "loggedToday":
+          return "You've already logged a session today.";
+        case "noData":
+          return r.sessions === 0
+            ? "There are no sessions in the last 30 days yet, so this starts from the basics."
+            : `Only ${r.sessions} session${r.sessions === 1 ? "" : "s"} in the last 30 days — not enough to read a pattern yet.`;
+        case "noDrills":
+          return r.days === null ? "You haven't logged a drill yet." : `Your last logged drill was ${r.days} days ago.`;
+        case "manyAttempts":
+          return `You're averaging ${r.perSend} attempts per send this month — more mileage on easier problems builds the movement library that makes hard ones go.`;
+        case "thinBase":
+          return `Your top send is ${r.limit}, but ${r.count === 0 ? "none" : `only ${r.count}`} at ${r.below} in the last 60 days. A wider base makes the top grade repeatable.`;
+        case "highFlash":
+          return `You flashed ${r.rate}% of your sends this month — you're ready for harder problems. Try ${r.next}.`;
+        case "solidBase":
+          return `You have ${r.count} sends at ${r.below} in the last 60 days — a solid base under your ${r.limit}.`;
+      }
+    },
+    kinds: { drill: "Drill", technique: "Technique", workout: "Strength", section: "Read" },
+    drillWhy: (cat, d) =>
+      d === null ? `${cat} — not practised yet` : `${cat} — last practised ${d === 0 ? "today" : d === 1 ? "yesterday" : `${d} days ago`}`,
+    techniqueWhy: "At your level",
+    workoutWhy: {
+      noTest: () => "No finger test yet — it sets every hangboard load",
+      testDue: (d) => `Last test ${d} days ago — time to retest`,
+      trainLoads: () => "Loads from your latest test",
+      optional: () => "Optional, on a separate day from hard climbing",
+    },
+    sectionWhy: "Before you climb again",
+    notes: {
+      noProfile: "Without a profile these suggestions can't match your level.",
+      createProfile: "Set up profile",
+      belowTarget: (done, target) => `${done} of ${target} planned sessions in the last two weeks.`,
+      aboveTarget: (done, target) => `${done} sessions in two weeks against ${target} planned — make sure rest days stay rest days.`,
+    },
+    fine: "Worked out on this device from your profile, your log and your finger tests. It's a suggestion, not a coach's judgement — your body has the final say.",
   },
   fingerTest: {
     title: "Your finger strength",
@@ -1039,6 +1112,62 @@ const es: UiStrings = {
     customTitle: "Temporizador libre",
     customHint: "Arma tu propio intervalo: colgada, descanso, repeticiones y series. Queda guardado en este dispositivo.",
     fields: { prep: "Preparación (s)", hang: "Colgada (s)", rest: "Descanso (s)", reps: "Repeticiones", sets: "Series", setRest: "Entre series (s)" },
+  },
+  coach: {
+    heading: "Próxima sesión",
+    focus: {
+      rest: { title: "Descanso", plan: "Hoy no escales. El entrenamiento se asimila mientras recuperas." },
+      easy: { title: "Sesión suave", plan: "Escala muy por debajo de tu límite: presas grandes, nada de regletas pequeñas ni movimientos explosivos. Para si algo duele." },
+      technique: { title: "Técnica", plan: "Calienta, dedica el primer bloque a un ejercicio y luego escala buscando calidad, no grado." },
+      volume: { title: "Volumen", plan: "Muchos problemas un grado bajo tu límite, descansos cortos y cada uno con movimiento limpio." },
+      project: { title: "Proyecto", plan: "Calienta a fondo y dedica la parte fuerte de la sesión a problemas en tu límite o un poco más, con descansos largos." },
+    },
+    reason: (r) => {
+      switch (r.code) {
+        case "injured":
+          return "Tu perfil indica que tienes dolor o una lesión.";
+        case "niggle":
+          return `Tus molestias quedaron peor después de tu última sesión (${r.daysAgo === 0 ? "hoy" : r.daysAgo === 1 ? "ayer" : `hace ${r.daysAgo} días`}).`;
+        case "niggleTrend":
+          return `Las molestias empeoraron en ${r.count} de tus últimas 3 sesiones. Dales tiempo antes de volver a cargarlas.`;
+        case "streak":
+          return `Llevas ${r.days} días seguidos escalando.`;
+        case "loggedToday":
+          return "Ya registraste una sesión hoy.";
+        case "noData":
+          return r.sessions === 0
+            ? "Aún no hay sesiones en los últimos 30 días, así que partimos por lo básico."
+            : `Solo ${r.sessions} sesi${r.sessions === 1 ? "ón" : "ones"} en los últimos 30 días: todavía no alcanza para leer un patrón.`;
+        case "noDrills":
+          return r.days === null ? "Todavía no has registrado ningún ejercicio." : `Tu último ejercicio registrado fue hace ${r.days} días.`;
+        case "manyAttempts":
+          return `Este mes promedias ${r.perSend} intentos por encadenamiento: más volumen en problemas fáciles construye el repertorio de movimientos que hace salir los difíciles.`;
+        case "thinBase":
+          return `Tu mejor encadenamiento es ${r.limit}, pero ${r.count === 0 ? "no tienes ninguno" : `tienes solo ${r.count}`} en ${r.below} en los últimos 60 días. Una base más ancha hace repetible tu grado máximo.`;
+        case "highFlash":
+          return `Este mes hiciste flash en el ${r.rate}% de tus encadenamientos: estás listo para problemas más duros. Prueba ${r.next}.`;
+        case "solidBase":
+          return `Tienes ${r.count} encadenamientos en ${r.below} en los últimos 60 días: una base sólida bajo tu ${r.limit}.`;
+      }
+    },
+    kinds: { drill: "Ejercicio", technique: "Técnica", workout: "Fuerza", section: "Leer" },
+    drillWhy: (cat, d) =>
+      d === null ? `${cat}: aún sin practicar` : `${cat}: última vez ${d === 0 ? "hoy" : d === 1 ? "ayer" : `hace ${d} días`}`,
+    techniqueWhy: "De tu nivel",
+    workoutWhy: {
+      noTest: () => "Aún no tienes test de dedos: define todas las cargas de hangboard",
+      testDue: (d) => `Último test hace ${d} días: toca repetirlo`,
+      trainLoads: () => "Cargas según tu último test",
+      optional: () => "Opcional, en un día distinto al de escalada intensa",
+    },
+    sectionWhy: "Antes de volver a escalar",
+    notes: {
+      noProfile: "Sin perfil, estas sugerencias no pueden ajustarse a tu nivel.",
+      createProfile: "Crear perfil",
+      belowTarget: (done, target) => `${done} de ${target} sesiones planificadas en las últimas dos semanas.`,
+      aboveTarget: (done, target) => `${done} sesiones en dos semanas frente a ${target} planificadas: asegúrate de que los días de descanso sean de descanso.`,
+    },
+    fine: "Calculado en este dispositivo a partir de tu perfil, tu registro y tus tests de dedos. Es una sugerencia, no el criterio de un entrenador: tu cuerpo tiene la última palabra.",
   },
   fingerTest: {
     title: "Tu fuerza de dedos",
