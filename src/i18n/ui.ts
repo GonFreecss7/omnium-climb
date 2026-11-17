@@ -12,6 +12,7 @@ export interface UiStrings {
     drills: string;
     progressions: string;
     session: string;
+    gyms: string;
     ariaLabel: string;
   };
   header: {
@@ -70,6 +71,14 @@ export interface UiStrings {
     hardestLabel: string;
     hardestPlaceholder: string;
     disciplineLabel: string;
+    drillNone: string;
+    settingLabel: string;
+    settingWall: string;
+    settingBoard: string;
+    boardLabel: string;
+    boardOther: string;
+    boardOtherName: string;
+    angleLabel: string;
     elbowLabel: string;
     elbowBetter: string;
     elbowSame: string;
@@ -197,6 +206,24 @@ export interface UiStrings {
     scaleLabel: string;
     home: string;
   };
+  gymsView: {
+    heading: string;
+    subheading: (count: number) => string;
+    all: string;
+    searchPlaceholder: string;
+    nearMe: string;
+    locating: string;
+    locationError: string;
+    openMaps: string;
+    makeHome: string;
+    save: string;
+    saved: string;
+    editCircuits: string;
+    outdoor: string;
+    noResults: string;
+    mapAria: string;
+    you: string;
+  };
   levelColorsEditor: {
     title: string;
     intro: string;
@@ -256,6 +283,7 @@ const en: UiStrings = {
     drills: "Drills",
     progressions: "Progression",
     session: "Session",
+    gyms: "Gyms",
     ariaLabel: "Primary navigation",
   },
   header: {
@@ -309,11 +337,19 @@ const en: UiStrings = {
   sessionLog: {
     heading: "Session Log",
     dateLabel: "Date",
-    drillLabel: "Drill used",
+    drillLabel: "Drill used (optional)",
     drillPlaceholder: "Select a drill",
     hardestLabel: "Hardest problem climbed cleanly",
     hardestPlaceholder: "Select a grade",
     disciplineLabel: "Discipline",
+    drillNone: "None",
+    settingLabel: "Climbed on",
+    settingWall: "Gym walls",
+    settingBoard: "Training board",
+    boardLabel: "Board",
+    boardOther: "Other board",
+    boardOtherName: "Board name",
+    angleLabel: "Angle",
     elbowLabel: "Niggles vs. last session",
     elbowBetter: "Better",
     elbowSame: "Same",
@@ -451,6 +487,24 @@ const en: UiStrings = {
     scaleLabel: "Scale",
     home: "home gym",
   },
+  gymsView: {
+    heading: "Gyms",
+    subheading: (count) => `${count} climbing gyms and walls across Chile.`,
+    all: "All",
+    searchPlaceholder: "Search by name or commune…",
+    nearMe: "Near me",
+    locating: "Locating…",
+    locationError: "Couldn't get your location. Check the location permission for this app.",
+    openMaps: "Open in Google Maps",
+    makeHome: "Set as home gym",
+    save: "Save to my gyms",
+    saved: "In your gyms",
+    editCircuits: "Edit colour circuits",
+    outdoor: "Outdoor",
+    noResults: "No gyms match your search.",
+    mapAria: "Map of climbing gyms",
+    you: "You",
+  },
   levelColorsEditor: {
     title: "Level colours",
     intro: "Recolour the four level tags to match whatever reads best for you.",
@@ -519,6 +573,7 @@ const es: UiStrings = {
     drills: "Ejercicios",
     progressions: "Progresión",
     session: "Sesión",
+    gyms: "Gimnasios",
     ariaLabel: "Navegación principal",
   },
   header: {
@@ -572,11 +627,19 @@ const es: UiStrings = {
   sessionLog: {
     heading: "Registro de sesión",
     dateLabel: "Fecha",
-    drillLabel: "Ejercicio usado",
+    drillLabel: "Ejercicio usado (opcional)",
     drillPlaceholder: "Selecciona un ejercicio",
     hardestLabel: "Problema más difícil encadenado limpio",
     hardestPlaceholder: "Elige un grado",
     disciplineLabel: "Disciplina",
+    drillNone: "Ninguno",
+    settingLabel: "Dónde escalaste",
+    settingWall: "Muros del gimnasio",
+    settingBoard: "Tabla de entrenamiento",
+    boardLabel: "Tabla",
+    boardOther: "Otra tabla",
+    boardOtherName: "Nombre de la tabla",
+    angleLabel: "Inclinación",
     elbowLabel: "Molestias frente a la última sesión",
     elbowBetter: "Mejor",
     elbowSame: "Igual",
@@ -713,6 +776,24 @@ const es: UiStrings = {
     otherGymName: "Nombre del gimnasio",
     scaleLabel: "Escala",
     home: "home gym",
+  },
+  gymsView: {
+    heading: "Gimnasios",
+    subheading: (count) => `${count} gimnasios y muros de escalada en Chile.`,
+    all: "Todas",
+    searchPlaceholder: "Buscar por nombre o comuna…",
+    nearMe: "Cerca de mí",
+    locating: "Ubicando…",
+    locationError: "No se pudo obtener tu ubicación. Revisa el permiso de ubicación de la app.",
+    openMaps: "Abrir en Google Maps",
+    makeHome: "Usar como home gym",
+    save: "Guardar en mis gimnasios",
+    saved: "En tus gimnasios",
+    editCircuits: "Editar circuitos",
+    outdoor: "Al aire libre",
+    noResults: "Ningún gimnasio coincide con tu búsqueda.",
+    mapAria: "Mapa de gimnasios de escalada",
+    you: "Tú",
   },
   levelColorsEditor: {
     title: "Colores de niveles",

@@ -2,7 +2,7 @@ import { useAppState } from "../state/AppState";
 import type { Tab } from "../state/AppState";
 import Icon from "./Icon";
 
-const TABS: Tab[] = ["guide", "techniques", "drills", "progressions", "session"];
+const TABS: Tab[] = ["guide", "techniques", "drills", "progressions", "gyms", "session"];
 
 export default function TabBar() {
   const { tab, setTab, t } = useAppState();

@@ -8,6 +8,7 @@ import TechniquesView from "./views/TechniquesView";
 import DrillsView from "./views/DrillsView";
 import ProgressionsView from "./views/ProgressionsView";
 import SessionView from "./views/SessionView";
+import GymsView from "./views/GymsView";
 
 function OnboardingGate() {
   const { onboardingOpen } = useAppState();
@@ -22,6 +23,7 @@ function Main() {
       {tab === "techniques" && <TechniquesView />}
       {tab === "drills" && <DrillsView />}
       {tab === "progressions" && <ProgressionsView />}
+      {tab === "gyms" && <GymsView />}
       {tab === "session" && <SessionView />}
       <Footer />
     </main>

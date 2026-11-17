@@ -10,6 +10,8 @@ import {
 import { BOULDER_SCALES, ROPE_SCALES, SCALE_LABELS, gradeLabel, gradeOptions } from "../domain/grades";
 import type { Discipline, GradeScale } from "../domain/grades";
 import { orderedGyms, rangeLabel } from "../domain/circuits";
+import { BOARDS, boardAngles, defaultAngle } from "../domain/boards";
+import { DIRECTORY, findByName } from "../domain/gymDirectory";
 import LevelUpBanner from "./LevelUpBanner";
 import ProgressStats from "./ProgressStats";
 import SessionChecklist from "./SessionChecklist";
@@ -24,6 +26,8 @@ const CSV_COLUMNS: Array<[string, (e: SessionLogEntry) => unknown]> = [
   ["circuit", (e) => e.circuit?.name ?? ""],
   ["hardest", (e) => e.hardest],
   ["scale", (e) => e.gradeScale ?? ""],
+  ["board", (e) => e.board?.name ?? ""],
+  ["angle", (e) => e.board?.angle ?? ""],
   ["drill", (e) => e.drill],
   ["niggles", (e) => e.elbow],
   ["note", (e) => e.note],
@@ -61,16 +65,26 @@ export default function SessionLog() {
   const [otherName, setOtherName] = useState("");
   const [otherScale, setOtherScale] = useState<GradeScale>(profileScales[activeDiscipline]);
 
-  const scaleChoices: GradeScale[] = activeDiscipline === "boulder" ? BOULDER_SCALES : ROPE_SCALES;
-  const activeScale: GradeScale = selectedGym
-    ? activeDiscipline === "boulder"
-      ? selectedGym.scale
-      : profileScales.rope
-    : scaleChoices.includes(otherScale)
-      ? otherScale
-      : profileScales[activeDiscipline];
+  const [setting, setSetting] = useState<"wall" | "board">("wall");
+  const onBoard = activeDiscipline === "boulder" && setting === "board";
+  const [boardId, setBoardId] = useState(BOARDS[0]!.id);
+  const board = BOARDS.find((b) => b.id === boardId) ?? BOARDS[0]!;
+  const [boardOtherName, setBoardOtherName] = useState("");
+  const [angle, setAngle] = useState(defaultAngle(BOARDS[0]!));
+  const [boardScale, setBoardScale] = useState<GradeScale>(BOARDS[0]!.defaultScale);
 
-  const circuitOptions = activeDiscipline === "boulder" && selectedGym ? selectedGym.colors : [];
+  const scaleChoices: GradeScale[] = activeDiscipline === "boulder" ? BOULDER_SCALES : ROPE_SCALES;
+  const activeScale: GradeScale = onBoard
+    ? boardScale
+    : selectedGym
+      ? activeDiscipline === "boulder"
+        ? selectedGym.scale
+        : profileScales.rope
+      : scaleChoices.includes(otherScale)
+        ? otherScale
+        : profileScales[activeDiscipline];
+
+  const circuitOptions = activeDiscipline === "boulder" && selectedGym && !onBoard ? selectedGym.colors : [];
   const [circuitId, setCircuitId] = useState<string | null>(null);
   const circuit = circuitOptions.find((x) => x.id === circuitId) ?? null;
 
@@ -86,7 +100,7 @@ export default function SessionLog() {
     (o) => !circuit || (o.index >= circuit.min && o.index <= circuit.max),
   );
 
-  const canSubmit = date !== "" && drill !== "" && (gradeIndex !== null || circuit !== null);
+  const canSubmit = date !== "" && (gradeIndex !== null || circuit !== null);
 
   function resetGrade() {
     setCircuitId(null);
@@ -108,10 +122,29 @@ export default function SessionLog() {
       gradeScale: activeScale,
       ...(circuit ? { circuit: { name: circuit.name, hex: circuit.hex, min: circuit.min, max: circuit.max } } : {}),
       ...(selectedGym
-        ? { gym: { name: selectedGym.name, id: selectedGym.id, home: selectedGym.id === circuits.homeId } }
+        ? {
+            gym: {
+              name: selectedGym.name,
+              id: selectedGym.id,
+              home: selectedGym.id === circuits.homeId,
+              ...(selectedGym.directoryId ? { directoryId: selectedGym.directoryId } : {}),
+            },
+          }
         : otherName.trim()
-          ? { gym: { name: otherName.trim(), home: false } }
+          ? (() => {
+              const dir = findByName(otherName);
+              return { gym: { name: dir?.name ?? otherName.trim(), home: false, ...(dir ? { directoryId: dir.id } : {}) } };
+            })()
           : {}),
+      ...(onBoard
+        ? {
+            board: {
+              id: board.id,
+              name: board.id === "other" ? boardOtherName.trim() || t.sessionLog.boardOther : board.name,
+              angle,
+            },
+          }
+        : {}),
       elbow,
       note: note.trim(),
     });
@@ -187,13 +220,23 @@ export default function SessionLog() {
             </button>
           </div>
           {gymChoice === OTHER && (
-            <input
-              type="text"
-              value={otherName}
-              placeholder={c.otherGymName}
-              aria-label={c.otherGymName}
-              onChange={(e) => setOtherName(e.target.value)}
-            />
+            <>
+              <input
+                type="text"
+                list="gym-directory"
+                value={otherName}
+                placeholder={c.otherGymName}
+                aria-label={c.otherGymName}
+                onChange={(e) => setOtherName(e.target.value)}
+              />
+              <datalist id="gym-directory">
+                {DIRECTORY.map((g) => (
+                  <option key={g.id} value={g.name}>
+                    {g.commune}
+                  </option>
+                ))}
+              </datalist>
+            </>
           )}
         </div>
 
@@ -220,7 +263,101 @@ export default function SessionLog() {
           </div>
         )}
 
-        {gymChoice === OTHER && (
+        {activeDiscipline === "boulder" && (
+          <div className="session-log__field">
+            <span className="mono-label">{t.sessionLog.settingLabel}</span>
+            <div className="segmented session-log__scales">
+              {(["wall", "board"] as const).map((sv) => (
+                <button
+                  key={sv}
+                  type="button"
+                  className={`segmented__option${setting === sv ? " segmented__option--active" : ""}`}
+                  aria-pressed={setting === sv}
+                  onClick={() => {
+                    setSetting(sv);
+                    resetGrade();
+                  }}
+                >
+                  {sv === "wall" ? t.sessionLog.settingWall : t.sessionLog.settingBoard}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {onBoard && (
+          <>
+            <div className="session-log__field">
+              <span className="mono-label">{t.sessionLog.boardLabel}</span>
+              <div className="session-log__elbow-group">
+                {BOARDS.map((b) => (
+                  <button
+                    key={b.id}
+                    type="button"
+                    className={`chip chip--filterable${boardId === b.id ? " chip--active" : ""}`}
+                    aria-pressed={boardId === b.id}
+                    onClick={() => {
+                      setBoardId(b.id);
+                      setAngle(defaultAngle(b));
+                      setBoardScale(b.defaultScale);
+                      setGradeIndex(null);
+                    }}
+                  >
+                    {b.id === "other" ? t.sessionLog.boardOther : b.name}
+                  </button>
+                ))}
+              </div>
+              {board.id === "other" && (
+                <input
+                  type="text"
+                  value={boardOtherName}
+                  placeholder={t.sessionLog.boardOtherName}
+                  aria-label={t.sessionLog.boardOtherName}
+                  onChange={(e) => setBoardOtherName(e.target.value)}
+                />
+              )}
+            </div>
+            <div className="session-log__field">
+              <span className="mono-label">
+                {t.sessionLog.angleLabel} · {angle}°
+              </span>
+              <div className="angle-pick" role="group" aria-label={t.sessionLog.angleLabel}>
+                {boardAngles(board).map((a) => (
+                  <button
+                    key={a}
+                    type="button"
+                    className={`angle-pick__option${angle === a ? " angle-pick__option--active" : ""}`}
+                    aria-pressed={angle === a}
+                    onClick={() => setAngle(a)}
+                  >
+                    {a}°
+                  </button>
+                ))}
+              </div>
+            </div>
+            <div className="session-log__field">
+              <span className="mono-label">{c.scaleLabel}</span>
+              <div className="segmented session-log__scales">
+                {BOULDER_SCALES.map((sc) => (
+                  <button
+                    key={sc}
+                    type="button"
+                    className={`segmented__option${boardScale === sc ? " segmented__option--active" : ""}`}
+                    aria-pressed={boardScale === sc}
+                    onClick={() => {
+                      setBoardScale(sc);
+                      setGradeIndex(null);
+                    }}
+                  >
+                    {sc}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </>
+        )}
+
+        {gymChoice === OTHER && !onBoard && (
           <div className="session-log__field">
             <span className="mono-label">{c.scaleLabel}</span>
             <div className="segmented session-log__scales">
@@ -288,10 +425,8 @@ export default function SessionLog() {
 
         <label className="session-log__field">
           <span className="mono-label">{t.sessionLog.drillLabel}</span>
-          <select value={drill} onChange={(e) => setDrill(e.target.value)} required>
-            <option value="" disabled>
-              {t.sessionLog.drillPlaceholder}
-            </option>
+          <select value={drill} onChange={(e) => setDrill(e.target.value)}>
+            <option value="">{t.sessionLog.drillNone}</option>
             {guide.drillCategories.map((cat) => (
               <optgroup key={cat.id} label={cat.title}>
                 {cat.drillIds.map((id) => {
@@ -357,7 +492,12 @@ export default function SessionLog() {
                     {converted && <span className="session-log__entry-tag"> ≈ {converted}</span>}
                     {entry.discipline === "rope" && <span className="session-log__entry-tag"> · {t.onboarding.rope}</span>}
                   </p>
-                  <p className="session-log__entry-drill">{entry.drill}</p>
+                  {entry.board && (
+                    <p className="session-log__entry-board">
+                      {entry.board.name} · {entry.board.angle}°
+                    </p>
+                  )}
+                  {entry.drill && <p className="session-log__entry-drill">{entry.drill}</p>}
                   {entry.gym && (
                     <p className="session-log__entry-gym">
                       {entry.gym.home && <span className="home-mark">{c.homeShort}</span>}

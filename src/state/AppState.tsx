@@ -13,7 +13,7 @@ import type { CircuitsState, LevelColors } from "../domain/circuits";
 import { LEVELS } from "../domain/levels";
 
 export type Theme = "dark" | "light";
-export type Tab = "guide" | "techniques" | "drills" | "progressions" | "session";
+export type Tab = "guide" | "techniques" | "drills" | "progressions" | "session" | "gyms";
 export type ElbowChange = "better" | "same" | "worse";
 export type EntryKind = "technique" | "drill";
 
@@ -31,7 +31,9 @@ export interface SessionLogEntry {
   /** Gym circuit colour picked for this entry, copied so later edits to the circuit don't rewrite history. */
   circuit?: { name: string; hex: string; min: number; max: number };
   /** Where the session happened. `id` is set when it was one of the saved gyms. */
-  gym?: { name: string; id?: string; home: boolean };
+  gym?: { name: string; id?: string; home: boolean; directoryId?: string };
+  /** Set when the session was on a training board rather than the gym's walls. */
+  board?: { id: string; name: string; angle: number };
 }
 
 const LANG_KEY = "cg.lang";

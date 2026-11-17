@@ -5,6 +5,7 @@ import ColorPicker from "./ColorPicker";
 import { BOULDER_LADDER, BOULDER_SCALES, SCALE_LABELS, gradeOptions, labelSpan } from "../domain/grades";
 import { PALETTE, newId, templateColors } from "../domain/circuits";
 import type { CircuitColor, GymCircuit } from "../domain/circuits";
+import { DIRECTORY, findByName } from "../domain/gymDirectory";
 
 const LAST = BOULDER_LADDER.length - 1;
 
@@ -34,7 +35,23 @@ export default function GymEditor({ gym, onChange }: { gym: GymCircuit; onChange
     <div className="gym-editor">
       <label className="session-log__field">
         <span className="mono-label">{c.gymName}</span>
-        <input type="text" value={gym.name} placeholder={c.gymPlaceholder} onChange={(e) => update({ name: e.target.value })} />
+        <input
+          type="text"
+          list="gym-directory-editor"
+          value={gym.name}
+          placeholder={c.gymPlaceholder}
+          onChange={(e) => {
+            const dir = findByName(e.target.value);
+            update({ name: e.target.value, directoryId: dir?.id });
+          }}
+        />
+        <datalist id="gym-directory-editor">
+          {DIRECTORY.map((d) => (
+            <option key={d.id} value={d.name}>
+              {d.commune}
+            </option>
+          ))}
+        </datalist>
       </label>
 
       <div className="session-log__field">

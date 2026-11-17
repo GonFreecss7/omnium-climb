@@ -1,0 +1,471 @@
+{
+  "_source": "Google Maps list 'BOULDER' (Emilio Neuenschwander), exported 2026-11-17. Edit freely; ids must stay stable.",
+  "regions": {
+    "metropolitana": "Región Metropolitana",
+    "valparaiso": "Valparaíso",
+    "biobio": "Biobío",
+    "maule": "Maule"
+  },
+  "gyms": [
+    {
+      "id": "bioboulder-gimnasio-de-escalada",
+      "name": "BioBoulder Gimnasio de Escalada",
+      "address": "Anibal Pinto 1220, 4081462 Concepción, Bío Bío",
+      "commune": "Concepción",
+      "region": "biobio",
+      "lat": -36.818904,
+      "lng": -73.054445,
+      "kind": "gym"
+    },
+    {
+      "id": "conceclimb-gimnasio-de-escalada",
+      "name": "ConceClimb Gimnasio De Escalada",
+      "address": "Vicuña Mackenna 1525, 4030000 Concepción, Bío Bío",
+      "commune": "Concepción",
+      "region": "biobio",
+      "lat": -36.810825,
+      "lng": -73.046662,
+      "kind": "gym"
+    },
+    {
+      "id": "endurance-block",
+      "name": "Endurance Block",
+      "address": "Castellón 881, 4030000 Concepción, Bío Bío",
+      "commune": "Concepción",
+      "region": "biobio",
+      "lat": -36.821508,
+      "lng": -73.049951,
+      "kind": "gym"
+    },
+    {
+      "id": "kapura-boulder",
+      "name": "Kapura Boulder",
+      "address": "Matrona Herminia Seguel R 598, 4190594 Coronel, Bío Bío",
+      "commune": "Coronel",
+      "region": "biobio",
+      "lat": -36.987535,
+      "lng": -73.157547,
+      "kind": "gym"
+    },
+    {
+      "id": "tribu-boulder",
+      "name": "Tribu Boulder",
+      "address": "Don Víctor 1310, 4440000 Los Angeles, Los Ángeles, Bío Bío",
+      "commune": "Los Ángeles",
+      "region": "biobio",
+      "lat": -37.457773,
+      "lng": -72.367053,
+      "kind": "gym"
+    },
+    {
+      "id": "gravity-climbing-talca",
+      "name": "Gravity Climbing - Talca",
+      "address": "Segundo piso - Avenida Colín 665, 3474080 Talca, Maule",
+      "commune": "Talca",
+      "region": "maule",
+      "lat": -35.444691,
+      "lng": -71.688597,
+      "kind": "gym"
+    },
+    {
+      "id": "baguales-climbing",
+      "name": "Baguales Climbing",
+      "address": "Alba 2, parcela 38, Colina, Región Metropolitana",
+      "commune": "Colina",
+      "region": "metropolitana",
+      "lat": -33.297429,
+      "lng": -70.675789,
+      "kind": "gym"
+    },
+    {
+      "id": "rock-n-wall-outdoor-climbing",
+      "name": "Rock n Wall Outdoor Climbing",
+      "address": "Av. Chicureo 3510, Lote 18, Colina, Región Metropolitana",
+      "commune": "Colina",
+      "region": "metropolitana",
+      "lat": -33.289446,
+      "lng": -70.66463,
+      "kind": "gym"
+    },
+    {
+      "id": "bulder-treparoca",
+      "name": "Bulder Treparoca",
+      "address": "Ventura Laureda 2274, 8540000 Conchalí, Región Metropolitana",
+      "commune": "Conchalí",
+      "region": "metropolitana",
+      "lat": -33.391653,
+      "lng": -70.679376,
+      "kind": "gym"
+    },
+    {
+      "id": "rocaboulder",
+      "name": "Rocaboulder",
+      "address": "Rojas Magallanes 1055, 8242100 La Florida, Región Metropolitana",
+      "commune": "La Florida",
+      "region": "metropolitana",
+      "lat": -33.536235,
+      "lng": -70.578113,
+      "kind": "gym"
+    },
+    {
+      "id": "boulder-factory",
+      "name": "Boulder Factory",
+      "address": "Los Herreros 8535, 7880341 La Reina, Región Metropolitana",
+      "commune": "La Reina",
+      "region": "metropolitana",
+      "lat": -33.456597,
+      "lng": -70.544328,
+      "kind": "gym"
+    },
+    {
+      "id": "el-muro-larrain",
+      "name": "El Muro Larraín",
+      "address": "",
+      "commune": "La Reina",
+      "region": "metropolitana",
+      "lat": -33.452698,
+      "lng": -70.565473,
+      "kind": "gym"
+    },
+    {
+      "id": "espacio-boulder",
+      "name": "Espacio Boulder",
+      "address": "camino del viento 2748 valle grande, 9380000 Lampa, Región Metropolitana",
+      "commune": "Lampa",
+      "region": "metropolitana",
+      "lat": -33.3237,
+      "lng": -70.749807,
+      "kind": "gym"
+    },
+    {
+      "id": "gravity-boulder",
+      "name": "Gravity Boulder",
+      "address": "Av. Las Condes 13, 451, Las Condes, Región Metropolitana",
+      "commune": "Las Condes",
+      "region": "metropolitana",
+      "lat": -33.371161,
+      "lng": -70.506538,
+      "kind": "gym"
+    },
+    {
+      "id": "ironwall",
+      "name": "Ironwall",
+      "address": "Pdte. Riesco 5330, 7560996 Las Condes, Región Metropolitana",
+      "commune": "Las Condes",
+      "region": "metropolitana",
+      "lat": -33.403361,
+      "lng": -70.575126,
+      "kind": "gym"
+    },
+    {
+      "id": "muro-mall-sport",
+      "name": "Muro Mall Sport",
+      "address": "",
+      "commune": "Las Condes",
+      "region": "metropolitana",
+      "lat": -33.37074,
+      "lng": -70.50632,
+      "kind": "gym"
+    },
+    {
+      "id": "muro-plaza-de-deporte",
+      "name": "Muro Plaza de Deporte",
+      "address": "Las Condes, Región Metropolitana",
+      "commune": "Las Condes",
+      "region": "metropolitana",
+      "lat": -33.403957,
+      "lng": -70.53738,
+      "kind": "gym"
+    },
+    {
+      "id": "piedra-rajada",
+      "name": "Piedra Rajada",
+      "address": "Unnamed Road, Las Condes, Región Metropolitana",
+      "commune": "Las Condes",
+      "region": "metropolitana",
+      "lat": -33.414656,
+      "lng": -70.503379,
+      "kind": "outdoor"
+    },
+    {
+      "id": "ragni-climbing",
+      "name": "Ragni Climbing",
+      "address": "Alonso de Córdova 5870, local 8, 7560927 Las Condes, Región Metropolitana",
+      "commune": "Las Condes",
+      "region": "metropolitana",
+      "lat": -33.407466,
+      "lng": -70.570355,
+      "kind": "gym"
+    },
+    {
+      "id": "jurassic-park-boulder",
+      "name": "Jurassic Park - Boulder",
+      "address": "Cam. Juan Pablo II, Lo Barnechea, Región Metropolitana",
+      "commune": "Lo Barnechea",
+      "region": "metropolitana",
+      "lat": -33.307056,
+      "lng": -70.576968,
+      "kind": "outdoor"
+    },
+    {
+      "id": "cangreboulder",
+      "name": "Cangreboulder",
+      "address": "Av. Quilin 2640, 7810858 Macul, Región Metropolitana",
+      "commune": "Macul",
+      "region": "metropolitana",
+      "lat": -33.484832,
+      "lng": -70.604008,
+      "kind": "gym"
+    },
+    {
+      "id": "muro-escalada-uc",
+      "name": "Muro escalada UC",
+      "address": "F9XV+P2, 7820435 Macul, Región Metropolitana",
+      "commune": "Macul",
+      "region": "metropolitana",
+      "lat": -33.500746,
+      "lng": -70.607428,
+      "kind": "gym"
+    },
+    {
+      "id": "monos-climbing",
+      "name": "Monos Climbing",
+      "address": "Bailén 2223, 9251451 Maipú, Región Metropolitana",
+      "commune": "Maipú",
+      "region": "metropolitana",
+      "lat": -33.506625,
+      "lng": -70.754884,
+      "kind": "gym"
+    },
+    {
+      "id": "bhanga-climbing",
+      "name": "Bhanga Climbing",
+      "address": "Av. Consistorial 2100, 7940138 Peñalolén, Región Metropolitana",
+      "commune": "Peñalolén",
+      "region": "metropolitana",
+      "lat": -33.479177,
+      "lng": -70.543768,
+      "kind": "gym"
+    },
+    {
+      "id": "la-sierra-boulder",
+      "name": "La Sierra Boulder",
+      "address": "Istmo 1901, 7920033 Peñalolén, Región Metropolitana",
+      "commune": "Peñalolén",
+      "region": "metropolitana",
+      "lat": -33.471201,
+      "lng": -70.574534,
+      "kind": "gym"
+    },
+    {
+      "id": "delko-boulder-pirque",
+      "name": "Delko Boulder Pirque",
+      "address": "Av. Virginia Subercaseaux 1570, p30, 9480000 Pirque, Región Metropolitana",
+      "commune": "Pirque",
+      "region": "metropolitana",
+      "lat": -33.641397,
+      "lng": -70.593563,
+      "kind": "gym"
+    },
+    {
+      "id": "bloclab",
+      "name": "Bloclab",
+      "address": "Av. Pedro de Valdivia 1985, 7501110 Providencia, Región Metropolitana",
+      "commune": "Providencia",
+      "region": "metropolitana",
+      "lat": -33.441114,
+      "lng": -70.607203,
+      "kind": "gym"
+    },
+    {
+      "id": "bloclab-underground",
+      "name": "Bloclab Underground",
+      "address": "Av. Pedro de Valdivia 2219, 7501567 Providencia, Región Metropolitana",
+      "commune": "Providencia",
+      "region": "metropolitana",
+      "lat": -33.443222,
+      "lng": -70.606873,
+      "kind": "gym"
+    },
+    {
+      "id": "gimnasio-casa-boulder-spa",
+      "name": "Gimnasio Casa Boulder SPA",
+      "address": "Av. Italia #875, 7501184 Providencia, Región Metropolitana",
+      "commune": "Providencia",
+      "region": "metropolitana",
+      "lat": -33.44288,
+      "lng": -70.626256,
+      "kind": "gym"
+    },
+    {
+      "id": "muro-de-escalada-stargym",
+      "name": "Muro de Escalada Stargym",
+      "address": "Av. Los Leones 2384, 7511055 Providencia, Región Metropolitana",
+      "commune": "Providencia",
+      "region": "metropolitana",
+      "lat": -33.440952,
+      "lng": -70.59948,
+      "kind": "gym"
+    },
+    {
+      "id": "rocodromo-mupun",
+      "name": "Rocodromo Mupun",
+      "address": "Carlos Aguirre Luco 2546, 8207725 Puente Alto, Región Metropolitana",
+      "commune": "Puente Alto",
+      "region": "metropolitana",
+      "lat": -33.588465,
+      "lng": -70.577228,
+      "kind": "gym"
+    },
+    {
+      "id": "muro-de-escalada-el-llano",
+      "name": "Muro de Escalada El Llano",
+      "address": "Francisco Lobos 847, Quinta Normal, Región Metropolitana",
+      "commune": "Quinta Normal",
+      "region": "metropolitana",
+      "lat": -33.435699,
+      "lng": -70.685156,
+      "kind": "gym"
+    },
+    {
+      "id": "parque-los-silos",
+      "name": "Parque Los Silos",
+      "address": "Av. Pdte. Balmaceda 2822, Santiago, Quinta Normal, Región Metropolitana",
+      "commune": "Quinta Normal",
+      "region": "metropolitana",
+      "lat": -33.426488,
+      "lng": -70.67548,
+      "kind": "outdoor"
+    },
+    {
+      "id": "hangar-boulder",
+      "name": "Hangar Boulder",
+      "address": "Alcalde Pedro Alarcón 750, 8900000 San Miguel, Región Metropolitana",
+      "commune": "San Miguel",
+      "region": "metropolitana",
+      "lat": -33.487925,
+      "lng": -70.64225,
+      "kind": "gym"
+    },
+    {
+      "id": "federacion-de-andinismo-de-chile",
+      "name": "Federación de Andinismo de Chile",
+      "address": "Almirante Simpson 77, P 2, 7500867 Providencia, Santiago, Región Metropolitana",
+      "commune": "Santiago",
+      "region": "metropolitana",
+      "lat": -33.438824,
+      "lng": -70.633408,
+      "kind": "gym"
+    },
+    {
+      "id": "muro-alpino",
+      "name": "Muro Alpino",
+      "address": "Av. Alameda Libertador Bernardo O'Higgins 776, 8320000 Santiago, Región Metropolitana",
+      "commune": "Santiago",
+      "region": "metropolitana",
+      "lat": -33.443315,
+      "lng": -70.646968,
+      "kind": "gym"
+    },
+    {
+      "id": "santiago-boulder-escalada",
+      "name": "Santiago Boulder Escalada",
+      "address": "Lord Cochrane 558, 8330626 Santiago, Región Metropolitana",
+      "commune": "Santiago",
+      "region": "metropolitana",
+      "lat": -33.45312,
+      "lng": -70.654015,
+      "kind": "gym"
+    },
+    {
+      "id": "summit-boulder",
+      "name": "Summit Boulder",
+      "address": "",
+      "commune": "Santiago",
+      "region": "metropolitana",
+      "lat": -33.438399,
+      "lng": -70.648853,
+      "kind": "gym"
+    },
+    {
+      "id": "atomik-boulder",
+      "name": "Atomik Boulder",
+      "address": "Dr. Pedro Lautaro Ferrer 2061, Providencia, Ñuñoa, Región Metropolitana",
+      "commune": "Ñuñoa",
+      "region": "metropolitana",
+      "lat": -33.44549,
+      "lng": -70.605018,
+      "kind": "gym"
+    },
+    {
+      "id": "bloque-nomade",
+      "name": "Bloque Nómade",
+      "address": "Núñez de Arce 3092, 7770465 Ñuñoa, Región Metropolitana",
+      "commune": "Ñuñoa",
+      "region": "metropolitana",
+      "lat": -33.452206,
+      "lng": -70.598574,
+      "kind": "gym"
+    },
+    {
+      "id": "perro-chico-boulder",
+      "name": "Perro Chico Boulder",
+      "address": "Máximo Jeria 686, 7760206 Ñuñoa, Región Metropolitana",
+      "commune": "Ñuñoa",
+      "region": "metropolitana",
+      "lat": -33.461275,
+      "lng": -70.594945,
+      "kind": "gym"
+    },
+    {
+      "id": "campus-climbing-concon",
+      "name": "Campus Climbing Concón",
+      "address": "La Boca, 2510428 Concón, Valparaíso",
+      "commune": "Concón",
+      "region": "valparaiso",
+      "lat": -32.919539,
+      "lng": -71.511698,
+      "kind": "gym"
+    },
+    {
+      "id": "centro-de-escalada-bloque-71",
+      "name": "Centro de escalada - Bloque 71",
+      "address": "San José 143, 2352950 Valparaíso",
+      "commune": "Valparaíso",
+      "region": "valparaiso",
+      "lat": -33.047688,
+      "lng": -71.602363,
+      "kind": "gym"
+    },
+    {
+      "id": "fabrica-boulder",
+      "name": "Fabrica Boulder",
+      "address": "Av. Francia 994b, 2340000 Valparaíso",
+      "commune": "Valparaíso",
+      "region": "valparaiso",
+      "lat": -33.053341,
+      "lng": -71.613726,
+      "kind": "gym"
+    },
+    {
+      "id": "la-mano-boulder",
+      "name": "La Mano Boulder",
+      "address": "Av. Valparaíso 1436, 6500000 Villa Alemana, Valparaíso",
+      "commune": "Villa Alemana",
+      "region": "valparaiso",
+      "lat": -33.044278,
+      "lng": -71.383174,
+      "kind": "gym"
+    },
+    {
+      "id": "boulder-plan-vina-del-mar",
+      "name": "Boulder Plan Viña del Mar",
+      "address": "5 Ote. 126, 2530796 Viña del Mar, Valparaíso",
+      "commune": "Viña del Mar",
+      "region": "valparaiso",
+      "lat": -33.022202,
+      "lng": -71.544756,
+      "kind": "gym"
+    }
+  ]
+}

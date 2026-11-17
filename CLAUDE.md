@@ -128,6 +128,19 @@ unknown level value. Silent skipping hides content loss.
   with numbered nodes. Lists are grouped surfaces with hairline rows; sheets rise from the bottom.
 - Icons are inline SVG in `src/components/Icon.tsx` (24px grid, `currentColor`).
 
+## Gym directory, map and boards
+
+- `content/gyms-cl.json` is the hand-maintained directory of Chilean gyms (exported from the
+  owner's Google Maps list "BOULDER"). Ids are stable; saved gyms reference them via
+  `directoryId`. Add gyms by editing the file — `region` must be a key of `regions`.
+- The Gyms tab map is drawn offline: an equirectangular projection fitted to the visible gyms over
+  Chile's coastline (`src/assets/chile-outline.json`, Natural Earth 1:50m via world-atlas). No
+  tiles. "Open in Google Maps" is a plain outbound link the climber taps — the only network use.
+  Geolocation ("Near me") stays in memory and is never stored.
+- `src/domain/boards.ts` lists training boards (Kilter, Tension 1/2, MoonBoard sets, Grasshopper,
+  Decoy, Quantum, Lattice, spray wall) with their angle ranges; board sessions store
+  `board: { id, name, angle }` and grade in the board's own scale.
+
 ## Climber profile, levels and grades
 
 - The profile lives only on the device (`cg.profile`): disciplines, grade scale per discipline,

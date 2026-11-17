@@ -7,12 +7,14 @@ import { emptyGym, sortColors } from "../domain/circuits";
 import type { CircuitsState, GymCircuit } from "../domain/circuits";
 
 /** Settings sheet: all saved gyms, which one is home, and each gym's circuits. */
-export default function CircuitEditor({ onClose }: { onClose: () => void }) {
+export default function CircuitEditor({ onClose, initialId }: { onClose: () => void; initialId?: string }) {
   const { t, circuits, setCircuits, profile } = useAppState();
   const c = t.circuits;
 
   const [draft, setDraft] = useState<CircuitsState>(() => structuredClone(circuits));
-  const [selectedId, setSelectedId] = useState<string | null>(circuits.homeId ?? circuits.gyms[0]?.id ?? null);
+  const [selectedId, setSelectedId] = useState<string | null>(
+    initialId ?? circuits.homeId ?? circuits.gyms[0]?.id ?? null,
+  );
   const [confirmDelete, setConfirmDelete] = useState(false);
   const [error, setError] = useState<string | null>(null);
 

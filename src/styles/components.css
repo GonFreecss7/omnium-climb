@@ -2149,3 +2149,314 @@ ol.prose-list li::marker {
 .level-colors__row .tape {
   align-self: flex-start;
 }
+
+/* ---------- training boards ---------- */
+
+.angle-pick {
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  padding-bottom: 2px;
+  scrollbar-width: none;
+}
+
+.angle-pick::-webkit-scrollbar {
+  display: none;
+}
+
+.angle-pick__option {
+  flex: 0 0 auto;
+  min-width: 48px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+}
+
+.angle-pick__option--active {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.session-log__entry-board {
+  font-size: 14px;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- gyms view & map ---------- */
+
+.gyms__regions {
+  margin-bottom: var(--space-4);
+}
+
+.gyms__count {
+  margin-left: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  opacity: 0.6;
+  font-variant-numeric: tabular-nums;
+}
+
+.gyms__map-card {
+  position: relative;
+  margin-bottom: var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  scroll-margin-top: var(--space-3);
+}
+
+.gym-map {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  max-height: 62vh;
+}
+
+.gym-map__sea {
+  fill: var(--surface);
+}
+
+.gym-map__land {
+  fill: var(--surface-2);
+  stroke: var(--border-strong);
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+
+.gym-map__dot {
+  cursor: pointer;
+}
+
+.gym-map__hit {
+  fill: transparent;
+}
+
+.gym-map__pin {
+  fill: var(--text-muted);
+  stroke: var(--surface);
+  stroke-width: 4;
+  transition: r var(--duration) var(--ease);
+}
+
+.gym-map__dot--outdoor .gym-map__pin {
+  fill: var(--surface);
+  stroke: var(--text-muted);
+  stroke-width: 4;
+}
+
+.gym-map__dot--saved .gym-map__pin {
+  fill: var(--text);
+}
+
+.gym-map__ring {
+  fill: none;
+  stroke: var(--text);
+  stroke-width: 4;
+}
+
+.gym-map__dot--selected .gym-map__pin {
+  fill: var(--accent);
+  stroke: var(--bg);
+  stroke-width: 5;
+}
+
+.gym-map__label {
+  fill: var(--text);
+  font-family: var(--font-display);
+  font-stretch: var(--stretch-title);
+  font-size: 34px;
+  font-weight: 750;
+  paint-order: stroke;
+  stroke: var(--surface);
+  stroke-width: 10px;
+  stroke-linejoin: round;
+}
+
+.gym-map__label--me {
+  fill: var(--lvl-intermediate);
+}
+
+.gym-map__me-halo {
+  fill: var(--lvl-intermediate);
+  opacity: 0.18;
+}
+
+.gym-map__me-dot {
+  fill: var(--lvl-intermediate);
+  stroke: #fff;
+  stroke-width: 4;
+}
+
+.gym-map__scale line {
+  stroke: var(--text-muted);
+  stroke-width: 3;
+}
+
+.gym-map__scale text {
+  fill: var(--text-muted);
+  font-family: var(--font-body);
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.gyms__locate {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  height: 38px;
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-chip);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 650;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.gym-card {
+  margin-bottom: var(--space-5);
+  padding: var(--space-4);
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+}
+
+.gym-card__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.gym-card__name {
+  font-stretch: var(--stretch-display);
+  font-weight: 800;
+  font-size: 26px;
+  line-height: 1.05;
+}
+
+.gym-card__meta {
+  margin-top: var(--space-1);
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.gym-card__address {
+  margin-top: var(--space-2);
+  font-size: 14.5px;
+}
+
+.gym-card__status {
+  margin-top: var(--space-2);
+}
+
+.gym-card__saved {
+  font-size: 13px;
+  font-weight: 650;
+  color: var(--text-muted);
+}
+
+.gym-card__actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+
+.gym-card__actions .secondary-button {
+  margin-bottom: 0;
+}
+
+.gym-card__maps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.gyms__search {
+  margin-top: var(--space-2);
+}
+
+.gyms__group {
+  margin-bottom: var(--space-5);
+}
+
+.gyms__commune {
+  font-family: var(--font-body);
+  font-stretch: 100%;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: var(--space-2);
+}
+
+.gym-list {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.gym-list li + li {
+  border-top: 1px solid var(--border);
+}
+
+.gym-list__item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  text-align: left;
+}
+
+.gym-list__item--selected {
+  background: var(--accent-dim);
+}
+
+.gym-list__text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.gym-list__name {
+  font-family: var(--font-display);
+  font-stretch: var(--stretch-title);
+  font-weight: 700;
+  font-size: 17.5px;
+  line-height: 1.2;
+}
+
+.gym-list__meta {
+  color: var(--text-muted);
+  font-size: 13.5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.gym-list__saved {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--text);
+  flex-shrink: 0;
+}
+
+/* Six tabs: tighten labels on narrow phones. */
+@media (max-width: 400px) {
+  .tabbar__label {
+    font-size: 10px;
+  }
+}

@@ -78,6 +78,7 @@ export function computeSessionStats(log: SessionLogEntry[], scales: DisplayScale
 
   const drillCounts = new Map<string, number>();
   for (const e of log) {
+    if (!e.drill) continue;
     drillCounts.set(e.drill, (drillCounts.get(e.drill) ?? 0) + 1);
   }
   let mostUsedDrill: SessionStats["mostUsedDrill"] = null;

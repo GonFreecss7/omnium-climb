@@ -2,7 +2,16 @@
 
 import type { ReactElement } from "react";
 
-export type IconName = "guide" | "techniques" | "drills" | "progressions" | "session" | "settings" | "star" | "close";
+export type IconName =
+  | "guide"
+  | "techniques"
+  | "drills"
+  | "progressions"
+  | "session"
+  | "gyms"
+  | "settings"
+  | "star"
+  | "close";
 
 const PATHS: Record<IconName, ReactElement> = {
   guide: (
@@ -37,6 +46,12 @@ const PATHS: Record<IconName, ReactElement> = {
     <>
       <rect x="4" y="5" width="16" height="15" rx="2.5" />
       <path d="M4 9.5h16M8.5 3v4M15.5 3v4M9 14.5l2 2 4-4" />
+    </>
+  ),
+  gyms: (
+    <>
+      <path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11Z" />
+      <circle cx="12" cy="10" r="2.3" />
     </>
   ),
   settings: (

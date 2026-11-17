@@ -21,6 +21,8 @@ export interface GymCircuit {
   /** Boulder scale this gym grades in — circuit ranges are shown in it. */
   scale: BoulderScale;
   colors: CircuitColor[];
+  /** Id in content/gyms-cl.json when the gym came from (or matches) the directory. */
+  directoryId?: string;
 }
 
 export interface CircuitsState {
