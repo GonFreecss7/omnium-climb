@@ -1,12 +1,13 @@
 import { useAppState } from "../state/AppState";
 import { useScrollToTarget } from "../hooks/useScrollToTarget";
 import Prose from "../components/Prose";
+import ReferencesSection from "../components/ReferencesSection";
 
 export default function GuideView() {
   const { guide, scrollTarget, clearScrollTarget } = useAppState();
   useScrollToTarget(scrollTarget, clearScrollTarget);
 
-  const file = guide.prose.find((p) => p.id !== "session");
+  const file = guide.prose.find((p) => p.id === "foundations");
   if (!file) return null;
 
   return (
@@ -22,6 +23,7 @@ export default function GuideView() {
           <Prose body={section.body} />
         </section>
       ))}
+      <ReferencesSection />
     </div>
   );
 }

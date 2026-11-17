@@ -107,6 +107,7 @@ interface Drill {
 
 interface ReferenceEntry {
   id: string;
+  title: string;
   refType: (typeof VALID_REF_TYPES)[number];
   author: string;
   url?: string;
@@ -144,7 +145,7 @@ interface WorkoutSection {
 
 interface SectionIndexEntry {
   number: number;
-  kind: "prose" | "techniqueCategory" | "drillCategory" | "workouts";
+  kind: "prose" | "techniqueCategory" | "drillCategory" | "workouts" | "references";
   title: string;
   fileId?: string;
   categoryId?: string;
@@ -182,6 +183,7 @@ interface Guide {
   progressionStages: ProgressionStage[];
   workoutSection: WorkoutSection | null;
   workouts: Workout[];
+  referencesSection: { number: number; title: string } | null;
 }
 
 class ParseError extends Error {}
@@ -1008,13 +1010,18 @@ function parseWorkouts(
 
 // ---------- references ----------
 
-function parseReferences(raw: string, file: ManifestFile, idRegistry: Map<string, string>): ReferenceEntry[] {
+function parseReferences(
+  raw: string,
+  file: ManifestFile,
+  idRegistry: Map<string, string>,
+): { section: { number: number; title: string } | null; references: ReferenceEntry[] } {
   const context = file.path;
   const body = stripFrontmatter(raw, context);
   const lines = body.split("\n");
 
   const references: ReferenceEntry[] = [];
   const sectionNumbers: number[] = [];
+  let sectionTitle = "";
   const preamble: string[] = [];
 
   let entry: (Partial<ReferenceEntry> & { title?: string }) | null = null;
@@ -1035,9 +1042,13 @@ function parseReferences(raw: string, file: ManifestFile, idRegistry: Map<string
     if (!VALID_REF_TYPES.includes(entry.refType as any)) {
       fail(entryContext, `unknown type \`${entry.refType}\` — must be one of ${VALID_REF_TYPES.join(" | ")}`);
     }
+    if (entry.url !== undefined && !/^https:\/\//.test(entry.url.trim())) {
+      fail(entryContext, `url \`${entry.url}\` must be an https URL`);
+    }
     registerId(idRegistry, id, entryContext);
     references.push({
       id,
+      title: entry.title!.trim(),
       refType: entry.refType as ReferenceEntry["refType"],
       author: entry.author!.trim(),
       url: entry.url?.trim(),
@@ -1050,6 +1061,7 @@ function parseReferences(raw: string, file: ManifestFile, idRegistry: Map<string
     const sectionHeading = line.match(/^### (\d+)\.\s+(.+?)\s*$/);
     if (sectionHeading) {
       sectionNumbers.push(Number(sectionHeading[1]));
+      sectionTitle = sectionHeading[2]!;
       continue;
     }
 
@@ -1096,11 +1108,15 @@ function parseReferences(raw: string, file: ManifestFile, idRegistry: Map<string
     fail(context, "content found outside any `####` reference entry — only entries and their fields are supported");
   }
 
+  if (sectionNumbers.length > 1) fail(context, "a references file holds exactly one numbered section");
   if (sectionNumbers.length > 0) {
     checkSectionRange(context, file.sections, sectionNumbers);
   }
 
-  return references;
+  return {
+    section: sectionNumbers.length > 0 ? { number: sectionNumbers[0]!, title: sectionTitle } : null,
+    references,
+  };
 }
 
 // ---------- translation (guide.es.json) ----------
@@ -1127,6 +1143,9 @@ interface EsDict {
   progressionStages: Record<string, { title: string; summary: string }>;
   workoutSection?: { title: string; intro: string };
   workouts?: Record<string, { name: string; what: string; how: string; load: string }>;
+  referencesSection?: { title: string };
+  /** Reference notes by id. Titles and authors stay in the original language. */
+  references?: Record<string, string>;
 }
 
 function checkKeysMatch(enKeys: string[], dictKeys: string[], label: string): void {
@@ -1257,6 +1276,19 @@ function buildEsGuide(en: Guide, dict: EsDict): Guide {
     });
   }
 
+  let references: ReferenceEntry[] = [];
+  let referencesSection: { number: number; title: string } | null = null;
+  if (en.references.length > 0 || en.referencesSection) {
+    if (!dict.references || !dict.referencesSection) fail(ES_DICT_PATH, "missing ES translation for the references section");
+    checkKeysMatch(
+      en.references.map((r) => r.id),
+      Object.keys(dict.references),
+      "references",
+    );
+    references = en.references.map((r) => ({ ...r, note: dict.references![r.id]! }));
+    if (en.referencesSection) referencesSection = { number: en.referencesSection.number, title: dict.referencesSection.title };
+  }
+
   if (!en.drillSection) {
     fail(ES_DICT_PATH, "internal: EN guide has no drillSection to translate");
   }
@@ -1279,6 +1311,8 @@ function buildEsGuide(en: Guide, dict: EsDict): Guide {
       title = drillSection.title;
     } else if (entry.kind === "workouts" && workoutSection) {
       title = workoutSection.title;
+    } else if (entry.kind === "references" && dict.referencesSection) {
+      title = dict.referencesSection.title;
     }
     sectionIndex[key] = { ...entry, title };
   }
@@ -1300,7 +1334,8 @@ function buildEsGuide(en: Guide, dict: EsDict): Guide {
     drillSection,
     drillCategories,
     drills,
-    references: [],
+    references,
+    referencesSection,
     progressionStages,
     workoutSection,
     workouts,
@@ -1350,6 +1385,7 @@ function main() {
     progressionStages: [],
     workoutSection: null,
     workouts: [],
+    referencesSection: null,
   };
 
   const skipped: string[] = [];
@@ -1404,7 +1440,12 @@ function main() {
         break;
       }
       case "references": {
-        guide.references.push(...parseReferences(raw, file, idRegistry));
+        const { section, references } = parseReferences(raw, file, idRegistry);
+        if (section) {
+          addSection({ number: section.number, kind: "references", title: section.title }, `${file.path} §${section.number}`);
+          guide.referencesSection = section;
+        }
+        guide.references.push(...references);
         break;
       }
       case "workouts": {

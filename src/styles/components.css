@@ -3573,3 +3573,59 @@ ol.prose-list li::marker {
   font-size: 12.5px;
   line-height: 1.45;
 }
+
+/* ---------- references ---------- */
+
+.refs__group + .refs__group {
+  margin-top: var(--space-5);
+}
+
+.refs__group-title {
+  font-family: var(--font-display);
+  font-stretch: var(--stretch-title);
+  font-weight: 760;
+  font-size: 20px;
+  margin-bottom: var(--space-2);
+}
+
+.refs__list {
+  border-top: 1px solid var(--border);
+}
+
+.refs__item {
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  scroll-margin-top: 80px;
+}
+
+.refs__title {
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.refs__title a {
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 3px;
+}
+
+.refs__author {
+  color: var(--text-muted);
+  font-size: 13.5px;
+}
+
+.refs__note {
+  margin-top: var(--space-1);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.refs__host {
+  color: var(--text-muted);
+  font-size: 12.5px;
+  font-weight: 600;
+}

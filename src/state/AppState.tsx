@@ -160,7 +160,8 @@ function tabForSection(guide: Guide, sectionNumber: number): Tab | null {
   if (!entry) return null;
   if (entry.kind === "techniqueCategory") return "techniques";
   if (entry.kind === "drillCategory" || entry.kind === "workouts") return "drills";
-  if (entry.kind === "prose") return entry.fileId === "session" ? "session" : "guide";
+  if (entry.kind === "references") return "guide";
+  if (entry.kind === "prose") return entry.fileId === "session" || entry.fileId === "warmup" ? "session" : "guide";
   return null;
 }
 

@@ -59,6 +59,15 @@
           "body": "Filma un problema por sesión. Dos cosas a observar:\n\n1. Cuánto tiempo pasan tus brazos doblados.\n2. Cuántas veces se mueve cada pie después de haberlo colocado.\n\nAmbos números deberían ir bajando con las semanas. Eso es la técnica mejorando, de forma medible.\n\n**Cuándo subir de grado.** La prueba honesta para «este grado me aburre»: fílmate escalándolo con un solo toque y pies silenciosos. Si de verdad está limpio (sin reajustes, sin ruido, sin colgarte con los brazos doblados), sube de grado. La mayoría descubre que no lo está.\n\n**Registro de sesión — vale la pena anotarlo**\n\n- Qué ejercicio usaste.\n- El problema más difícil que encadenaste limpiamente (no solo completado).\n- Cualquier molestia: mejor / igual / peor que la sesión anterior.\n- Una cosa técnica que se sintió diferente."
         }
       }
+    },
+    "warmup": {
+      "title": "Calentamiento y Preparación",
+      "sections": {
+        "16": {
+          "title": "Calentamiento y Preparación",
+          "body": "Un calentamiento tiene tres funciones: subir la temperatura de los tejidos, preparar las articulaciones que la escalada carga más y ensayar el movimiento antes de la intensidad. En el plan de sesión (§14) toma unos 15 minutos. Mientras más dura y desplomada sea la sesión, más largo y gradual debe ser el progreso.\n\n**1. General: 3–5 minutos, fuera del muro**\n\nCualquier cosa que suba tu pulso y te haga respirar un poco más fuerte: saltar la cuerda, jumping jacks, escaleras, trote suave en el lugar. Debes terminar con calor, no cansado.\n\n**2. Articulaciones: 3–5 minutos**\n\n- **Muñecas:** círculos lentos en ambos sentidos y luego flexión y extensión suaves con las palmas contra un muro.\n- **Dedos:** abre y cierra ambas manos por completo y despacio, 10–15 veces; separa bien los dedos entre cada cierre.\n- **Antebrazos y codos:** con los codos doblados, gira las palmas hacia arriba y hacia abajo.\n- **Hombros:** círculos con los brazos, de pequeños a grandes. Luego, en presas grandes, con los brazos estirados y los pies en el suelo, lleva los omóplatos hacia abajo y atrás unas cuantas veces sin doblar los codos.\n- **Caderas:** sentadilla profunda sostenida, balanceos de pierna hacia adelante y al lado, algunos círculos de cadera.\n\n**3. Movimiento: 5–10 minutos en el muro**\n\nEscala problemas muy por debajo de tu límite —dos o tres grados más fáciles está bien— o haz travesías. Empieza en muro vertical o placa y avanza hacia ángulos más desplomados. Escala con pies silenciosos y brazos estirados: es la primera práctica de técnica de la sesión (§3, §4).\n\n**4. Progresión: antes de cualquier cosa cerca de tu límite**\n\nSube por escalones: algunos problemas uno o dos grados más fáciles, luego uno de tu grado de trabajo, antes del primer intento en tu límite. Cada escalón debe sentirse claramente más fácil que el siguiente. Si un problema de calentamiento se siente inusualmente duro, la sesión te está diciendo algo: mantén el día más suave (§2).\n\n:::level advanced+\n**Progresión de dedos.** Antes de sesiones de tabla, regletas pequeñas o trabajo de hangboard (§18), agrega colgadas progresivas en un canto grande: unos pocos segundos cada una, al principio con los pies en el suelo o descargando parte del peso, aumentando la carga en varias series hasta que una colgada se sienta cerca de la intensidad de trabajo. Los dedos fríos son los que se lesionan en la primera regleta dura.\n:::\n\n**Versión corta: unos 8 minutos**\n\nCuando hay poco tiempo, mantén el orden y acorta cada bloque: 2 minutos de movimiento general, una pasada por las articulaciones y luego tres o cuatro problemas fáciles cada vez más desplomados. En una sesión con calentamiento corto, deja fuera los intentos al límite en vez de recortar más el calentamiento.\n\n**Vuelta a la calma: 5–10 minutos**\n\nTermina con escalada fácil o bajando escalando en presas grandes y luego estiramientos suaves de antebrazos y hombros. También es el momento para el trabajo de antagonistas del §14."
+        }
+      }
     }
   },
   "techniqueCategories": {
@@ -850,5 +859,24 @@
       "how": "3 series de 4 repeticiones: colgada de 10 segundos, pausa de 20 segundos, y 2 minutos entre series.",
       "load": "El canto más pequeño que te permita completar todas las repeticiones de las tres series."
     }
+  },
+  "referencesSection": {
+    "title": "Referencias y Lecturas Recomendadas"
+  },
+  "references": {
+    "ref-macleod-9-out-of-10": "Cómo se estancan los escaladores que se entrenan solos: táctica, técnica y prioridades de entrenamiento. Un buen primer libro cuando lo básico ya sale automático.",
+    "ref-macleod-make-or-break": "Lesiones de escalada, de la prevención a la rehabilitación, escrito por un escalador que ha tenido la mayoría. Léelo antes de la primera lesión, no después.",
+    "ref-hague-hunter-self-coached": "Mecánica del movimiento en profundidad: equilibrio, posición del cuerpo y cómo actúan las fuerzas en el muro. Complementa bien los §3–§12.",
+    "ref-mobraten-christophersen-bible": "Panorama amplio y actual de técnica, fuerza, táctica y prevención de lesiones para todos los niveles.",
+    "ref-anderson-rctm": "Entrenamiento periodizado para escaladores de vía, incluida la rutina original de repeaters del §18.",
+    "ref-horst-training": "Referencia de entrenamiento muy completa: fisiología, fuerza, sistemas energéticos y planificación.",
+    "ref-lopez-maxhangs": "La explicación de la propia autora sobre las colgadas máximas e intermitentes: el origen del protocolo Max hangs del §18.",
+    "ref-lopez-2012-sports-technology": "Compara el hangboard en un canto de 18 mm con peso agregado frente al canto más pequeño con peso corporal, en escaladores experimentados.",
+    "ref-lopez-2019-hukin": "Estudio de acceso abierto que compara programas de colgadas máximas, intermitentes y combinadas durante ocho semanas.",
+    "ref-anderson-hangboard-faq": "La rutina de repeaters explicada paso a paso, con indicaciones sobre agarres, series y descansos.",
+    "ref-lattice-test": "El protocolo del test y los porcentajes de entrenamiento que usa el test de dedos del §18.",
+    "ref-lattice-half-crimp": "Por qué, según los datos de Lattice, la fuerza en half crimp se relaciona más con el grado de boulder que la fuerza en mano abierta.",
+    "ref-hoopers-beta": "Videos dirigidos por fisioterapeutas sobre lesiones de escalada, protocolos de rehabilitación y mitos del entrenamiento.",
+    "ref-lattice-channel": "Videos de entrenamiento sobre evaluación, fuerza de dedos y planificación de sesiones."
   }
 }

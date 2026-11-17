@@ -263,6 +263,10 @@ export interface UiStrings {
     customHint: string;
     fields: Record<"prep" | "hang" | "rest" | "reps" | "sets" | "setRest", string>;
   };
+  references: {
+    groups: Record<"books" | "reading" | "channels", string>;
+    types: { paper: string };
+  };
   coach: {
     heading: string;
     focus: Record<"rest" | "easy" | "technique" | "volume" | "project", { title: string; plan: string }>;
@@ -661,6 +665,10 @@ const en: UiStrings = {
     customTitle: "Custom timer",
     customHint: "Build your own interval: hang, rest, reps and sets. It's remembered on this device.",
     fields: { prep: "Get ready (s)", hang: "Hang (s)", rest: "Rest (s)", reps: "Reps", sets: "Sets", setRest: "Between sets (s)" },
+  },
+  references: {
+    groups: { books: "Books", reading: "Articles and research", channels: "Channels" },
+    types: { paper: "research paper" },
   },
   coach: {
     heading: "Next session",
@@ -1112,6 +1120,10 @@ const es: UiStrings = {
     customTitle: "Temporizador libre",
     customHint: "Arma tu propio intervalo: colgada, descanso, repeticiones y series. Queda guardado en este dispositivo.",
     fields: { prep: "Preparación (s)", hang: "Colgada (s)", rest: "Descanso (s)", reps: "Repeticiones", sets: "Series", setRest: "Entre series (s)" },
+  },
+  references: {
+    groups: { books: "Libros", reading: "Artículos e investigación", channels: "Canales" },
+    types: { paper: "artículo científico" },
   },
   coach: {
     heading: "Próxima sesión",

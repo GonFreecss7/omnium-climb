@@ -69,6 +69,7 @@ export interface Drill {
 
 export interface ReferenceEntry {
   id: string;
+  title: string;
   refType: "book" | "video" | "article" | "channel" | "paper";
   author: string;
   url?: string;
@@ -105,7 +106,7 @@ export interface WorkoutSection {
 
 export interface SectionIndexEntry {
   number: number;
-  kind: "prose" | "techniqueCategory" | "drillCategory" | "workouts";
+  kind: "prose" | "techniqueCategory" | "drillCategory" | "workouts" | "references";
   title: string;
   fileId?: string;
   categoryId?: string;
@@ -143,4 +144,5 @@ export interface Guide {
   progressionStages: ProgressionStage[];
   workoutSection: WorkoutSection | null;
   workouts: Workout[];
+  referencesSection: { number: number; title: string } | null;
 }

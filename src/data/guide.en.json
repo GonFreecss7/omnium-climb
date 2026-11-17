@@ -108,6 +108,17 @@
       "title": "Tracking Progress",
       "fileId": "session"
     },
+    "16": {
+      "number": 16,
+      "kind": "prose",
+      "title": "Warm-up & Preparation",
+      "fileId": "warmup"
+    },
+    "17": {
+      "number": 17,
+      "kind": "references",
+      "title": "References & Further Reading"
+    },
     "18": {
       "number": 18,
       "kind": "workouts",
@@ -168,6 +179,19 @@
           "number": 15,
           "title": "Tracking Progress",
           "body": "Film one problem per session. Two things to look for:\n\n1. How much time your arms spend bent.\n2. How many times each foot moves after it's been placed.\n\nBoth numbers should trend down over weeks. That's technique improving, measurably.\n\n**When to move up a grade.** The honest test for \"this grade is boring\": film yourself climbing it with one-touch and silent feet. If it's genuinely clean — no readjustments, no noise, no bent-arm hanging — move up. Most people find out it isn't.\n\n**Session log — worth writing down**\n\n- Which drill you used.\n- Hardest problem climbed cleanly (not just completed).\n- Any niggles: better / same / worse than last session.\n- One technical thing that felt different."
+        }
+      ]
+    },
+    {
+      "id": "warmup",
+      "title": "Warm-up & Preparation",
+      "part": "III",
+      "order": 40,
+      "sections": [
+        {
+          "number": 16,
+          "title": "Warm-up & Preparation",
+          "body": "A warm-up has three jobs: raise tissue temperature, prepare the joints climbing loads hardest, and rehearse movement before intensity. In the session plan (§14) it takes about 15 minutes. The harder and steeper the session, the longer and more gradual the ramp should be.\n\n**1. General — 3–5 minutes, off the wall**\n\nAnything that raises your heart rate and makes you breathe a little harder: skipping, jumping jacks, stairs, light jogging on the spot. You should end up warm, not tired.\n\n**2. Joints — 3–5 minutes**\n\n- **Wrists:** slow circles both ways, then gentle flexion and extension with the palms on a wall.\n- **Fingers:** open and close both hands fully and slowly, 10–15 times; spread the fingers wide between closes.\n- **Forearms and elbows:** with the elbows bent, turn the palms up and down.\n- **Shoulders:** arm circles from small to large. Then, on big jugs with straight arms and feet on the ground, draw the shoulder blades down and back a few times without bending the elbows.\n- **Hips:** a deep squat hold, leg swings forward and to the side, a few hip circles.\n\n**3. Movement — 5–10 minutes on the wall**\n\nClimb problems well below your limit — two or three grades easier is about right — or traverse. Start on vertical or slab terrain and move toward steeper angles. Climb with quiet feet and straight arms: this is the session's first technique practice (§3, §4).\n\n**4. Ramp — before anything near your limit**\n\nWork up in steps: a few problems a grade or two easier, then one at your working grade, before the first attempt at your limit. Each step should feel clearly easier than the one after it. If a warm-up problem feels unusually hard, the session is telling you something — keep the day easier (§2).\n\n:::level advanced+\n**Finger ramp.** Before board sessions, small crimps or hangboard work (§18), add progressive hangs on a large edge: a few seconds each, feet on the ground or partly weighted at first, building load over several sets until a hang feels close to working intensity. Cold fingers are the ones that get hurt on the first hard crimp.\n:::\n\n**Short version — about 8 minutes**\n\nWhen time is tight, keep the order and shorten each block: 2 minutes of general movement, one pass through the joints, then three or four easy problems that get steadily steeper. Leave limit attempts out of a short-warm-up session rather than cutting the warm-up further.\n\n**Cool-down — 5–10 minutes**\n\nFinish with easy climbing or downclimbing on big holds, then light stretching of the forearms and shoulders. This is also the place for the antagonist work in §14."
         }
       ]
     }
@@ -3312,7 +3336,114 @@
       "relatedTechniques": []
     }
   ],
-  "references": [],
+  "references": [
+    {
+      "id": "ref-macleod-9-out-of-10",
+      "title": "9 Out of 10 Climbers Make the Same Mistakes",
+      "refType": "book",
+      "author": "Dave MacLeod — Rare Breed Productions, 2009",
+      "note": "How self-coached climbers get stuck — tactics, technique and training priorities. A good first book once the basics feel automatic."
+    },
+    {
+      "id": "ref-macleod-make-or-break",
+      "title": "Make or Break",
+      "refType": "book",
+      "author": "Dave MacLeod — Rare Breed Productions, 2015",
+      "note": "Climbing injuries from prevention to rehab, written by a climber who has had most of them. Read it before the first injury, not after."
+    },
+    {
+      "id": "ref-hague-hunter-self-coached",
+      "title": "The Self-Coached Climber",
+      "refType": "book",
+      "author": "Dan Hague & Douglas Hunter — Stackpole Books, 2006",
+      "note": "Movement mechanics in depth: balance, body position and how forces work on the wall. Pairs well with §3–§12."
+    },
+    {
+      "id": "ref-mobraten-christophersen-bible",
+      "title": "The Climbing Bible",
+      "refType": "book",
+      "author": "Martin Mobråten & Stian Christophersen — Vertebrate Publishing, 2020",
+      "note": "Broad, modern overview of technique, strength, tactics and injury prevention for every level."
+    },
+    {
+      "id": "ref-anderson-rctm",
+      "title": "The Rock Climber's Training Manual",
+      "refType": "book",
+      "author": "Michael L. Anderson & Mark Anderson — Fixed Pin Publishing, 2014",
+      "note": "Periodised training for route climbers, including the original repeater hangboard routine in §18."
+    },
+    {
+      "id": "ref-horst-training",
+      "title": "Training for Climbing (3rd ed.)",
+      "refType": "book",
+      "author": "Eric J. Hörst — FalconGuides, 2016",
+      "note": "Wide-ranging training reference: physiology, strength, energy systems and planning."
+    },
+    {
+      "id": "ref-lopez-maxhangs",
+      "title": "MaxHangs and intermittent hangs",
+      "refType": "article",
+      "author": "Eva López",
+      "url": "https://en-eva-lopez.blogspot.com/2018/03/maximal-hangs-intermittent-hangs.html",
+      "note": "The author's own explanation of maximal and intermittent dead-hangs — the source of the Max hangs protocol in §18."
+    },
+    {
+      "id": "ref-lopez-2012-sports-technology",
+      "title": "Effects of two maximum grip strength training methods (2012)",
+      "refType": "paper",
+      "author": "López-Rivera & González-Badillo — Sports Technology 5(3–4)",
+      "url": "https://www.tandfonline.com/doi/abs/10.1080/19346182.2012.716061",
+      "note": "Compares hangboarding on an 18 mm edge with added weight against the smallest edge at bodyweight, in experienced climbers."
+    },
+    {
+      "id": "ref-lopez-2019-hukin",
+      "title": "Three hangboard programs and grip endurance (2019)",
+      "refType": "paper",
+      "author": "López-Rivera & González-Badillo — Journal of Human Kinetics 66",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6458579/",
+      "note": "Open-access follow-up comparing maximal, intermittent and combined dead-hang programs over eight weeks."
+    },
+    {
+      "id": "ref-anderson-hangboard-faq",
+      "title": "Basic hangboard routine (Hangboard FAQ)",
+      "refType": "article",
+      "author": "Mark & Mike Anderson",
+      "url": "https://rockclimberstrainingmanual.com/2012/08/30/hangboard-faq-0-what-is-a-basic-hangboard-routine/",
+      "note": "The repeater routine explained step by step, with guidance on grips, sets and rest."
+    },
+    {
+      "id": "ref-lattice-test",
+      "title": "Finger strength self-assessment",
+      "refType": "article",
+      "author": "Lattice Training",
+      "url": "https://latticetraining.com/app/uploads/2018/06/1528799872597_180503_Lattice-Testing-Training-Rung-Instructions.pdf",
+      "note": "The test protocol and the training percentages used by the finger test in §18."
+    },
+    {
+      "id": "ref-lattice-half-crimp",
+      "title": "Open or half crimp for performance profiling?",
+      "refType": "article",
+      "author": "Lattice Training",
+      "url": "https://latticetraining.com/blog/open-or-half-crimp-for-performance-profiling-in-climbing",
+      "note": "Why half-crimp strength tracks boulder grade more closely than open-hand strength in Lattice's data."
+    },
+    {
+      "id": "ref-hoopers-beta",
+      "title": "Hooper's Beta",
+      "refType": "channel",
+      "author": "Jason Hooper & Emile Modesitt",
+      "url": "https://www.hoopersbeta.com",
+      "note": "Physical-therapist-led videos on climbing injuries, rehab protocols and training myths."
+    },
+    {
+      "id": "ref-lattice-channel",
+      "title": "Lattice Training",
+      "refType": "channel",
+      "author": "Lattice Training",
+      "url": "https://www.youtube.com/@LatticeTraining",
+      "note": "Coaching videos on assessment, finger strength and session planning."
+    }
+  ],
   "progressionStages": [
     {
       "id": "stage-footwork-foundations",
@@ -3561,5 +3692,9 @@
         "https://en-eva-lopez.blogspot.com/2018/05"
       ]
     }
-  ]
+  ],
+  "referencesSection": {
+    "number": 17,
+    "title": "References & Further Reading"
+  }
 }

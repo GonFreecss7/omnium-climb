@@ -82,7 +82,7 @@
       "type": "prose",
       "sections": "16",
       "order": 40,
-      "status": "stub"
+      "status": "complete"
     },
     {
       "path": "content/50-references.md",
@@ -92,7 +92,7 @@
       "type": "references",
       "sections": "17",
       "order": 50,
-      "status": "stub"
+      "status": "complete"
     }
   ]
 }
