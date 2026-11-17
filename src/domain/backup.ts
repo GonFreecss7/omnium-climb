@@ -14,6 +14,7 @@ const KEYS = [
   "cg.levelColors",
   "cg.sessionDraft",
   "cg.timerCustom",
+  "cg.fingerTests",
   "cg.lang",
   "cg.theme",
   "cg.onboardingSkipped",

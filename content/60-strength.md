@@ -22,6 +22,17 @@ Climbing itself trains the fingers, and for a long time it is the best finger tr
 - Leave at least 48 hours between hangboard sessions, with no other hard finger training on those days.
 - Stop the set on any sharp or one-sided finger pain. Adjust the load, never the rest.
 
+#### Finger strength test
+- id: `finger-test`
+- level: `advanced`
+- caution: true
+- test: true
+- timer: `prep 10, hang 7, rest 0, reps 1, sets 8, setrest 120`
+- what: Lattice Training's self-assessment: the heaviest total load you can hold for a full 7-second two-arm dead hang on a 20 mm edge, expressed as a percentage of bodyweight. It is the number every load in a strength cycle is built from.
+- how: After a rest day and a specific warm-up, do 4–8 sets of one 7-second hang, resting 2 minutes between sets. Start moderate and add load each set, aiming to reach your max within 8 sets. Keep the same grip (half crimp or four-finger open) for the whole test. If your fingers move, the set has failed — put your feet down. Retest with the same edge and grip before and after each training cycle.
+- load: Total load = bodyweight + added weight (or minus weight removed with a pulley). Score = total load ÷ bodyweight × 100. Lattice designed it for climbers who already hangboard regularly and climb around V5 / 7b+ or harder.
+- sources: https://latticetraining.com/app/uploads/2018/06/1528799872597_180503_Lattice-Testing-Training-Rung-Instructions.pdf, https://latticetraining.com/blog/open-or-half-crimp-for-performance-profiling-in-climbing
+
 #### Repeaters 10/5
 - id: `repeaters-10-5`
 - level: `intermediate`

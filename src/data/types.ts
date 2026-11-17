@@ -89,6 +89,7 @@ export interface Workout {
   name: string;
   level: Level;
   caution: boolean;
+  test: boolean;
   timer: WorkoutTimer;
   what: string;
   how: string;

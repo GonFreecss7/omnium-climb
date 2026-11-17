@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useAppState } from "../state/AppState";
 import Prose from "../components/Prose";
 import HangTimer from "../components/HangTimer";
+import FingerTestPanel from "../components/FingerTestPanel";
 import { levelRank, relevance } from "../domain/levels";
 import { usePersistentState } from "../hooks/usePersistentState";
 import type { Workout, WorkoutTimer } from "../data/types";
@@ -88,13 +89,24 @@ export default function StrengthView() {
             </div>
           </div>
         )}
-        <button
-          type="button"
-          className="secondary-button workout__start"
-          onClick={() => setRunning({ title: w.name, config: w.timer })}
-        >
-          {s.startTimer}
-        </button>
+        <div className="workout__buttons">
+          <button
+            type="button"
+            className="secondary-button workout__start"
+            onClick={() => setRunning({ title: w.name, config: w.timer })}
+          >
+            {s.startTimer}
+          </button>
+          {w.test && (
+            <button
+              type="button"
+              className="secondary-button workout__start"
+              onClick={() => document.getElementById("ftest-title")?.scrollIntoView({ behavior: "smooth", block: "start" })}
+            >
+              {t.fingerTest.logResult}
+            </button>
+          )}
+        </div>
       </li>
     );
   }
@@ -110,6 +122,8 @@ export default function StrengthView() {
       </section>
 
       <ul className="tcard-list workout-list">{guide.workouts.map(card)}</ul>
+
+      <FingerTestPanel />
 
       <section className="custom-timer">
         <h3 className="custom-timer__title">{s.customTitle}</h3>

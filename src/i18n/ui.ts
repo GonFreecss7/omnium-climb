@@ -263,6 +263,35 @@ export interface UiStrings {
     customHint: string;
     fields: Record<"prep" | "hang" | "rest" | "reps" | "sets" | "setRest", string>;
   };
+  fingerTest: {
+    title: string;
+    log: string;
+    empty: string;
+    ofBodyweight: string;
+    summary: (total: string, edge: number, grip: string, date: string) => string;
+    delta: (points: number) => string;
+    chartLabel: string;
+    loadsTitle: (bw: string) => string;
+    prescriptions: Record<"maxStrength" | "anaerobic", { name: string; dose: string }>;
+    bodyweightOnly: string;
+    pulley: (kg: string) => string;
+    loadsSource: string;
+    date: string;
+    bodyweight: string;
+    harness: string;
+    modes: Record<"add" | "remove", string>;
+    edge: string;
+    grip: string;
+    grips: Record<"half" | "open", string>;
+    preview: (total: string, pct: string) => string;
+    invalid: string;
+    cancel: string;
+    save: string;
+    history: (n: number) => string;
+    delete: string;
+    confirmDelete: string;
+    logResult: string;
+  };
   timer: {
     phases: Record<"prep" | "hang" | "rest" | "setRest" | "done", string>;
     start: string;
@@ -615,6 +644,38 @@ const en: UiStrings = {
     customTitle: "Custom timer",
     customHint: "Build your own interval: hang, rest, reps and sets. It's remembered on this device.",
     fields: { prep: "Get ready (s)", hang: "Hang (s)", rest: "Rest (s)", reps: "Reps", sets: "Sets", setRest: "Between sets (s)" },
+  },
+  fingerTest: {
+    title: "Your finger strength",
+    log: "Log a test",
+    empty: "Log your first test to see your score as a percentage of bodyweight and the training loads that come from it.",
+    ofBodyweight: "of bodyweight",
+    summary: (total, edge, grip, date) => `${total} total · ${edge} mm · ${grip} · ${date}`,
+    delta: (p) => `${p > 0 ? "+" : ""}${p} pts vs previous`,
+    chartLabel: "Finger strength over time, percent of bodyweight",
+    loadsTitle: (bw) => `Training loads at ${bw}`,
+    prescriptions: {
+      maxStrength: { name: "Max strength", dose: "6 × 10 s hang, 2 min rest" },
+      anaerobic: { name: "Repeaters", dose: "6 sets × 5 × 7/3, 2.5 min rest" },
+    },
+    bodyweightOnly: "Bodyweight",
+    pulley: (k) => `−${k} (pulley)`,
+    loadsSource: "Percentages of your max total load, from Lattice Training's test instructions:",
+    date: "Date",
+    bodyweight: "Bodyweight (kg)",
+    harness: "Harness load (kg)",
+    modes: { add: "Added", remove: "Removed" },
+    edge: "Edge (mm)",
+    grip: "Grip",
+    grips: { half: "Half crimp", open: "Open hand" },
+    preview: (total, p) => `Total load ${total} · ${p} of bodyweight`,
+    invalid: "Enter your bodyweight, the harness load and the edge size.",
+    cancel: "Cancel",
+    save: "Save test",
+    history: (n) => `All tests (${n})`,
+    delete: "Delete",
+    confirmDelete: "Tap again to delete",
+    logResult: "Log result",
   },
   timer: {
     phases: { prep: "Get ready", hang: "Hang", rest: "Rest", setRest: "Rest between sets", done: "Done" },
@@ -978,6 +1039,38 @@ const es: UiStrings = {
     customTitle: "Temporizador libre",
     customHint: "Arma tu propio intervalo: colgada, descanso, repeticiones y series. Queda guardado en este dispositivo.",
     fields: { prep: "Preparación (s)", hang: "Colgada (s)", rest: "Descanso (s)", reps: "Repeticiones", sets: "Series", setRest: "Entre series (s)" },
+  },
+  fingerTest: {
+    title: "Tu fuerza de dedos",
+    log: "Registrar test",
+    empty: "Registra tu primer test para ver tu resultado como porcentaje del peso corporal y las cargas de entrenamiento que salen de él.",
+    ofBodyweight: "del peso corporal",
+    summary: (total, edge, grip, date) => `${total} en total · ${edge} mm · ${grip} · ${date}`,
+    delta: (p) => `${p > 0 ? "+" : ""}${p} pts vs el anterior`,
+    chartLabel: "Fuerza de dedos en el tiempo, porcentaje del peso corporal",
+    loadsTitle: (bw) => `Cargas de entrenamiento a ${bw}`,
+    prescriptions: {
+      maxStrength: { name: "Fuerza máxima", dose: "6 × colgada de 10 s, 2 min de descanso" },
+      anaerobic: { name: "Repeaters", dose: "6 series × 5 × 7/3, 2,5 min de descanso" },
+    },
+    bodyweightOnly: "Peso corporal",
+    pulley: (k) => `−${k} (polea)`,
+    loadsSource: "Porcentajes de tu carga total máxima, según las instrucciones del test de Lattice Training:",
+    date: "Fecha",
+    bodyweight: "Peso corporal (kg)",
+    harness: "Carga en el arnés (kg)",
+    modes: { add: "Agregada", remove: "Quitada" },
+    edge: "Canto (mm)",
+    grip: "Agarre",
+    grips: { half: "Half crimp", open: "Mano abierta" },
+    preview: (total, p) => `Carga total ${total} · ${p} del peso corporal`,
+    invalid: "Ingresa tu peso corporal, la carga en el arnés y el tamaño del canto.",
+    cancel: "Cancelar",
+    save: "Guardar test",
+    history: (n) => `Todos los tests (${n})`,
+    delete: "Eliminar",
+    confirmDelete: "Toca de nuevo para eliminar",
+    logResult: "Registrar resultado",
   },
   timer: {
     phases: { prep: "Prepárate", hang: "Cuelga", rest: "Descansa", setRest: "Pausa entre series", done: "Terminado" },

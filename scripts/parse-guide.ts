@@ -127,6 +127,8 @@ interface Workout {
   name: string;
   level: Level;
   caution: boolean;
+  /** A self-assessment rather than a training protocol; the app offers to log its result. */
+  test: boolean;
   timer: WorkoutTimer;
   what: string;
   how: string;
@@ -931,6 +933,7 @@ function parseWorkouts(
       name: entry.name!,
       level: entry.level as Level,
       caution: entry.caution === true,
+      test: entry.test === true,
       timer: parseTimer(entry.timerRaw, entryContext),
       what: entry.what!.trim(),
       how: entry.how!.trim(),
@@ -966,6 +969,9 @@ function parseWorkouts(
         else if (key === "caution") {
           if (value !== "true" && value !== "false") fail(entryContext, `field \`caution\` must be true or false`);
           entry.caution = value === "true";
+        } else if (key === "test") {
+          if (value !== "true" && value !== "false") fail(entryContext, `field \`test\` must be true or false`);
+          entry.test = value === "true";
         } else if (key === "timer") entry.timerRaw = value.replace(/`/g, "").trim();
         else if (key === "sources") entry.sourcesRaw = value;
         else if (key === "what" || key === "how" || key === "load") {

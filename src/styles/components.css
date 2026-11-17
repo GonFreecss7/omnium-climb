@@ -3207,3 +3207,245 @@ ol.prose-list li::marker {
 .hang-timer__meta dd {
   margin: 0;
 }
+
+/* ---------- finger strength test ---------- */
+
+.workout__buttons {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.workout__buttons .workout__start {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.ftest {
+  padding: var(--space-4);
+  margin-bottom: var(--space-5);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  scroll-margin-top: 80px;
+}
+
+#ftest-title {
+  scroll-margin-top: 80px;
+}
+
+.ftest__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.ftest__add {
+  margin: 0;
+  min-height: 40px;
+  padding: 0 var(--space-3);
+}
+
+.ftest__score {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-2);
+}
+
+.ftest__pct {
+  font-family: var(--font-display);
+  font-stretch: var(--stretch-display);
+  font-weight: 850;
+  font-size: 64px;
+  line-height: 0.9;
+  font-variant-numeric: tabular-nums;
+}
+
+.ftest__unit {
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.ftest__meta {
+  color: var(--text-muted);
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+
+.ftest__meta strong {
+  color: var(--text);
+}
+
+.ftest__loads ul {
+  display: flex;
+  flex-direction: column;
+  margin-top: var(--space-2);
+  border-top: 1px solid var(--border);
+}
+
+.ftest__loads li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.ftest__loads li > span:first-child {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ftest__dose {
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.ftest__load {
+  font-family: var(--font-display);
+  font-stretch: var(--stretch-title);
+  font-weight: 780;
+  font-size: 22px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.ftest__source {
+  margin-top: var(--space-2);
+  color: var(--text-muted);
+  font-size: 12.5px;
+}
+
+.ftest__source a {
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.ftest__form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+}
+
+.ftest__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  min-width: 0;
+}
+
+.ftest__field > .mono-label {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.ftest__field--wide {
+  grid-column: 1 / -1;
+}
+
+.ftest__field .segmented {
+  display: flex;
+}
+
+.ftest__field .segmented__option {
+  flex: 1;
+  min-height: 44px;
+}
+
+.ftest__harness {
+  display: grid;
+  grid-template-columns: 1fr 110px;
+  gap: var(--space-2);
+}
+
+.text-input {
+  min-height: 48px;
+  padding: var(--space-2) var(--space-3);
+  background: var(--surface-2);
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  width: 100%;
+  min-width: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  font-variant-numeric: tabular-nums;
+}
+
+.text-input:focus-visible {
+  outline: none;
+  border-color: var(--border-strong);
+}
+
+.ftest__preview {
+  font-weight: 650;
+  font-size: 14px;
+}
+
+.ftest__actions {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: var(--space-2);
+}
+
+.ftest__actions .secondary-button {
+  margin: 0;
+}
+
+.ftest__history summary {
+  cursor: pointer;
+  font-weight: 650;
+  font-size: 14px;
+  padding: var(--space-2) 0;
+}
+
+.ftest__history li {
+  display: grid;
+  grid-template-columns: 64px 1fr auto;
+  grid-template-areas: "date val del" ". meta del";
+  row-gap: 2px;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) 0;
+  border-top: 1px solid var(--border);
+  font-size: 13.5px;
+  font-variant-numeric: tabular-nums;
+}
+
+.ftest__hdate {
+  grid-area: date;
+}
+
+.ftest__hval {
+  grid-area: val;
+  font-weight: 750;
+}
+
+.ftest__del {
+  grid-area: del;
+}
+
+.ftest__hmeta {
+  grid-area: meta;
+  color: var(--text-muted);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ftest__del--confirm {
+  color: var(--lvl-elite);
+}

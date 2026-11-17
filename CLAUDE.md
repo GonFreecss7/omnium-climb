@@ -115,7 +115,7 @@ unknown level value. Silent skipping hides content loss.
   and subset to Latin.
 - `localStorage` keys are namespaced `cg.*` (`cg.lang`, `cg.theme`, `cg.favorites`, `cg.log`,
   `cg.notes`, `cg.profile`, `cg.onboardingSkipped`, `cg.levelUpDismissed`, `cg.circuits`,
-  `cg.levelColors`, `cg.sessionDraft`, `cg.timerCustom`). Settings → Backup exports/restores all of them as one JSON
+  `cg.levelColors`, `cg.sessionDraft`, `cg.timerCustom`, `cg.fingerTests`). Settings → Backup exports/restores all of them as one JSON
   file (`src/domain/backup.ts`); add any new data key to its `KEYS` list.
 
 ## Design language
