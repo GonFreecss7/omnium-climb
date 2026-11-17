@@ -5,6 +5,7 @@ import Modal from "./Modal";
 import Icon from "./Icon";
 import { homeGym } from "../domain/circuits";
 import { LEVELS } from "../domain/levels";
+import BackupSection from "./BackupSection";
 
 interface Props {
   onClose: () => void;
@@ -112,6 +113,8 @@ export default function SettingsSheet({ onClose, onOpenCircuits, onOpenLevelColo
               <span className="settings__profile-action">{t.settings.edit}</span>
             </button>
           </div>
+
+          <BackupSection />
         </div>
       </div>
     </Modal>

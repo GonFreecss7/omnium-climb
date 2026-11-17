@@ -10,6 +10,7 @@ import type { ClimberProfile, LevelResult } from "../domain/levels";
 import type { Discipline, GradeScale } from "../domain/grades";
 import { EMPTY_CIRCUITS, inkFor, isHex, parseCircuits } from "../domain/circuits";
 import type { CircuitsState, LevelColors } from "../domain/circuits";
+import type { ClimbEntry } from "../domain/sessions";
 import { LEVELS } from "../domain/levels";
 
 export type Theme = "dark" | "light";
@@ -34,6 +35,8 @@ export interface SessionLogEntry {
   gym?: { name: string; id?: string; home: boolean; directoryId?: string };
   /** Set when the session was on a training board rather than the gym's walls. */
   board?: { id: string; name: string; angle: number };
+  /** Every climb tried in the session (absent on entries logged before per-climb logging). */
+  climbs?: ClimbEntry[];
 }
 
 const LANG_KEY = "cg.lang";

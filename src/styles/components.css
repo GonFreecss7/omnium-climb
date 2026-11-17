@@ -2485,3 +2485,497 @@ ol.prose-list li::marker {
     font-size: 10px;
   }
 }
+
+/* ---------- backup ---------- */
+
+.settings__hint {
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.backup__actions {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.backup__actions .secondary-button,
+.backup__actions .button-primary {
+  flex: 1;
+  margin-bottom: 0;
+  font-size: 14.5px;
+  padding: 0 var(--space-3);
+}
+
+.backup__confirm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  background: var(--caution-dim);
+  border-radius: var(--radius-md);
+}
+
+.backup__confirm-title {
+  font-weight: 700;
+}
+
+/* ---------- per-climb session logging ---------- */
+
+.session-log__draft-note,
+.session-log__hint {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.session-log__discard {
+  align-self: center;
+  color: var(--caution);
+}
+
+.climbs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  margin: 0 calc(-1 * var(--space-2));
+  background: var(--bg);
+  border-radius: var(--radius-md);
+}
+
+.climbs__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.climbs__title {
+  font-family: var(--font-display);
+  font-stretch: var(--stretch-title);
+  font-weight: 760;
+  font-size: 19px;
+}
+
+.climbs__summary {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.climb-list {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.climb-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 46px;
+  padding: 0 var(--space-1) 0 var(--space-3);
+  border-bottom: 1px solid var(--border);
+}
+
+.climb-row:last-child {
+  border-bottom: none;
+}
+
+.climb-row__dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid var(--text-faint);
+  flex-shrink: 0;
+}
+
+.climb-row__grade {
+  font-family: var(--font-display);
+  font-stretch: var(--stretch-title);
+  font-weight: 760;
+  font-size: 18px;
+  font-variant-numeric: tabular-nums;
+  min-width: 52px;
+}
+
+.climb-row__result {
+  font-size: 12.5px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: var(--surface-2);
+}
+
+.climb-row__result--flash {
+  background: var(--hazard);
+  color: var(--hazard-ink);
+}
+
+.climb-row__result--send {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.climb-row__result--attempt {
+  background: transparent;
+  box-shadow: inset 0 0 0 1px var(--border-strong);
+  color: var(--text-muted);
+}
+
+.climb-row__attempts,
+.climb-row__board {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.climb-row__remove {
+  margin-left: auto;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  color: var(--text-faint);
+  flex-shrink: 0;
+}
+
+.composer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.composer__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  align-items: center;
+}
+
+.composer__results {
+  flex: 1 1 220px;
+  display: flex;
+}
+
+.composer__results .segmented__option {
+  flex: 1;
+  padding: 0 var(--space-2);
+}
+
+.composer__add {
+  margin-bottom: 0;
+}
+
+.composer__add:disabled {
+  opacity: 0.45;
+}
+
+.stepper {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  background: var(--surface-2);
+  border-radius: var(--radius-sm);
+}
+
+.stepper button {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.stepper button:hover {
+  background: var(--surface-3);
+}
+
+.stepper > span {
+  min-width: 84px;
+  text-align: center;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.stepper__unit {
+  font-weight: 500;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.session-log__entry-summary {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.session-log__entry-climbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: var(--space-2) 0;
+}
+
+.mini-climb {
+  display: inline-flex;
+  align-items: center;
+  height: 22px;
+  padding: 0 7px;
+  border-radius: 6px;
+  border: 2px solid var(--border-strong);
+  font-size: 12px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.mini-climb--flash {
+  background: var(--hazard);
+  color: var(--hazard-ink);
+}
+
+.mini-climb--send {
+  background: var(--surface-2);
+}
+
+.mini-climb--attempt {
+  border-style: dashed;
+  color: var(--text-muted);
+}
+
+/* ---------- progress analytics ---------- */
+
+.progress__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.progress__head .stats-panel__heading {
+  margin-bottom: 0;
+}
+
+.progress__ranges .segmented__option {
+  min-height: 32px;
+  padding: 0 var(--space-3);
+  font-size: 13px;
+}
+
+.stats-panel__of {
+  font-size: 18px;
+  color: var(--text-muted);
+  font-weight: 700;
+}
+
+.stats-panel__sub {
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+
+.progress__section {
+  padding-top: var(--space-4);
+  margin-top: var(--space-4);
+  border-top: 1px solid var(--border);
+}
+
+.progress__section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.progress__title {
+  font-size: 17px;
+  margin-bottom: var(--space-3);
+}
+
+.progress__section-head .progress__title {
+  margin-bottom: 0;
+}
+
+.progress__section-head + .pyramid,
+.progress__section-head + .progress__empty {
+  margin-top: var(--space-3);
+}
+
+.progress__empty {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.pyramid {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pyramid__row {
+  display: grid;
+  grid-template-columns: 44px 1fr auto;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.pyramid__grade {
+  font-family: var(--font-display);
+  font-stretch: var(--stretch-title);
+  font-weight: 760;
+  font-size: 15px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.pyramid__track {
+  height: 18px;
+  display: flex;
+}
+
+.pyramid__bar {
+  height: 100%;
+  min-width: 4px;
+  background: var(--text);
+  border-radius: 0 4px 4px 0;
+}
+
+.pyramid__count {
+  font-size: 13px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  min-width: 2ch;
+}
+
+.pyramid__flash {
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.timeline {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.timeline__grid {
+  stroke: var(--border);
+  stroke-width: 1;
+}
+
+.timeline__axis {
+  fill: var(--text-muted);
+  font-size: 10px;
+  font-family: var(--font-body);
+  font-weight: 600;
+}
+
+.timeline__line {
+  fill: none;
+  stroke: var(--text);
+  stroke-width: 2;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.timeline__hit {
+  fill: transparent;
+  cursor: default;
+}
+
+.timeline__dot {
+  fill: var(--text);
+  stroke: var(--surface);
+  stroke-width: 2;
+  pointer-events: none;
+}
+
+.timeline__pt:hover .timeline__dot {
+  r: 5.5;
+}
+
+.weeks {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 6px;
+  height: 96px;
+  align-items: end;
+}
+
+.weeks__col {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: stretch;
+}
+
+.weeks__value {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  min-height: 14px;
+  font-variant-numeric: tabular-nums;
+}
+
+.weeks__bar {
+  min-height: 2px;
+  background: var(--text);
+  border-radius: 4px 4px 0 0;
+}
+
+.weeks__axis {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.progress__breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.progress__line {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.progress__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.progress__list .mono-label {
+  width: 100%;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.progress__item {
+  padding: 3px 9px;
+  border-radius: 6px;
+  background: var(--surface-2);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.progress__count {
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}

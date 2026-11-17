@@ -79,6 +79,21 @@ export interface UiStrings {
     boardOther: string;
     boardOtherName: string;
     angleLabel: string;
+    climbsHeading: (rope: boolean) => string;
+    addClimb: (rope: boolean) => string;
+    results: Record<"flash" | "send" | "attempt", string>;
+    resultLabel: string;
+    attemptsLabel: string;
+    attemptsUnit: (n: number) => string;
+    noClimbs: string;
+    saveSession: string;
+    discard: string;
+    discardConfirm: string;
+    draftNote: string;
+    wrapUpHeading: string;
+    removeClimb: string;
+    summary: (climbs: number, sent: number) => string;
+    gradeLabel: string;
     elbowLabel: string;
     elbowBetter: string;
     elbowSame: string;
@@ -98,6 +113,19 @@ export interface UiStrings {
     mostUsedDrill: string;
     recentElbow: string;
     noData: string;
+    ranges: Record<"30" | "90" | "all", string>;
+    sentOfTried: string;
+    flashRate: string;
+    attemptsPerSend: string;
+    pyramid: string;
+    pyramidEmpty: string;
+    flashes: (n: number) => string;
+    timeline: string;
+    weekly: string;
+    weekTooltip: (start: string, climbs: number, sends: number) => string;
+    wallVsBoard: (wall: number, board: number) => string;
+    topBoards: string;
+    topGyms: string;
   };
   notes: {
     label: string;
@@ -223,6 +251,20 @@ export interface UiStrings {
     noResults: string;
     mapAria: string;
     you: string;
+  };
+  backup: {
+    title: string;
+    hint: (sessions: number) => string;
+    export: string;
+    restore: string;
+    exported: string;
+    confirmTitle: string;
+    confirmBody: (file: string) => string;
+    confirm: string;
+    cancel: string;
+    errorInvalid: string;
+    errorNewer: string;
+    errorStorage: string;
   };
   levelColorsEditor: {
     title: string;
@@ -350,6 +392,21 @@ const en: UiStrings = {
     boardOther: "Other board",
     boardOtherName: "Board name",
     angleLabel: "Angle",
+    climbsHeading: (rope) => (rope ? "Routes this session" : "Problems this session"),
+    addClimb: (rope) => (rope ? "Add route" : "Add problem"),
+    results: { flash: "Flash", send: "Sent", attempt: "Project" },
+    resultLabel: "Result",
+    attemptsLabel: "Attempts",
+    attemptsUnit: (n) => (n === 1 ? "attempt" : "attempts"),
+    noClimbs: "Add at least one problem or route to save the session.",
+    saveSession: "Save session",
+    discard: "Discard session",
+    discardConfirm: "Tap again to discard",
+    draftNote: "Saved on this device as you go — close the app and pick up where you left off.",
+    wrapUpHeading: "Wrap-up",
+    removeClimb: "Remove",
+    summary: (c, s) => `${c} climbed · ${s} sent`,
+    gradeLabel: "Grade",
     elbowLabel: "Niggles vs. last session",
     elbowBetter: "Better",
     elbowSame: "Same",
@@ -369,6 +426,19 @@ const en: UiStrings = {
     mostUsedDrill: "Most-used drill",
     recentElbow: "Recent niggles",
     noData: "No grade logged yet",
+    ranges: { "30": "30 days", "90": "90 days", all: "All" },
+    sentOfTried: "Sent / tried",
+    flashRate: "Flash rate",
+    attemptsPerSend: "Attempts per send",
+    pyramid: "Send pyramid",
+    pyramidEmpty: "Log sends to build your pyramid.",
+    flashes: (n) => `${n} flash`,
+    timeline: "Hardest send per session",
+    weekly: "Climbs per week",
+    weekTooltip: (w, c, s) => `Week of ${w}: ${c} climbed, ${s} sent`,
+    wallVsBoard: (w, b) => `${w} on walls · ${b} on boards`,
+    topBoards: "Boards",
+    topGyms: "Gyms",
   },
   notes: {
     label: "Personal note",
@@ -505,6 +575,21 @@ const en: UiStrings = {
     mapAria: "Map of climbing gyms",
     you: "You",
   },
+  backup: {
+    title: "Backup",
+    hint: (n) =>
+      `Your data lives only on this device (${n} session${n === 1 ? "" : "s"} logged). Export a backup now and then, and restore it on a new phone.`,
+    export: "Export backup",
+    restore: "Restore from file",
+    exported: "Backup downloaded.",
+    confirmTitle: "Replace everything on this device?",
+    confirmBody: (f) => `Profile, gyms, sessions and notes will be replaced with the contents of ${f}. This can't be undone.`,
+    confirm: "Replace and restore",
+    cancel: "Cancel",
+    errorInvalid: "That file isn't an Omnium Climb backup.",
+    errorNewer: "That backup comes from a newer version of the app. Update the app and try again.",
+    errorStorage: "The device didn't allow saving the data. Free up space and try again.",
+  },
   levelColorsEditor: {
     title: "Level colours",
     intro: "Recolour the four level tags to match whatever reads best for you.",
@@ -640,6 +725,21 @@ const es: UiStrings = {
     boardOther: "Otra tabla",
     boardOtherName: "Nombre de la tabla",
     angleLabel: "Inclinación",
+    climbsHeading: (rope) => (rope ? "Vías de la sesión" : "Bloques de la sesión"),
+    addClimb: (rope) => (rope ? "Agregar vía" : "Agregar bloque"),
+    results: { flash: "Flash", send: "Encadenado", attempt: "Proyecto" },
+    resultLabel: "Resultado",
+    attemptsLabel: "Intentos",
+    attemptsUnit: (n) => (n === 1 ? "intento" : "intentos"),
+    noClimbs: "Agrega al menos un bloque o vía para guardar la sesión.",
+    saveSession: "Guardar sesión",
+    discard: "Descartar sesión",
+    discardConfirm: "Toca otra vez para descartar",
+    draftNote: "Se guarda en el dispositivo mientras avanzas: puedes cerrar la app y seguir después.",
+    wrapUpHeading: "Cierre",
+    removeClimb: "Quitar",
+    summary: (c, s) => `${c} intentados · ${s} encadenados`,
+    gradeLabel: "Grado",
     elbowLabel: "Molestias frente a la última sesión",
     elbowBetter: "Mejor",
     elbowSame: "Igual",
@@ -659,6 +759,19 @@ const es: UiStrings = {
     mostUsedDrill: "Ejercicio más usado",
     recentElbow: "Molestias recientes",
     noData: "Aún sin grados registrados",
+    ranges: { "30": "30 días", "90": "90 días", all: "Todo" },
+    sentOfTried: "Encadenados / intentados",
+    flashRate: "Tasa de flash",
+    attemptsPerSend: "Intentos por encadenado",
+    pyramid: "Pirámide de encadenados",
+    pyramidEmpty: "Registra encadenados para armar tu pirámide.",
+    flashes: (n) => `${n} flash`,
+    timeline: "Grado máximo por sesión",
+    weekly: "Escaladas por semana",
+    weekTooltip: (w, c, s) => `Semana del ${w}: ${c} intentados, ${s} encadenados`,
+    wallVsBoard: (w, b) => `${w} en muros · ${b} en tablas`,
+    topBoards: "Tablas",
+    topGyms: "Gimnasios",
   },
   notes: {
     label: "Nota personal",
@@ -794,6 +907,21 @@ const es: UiStrings = {
     noResults: "Ningún gimnasio coincide con tu búsqueda.",
     mapAria: "Mapa de gimnasios de escalada",
     you: "Tú",
+  },
+  backup: {
+    title: "Respaldo",
+    hint: (n) =>
+      `Tus datos viven solo en este dispositivo (${n} sesi${n === 1 ? "ón registrada" : "ones registradas"}). Exporta un respaldo de vez en cuando y restáuralo en un teléfono nuevo.`,
+    export: "Exportar respaldo",
+    restore: "Restaurar desde archivo",
+    exported: "Respaldo descargado.",
+    confirmTitle: "¿Reemplazar todo en este dispositivo?",
+    confirmBody: (f) => `El perfil, los gimnasios, las sesiones y las notas se reemplazarán con el contenido de ${f}. No se puede deshacer.`,
+    confirm: "Reemplazar y restaurar",
+    cancel: "Cancelar",
+    errorInvalid: "Ese archivo no es un respaldo de Omnium Climb.",
+    errorNewer: "Ese respaldo viene de una versión más nueva de la app. Actualiza la app e inténtalo de nuevo.",
+    errorStorage: "El dispositivo no permitió guardar los datos. Libera espacio e inténtalo de nuevo.",
   },
   levelColorsEditor: {
     title: "Colores de niveles",

@@ -115,7 +115,8 @@ unknown level value. Silent skipping hides content loss.
   and subset to Latin.
 - `localStorage` keys are namespaced `cg.*` (`cg.lang`, `cg.theme`, `cg.favorites`, `cg.log`,
   `cg.notes`, `cg.profile`, `cg.onboardingSkipped`, `cg.levelUpDismissed`, `cg.circuits`,
-  `cg.levelColors`).
+  `cg.levelColors`, `cg.sessionDraft`). Settings → Backup exports/restores all of them as one JSON
+  file (`src/domain/backup.ts`); add any new data key to its `KEYS` list.
 
 ## Design language
 
@@ -165,7 +166,11 @@ unknown level value. Silent skipping hides content loss.
   Every gym uses different colours, so circuits are always user-defined; the 7-colour template
   is only a starting point. Set up in onboarding ("home gym" step) or Settings.
 - Level tag colours are user-overridable (`cg.levelColors`), applied as inline `--lvl-*` vars.
-- Session log entries store `discipline`, `gradeIndex`, `gradeScale`, plus `gym` (name, saved id,
+- Sessions are logged per climb (`climbs: ClimbEntry[]` — grade or circuit, flash / sent / project,
+  attempts, optional board + angle); the in-progress session is a persisted draft. Session-level
+  `hardest` / `gradeIndex` are derived from the best sent climb. Older entries without `climbs`
+  read as one sent climb (`entryClimbs`). Progress analytics live in `src/domain/analytics.ts`.
+- Session log entries also store `discipline`, `gradeIndex`, `gradeScale`, plus `gym` (name, saved id,
   home flag) and a snapshot of the `circuit` picked, so editing a circuit later never rewrites
   history; legacy free-text entries are
   parsed best-effort. When recent entries beat the profile's grade, the app offers to update it.
