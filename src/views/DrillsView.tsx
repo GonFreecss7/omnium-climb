@@ -7,7 +7,7 @@ import DrillCard from "../components/DrillCard";
 import WarmupGenerator from "../components/WarmupGenerator";
 import type { Drill } from "../data/types";
 
-export default function DrillsView() {
+export default function DrillsView({ embedded = false }: { embedded?: boolean }) {
   const { guide, t, scrollTarget, clearScrollTarget, favorites, expandRequest, clearExpandRequest } = useAppState();
   useScrollToTarget(scrollTarget, clearScrollTarget);
 
@@ -76,7 +76,7 @@ export default function DrillsView() {
   const totalVisible = visibleCategories.reduce((n, g) => n + g.drills.length, 0);
 
   return (
-    <div className="view">
+    <div className={embedded ? "train__panel" : "view"}>
       {section && (
         <div id={`section-${section.number}`}>
           <h1 className="view__heading">{section.title}</h1>

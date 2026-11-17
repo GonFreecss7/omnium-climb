@@ -159,7 +159,7 @@ function tabForSection(guide: Guide, sectionNumber: number): Tab | null {
   const entry = guide.sectionIndex[String(sectionNumber)];
   if (!entry) return null;
   if (entry.kind === "techniqueCategory") return "techniques";
-  if (entry.kind === "drillCategory") return "drills";
+  if (entry.kind === "drillCategory" || entry.kind === "workouts") return "drills";
   if (entry.kind === "prose") return entry.fileId === "session" ? "session" : "guide";
   return null;
 }

@@ -252,6 +252,32 @@ export interface UiStrings {
     mapAria: string;
     you: string;
   };
+  strength: {
+    modes: Record<"drills" | "strength", string>;
+    startTimer: string;
+    how: string;
+    load: string;
+    sources: string;
+    protocol: (t: { hang: number; rest: number; reps: number; sets: number; setRest: number }) => string;
+    customTitle: string;
+    customHint: string;
+    fields: Record<"prep" | "hang" | "rest" | "reps" | "sets" | "setRest", string>;
+  };
+  timer: {
+    phases: Record<"prep" | "hang" | "rest" | "setRest" | "done", string>;
+    start: string;
+    pause: string;
+    resume: string;
+    again: string;
+    skip: string;
+    reset: string;
+    close: string;
+    set: string;
+    rep: string;
+    left: string;
+    soundOn: string;
+    soundOff: string;
+  };
   backup: {
     title: string;
     hint: (sessions: number) => string;
@@ -322,7 +348,7 @@ const en: UiStrings = {
   nav: {
     guide: "Guide",
     techniques: "Techniques",
-    drills: "Drills",
+    drills: "Train",
     progressions: "Progression",
     session: "Session",
     gyms: "Gyms",
@@ -575,6 +601,36 @@ const en: UiStrings = {
     mapAria: "Map of climbing gyms",
     you: "You",
   },
+  strength: {
+    modes: { drills: "Technique drills", strength: "Finger strength" },
+    startTimer: "Start timer",
+    how: "How",
+    load: "Load",
+    sources: "Sources",
+    protocol: (p) => {
+      const minutes = p.setRest >= 60 ? `${Math.round((p.setRest / 60) * 10) / 10} min` : `${p.setRest} s`;
+      const rep = p.reps > 1 ? `${p.reps} × ${p.hang} s on${p.rest ? ` / ${p.rest} s off` : ""}` : `${p.hang} s hang`;
+      return `${rep} · ${p.sets} set${p.sets === 1 ? "" : "s"}${p.sets > 1 ? ` · ${minutes} between sets` : ""}`;
+    },
+    customTitle: "Custom timer",
+    customHint: "Build your own interval: hang, rest, reps and sets. It's remembered on this device.",
+    fields: { prep: "Get ready (s)", hang: "Hang (s)", rest: "Rest (s)", reps: "Reps", sets: "Sets", setRest: "Between sets (s)" },
+  },
+  timer: {
+    phases: { prep: "Get ready", hang: "Hang", rest: "Rest", setRest: "Rest between sets", done: "Done" },
+    start: "Start",
+    pause: "Pause",
+    resume: "Resume",
+    again: "Again",
+    skip: "Skip",
+    reset: "Reset",
+    close: "Close timer",
+    set: "Set",
+    rep: "Rep",
+    left: "Left",
+    soundOn: "Sound on",
+    soundOff: "Sound off",
+  },
   backup: {
     title: "Backup",
     hint: (n) =>
@@ -655,7 +711,7 @@ const es: UiStrings = {
   nav: {
     guide: "Guía",
     techniques: "Técnicas",
-    drills: "Ejercicios",
+    drills: "Entrenar",
     progressions: "Progresión",
     session: "Sesión",
     gyms: "Gimnasios",
@@ -907,6 +963,36 @@ const es: UiStrings = {
     noResults: "Ningún gimnasio coincide con tu búsqueda.",
     mapAria: "Mapa de gimnasios de escalada",
     you: "Tú",
+  },
+  strength: {
+    modes: { drills: "Ejercicios de técnica", strength: "Fuerza de dedos" },
+    startTimer: "Iniciar temporizador",
+    how: "Cómo",
+    load: "Carga",
+    sources: "Fuentes",
+    protocol: (p) => {
+      const minutes = p.setRest >= 60 ? `${Math.round((p.setRest / 60) * 10) / 10} min` : `${p.setRest} s`;
+      const rep = p.reps > 1 ? `${p.reps} × ${p.hang} s colgado${p.rest ? ` / ${p.rest} s descanso` : ""}` : `colgada de ${p.hang} s`;
+      return `${rep} · ${p.sets} serie${p.sets === 1 ? "" : "s"}${p.sets > 1 ? ` · ${minutes} entre series` : ""}`;
+    },
+    customTitle: "Temporizador libre",
+    customHint: "Arma tu propio intervalo: colgada, descanso, repeticiones y series. Queda guardado en este dispositivo.",
+    fields: { prep: "Preparación (s)", hang: "Colgada (s)", rest: "Descanso (s)", reps: "Repeticiones", sets: "Series", setRest: "Entre series (s)" },
+  },
+  timer: {
+    phases: { prep: "Prepárate", hang: "Cuelga", rest: "Descansa", setRest: "Pausa entre series", done: "Terminado" },
+    start: "Empezar",
+    pause: "Pausa",
+    resume: "Seguir",
+    again: "Otra vez",
+    skip: "Saltar",
+    reset: "Reiniciar",
+    close: "Cerrar temporizador",
+    set: "Serie",
+    rep: "Rep.",
+    left: "Restante",
+    soundOn: "Sonido activado",
+    soundOff: "Sonido desactivado",
   },
   backup: {
     title: "Respaldo",

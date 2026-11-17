@@ -2979,3 +2979,231 @@ ol.prose-list li::marker {
   color: var(--text-muted);
   font-variant-numeric: tabular-nums;
 }
+
+/* ---------- train tab: strength & timer ---------- */
+
+.train__switch {
+  display: flex;
+  margin-bottom: var(--space-5);
+}
+
+.train__switch .segmented__option {
+  flex: 1;
+  min-height: 42px;
+}
+
+.strength {
+  margin-top: 0 !important;
+}
+
+.workout-list {
+  margin-bottom: var(--space-6);
+}
+
+.workout__protocol {
+  margin-top: var(--space-2);
+  font-size: 14px;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+}
+
+.workout__start {
+  margin: var(--space-3) 0 0;
+  min-height: 44px;
+}
+
+.workout__sources {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-1);
+}
+
+.workout__sources a {
+  color: var(--text);
+  font-size: 13.5px;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 3px;
+}
+
+.custom-timer {
+  padding: var(--space-4);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.custom-timer__title {
+  font-stretch: var(--stretch-display);
+  font-weight: 780;
+  font-size: 24px;
+}
+
+.custom-timer__hint {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.custom-timer__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+}
+
+.custom-timer__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.custom-timer__field .mono-label {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.custom-timer__field .stepper {
+  justify-content: space-between;
+}
+
+.custom-timer__field .stepper > span {
+  min-width: 48px;
+}
+
+.hang-timer {
+  max-height: 100dvh;
+  height: min(100dvh, 760px);
+  transition: background var(--duration) var(--ease);
+}
+
+.hang-timer__body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  text-align: center;
+}
+
+.hang-timer__phase {
+  font-family: var(--font-display);
+  font-stretch: var(--stretch-display);
+  font-weight: 800;
+  font-size: 34px;
+  line-height: 1;
+}
+
+.hang-timer__count {
+  font-family: var(--font-display);
+  font-stretch: var(--stretch-display);
+  font-weight: 850;
+  font-size: clamp(120px, 42vw, 200px);
+  line-height: 0.9;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+.hang-timer__bar {
+  width: 100%;
+  max-width: 420px;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--surface-2);
+  overflow: hidden;
+}
+
+.hang-timer__bar span {
+  display: block;
+  height: 100%;
+  background: currentColor;
+}
+
+.hang-timer__meta {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  width: 100%;
+  max-width: 420px;
+}
+
+.hang-timer__meta dt {
+  font-size: 12.5px;
+  font-weight: 600;
+  opacity: 0.7;
+}
+
+.hang-timer__meta dd {
+  font-family: var(--font-display);
+  font-stretch: var(--stretch-title);
+  font-weight: 780;
+  font-size: 24px;
+  font-variant-numeric: tabular-nums;
+}
+
+.hang-timer__controls {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr 1fr;
+  gap: var(--space-2);
+  width: 100%;
+  max-width: 460px;
+}
+
+.hang-timer__controls .secondary-button {
+  margin-bottom: 0;
+}
+
+.hang-timer__main {
+  min-height: 56px;
+  font-size: 17px;
+}
+
+.hang-timer__sound {
+  align-self: center;
+}
+
+/* The hang phase floods the sheet so it reads from across the room. */
+.hang-timer--hang {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.hang-timer--hang .modal__close,
+.hang-timer--hang .secondary-button {
+  background: color-mix(in srgb, var(--accent-ink) 12%, transparent);
+  color: var(--accent-ink);
+}
+
+.hang-timer--hang .button-primary {
+  background: var(--accent-ink);
+  color: var(--accent);
+}
+
+.hang-timer--hang .hang-timer__bar {
+  background: color-mix(in srgb, var(--accent-ink) 15%, transparent);
+}
+
+.hang-timer--hang .filters__clear {
+  color: var(--accent-ink);
+}
+
+.hang-timer--done .hang-timer__count {
+  color: var(--lvl-beginner);
+}
+
+.train__panel {
+  display: block;
+}
+
+.hang-timer__meta > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hang-timer__meta dd {
+  margin: 0;
+}

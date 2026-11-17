@@ -107,6 +107,11 @@
       "kind": "prose",
       "title": "Seguimiento del Progreso",
       "fileId": "session"
+    },
+    "18": {
+      "number": 18,
+      "kind": "workouts",
+      "title": "Entrenamiento de fuerza de dedos"
     }
   },
   "prose": [
@@ -3417,6 +3422,116 @@
       ],
       "drillIds": [
         "two-solutions"
+      ]
+    }
+  ],
+  "workoutSection": {
+    "number": 18,
+    "title": "Entrenamiento de fuerza de dedos",
+    "intro": "Escalar ya entrena los dedos, y durante mucho tiempo es el mejor entrenamiento de dedos que existe. Los protocolos de hangboard agregan una carga medible y controlable una vez que esa base existe. El tejido conectivo se adapta mucho más lento que el músculo (§1), así que todos estos protocolos asumen un calentamiento completo y se detienen en cuanto algo duele (§2).\n\n:::level beginner\n**Escala más antes de usar el hangboard.** Lattice Training recomienda al menos 6–12 meses de escalada constante antes de empezar con trabajo de hangboard suave. Hasta entonces, escalar en presas variadas —y los ejercicios del §13— es el entrenamiento de dedos.\n:::\n\n**Reglas básicas para todos los protocolos**\n\n- Calienta primero: movimiento general y luego colgadas progresivamente más exigentes en un canto grande antes de las series de trabajo.\n- Usa mano abierta o half crimp. El full crimp es el agarre de mayor estrés para los dedos (§9) y queda fuera del trabajo de hangboard.\n- Deja al menos 48 horas entre sesiones de hangboard, sin otro entrenamiento de dedos intenso esos días.\n- Detén la serie ante cualquier dolor agudo o en un solo lado de un dedo. Ajusta la carga, nunca el descanso."
+  },
+  "workouts": [
+    {
+      "id": "repeaters-10-5",
+      "name": "Repeaters 10/5",
+      "level": "intermediate",
+      "caution": true,
+      "timer": {
+        "prep": 10,
+        "hang": 10,
+        "rest": 5,
+        "reps": 6,
+        "sets": 3,
+        "setRest": 180
+      },
+      "what": "Series de seis colgadas de 10 segundos con 5 segundos de descanso: el repeater de nivel inicial de los hermanos Anderson, más suave que el 7/3.",
+      "how": "Elige un canto cómodo que puedas sostener en todas las repeticiones de la serie. Descansa 3 minutos entre series; una serie por agarre es el volumen inicial.",
+      "load": "Peso corporal o menos: un hangboard normal no permite bajar del peso corporal, así que quita peso (pies en una silla o una polea) hasta que la última repetición sea dura pero limpia.",
+      "sources": [
+        "https://rockclimberstrainingmanual.com/2012/08/30/hangboard-faq-0-what-is-a-basic-hangboard-routine/",
+        "https://nicros.com/training/training-articles/research-on-hangboard-training/"
+      ]
+    },
+    {
+      "id": "repeaters-7-3",
+      "name": "Repeaters 7/3",
+      "level": "advanced",
+      "caution": true,
+      "timer": {
+        "prep": 10,
+        "hang": 7,
+        "rest": 3,
+        "reps": 6,
+        "sets": 3,
+        "setRest": 180
+      },
+      "what": "Series de seis colgadas de 7 segundos con 3 segundos de descanso, popularizadas por el Rock Climber's Training Manual. Entrena fuerza-resistencia con un ritmo de agarrar y soltar parecido al de escalar.",
+      "how": "Elige entre 3 y 7 agarres y haz de una (inicial) a tres (avanzado) series por agarre, descansando 3 minutos entre series. Completa todas las series de un agarre antes de pasar al siguiente.",
+      "load": "Agrega un peso submáximo suficiente para que cada colgada sea exigente, pero que puedas completar la serie entera.",
+      "sources": [
+        "https://rockclimberstrainingmanual.com/2012/08/30/hangboard-faq-0-what-is-a-basic-hangboard-routine/",
+        "https://trainingforclimbing.com/4-fingerboard-strength-protocols-that-work/"
+      ]
+    },
+    {
+      "id": "max-hangs",
+      "name": "Max hangs",
+      "level": "advanced",
+      "caution": true,
+      "timer": {
+        "prep": 10,
+        "hang": 10,
+        "rest": 0,
+        "reps": 1,
+        "sets": 5,
+        "setRest": 180
+      },
+      "what": "Colgadas únicas de 10 segundos con carga casi máxima y descansos largos: los MaxHangs de Eva López, estudiados en su investigación doctoral sobre un canto de 18 mm.",
+      "how": "3–5 series de una colgada de 10 segundos, con 3 minutos de descanso entre series. Half crimp en un canto fijo (alrededor de 18 mm).",
+      "load": "Agrega el peso que te permitiría colgar unos 13 segundos, pero detente en 10: deja siempre un margen de ~3 segundos. Si no puedes terminar una serie con ese margen, reduce la carga.",
+      "sources": [
+        "https://en-eva-lopez.blogspot.com/2018/03/maximal-hangs-intermittent-hangs.html",
+        "https://en-eva-lopez.blogspot.com/2018/05"
+      ]
+    },
+    {
+      "id": "min-edge",
+      "name": "Canto mínimo",
+      "level": "advanced",
+      "caution": true,
+      "timer": {
+        "prep": 10,
+        "hang": 12,
+        "rest": 0,
+        "reps": 1,
+        "sets": 2,
+        "setRest": 180
+      },
+      "what": "La alternativa de Eva López a agregar peso: colgar del canto más pequeño que puedas sostener unos 15 segundos, pero solo por 12.",
+      "how": "2 series de una colgada de 12 segundos, con 3 minutos de descanso entre series. A medida que te fortaleces, el canto se achica en vez de agregar peso.",
+      "load": "Peso corporal. El tamaño del canto es la carga: el canto más pequeño que permita ~15 segundos, colgando 12 para mantener el margen de 3 segundos.",
+      "sources": [
+        "https://en-eva-lopez.blogspot.com/2018/05"
+      ]
+    },
+    {
+      "id": "intermittent-hangs",
+      "name": "Colgadas intermitentes",
+      "level": "advanced",
+      "caution": true,
+      "timer": {
+        "prep": 10,
+        "hang": 10,
+        "rest": 20,
+        "reps": 4,
+        "sets": 3,
+        "setRest": 120
+      },
+      "what": "La «versión larga» del trabajo de canto mínimo de Eva López: colgadas repetidas de 10 segundos con pausas cortas, para una fuerza que se mantenga en varios esfuerzos.",
+      "how": "3 series de 4 repeticiones: colgada de 10 segundos, pausa de 20 segundos, y 2 minutos entre series.",
+      "load": "El canto más pequeño que te permita completar todas las repeticiones de las tres series.",
+      "sources": [
+        "https://en-eva-lopez.blogspot.com/2018/05"
       ]
     }
   ]

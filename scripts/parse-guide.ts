@@ -19,7 +19,7 @@ const LEVEL_INTRO_SENTENCE =
 
 const VALID_REF_TYPES = ["book", "video", "article", "channel", "paper"] as const;
 
-type FileType = "prose" | "techniques" | "drills" | "references" | "progressions";
+type FileType = "prose" | "techniques" | "drills" | "references" | "progressions" | "workouts";
 
 interface ManifestFile {
   path: string;
@@ -113,9 +113,36 @@ interface ReferenceEntry {
   note: string;
 }
 
+interface WorkoutTimer {
+  prep: number;
+  hang: number;
+  rest: number;
+  reps: number;
+  sets: number;
+  setRest: number;
+}
+
+interface Workout {
+  id: string;
+  name: string;
+  level: Level;
+  caution: boolean;
+  timer: WorkoutTimer;
+  what: string;
+  how: string;
+  load: string;
+  sources: string[];
+}
+
+interface WorkoutSection {
+  number: number;
+  title: string;
+  intro: string;
+}
+
 interface SectionIndexEntry {
   number: number;
-  kind: "prose" | "techniqueCategory" | "drillCategory";
+  kind: "prose" | "techniqueCategory" | "drillCategory" | "workouts";
   title: string;
   fileId?: string;
   categoryId?: string;
@@ -151,6 +178,8 @@ interface Guide {
   drills: Drill[];
   references: ReferenceEntry[];
   progressionStages: ProgressionStage[];
+  workoutSection: WorkoutSection | null;
+  workouts: Workout[];
 }
 
 class ParseError extends Error {}
@@ -843,6 +872,134 @@ function parseProgressions(
   return stages;
 }
 
+// ---------- workouts (finger-strength protocols) ----------
+//
+// One `### N.` section: an intro (prose, may hold `:::level` fences) followed by
+// `####` entries. Each entry's `timer` drives the in-app interval timer, so it is
+// parsed strictly: `prep 10, hang 7, rest 3, reps 6, sets 3, setrest 180`.
+
+const TIMER_KEYS = ["prep", "hang", "rest", "reps", "sets", "setrest"] as const;
+
+function parseTimer(spec: string, context: string): WorkoutTimer {
+  const found: Record<string, number> = {};
+  for (const part of spec.split(",")) {
+    const m = part.trim().match(/^([a-z]+)\s+(\d+)$/);
+    if (!m) fail(context, `malformed timer part "${part.trim()}" (expected e.g. "hang 7")`);
+    if (!(TIMER_KEYS as readonly string[]).includes(m[1]!)) fail(context, `unknown timer key \`${m[1]}\``);
+    found[m[1]!] = Number(m[2]);
+  }
+  for (const k of TIMER_KEYS) {
+    if (found[k] === undefined) fail(context, `timer is missing \`${k}\``);
+  }
+  if (found.hang! <= 0 || found.reps! < 1 || found.sets! < 1) fail(context, "timer needs hang > 0, reps ≥ 1, sets ≥ 1");
+  return { prep: found.prep!, hang: found.hang!, rest: found.rest!, reps: found.reps!, sets: found.sets!, setRest: found.setrest! };
+}
+
+function parseWorkouts(
+  raw: string,
+  file: ManifestFile,
+  idRegistry: Map<string, string>,
+): { section: WorkoutSection; workouts: Workout[] } {
+  const context = file.path;
+  const body = stripFrontmatter(raw, context);
+  const lines = body.split("\n");
+  let section: { number: number; title: string } | null = null;
+  const introLines: string[] = [];
+  const workouts: Workout[] = [];
+  let entry: (Partial<Workout> & { timerRaw?: string; sourcesRaw?: string }) | null = null;
+  let entryContext = "";
+  let currentField: "what" | "how" | "load" | null = null;
+
+  const finishEntry = () => {
+    if (!entry) return;
+    for (const key of ["id", "level", "what", "how", "load"] as const) {
+      if (!entry[key] || String(entry[key]).trim() === "") fail(entryContext, `missing required field \`${key}\``);
+    }
+    if (!entry.timerRaw) fail(entryContext, "missing required field `timer`");
+    if (!VALID_LEVELS.includes(entry.level as Level)) {
+      fail(entryContext, `unknown level \`${entry.level}\` — must be one of ${VALID_LEVELS.join(" | ")}`);
+    }
+    const sources = (entry.sourcesRaw ?? "")
+      .split(/[,\s]+/)
+      .map((x) => x.trim())
+      .filter((x) => x !== "");
+    if (sources.length === 0) fail(entryContext, "missing required field `sources` — every protocol must cite where it comes from");
+    for (const url of sources) if (!/^https:\/\//.test(url)) fail(entryContext, `source \`${url}\` must be an https URL`);
+    registerId(idRegistry, entry.id!, entryContext);
+    workouts.push({
+      id: entry.id!,
+      name: entry.name!,
+      level: entry.level as Level,
+      caution: entry.caution === true,
+      timer: parseTimer(entry.timerRaw, entryContext),
+      what: entry.what!.trim(),
+      how: entry.how!.trim(),
+      load: entry.load!.trim(),
+      sources,
+    });
+    entry = null;
+    currentField = null;
+  };
+
+  for (const line of lines) {
+    const sectionHeading = line.match(/^### (\d+)\.\s+(.+?)\s*$/);
+    if (sectionHeading) {
+      if (section) fail(context, "a workouts file holds exactly one numbered section");
+      section = { number: Number(sectionHeading[1]), title: sectionHeading[2]! };
+      continue;
+    }
+    const entryHeading = line.match(/^#### (.+?)\s*$/);
+    if (entryHeading) {
+      if (!section) fail(context, `workout "${entryHeading[1]}" appears before the section heading`);
+      finishEntry();
+      entry = { name: entryHeading[1] };
+      entryContext = `${context} #### ${entryHeading[1]}`;
+      continue;
+    }
+    if (entry) {
+      const fieldLine = line.match(/^- ([a-zA-Z]+):\s*(.*)$/);
+      if (fieldLine) {
+        const key = fieldLine[1]!.toLowerCase();
+        const value = fieldLine[2]!.trim();
+        currentField = null;
+        if (key === "id" || key === "level") (entry as Record<string, unknown>)[key] = value.replace(/`/g, "").trim();
+        else if (key === "caution") {
+          if (value !== "true" && value !== "false") fail(entryContext, `field \`caution\` must be true or false`);
+          entry.caution = value === "true";
+        } else if (key === "timer") entry.timerRaw = value.replace(/`/g, "").trim();
+        else if (key === "sources") entry.sourcesRaw = value;
+        else if (key === "what" || key === "how" || key === "load") {
+          entry[key] = value;
+          currentField = key;
+        } else fail(entryContext, `unknown field \`${key}\``);
+        continue;
+      }
+      if (line.trim() === "") {
+        currentField = null;
+        continue;
+      }
+      if (currentField) {
+        entry[currentField] = `${entry[currentField]} ${line.trim()}`;
+        continue;
+      }
+      fail(entryContext, `unclaimed markdown content not recognised by any parser branch: "${line.trim()}"`);
+    }
+    if (!section) {
+      if (line.trim() !== "") fail(context, "content found before the section heading");
+      continue;
+    }
+    introLines.push(line);
+  }
+  finishEntry();
+  if (!section) fail(context, "no section heading found");
+  checkSectionRange(context, file.sections, [section.number]);
+  const intro = introLines.join("\n").trim();
+  if (!intro) fail(context, "workouts section intro is missing");
+  validateLevelFences(intro, `${context} §${section.number}`);
+  if (workouts.length === 0) fail(context, "no workouts found");
+  return { section: { number: section.number, title: section.title, intro }, workouts };
+}
+
 // ---------- references ----------
 
 function parseReferences(raw: string, file: ManifestFile, idRegistry: Map<string, string>): ReferenceEntry[] {
@@ -962,6 +1119,8 @@ interface EsDict {
   drillCategories: Record<string, { title: string; callouts: string[] }>;
   drills: Record<string, { name: string; description: string }>;
   progressionStages: Record<string, { title: string; summary: string }>;
+  workoutSection?: { title: string; intro: string };
+  workouts?: Record<string, { name: string; what: string; how: string; load: string }>;
 }
 
 function checkKeysMatch(enKeys: string[], dictKeys: string[], label: string): void {
@@ -1075,6 +1234,23 @@ function buildEsGuide(en: Guide, dict: EsDict): Guide {
     return { ...s, title: sDict.title, summary: sDict.summary };
   });
 
+  let workoutSection: WorkoutSection | null = null;
+  let workouts: Workout[] = [];
+  if (en.workoutSection) {
+    if (!dict.workoutSection || !dict.workouts) fail(ES_DICT_PATH, "missing ES translation for the workouts section");
+    checkKeysMatch(
+      en.workouts.map((w) => w.id),
+      Object.keys(dict.workouts),
+      "workouts",
+    );
+    validateLevelFences(dict.workoutSection.intro, `${ES_DICT_PATH} workoutSection`);
+    workoutSection = { number: en.workoutSection.number, title: dict.workoutSection.title, intro: dict.workoutSection.intro };
+    workouts = en.workouts.map((w) => {
+      const wDict = dict.workouts![w.id]!;
+      return { ...w, name: wDict.name, what: wDict.what, how: wDict.how, load: wDict.load };
+    });
+  }
+
   if (!en.drillSection) {
     fail(ES_DICT_PATH, "internal: EN guide has no drillSection to translate");
   }
@@ -1095,6 +1271,8 @@ function buildEsGuide(en: Guide, dict: EsDict): Guide {
       if (cat) title = cat.title;
     } else if (entry.kind === "drillCategory") {
       title = drillSection.title;
+    } else if (entry.kind === "workouts" && workoutSection) {
+      title = workoutSection.title;
     }
     sectionIndex[key] = { ...entry, title };
   }
@@ -1118,6 +1296,8 @@ function buildEsGuide(en: Guide, dict: EsDict): Guide {
     drills,
     references: [],
     progressionStages,
+    workoutSection,
+    workouts,
   };
 }
 
@@ -1162,6 +1342,8 @@ function main() {
     drills: [],
     references: [],
     progressionStages: [],
+    workoutSection: null,
+    workouts: [],
   };
 
   const skipped: string[] = [];
@@ -1219,6 +1401,13 @@ function main() {
         guide.references.push(...parseReferences(raw, file, idRegistry));
         break;
       }
+      case "workouts": {
+        const { section, workouts } = parseWorkouts(raw, file, idRegistry);
+        addSection({ number: section.number, kind: "workouts", title: section.title }, `${file.path} §${section.number}`);
+        guide.workoutSection = section;
+        guide.workouts.push(...workouts);
+        break;
+      }
       case "progressions": {
         const techniqueLevels = new Map(guide.techniques.map((t) => [t.id, t.level] as const));
         const drillIds = new Set(guide.drills.map((d) => d.id));
@@ -1253,6 +1442,7 @@ function main() {
   );
   console.log(`  references: ${guide.references.length}`);
   console.log(`  progression stages: ${guide.progressionStages.length}`);
+  console.log(`  workouts: ${guide.workouts.length}`);
   console.log(`  sections indexed: ${Object.keys(sectionIndex).length}`);
   console.log(`  wrote: ${path.relative(ROOT, OUT_PATH_EN)}`);
   console.log(`  wrote: ${path.relative(ROOT, OUT_PATH_ES)}`);
@@ -1275,7 +1465,7 @@ if (isDirectRun) {
   }
 }
 
-export { ParseError, validateLevelFences, parseProse, parseTechniques, parseDrills, parseReferences, parseProgressions, computeRelations, buildEsGuide };
+export { ParseError, validateLevelFences, parseWorkouts, parseProse, parseTechniques, parseDrills, parseReferences, parseProgressions, computeRelations, buildEsGuide };
 export type {
   ManifestFile,
   FileType,

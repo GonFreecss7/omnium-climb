@@ -75,9 +75,36 @@ export interface ReferenceEntry {
   note: string;
 }
 
+export interface WorkoutTimer {
+  prep: number;
+  hang: number;
+  rest: number;
+  reps: number;
+  sets: number;
+  setRest: number;
+}
+
+export interface Workout {
+  id: string;
+  name: string;
+  level: Level;
+  caution: boolean;
+  timer: WorkoutTimer;
+  what: string;
+  how: string;
+  load: string;
+  sources: string[];
+}
+
+export interface WorkoutSection {
+  number: number;
+  title: string;
+  intro: string;
+}
+
 export interface SectionIndexEntry {
   number: number;
-  kind: "prose" | "techniqueCategory" | "drillCategory";
+  kind: "prose" | "techniqueCategory" | "drillCategory" | "workouts";
   title: string;
   fileId?: string;
   categoryId?: string;
@@ -113,4 +140,6 @@ export interface Guide {
   drills: Drill[];
   references: ReferenceEntry[];
   progressionStages: ProgressionStage[];
+  workoutSection: WorkoutSection | null;
+  workouts: Workout[];
 }

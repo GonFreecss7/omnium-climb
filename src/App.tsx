@@ -5,7 +5,7 @@ import Footer from "./components/Footer";
 import Onboarding from "./components/Onboarding";
 import GuideView from "./views/GuideView";
 import TechniquesView from "./views/TechniquesView";
-import DrillsView from "./views/DrillsView";
+import TrainView from "./views/TrainView";
 import ProgressionsView from "./views/ProgressionsView";
 import SessionView from "./views/SessionView";
 import GymsView from "./views/GymsView";
@@ -21,7 +21,7 @@ function Main() {
     <main className="app__main">
       {tab === "guide" && <GuideView />}
       {tab === "techniques" && <TechniquesView />}
-      {tab === "drills" && <DrillsView />}
+      {tab === "drills" && <TrainView />}
       {tab === "progressions" && <ProgressionsView />}
       {tab === "gyms" && <GymsView />}
       {tab === "session" && <SessionView />}

@@ -13,6 +13,7 @@ const KEYS = [
   "cg.favorites",
   "cg.levelColors",
   "cg.sessionDraft",
+  "cg.timerCustom",
   "cg.lang",
   "cg.theme",
   "cg.onboardingSkipped",

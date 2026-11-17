@@ -1,5 +1,5 @@
 {
-  "title": "Indoor Climbing — Technique Guide & Drill Bank",
+  "title": "Indoor Climbing \u2014 Technique Guide & Drill Bank",
   "subtitle": "A complete reference for indoor climbers",
   "version": "1.1",
   "source_language": "en",
@@ -62,6 +62,16 @@
       "type": "prose",
       "sections": "14-15",
       "order": 30,
+      "status": "complete"
+    },
+    {
+      "path": "content/60-strength.md",
+      "id": "strength",
+      "title": "Finger Strength Training",
+      "part": "III",
+      "type": "workouts",
+      "sections": "18",
+      "order": 35,
       "status": "complete"
     },
     {
