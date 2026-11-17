@@ -2218,6 +2218,15 @@ ol.prose-list li::marker {
   z-index: 0;
 }
 
+/* OSM's standard style is colourful; mute it to the app's monochrome look. */
+.gym-map__tiles--osm {
+  filter: grayscale(0.9) contrast(0.92) brightness(1.02);
+}
+
+:root[data-theme="dark"] .gym-map__tiles--osm {
+  filter: invert(1) hue-rotate(180deg) grayscale(0.92) brightness(0.82) contrast(0.92);
+}
+
 .gym-map__coast {
   fill: var(--surface-2);
   fill-opacity: 1;

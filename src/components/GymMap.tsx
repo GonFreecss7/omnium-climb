@@ -19,15 +19,25 @@ interface Props {
   meLabel: string;
 }
 
-// CARTO basemaps over OpenStreetMap data: streets, communes and city names,
-// in a light and a dark style that match the app's two themes. Tiles are
-// cached by the service worker as they're viewed (see vite.config.ts).
-const TILE_URL = {
-  dark: "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
-  light: "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
-};
-const ATTRIBUTION =
-  '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a>';
+// Basemap: OpenStreetMap's standard tiles (keyless) — streets, communes and
+// city names. CSS filters (components.css, .gym-map--osm) tone them down to the
+// app's monochrome look, inverted for the dark theme. If a CARTO key is
+// provided at build time (VITE_CARTO_KEY), CARTO's Positron / Dark Matter
+// styles are used instead. Viewed tiles are cached by the service worker.
+const CARTO_KEY: string | undefined = import.meta.env.VITE_CARTO_KEY;
+const OSM_ATTRIBUTION =
+  '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>';
+
+function tileSource(theme: Theme): { url: string; attribution: string; subdomains?: string } {
+  if (CARTO_KEY) {
+    const style = theme === "dark" ? "dark_all" : "light_all";
+    return {
+      url: `https://basemaps.cartocdn.com/rastertiles/${style}/{z}/{x}/{y}.png?key=${encodeURIComponent(CARTO_KEY)}`,
+      attribution: `${OSM_ATTRIBUTION} &copy; <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a>`,
+    };
+  }
+  return { url: "https://tile.openstreetmap.org/{z}/{x}/{y}.png", attribution: OSM_ATTRIBUTION };
+}
 
 const CHILE_CENTER: L.LatLngExpression = [-33.45, -70.65];
 
@@ -76,11 +86,12 @@ export default function GymMap({ gyms, fit, selectedId, homeId, savedIds, me, on
     const m = map.current;
     if (!m) return;
     tiles.current?.remove();
-    tiles.current = L.tileLayer(TILE_URL[theme], {
-      attribution: ATTRIBUTION,
-      subdomains: "abcd",
+    const src = tileSource(theme);
+    tiles.current = L.tileLayer(src.url, {
+      attribution: src.attribution,
       maxZoom: 19,
       detectRetina: false,
+      className: CARTO_KEY ? "gym-map__tiles" : "gym-map__tiles gym-map__tiles--osm",
     }).addTo(m);
   }, [theme]);
 

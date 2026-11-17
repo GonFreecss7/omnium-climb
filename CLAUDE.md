@@ -134,8 +134,10 @@ unknown level value. Silent skipping hides content loss.
 - `content/gyms-cl.json` is the hand-maintained directory of Chilean gyms (exported from the
   owner's Google Maps list "BOULDER"). Ids are stable; saved gyms reference them via
   `directoryId`. Add gyms by editing the file — `region` must be a key of `regions`.
-- The Gyms tab map is Leaflet over CARTO basemaps (OpenStreetMap data; `dark_all` / `light_all`
-  to match the theme) — the app's one deliberate runtime network use. The service worker caches
+- The Gyms tab map is Leaflet over OpenStreetMap's standard tiles (keyless; muted with CSS
+  filters, inverted in dark mode) — the app's one deliberate runtime network use. CARTO's raster
+  basemaps now require a key: build with `VITE_CARTO_KEY` set to switch to Positron / Dark
+  Matter. The service worker caches
   viewed tiles (`map-tiles`, CacheFirst) so known areas work offline, and Chile's coastline
   (`src/assets/chile-outline.json`, Natural Earth 1:50m via world-atlas) is drawn under the tiles
   as an offline fallback. Attribution to OSM and CARTO must stay visible. "Open in Google Maps"

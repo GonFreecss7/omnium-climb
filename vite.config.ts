@@ -41,7 +41,7 @@ export default defineConfig({
         // what the climber has viewed so those areas still render offline.
         runtimeCaching: [
           {
-            urlPattern: /^https:\/\/[a-d]\.basemaps\.cartocdn\.com\//,
+            urlPattern: /^https:\/\/(tile\.openstreetmap\.org|basemaps\.cartocdn\.com)\//,
             handler: "CacheFirst",
             options: {
               cacheName: "map-tiles",
