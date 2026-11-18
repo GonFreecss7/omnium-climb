@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useAppState } from "../state/AppState";
 import Modal from "./Modal";
 import { BOULDER_SCALES, ROPE_SCALES, SCALE_LABELS, equivalents, gradeLabel, gradeOptions } from "../domain/grades";
@@ -65,7 +65,17 @@ export default function Onboarding() {
     [profile],
   );
   const [stepIndex, setStepIndex] = useState(0);
+  // Direction of the last move, so the next pane slides in from the matching side.
+  const [dir, setDir] = useState<"next" | "prev">("next");
+  const bodyRef = useRef<HTMLDivElement>(null);
   const step = steps[stepIndex]!;
+  const go = (delta: 1 | -1) => {
+    setDir(delta > 0 ? "next" : "prev");
+    setStepIndex((i) => Math.max(0, Math.min(steps.length - 1, i + delta)));
+  };
+  useEffect(() => {
+    bodyRef.current?.scrollTo({ top: 0 });
+  }, [stepIndex]);
   const numberedSteps: Step[] = steps.filter((s) => s !== "welcome");
   const stepNumber = numberedSteps.indexOf(step) + 1;
 
@@ -183,7 +193,7 @@ export default function Onboarding() {
           </button>
         </div>
 
-        <div className="modal__body">
+        <div className="modal__body" ref={bodyRef}>
           {step !== "welcome" && (
             <div className="onboarding__progress" aria-hidden="true">
               {numberedSteps.map((s, i) => (
@@ -196,6 +206,8 @@ export default function Onboarding() {
               {o.step} {stepNumber}/{numberedSteps.length}
             </p>
           )}
+
+          <div key={step} className={`onboarding__pane onboarding__pane--${dir}`}>
 
           {step === "welcome" && (
             <div className="onboarding__welcome">
@@ -360,10 +372,13 @@ export default function Onboarding() {
             </div>
           )}
 
-          <div className="onboarding__actions">
+          </div>
+        </div>
+
+        <div className="onboarding__actions">
             {step === "welcome" ? (
               <>
-                <button type="button" className="button-primary" onClick={() => setStepIndex(1)}>
+                <button type="button" className="button-primary" onClick={() => go(1)}>
                   {o.start}
                 </button>
                 <button type="button" className="filters__clear" onClick={closeOnboarding}>
@@ -381,13 +396,13 @@ export default function Onboarding() {
                     type="button"
                     className="button-primary"
                     disabled={!canAdvance}
-                    onClick={() => setStepIndex((i) => Math.min(steps.length - 1, i + 1))}
+                    onClick={() => go(1)}
                   >
                     {o.next}
                   </button>
                 )}
                 {stepIndex > 0 && steps[stepIndex - 1] !== "welcome" && (
-                  <button type="button" className="secondary-button" onClick={() => setStepIndex((i) => i - 1)}>
+                  <button type="button" className="secondary-button" onClick={() => go(-1)}>
                     {o.back}
                   </button>
                 )}
@@ -409,7 +424,6 @@ export default function Onboarding() {
                 {confirmDelete ? o.deleteConfirm : o.deleteProfile}
               </button>
             )}
-          </div>
         </div>
       </div>
     </Modal>

@@ -106,7 +106,10 @@
   flex-shrink: 0;
   display: flex;
   min-height: var(--tabbar-height);
-  padding: var(--space-1) var(--space-1) min(env(safe-area-inset-bottom), var(--space-2));
+  /* --safe-bottom (set in src/viewport.ts) is the home-indicator inset only when
+     the app actually reaches the bottom of the screen; in installed iOS web apps
+     where the viewport already stops above it, it is 0 so nothing is added twice. */
+  padding: var(--space-1) var(--space-1) max(var(--space-1), var(--safe-bottom));
   background: var(--bg);
   border-top: 1px solid var(--border);
 }
@@ -1445,7 +1448,7 @@ ol.prose-list li::marker {
   flex: 1;
   min-height: 0;
   overflow-y: auto;
-  padding: var(--space-3) var(--space-5) calc(var(--space-5) + env(safe-area-inset-bottom));
+  padding: var(--space-3) var(--space-5) calc(var(--space-5) + var(--safe-bottom));
 }
 
 .modal__actions {
@@ -1628,11 +1631,22 @@ ol.prose-list li::marker {
   height: 3px;
   border-radius: 2px;
   background: var(--surface-3);
-  transition: background var(--duration) var(--ease);
+  overflow: hidden;
 }
 
-.onboarding__dot--done {
+/* Each segment fills left to right instead of switching colour at once. */
+.onboarding__dot::after {
+  content: "";
+  display: block;
+  height: 100%;
   background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 420ms var(--ease-out-soft);
+}
+
+.onboarding__dot--done::after {
+  transform: scaleX(1);
 }
 
 .onboarding__step {
@@ -1747,12 +1761,65 @@ ol.prose-list li::marker {
   line-height: 1.55;
 }
 
+/* Fixed sheet height: steps of different length no longer make the sheet jump. */
+.modal.onboarding {
+  height: min(88dvh, 720px);
+}
+
+.onboarding .modal__body {
+  padding-bottom: var(--space-5);
+  overflow-x: hidden;
+}
+
+.onboarding__pane {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  animation: onboarding-next 340ms var(--ease-out-soft) both;
+}
+
+.onboarding__pane--prev {
+  animation-name: onboarding-prev;
+}
+
+@keyframes onboarding-next {
+  from { opacity: 0; transform: translateX(28px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes onboarding-prev {
+  from { opacity: 0; transform: translateX(-28px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .onboarding__pane,
+  .onboarding__pane--prev {
+    animation: onboarding-fade 160ms linear both;
+  }
+  @keyframes onboarding-fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  .onboarding__dot::after {
+    transition: none;
+  }
+}
+
+/* Pinned to the bottom of the sheet, outside the scrolling body. */
 .onboarding__actions {
+  flex-shrink: 0;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: var(--space-3);
-  margin-top: var(--space-5);
+  padding: var(--space-3) var(--space-5) calc(var(--space-4) + var(--safe-bottom));
+  border-top: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.onboarding__actions .secondary-button {
+  order: -1;
 }
 
 .onboarding__actions .button-primary {

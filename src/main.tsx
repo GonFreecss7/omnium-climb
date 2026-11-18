@@ -8,6 +8,9 @@ import "./styles/global.css";
 import "./styles/components.css";
 
 import App from "./App";
+import { installSafeBottom } from "./viewport";
+
+installSafeBottom();
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

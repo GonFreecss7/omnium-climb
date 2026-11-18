@@ -92,6 +92,9 @@
   --radius-chip: 999px;
 
   --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  /* Overridden from src/viewport.ts; see there. */
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
   --duration: 160ms;
 
   --space-1: 4px;
