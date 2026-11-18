@@ -9,8 +9,10 @@ import "./styles/components.css";
 
 import App from "./App";
 import { installSafeBottom } from "./viewport";
+import { installPwa } from "./pwa";
 
 installSafeBottom();
+installPwa();
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

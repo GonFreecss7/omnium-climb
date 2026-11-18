@@ -1,4 +1,6 @@
 import { useRef, useState } from "react";
+import { checkForUpdate } from "../pwa";
+import type { UpdateCheck } from "../pwa";
 import { useAppState } from "../state/AppState";
 import { buildBackup, downloadJson, restoreBackup } from "../domain/backup";
 import { todayLocalISO } from "../utils/sessionStats";
@@ -11,6 +13,12 @@ export default function BackupSection() {
   const fileRef = useRef<HTMLInputElement>(null);
   const [pending, setPending] = useState<{ name: string; text: string } | null>(null);
   const [message, setMessage] = useState<{ kind: "ok" | "error"; text: string } | null>(null);
+  const [update, setUpdate] = useState<UpdateCheck | "checking" | null>(null);
+
+  async function runUpdateCheck() {
+    setUpdate("checking");
+    setUpdate(await checkForUpdate());
+  }
 
   function exportAll() {
     downloadJson(`omnium-climb-respaldo-${todayLocalISO()}.json`, buildBackup(APP_VERSION));
@@ -38,6 +46,17 @@ export default function BackupSection() {
   }
 
   return (
+    <>
+    <div className="settings__row">
+      <span className="settings__label">{b.updates.title}</span>
+      <p className="settings__hint">{b.updates.hint(APP_VERSION)}</p>
+      <div className="backup__actions">
+        <button type="button" className="secondary-button" onClick={runUpdateCheck} disabled={update === "checking"}>
+          {update === "checking" ? b.updates.checking : b.updates.check}
+        </button>
+      </div>
+      {update && update !== "checking" && <p className="settings__hint" role="status">{b.updates.result[update]}</p>}
+    </div>
     <div className="settings__row">
       <span className="settings__label">{b.title}</span>
       <p className="settings__hint">{b.hint(log.length)}</p>
@@ -66,5 +85,6 @@ export default function BackupSection() {
       )}
       {message && <p className={message.kind === "ok" ? "settings__hint" : "onboarding__error"}>{message.text}</p>}
     </div>
+    </>
   );
 }

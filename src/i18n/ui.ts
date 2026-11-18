@@ -329,6 +329,13 @@ export interface UiStrings {
     soundOff: string;
   };
   backup: {
+    updates: {
+      title: string;
+      hint: (version: string) => string;
+      check: string;
+      checking: string;
+      result: Record<"updating" | "latest" | "offline" | "unavailable", string>;
+    };
     title: string;
     hint: (sessions: number) => string;
     export: string;
@@ -774,6 +781,18 @@ const en: UiStrings = {
     soundOff: "Sound off",
   },
   backup: {
+    updates: {
+      title: "Updates",
+      hint: (v) => `Version ${v}. The app updates itself when you open it with a connection; your data stays.`,
+      check: "Check for updates",
+      checking: "Checking…",
+      result: {
+        updating: "New version found. The app will reload in a moment.",
+        latest: "You're on the latest version.",
+        offline: "No connection. Try again when you're online.",
+        unavailable: "Updates aren't available in this browser.",
+      },
+    },
     title: "Backup",
     hint: (n) =>
       `Your data lives only on this device (${n} session${n === 1 ? "" : "s"} logged). Export a backup now and then, and restore it on a new phone.`,
@@ -1229,6 +1248,18 @@ const es: UiStrings = {
     soundOff: "Sonido desactivado",
   },
   backup: {
+    updates: {
+      title: "Actualizaciones",
+      hint: (v) => `Versión ${v}. La app se actualiza sola cuando la abres con conexión; tus datos se mantienen.`,
+      check: "Buscar actualización",
+      checking: "Buscando…",
+      result: {
+        updating: "Hay una versión nueva. La app se recargará en un momento.",
+        latest: "Tienes la versión más reciente.",
+        offline: "Sin conexión. Inténtalo de nuevo cuando estés en línea.",
+        unavailable: "Las actualizaciones no están disponibles en este navegador.",
+      },
+    },
     title: "Respaldo",
     hint: (n) =>
       `Tus datos viven solo en este dispositivo (${n} sesi${n === 1 ? "ón registrada" : "ones registradas"}). Exporta un respaldo de vez en cuando y restáuralo en un teléfono nuevo.`,
